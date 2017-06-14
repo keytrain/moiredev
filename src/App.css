@@ -1,0 +1,63 @@
+nav {
+  background-color:#000;
+  padding:0.5rem;
+  text-align:center;
+}
+.logo-container {
+  width:40%;
+  margin:0 auto;
+}
+.logo {
+  width:4rem;
+}
+
+.info {
+  position:fixed;
+  right:5%;
+  bottom:10%;
+  width:35%;
+  background-color:#fff;
+  padding:2rem;
+}
+h1 {
+  font-size:3em;
+  margin:0;
+}
+.text {
+}
+.bg {
+  position:absolute;
+  bottom:0;
+  top:0;
+  left:0;
+  right:0;
+  z-index:-1;
+  background-color:#aaa;
+  /*max-height:800px;*/
+  margin:0 auto;
+}
+
+.seriescontainer {
+  position:fixed;
+  left:-00%;
+  top:0;
+  width:500px;
+  bottom:0;
+  transition: 0.5s;
+}
+.serieslist {
+  position:absolute;
+  padding:2rem;
+  white-space:nowrap;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:-1;
+  background-color:#fff;
+  overflow-y:auto;
+}
+.series {
+  padding:0.5rem;
+  border-top:1px solid #aaa;
+}
