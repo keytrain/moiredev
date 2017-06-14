@@ -14,10 +14,11 @@ class App extends Component {
     this.handleSide = this.handleSide.bind(this);
   }
 
-  handleSide() {
+  handleSide(e) {
+    e.preventDefault();
     this.setState((prevState) => {
       prevState.sidebar = {
-        transform: 'translateX(100%)'
+        transform: (prevState.sidebar.transform === 'translateX(100%)' ? 'translateX(-100%)' : 'translateX(100%)')
       }
     });
   }
@@ -50,8 +51,17 @@ class App extends Component {
         </div>
         <div className='seriescontainer' style={list}>
           <div className='serieslist'>
-            {data.list.map((e, index) => (
-              <div key={index} className='series'>{e.title} - {e.updated.toDateString()}</div>
+            {data.list.sort((a, b) => {
+              if (a.updated.getTime() < b.updated.getTime())
+                return 1;
+              else if (a.updated.getTime() > b.updated.getTime())
+                return -1;
+              else return 0;
+            }).map((e, index) => (
+              <div key={index} className='series'>
+                <div>{e.title}</div>
+                <small>Last updated {e.updated.toLocaleDateString()}</small>
+              </div>
             )
             )}
           </div>

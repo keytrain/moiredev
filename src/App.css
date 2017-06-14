@@ -18,6 +18,7 @@ nav {
   width:35%;
   background-color:#fff;
   padding:2rem;
+  box-shadow: 5px 5px 15px 1px #555;
 }
 h1 {
   font-size:3em;
@@ -39,16 +40,16 @@ h1 {
 
 .seriescontainer {
   position:fixed;
-  left:-00%;
+  left:-400px;
   top:0;
-  width:500px;
+  width:400px;
   bottom:0;
-  transition: 0.5s;
+  transition: ease-in-out 0.4s;
 }
 .serieslist {
   position:absolute;
-  padding:2rem;
-  white-space:nowrap;
+  /*padding:1rem;*/
+  /*white-space:nowrap;*/
   top:0;
   left:0;
   right:0;
@@ -56,8 +57,12 @@ h1 {
   z-index:-1;
   background-color:#fff;
   overflow-y:auto;
+  -webkit-overflow-scrolling: touch;
 }
 .series {
-  padding:0.5rem;
-  border-top:1px solid #aaa;
+  padding:0.5rem 0.8rem;
+  border-top:1px solid #ddd;
+}
+.series small {
+  color:#aaa;
 }

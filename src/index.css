@@ -12,3 +12,17 @@ body {
   line-height: 1.4;
 }
 
+button {
+  border:0;
+  transition:ease-in-out 0.5s;
+  padding:0.5rem 0.7rem;
+  font-family:inherit;
+  background-color:#ccc;
+}
+button:focus {
+  outline:none;  
+}
+button:hover {
+  cursor:pointer;
+  opacity:0.6;
+}
