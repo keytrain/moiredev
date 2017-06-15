@@ -8,6 +8,7 @@ export default {
         value:'mahoromi',
         pic: './img/mah1.png',
         updated: new Date('Jun 13 2017 07:47:00 GMT-0800'),
+        current: '17'
       },
       {
         vol:[
@@ -16,6 +17,7 @@ export default {
         title:'Spotted Flower',
         value:'spottedFlower',
         updated: new Date('Jun 06 2017 GMT-0800'),
+        current: '20.5'
       }, 
       {
         vol:[
@@ -23,6 +25,7 @@ export default {
         ],
         title:'Mahoutsukai no Yome',
         updated: new Date('Mar 15 2017 01:15:00 GMT-0800'),
+        current: '37'
       },
       {
         vol:[
@@ -30,6 +33,7 @@ export default {
         ],
         title:'Seifuku no Vampiress Lord',
         updated: new Date('Jun 13 2017 23:31:00 GMT-0800'),
+        current: '5.5'
       }, 
       {
         vol:[

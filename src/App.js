@@ -58,9 +58,10 @@ class App extends Component {
                 return -1;
               else return 0;
             }).map((e, index) => (
-              <div key={index} className='series'>
+              <div key={index} className='series listbutton'>
                 <div>{e.title}</div>
                 <small>Last updated {e.updated.toLocaleDateString()}</small>
+                <div>{e.completed === undefined ? e.current : (e.completed ? 'COMPLETED' : 'INCOMPLETE')}</div>
               </div>
             )
             )}

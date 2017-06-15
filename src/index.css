@@ -12,6 +12,15 @@ body {
   line-height: 1.4;
 }
 
+h1, h2, h3, h4, h5 {
+  margin:0;
+  line-height:1.1;
+}
+
+h1 {
+  font-size:3em;
+}
+
 button {
   border:0;
   transition:ease-in-out 0.5s;
@@ -23,6 +32,21 @@ button:focus {
   outline:none;  
 }
 button:hover {
+  cursor:pointer;
+  opacity:0.6;
+}
+
+.button {
+  border:0;
+  transition:ease-in-out 0.5s;
+  padding:0.5rem 0.7rem;
+  font-family:inherit;
+  background-color:#ccc;
+}
+.button:focus {
+  outline:none;  
+}
+.button:hover {
   cursor:pointer;
   opacity:0.6;
 }
