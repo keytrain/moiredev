@@ -26,10 +26,11 @@ button {
   transition:ease-in-out 0.5s;
   padding:0.5rem 0.7rem;
   font-family:inherit;
+  outline:none;  
   background-color:#ccc;
 }
 button:focus {
-  outline:none;  
+  color:#555;  
 }
 button:hover {
   cursor:pointer;
@@ -45,9 +46,9 @@ button:active {
   padding:0.5rem 0.7rem;
   font-family:inherit;
   background-color:#ccc;
+  outline:none;  
 }
 .button:focus {
-  outline:none;  
 }
 .button:hover {
   cursor:pointer;
