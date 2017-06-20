@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
 import './App.css';
-import logo from './logo.png';
+import logo from './logoB.png';
 import bg from './bg.png';
 import data from './seriesData'
 
@@ -37,33 +37,33 @@ class App extends Component {
       // prevState.slist = {
       //   transform: (prevState.slist.transform === 'translateX(100%)' ? 'translateX(-100%)' : 'translateX(100%)')
       // }
-      prevState.mode = 'slist'; 
-      prevState.bg = {
-        background: `no-repeat center url('${bg}')`,
-        backgroundSize: 'cover',
-        opacity: '0.3',
-        transition: 'opacity 300ms 300ms'
-      }
-      prevState.sbox = {
-        bottom: '5%',
-        left: '5%',
-        top:'8%',
-        transition:
-          'left 75ms 100ms ease-in-out,' + 
-          'bottom 125ms 175ms ease-in-out,' +
-          'top 125ms 175ms ease-in-out'
-      }
-      prevState.sboxtext = {
-        opacity: '0',
-        visibility: 'hidden',
-        position:'absolute',
-        transition: 'all 175ms 0ms'
-      }
-      prevState.slist = {
-        opacity: '1',
-        visibility: 'visible',
-        transition: 'all 300ms 300ms'
-      }
+      // prevState.mode = 'slist'; 
+      // prevState.bg = {
+      //   background: `no-repeat center url('${bg}')`,
+      //   backgroundSize: 'cover',
+      //   opacity: '0.3',
+      //   transition: 'opacity 300ms 300ms'
+      // }
+      // prevState.sbox = {
+      //   bottom: '5%',
+      //   left: '5%',
+      //   top:'8%',
+      //   transition:
+      //     'left 75ms 100ms ease-in-out,' + 
+      //     'bottom 125ms 175ms ease-in-out,' +
+      //     'top 125ms 175ms ease-in-out'
+      // }
+      // prevState.sboxtext = {
+      //   opacity: '0',
+      //   visibility: 'hidden',
+      //   position:'absolute',
+      //   transition: 'all 175ms 0ms'
+      // }
+      // prevState.slist = {
+      //   opacity: '1',
+      //   visibility: 'visible',
+      //   transition: 'all 300ms 300ms'
+      // }
     });
   }
 
@@ -72,33 +72,33 @@ class App extends Component {
       // prevState.slist = {
       //   transform: (prevState.slist.transform === 'translateX(100%)' ? 'translateX(-100%)' : 'translateX(100%)')
       // }
-      prevState.mode = 'start'; 
-      prevState.bg = {
-        background: `no-repeat center url('${bg}')`,
-        backgroundSize: 'cover',
-        opacity: '1',
-        transition: 'opacity 300ms 0ms'
-      }
-      prevState.sbox = {
-        bottom: '10%',
-        left: '60%',
-        top:'60%',
-        transition:
-          'left 75ms 225ms ease-in-out,' + 
-          'bottom 125ms 100ms ease-in-out,' +
-          'top 125ms 100ms ease-in-out'
-      }
-      prevState.sboxtext = {
-        opacity: '1',
-        visibility: 'visible',
-        position: 'absolute',
-        transition: 'all 175ms 225ms'
-      }
-      prevState.slist = {
-        opacity: '0',
-        visibility: 'hidden',
-        transition: 'all 300ms 0ms'
-      }
+      // prevState.mode = 'start'; 
+      // prevState.bg = {
+      //   background: `no-repeat center url('${bg}')`,
+      //   backgroundSize: 'cover',
+      //   opacity: '1',
+      //   transition: 'opacity 300ms 0ms'
+      // }
+      // prevState.sbox = {
+      //   bottom: '10%',
+      //   left: '60%',
+      //   top:'60%',
+      //   transition:
+      //     'left 75ms 225ms ease-in-out,' + 
+      //     'bottom 125ms 100ms ease-in-out,' +
+      //     'top 125ms 100ms ease-in-out'
+      // }
+      // prevState.sboxtext = {
+      //   opacity: '1',
+      //   visibility: 'visible',
+      //   position: 'absolute',
+      //   transition: 'all 175ms 225ms'
+      // }
+      // prevState.slist = {
+      //   opacity: '0',
+      //   visibility: 'hidden',
+      //   transition: 'all 300ms 0ms'
+      // }
     });
   }
 
@@ -124,28 +124,15 @@ class App extends Component {
             <img src={logo} className='logo' alt='logo' />
           </div>
         </nav>
-        <div className='bg' style={bg}>
-        </div>
         <div className='wrapper' style={sbox}>
-
-          <div className='text-container'>
-            <div className='text' style={sboxtext}>
-              <h1>Spotted Flower</h1>
-              <h3>SHIMOKU KIO</h3>
-              <p>A story about a pregnant woman and her otaku husband.</p>
-              <a href=''>READ</a> - DOWNLOAD<br /><br />
-              SHOW ME ANOTHER<br />
-              <button onClick={this.openSList}>SEE ENTIRE CATALOG</button>
-            </div>
-          </div>
 
           <div className='serieslist-container' style={slist}>
             <div className='serieslist'>
-              <div className='slist-row'>
+              {/*<div className='slist-row'>
                 <div className='slist-col'>Title</div>
                 <div className='slist-col'>Last Updated</div>
                 <div className='slist-col'>Status</div>
-              </div>
+              </div>*/}
               {data.list.sort((a, b) => {
                 if (a.updated.getTime() < b.updated.getTime())
                   return 1;
@@ -153,20 +140,22 @@ class App extends Component {
                   return -1;
                 else return 0;
               }).map((e, index) => (
-                <div>
-                  <div key={index} className='slist-row listbutton'>
+                <div className='sitem' key={index}>
+                  <img src={e.vol[0]} />
+                  <div className=''>{e.updated.toLocaleDateString()}</div>
+                  {/*<div className='slist-row listbutton'>
                     <div className='slist-col'>{e.title}</div>
                     <div className='slist-col'>{e.updated.toLocaleDateString()}</div>
                     <div className='slist-col'>{e.completed === undefined ? e.current : (e.completed ? 'Finished' : 'Dropped')}</div>
-                  </div>
-                  <CSSTransitionGroup
+                  </div>*/}
+                  {/*<CSSTransitionGroup
                     transitionName='slistInfo'
                     transitionEnterTimeout={300}
                     transitionLeaveTimeout={300}>
                     <div className='slist-info'>
-                      hi
+                      
                     </div>
-                  </CSSTransitionGroup>
+                  </CSSTransitionGroup>*/}
                 </div>
               )
               )}

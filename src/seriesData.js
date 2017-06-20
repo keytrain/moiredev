@@ -12,7 +12,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/spo.jpg',
         ],
         title:'Spotted Flower',
         value:'spottedFlower',
@@ -340,16 +340,25 @@ export default {
         completed:false
       },
       {
+        vol:[
+        'img/cover/yome.jpg',
+        ],
         title:'Katsute Kami Datta Kemonotachi e',
         updated: new Date('Jul 10 2014 GMT-0800'),
         completed:false
       },
       {
+        vol:[
+        'img/cover/yome.jpg',
+        ],
         title:'Ookami Kodomo no Ame to Yuki',
         updated: new Date('Sep 28 2012 GMT-0800'),
         completed:false
       },
       {
+        vol:[
+        'img/cover/yome.jpg',
+        ],
         title:'Sore ga Kanojo no Seigi nara',
         updated: new Date('Jul 01 2011 GMT-0800'),
         completed:false
