@@ -2,18 +2,14 @@ import React, { Component } from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
 import './App.css';
 import logo from './logoB.png';
-import bg from './bg.png';
-import data from './seriesData'
+import data from './seriesData';
+import genLib from './generalLibrary';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mode: 'start',
-      bg: {
-        background: `no-repeat center url('${bg}')`,
-        backgroundSize: 'cover',
-      },
       slist: {},
       sbox: {},
       sboxtext:{},
@@ -112,11 +108,6 @@ class App extends Component {
   }
 
   render() {
-    const bg = this.state.bg;
-    const slist = this.state.slist;
-    const sbox = this.state.sbox;
-    const sboxtext = this.state.sboxtext;
-
     return (
       <div>
         <nav>
@@ -124,9 +115,9 @@ class App extends Component {
             <img src={logo} className='logo' alt='logo' />
           </div>
         </nav>
-        <div className='wrapper' style={sbox}>
+        <div className='wrapper' style={this.state.sbox}>
 
-          <div className='serieslist-container' style={slist}>
+          <div className='serieslist-container' style={this.state.slist}>
             <div className='serieslist'>
               {/*<div className='slist-row'>
                 <div className='slist-col'>Title</div>
@@ -141,8 +132,10 @@ class App extends Component {
                 else return 0;
               }).map((e, index) => (
                 <div className='sitem' key={index}>
-                  <img src={e.vol[0]} />
-                  <div className=''>{e.updated.toLocaleDateString()}</div>
+                  <img src={e.vol[0]} alt={e.title} />
+                  <div className='sitem-title'>{e.title}</div>
+                  <div className='sitem-date'>{e.completed === undefined ? 'Updated' : (e.completed ? 'Completed' : 'Dropped')} {genLib.howLongAgo(e.updated)}</div>
+                  {/*<div>{e.updated.toLocaleString()}</div>*/}
                   {/*<div className='slist-row listbutton'>
                     <div className='slist-col'>{e.title}</div>
                     <div className='slist-col'>{e.updated.toLocaleDateString()}</div>

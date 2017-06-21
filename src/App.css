@@ -78,8 +78,16 @@ nav {
     height:300px;
     border:none;
     background-color:#eee;
+    border-radius:3px;
   }
   .sitem img:hover {
     cursor: pointer;
     opacity:0.5;
+  }
+  .sitem-title {
+    font-size:0.7em;    
+  }
+  .sitem-date {
+    font-size:0.7em;
+    color:#bbb;
   }
