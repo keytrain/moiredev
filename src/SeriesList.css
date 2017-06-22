@@ -15,6 +15,8 @@
   .slist-cat-title {
     padding-left:0.5rem;
     padding-bottom: 0.5rem;
+    font-weight:400;
+    color:#bbb;
   }
   .sitem {
     display:inline-block;

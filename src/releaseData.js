@@ -34,7 +34,7 @@ export default {
       }, 
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/prunus.jpg',
         ],
         title:'Prunus Girl',
         updated: new Date('May 16 2013 GMT-0800'),
@@ -50,7 +50,7 @@ export default {
       }, 
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/taso.jpg',
         ],
         title:'Tasogare Otome x Amnesia',
         updated: new Date('Oct 24 2013 GMT-0800'),
@@ -66,7 +66,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/ringo.jpg',
         ],
         title:'Chimoguri Ringo to Kingyobachi Otoko',
         updated: new Date('Mar 03 2014 GMT-0800'),
@@ -74,7 +74,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/ashita.png',
         ],
         title:'Ashita Dorobou',
         updated: new Date('Dec 20 2012 GMT-0800'),
@@ -90,7 +90,7 @@ export default {
       },      
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/ben.jpg',
         ],
         title:'Benten Rock Yuu.',
         updated: new Date('May 11 2015 GMT-0800'),
@@ -98,7 +98,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/mech.jpg',
         ],
         title:'Boku ni Koisuru Mechanical',
         updated: new Date('Jan 24 2015 GMT-0800'),
@@ -106,7 +106,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/cho.jpg',
         ],
         title:'Choku!',
         updated: new Date('Nov 24 2012 GMT-0800'),
@@ -114,7 +114,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/deko.png',
         ],
         title:'Dekoboko Girlish',
         updated: new Date('Jan 09 2014 GMT-0800'),
@@ -122,7 +122,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/haj.jpg',
         ],
         title:'Hajiotsu.',
         updated: new Date('Sep 11 2014 GMT-0800'),
@@ -138,7 +138,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/hima.jpg',
         ],
         title:'Himawari',
         updated: new Date('Oct 12 2012 GMT-0800'),
@@ -162,7 +162,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/hito.jpg',
         ],
         title:'Hitogatana',
         updated: new Date('Jun 26 2013 GMT-0800'),
@@ -170,7 +170,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/mido.jpg',
         ],
         title:'Yume Midokoro (oneshot)',
         updated: new Date('Jul 09 2010 GMT-0800'),
@@ -178,7 +178,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/ga.jpg',
         ],
         title:'Ga-rei',
         updated: new Date('Oct 30 2010 GMT-0800'),
@@ -194,7 +194,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/straw.jpg',
         ],
         title:'Straw',
         updated: new Date('April 22 2016 GMT-0800'),
@@ -202,7 +202,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/para.jpg',
         ],
         title:'Paradox Blue',
         updated: new Date('Mar 12 2012 GMT-0800'),
@@ -210,7 +210,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/oa.jpg',
         ],
         title:'O/A',
         updated: new Date('Oct 21 2014 GMT-0800'),
@@ -226,7 +226,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/neji.jpg',
         ],
         title:'Nejimakiboshi to Aoi Sora',
         updated: new Date('Aug 08 2012 GMT-0800'),
@@ -242,7 +242,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/esp.jpg',
         ],
         title:'Tokyo ESP',
         updated: new Date('Jan 23 2011 GMT-0800'),
@@ -282,7 +282,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/rin.jpg',
         ],
         title:'18 Rin',
         updated: new Date('Oct 22 2013 GMT-0800'),
@@ -290,7 +290,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/ama.jpg',
         ],
         title:'Amaama to Inazuma',
         updated: new Date('Mar 20 2015 GMT-0800'),
@@ -298,7 +298,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/kyou.jpg',
         ],
         title:'Ashita wa Kyouso-sama (oneshot)',
         updated: new Date('Dec 07 2015 GMT-0800'),
@@ -306,7 +306,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/fly.jpg',
         ],
         title:'Flying Witch (oneshot)',
         updated: new Date('Aug 29 2011 GMT-0800'),
@@ -314,12 +314,20 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/fut.jpg',
         ],
         title:'Futari no Renai Shoka',
         updated: new Date('Apr 10 2016 GMT-0800'),
         completed:true
       },
+      {
+        vol:[
+        'img/cover/rev.jpg',
+        ],
+        title:'Reversible!',
+        updated: new Date('Feb 28 2012 GMT-0613'),
+        completed:false
+      },      
       {
         vol:[
         './img/cover/gin.jpg',
@@ -330,7 +338,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/hero.jpg',
         ],
         title:'Hero Mask',
         updated: new Date('Aug 31 2013 GMT-0800'),
@@ -338,15 +346,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
-        ],
-        title:'Kiniro Mosaic',
-        updated: new Date('Apr 09 2014 GMT-0800'),
-        completed:false
-      },
-      {
-        vol:[
-        'img/cover/yome.jpg',
+        'img/cover/katsu.png',
         ],
         title:'Katsute Kami Datta Kemonotachi e',
         updated: new Date('Jul 10 2014 GMT-0800'),
@@ -354,7 +354,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/ookami.jpg',
         ],
         title:'Ookami Kodomo no Ame to Yuki',
         updated: new Date('Sep 28 2012 GMT-0800'),
@@ -362,7 +362,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/seigi.jpg',
         ],
         title:'Sore ga Kanojo no Seigi nara',
         updated: new Date('Jul 01 2011 GMT-0800'),

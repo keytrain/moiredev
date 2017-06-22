@@ -5,6 +5,7 @@ import logo from './logoB.png';
 import data from './releaseData';
 import sData from './seriesData';
 import SeriesList from './SeriesList';
+import bg from './bg.png'
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +17,12 @@ class App extends Component {
         position: 'fixed',
         visibility: 'hidden',
       },
-      modalSelection: ''
+      modalSelection: '',
+      bg : {
+        background: `no-repeat url('${bg}')`,
+        backgroundPosition: '100% 20%',
+        opacity: '1',
+      }
     }
     this.openSList = this.openSList.bind(this);
     this.closeSList = this.closeSList.bind(this);
@@ -115,9 +121,9 @@ class App extends Component {
 
   handleKey(e) {
     console.log(e);
-    if (this.state.mode === 'slist') {
+    if (this.state.mode === 'modal') {
       if (e.key === 'Escape') {
-        this.closeSList();
+        this.closeModal();
       }
     }
   }
@@ -126,6 +132,7 @@ class App extends Component {
     let title = e.currentTarget.attributes['data-title'].value;
     this.setState((prevState) => {
       prevState.modalSelection = title;
+      prevState.mode = 'modal';
       prevState.showModal = {
         position: 'fixed',
         bottom:0,
@@ -140,6 +147,7 @@ class App extends Component {
 
   closeModal() {
     this.setState((prevState) => {
+      prevState.mode = 'grid';
       prevState.showModal = {
         position: 'fixed',
         visibility: 'hidden',
@@ -149,7 +157,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div>        
         {this.state.modalSelection && 
         <div style={this.state.showModal}>
           <div className='modal'>
@@ -163,7 +171,7 @@ class App extends Component {
         </div>
         }
         <nav>
-          <div className='nav-container'>
+          <div className='nav-container' style={this.state.bg}>
             <div className='logo-container'>
               <img src={logo} className='logo' alt='logo' />
             </div>

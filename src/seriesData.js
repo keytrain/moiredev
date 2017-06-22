@@ -203,6 +203,9 @@ export default {
 
 
     },
+    'Jigokuren - LOVE in the HELL' : {
+
+    },
     '18 Rin': {
       
     },
