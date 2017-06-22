@@ -1,26 +1,41 @@
 import React, { Component } from 'react';
-import { CSSTransitionGroup } from 'react-transition-group';
+// import { CSSTransitionGroup } from 'react-transition-group';
 import './App.css';
 import logo from './logoB.png';
-import data from './seriesData';
-import genLib from './generalLibrary';
+import data from './releaseData';
+import sData from './seriesData';
+import SeriesList from './SeriesList';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       mode: 'start',
-      slist: {},
-      sbox: {},
-      sboxtext:{},
+      data: data.list,
+      showModal: {
+        position: 'fixed',
+        visibility: 'hidden',
+      },
+      modalSelection: ''
     }
     this.openSList = this.openSList.bind(this);
     this.closeSList = this.closeSList.bind(this);
     this.handleKey = this.handleKey.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.handleSeriesItem = this.handleSeriesItem.bind(this);
   }
 
   componentWillMount() {
     document.addEventListener('keydown', this.handleKey);
+    this.setState((prevState) => {
+      prevState.data = prevState.data.sort((a,b) => {
+         if (a.updated.getTime() < b.updated.getTime())
+          return 1;
+        else if (a.updated.getTime() > b.updated.getTime())
+          return -1;
+        else return 0;
+      })
+    })
   }
 
   componentWillUnmount() {
@@ -107,51 +122,76 @@ class App extends Component {
     }
   }
 
+  handleSeriesItem(e) {
+    let title = e.currentTarget.attributes['data-title'].value;
+    this.setState((prevState) => {
+      prevState.modalSelection = title;
+      prevState.showModal = {
+        position: 'fixed',
+        bottom:0,
+        top:0,
+        left:0,
+        right:0,
+        visibility: 'visible',
+        zIndex:'1'
+      }
+    })
+  }
+
+  closeModal() {
+    this.setState((prevState) => {
+      prevState.showModal = {
+        position: 'fixed',
+        visibility: 'hidden',
+      }
+    })
+  }
+
   render() {
     return (
       <div>
+        {this.state.modalSelection && 
+        <div style={this.state.showModal}>
+          <div className='modal'>
+            <img src='' />
+            <div className='modal-text'>
+              <h2>{this.state.modalSelection}</h2>
+              <p>{sData.series[this.state.modalSelection].synopsis}</p>
+            </div>
+          </div>
+          <div className='modalBG' onClick={this.closeModal}></div>
+        </div>
+        }
         <nav>
-          <div className='logo-container'>
-            <img src={logo} className='logo' alt='logo' />
+          <div className='nav-container'>
+            <div className='logo-container'>
+              <img src={logo} className='logo' alt='logo' />
+            </div>
+            <div className='tagline'>
+              Japanese comics for an English audience
+            </div>
           </div>
         </nav>
-        <div className='wrapper' style={this.state.sbox}>
-
-          <div className='serieslist-container' style={this.state.slist}>
+        <div className='wrapper'>
+          <div className='serieslist-container'>
             <div className='serieslist'>
-              {/*<div className='slist-row'>
-                <div className='slist-col'>Title</div>
-                <div className='slist-col'>Last Updated</div>
-                <div className='slist-col'>Status</div>
-              </div>*/}
-              {data.list.sort((a, b) => {
-                if (a.updated.getTime() < b.updated.getTime())
-                  return 1;
-                else if (a.updated.getTime() > b.updated.getTime())
-                  return -1;
-                else return 0;
-              }).map((e, index) => (
-                <div className='sitem' key={index}>
-                  <img src={e.vol[0]} alt={e.title} />
-                  <div className='sitem-title'>{e.title}</div>
-                  <div className='sitem-date'>{e.completed === undefined ? 'Updated' : (e.completed ? 'Completed' : 'Dropped')} {genLib.howLongAgo(e.updated)}</div>
-                  {/*<div>{e.updated.toLocaleString()}</div>*/}
-                  {/*<div className='slist-row listbutton'>
-                    <div className='slist-col'>{e.title}</div>
-                    <div className='slist-col'>{e.updated.toLocaleDateString()}</div>
-                    <div className='slist-col'>{e.completed === undefined ? e.current : (e.completed ? 'Finished' : 'Dropped')}</div>
-                  </div>*/}
-                  {/*<CSSTransitionGroup
-                    transitionName='slistInfo'
-                    transitionEnterTimeout={300}
-                    transitionLeaveTimeout={300}>
-                    <div className='slist-info'>
-                      
-                    </div>
-                  </CSSTransitionGroup>*/}
-                </div>
-              )
-              )}
+              <SeriesList title='ONGOING'
+                handler={this.handleSeriesItem}
+                list={this.state.data.filter((e) => {
+                  if (e.completed === undefined)
+                    return true;
+                  else return false;
+                })} />
+              <SeriesList title='COMPLETE'
+                handler={this.handleSeriesItem}
+                list={this.state.data.filter((e) => {
+                  return (e.completed !== undefined && e.completed);
+                })} />
+              <SeriesList title='DROPPED'
+                handler={this.handleSeriesItem}
+                list={this.state.data.filter((e) => {
+                  return (e.completed !== undefined && !e.completed);
+                })} />
             </div>
           </div>
         </div>
