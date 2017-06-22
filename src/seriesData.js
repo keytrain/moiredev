@@ -29,7 +29,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/vamp.jpg',
         ],
         title:'Seifuku no Vampiress Lord',
         updated: new Date('Jun 13 2017 23:31:00 GMT-0800'),
@@ -45,7 +45,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/bts.jpg',
         ],
         title:'Boku wa Tomodachi ga Sukunai',
         updated: new Date('Oct 01 2014 GMT-0800'),
@@ -61,7 +61,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/nat.jpg',
         ],
         title:'Natsu no Zenjitsu',
         updated: new Date('May 15 2015 GMT-0800'),
@@ -125,7 +125,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/gis.jpg',
         ],
         title:'Gisèle Alain',
         updated: new Date('May 16 2016 GMT-0800'),
@@ -141,7 +141,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/kek.jpg',
         ],
         title:'Kekkon Yubiwa Monogatari',
         updated: new Date('Feb 07 2015 GMT-0800'),
@@ -149,7 +149,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/gon.jpg',
         ],
         title:'Gonensei',
         updated: new Date('Aug 27 2014 GMT-0800'),
@@ -181,7 +181,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/hak.jpg',
         ],
         title:'Hakoiri Drops',
         updated: new Date('Nov 26 2014 GMT-0800'),
@@ -213,7 +213,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/non.jpg',
         ],
         title:'Nonscale',
         updated: new Date('April 27 2016 GMT-0800'),
@@ -229,7 +229,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/let.jpg',
         ],
         title:'Tetsugaku Letra',
         updated: new Date('April 14 2016 GMT-0800'),
@@ -245,7 +245,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/tai.jpg',
         ],
         title:'Taiyou no Ie',
         updated: new Date('Oct 22 2015 GMT-0800'),
@@ -261,7 +261,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/yum.jpg',
         ],
         title:'Yume Tsukai',
         updated: new Date('Nov 21 2014 GMT-0800'),
@@ -269,7 +269,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/yome.jpg',
+        'img/cover/ali.jpg',
         ],
         title:'Oh, my sweet alien!',
         updated: new Date('Aug 05 2016 GMT-0800'),
@@ -317,7 +317,7 @@ export default {
       },
       {
         vol:[
-        './img/cover/yome.jpg',
+        './img/cover/gin.jpg',
         ],
         title:'Gingitsune',
         updated: new Date('Jul 07 2016 GMT-0800'),
