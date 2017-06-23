@@ -5,7 +5,6 @@
     padding:2rem 2rem;
   }
   .serieslist {
-    background-color:#fff;
     -webkit-overflow-scrolling: touch;
     text-align:left;
   }
@@ -13,25 +12,28 @@
     padding:2rem 0;
   }
   .slist-cat-title {
-    padding-left:0.5rem;
-    padding-bottom: 0.5rem;
+    padding-left:0.25rem;
+    padding-bottom:0.25rem;
     font-weight:400;
     color:#bbb;
+    text-transform: uppercase;
   }
   .sitem {
     display:inline-block;
     vertical-align: top;
-    margin:0.5rem;
-    border: 1px solid #ddd;
-    width:210px;
+    margin:0.25rem;
+    /*box-shadow: 0px 0px 5px 0 #dadada;*/
+    border: 1px solid #dadada;
+    width:220px;
+    position:relative;
   }
-  .sitem img {
+  .sitem-img {
     width:100%;
-    height:300px;
+    height:315px;
     border:none;
     padding:0;
     margin:0;
-    background-color:#fdfdfd;
+    background-color:#fafafa;
     vertical-align: top;
   }
   .sitem:hover {
@@ -39,7 +41,15 @@
     opacity:0.5;
   }
   .sitem-text {
-    padding:0.5rem;
+    padding: 0.5rem;
+    font-size:0.8em;
+    color:#999;
+    position:relative;
+    /*background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));*/
+  }
+  .sitem-status {
+    text-transform: uppercase;
+    display:inline-block;
     font-size:0.7em;
   }
   .sitem-title {
@@ -48,6 +58,13 @@
     text-overflow: ellipsis;
   }
   .sitem-date {
-    font-size:0.9em;
-    color:#bbb;
+    font-size:0.7em;
+    display:inline-block;
+    position:absolute;
+    right:0.5rem;
+    top:0.7rem;
   }
+    .sitem-date-icon {
+      fill:#fff!important;
+      vertical-align: top;
+    }

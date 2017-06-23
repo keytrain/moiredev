@@ -10,6 +10,7 @@ body {
   font-family: 'Fira Sans', sans-serif;
   font-size:18px;
   line-height: 1.4;
+  background-color:#fcfcfc;
 }
 
 h1, h2, h3, h4, h5 {
@@ -29,6 +30,8 @@ button {
   font-family:inherit;
   outline:none;  
   background-color:#ccc;
+  text-transform: uppercase;
+  font-size:0.7em;
 }
 button:focus {
   color:#555;  
@@ -55,3 +58,4 @@ button:active {
   cursor:pointer;
   opacity:0.6;
 }
+

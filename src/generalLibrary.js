@@ -15,17 +15,17 @@ export default {
     if (yDiff > 0) {
       // different year but within 12 months
       if (yDiff === 1 && mDiff < 0) {
-        return (mDiff + 12) + ' month' + ((mDiff + 12) > 1 ? 's':'') + ' ago';
+        return (mDiff + 12) + 'mo';
       }
       else {
-        return yDiff + ' year' + (yDiff > 1 ? 's':'') + ' ago';
+        return yDiff + 'y';
       }
     }
     else if (mDiff > 0) {
-      return mDiff + ' month' + (mDiff > 1 ? 's':'') + ' ago';      
+      return mDiff + 'mo';      
     }
     else if (dDiff > 0) {
-      return dDiff + ' day' + (dDiff > 1 ? 's':'') + ' ago';      
+      return dDiff + 'd';      
     }
     else {
 

@@ -5,7 +5,7 @@ import logo from './logoB.png';
 import data from './releaseData';
 import sData from './seriesData';
 import SeriesList from './SeriesList';
-import bg from './bg.png'
+import bg from './bg.png';
 
 class App extends Component {
   constructor(props) {
@@ -171,7 +171,7 @@ class App extends Component {
         </div>
         }
         <nav>
-          <div className='nav-container' style={this.state.bg}>
+          <div className='nav-container'>
             <div className='logo-container'>
               <img src={logo} className='logo' alt='logo' />
             </div>
@@ -200,6 +200,7 @@ class App extends Component {
                 list={this.state.data.filter((e) => {
                   return (e.completed !== undefined && !e.completed);
                 })} />
+
             </div>
           </div>
         </div>
