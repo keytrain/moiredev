@@ -1,6 +1,6 @@
 .wrapper, .nav-container {
   margin:0 auto;
-  max-width:520px;
+  max-width:300px;
 }
 
 nav {
@@ -13,7 +13,7 @@ nav {
 
 }
 .nav-container {
-  padding:4rem 2.5rem;
+  padding:4rem 1rem;
 }
   .logo-container {
     display:inline-block;
@@ -64,20 +64,20 @@ nav {
   padding:2rem;
 }
 
-@media screen and (min-width: 765px) {
+@media screen and (min-width: 606px) {
   .wrapper, .nav-container {
-    max-width:745px;
+    max-width:586px;
   }  
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 891px) {
   .wrapper, .nav-container {
-    max-width:980px;
+    max-width:871px;
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1461px) {
   .wrapper, .nav-container {
-    max-width:1420px;
+    max-width:1440px;
   }
 }

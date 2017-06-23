@@ -1,12 +1,12 @@
 import React from 'react';
 import genLib from './generalLibrary';
 import './SeriesList.css'
-import TiTime from 'react-icons/lib/ti/time';
+// import TiTime from 'react-icons/lib/ti/time';
 import MdAccessTime from 'react-icons/lib/md/access-time';
 
 function SeriesList(props) {
   let timeIcon = {
-    marginBottom: '1px'
+    marginBottom: '2px'
   }
   return (
     <div className='slist-category'>

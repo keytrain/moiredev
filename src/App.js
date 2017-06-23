@@ -161,7 +161,7 @@ class App extends Component {
         {this.state.modalSelection && 
         <div style={this.state.showModal}>
           <div className='modal'>
-            <img src='' />
+            <img src='' alt='cover' />
             <div className='modal-text'>
               <h2>{this.state.modalSelection}</h2>
               <p>{sData.series[this.state.modalSelection].synopsis}</p>
