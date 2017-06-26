@@ -10,14 +10,14 @@ function SeriesList(props) {
   // }
   return (
     <div className='slist-category'>
-      <h4 className='slist-cat-title'>{props.title}</h4>
+      <h5 className='slist-cat-title'>{props.title}</h5>
       {props.list.map((e, index) => (
       <div className='sitem' key={index} onClick={props.handler} data-title={e.title}>
         <img className='sitem-img' src={e.vol[0]} alt={e.title} />
         {/*<img className='sitem-img' src='http://img.bato.to/forums/uploads/d56e05bdcb26e058cd16d06b64fa3cae.jpg' alt={e.title} />*/}
         <div className='sitem-text'>
           <div className='sitem-title'>{e.title}</div>
-          <div className='sitem-date'>{e.completed === undefined ? 'Updated' : (e.completed ? 'Completed' : 'Dropped')} {genLib.howLongAgo(e.updated)} ago</div>          
+          <div className='sitem-date'>{e.completed === undefined ? 'Updated' : (e.completed ? 'Completed' : 'Dropped')} {genLib.howLongAgo(e.updated)} ago</div>
         </div>
       </div>
       ))}

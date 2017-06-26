@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import './App.css';
 import logo from './logoB.png';
 import data from './releaseData';
-import sData from './seriesData';
 import SeriesList from './SeriesList';
 import SeriesModal from './SeriesModal';
 import bg from './bg.png';
@@ -133,26 +132,13 @@ class App extends Component {
     let title = e.currentTarget.attributes['data-title'].value;
     this.setState((prevState) => {
       prevState.modalSelection = title;
-      prevState.mode = 'modal';
-      prevState.showModal = {
-        position: 'fixed',
-        bottom:0,
-        top:0,
-        left:0,
-        right:0,
-        visibility: 'visible',
-        zIndex:'1'
-      }
+      prevState.showModal = true
     })
   }
 
   closeModal() {
     this.setState((prevState) => {
-      prevState.mode = 'grid';
-      prevState.showModal = {
-        position: 'fixed',
-        visibility: 'hidden',
-      }
+      prevState.showModal = false
     })
   }
 
@@ -160,16 +146,16 @@ class App extends Component {
     return (
       <div>        
         {this.state.modalSelection && 
-          <SeriesModal handler={this.closeModal} selection={this.state.modalSelection} css={this.state.showModal} />
+          <SeriesModal handler={this.closeModal} selection={this.state.modalSelection} show={this.state.showModal} />
         }
         <nav>
           <div className='nav-container'>
             <div className='logo-container'>
               <img src={logo} className='logo' alt='logo' />
             </div>
-            <div className='tagline'>
+            <h4 className='tagline'>
               Japanese comics for an English audience
-            </div>
+            </h4>
           </div>
         </nav>
         <div className='wrapper'>
@@ -182,11 +168,13 @@ class App extends Component {
                     return true;
                   else return false;
                 })} />
+                <hr />
               <SeriesList title='COMPLETE'
                 handler={this.handleSeriesItem}
                 list={this.state.data.filter((e) => {
                   return (e.completed !== undefined && e.completed);
                 })} />
+                <hr />
               <SeriesList title='DROPPED'
                 handler={this.handleSeriesItem}
                 list={this.state.data.filter((e) => {
@@ -196,6 +184,9 @@ class App extends Component {
             </div>
           </div>
         </div>
+        <footer>
+          Footer here!
+        </footer>
       </div>
     );
   }

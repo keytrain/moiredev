@@ -2,18 +2,23 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  padding: 0;
+html {
+  font-size:18px;
+  font-weight:400;
+  line-height: 1.618;
+  font-kerning: normal;
+  color:#222;
   font-family: -apple-system, BlinkMacSystemFont, 
     "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", 
     "Fira Sans", "Droid Sans", "Helvetica Neue", 
     sans-serif,  "Apple Color Emoji", "Segoe UI Emoji", 
     "Segoe UI Symbol";
-  font-size:18px;
-  font-weight:400;
-  line-height: 1.4;
-  background-color:#fafafa;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /*background-color:#fafafa;*/
 }
 
 h1, h2, h3, h4, h5 {
@@ -21,38 +26,60 @@ h1, h2, h3, h4, h5 {
   font-weight:700;
   line-height:1.1;
 }
-
-h1 {
-  font-size:3em;
+p {
+  font-size: 1rem;
 }
-
+h1 {
+  font-size:2.488rem;
+}
+h2 {
+  font-size:2.074rem;
+}
+h3 {
+  font-size:1.728rem;
+}
+h4 {
+  font-size:1.44rem;
+}
+h5 {
+  font-size:1.2rem;  
+  line-height:1.2;
+}
+small {
+  font-size:0.833rem;
+}
+hr {
+  border:0;
+  border-bottom:1px solid #eee;
+  display:block;
+}
 button {
   border:0;
-  transition:ease-in-out 0.5s;
+  transition:opacity ease-in-out 0.5s;
   padding:0.5rem 0.7rem;
   font-family:inherit;
   outline:none;  
-  background-color:#ccc;
+  background-color:#ddd;
   text-transform: uppercase;
   font-size:0.7em;
 }
 button:focus {
-  color:#555;  
+  color:#aaa;  
 }
 button:hover {
   cursor:pointer;
   opacity:0.6;
 }
 button:active {
-  color:#555;
+  color:#aaa;
 }
 
 .button {
   border:0;
-  transition:ease-in-out 0.5s;
+  transition:opacity ease-in-out 0.5s;
   padding:0.5rem 0.7rem;
   font-family:inherit;
-  background-color:#ccc;
+  background-color:#ddd;
   outline:none;  
 }
 .button:focus {
