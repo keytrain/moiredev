@@ -14,7 +14,7 @@
     padding-left:0.5rem;
     padding-bottom:0.5rem;
     font-weight:400;
-    color:#bbb;
+    color:#aaa;
     text-transform: uppercase;
   }
   .sitem {
@@ -40,10 +40,9 @@
     opacity:0.5;
   }
   .sitem-text {
-    padding:0.5rem;
-    font-size:0.8em;
+    padding:1rem;
+    font-size:1em;
     background-color:#fff;
-    color:#aaa;
     position:relative;
     /*background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));*/
   }
@@ -54,16 +53,16 @@
   }
   .sitem-title {
     white-space: nowrap;
-    color:#aaa;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .sitem-date {
     font-size:0.7em;
-    display:inline-block;
-    position:absolute;
-    right:0.5rem;
-    top:0.7rem;
+    color:#aaa;
+    /*display:inline-block;*/
+    /*position:absolute;*/
+    /*right:0.5rem;*/
+    /*top:0.7rem;*/
   }
     .sitem-date-icon {
       fill:#fff!important;

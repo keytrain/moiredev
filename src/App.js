@@ -5,6 +5,7 @@ import logo from './logoB.png';
 import data from './releaseData';
 import sData from './seriesData';
 import SeriesList from './SeriesList';
+import SeriesModal from './SeriesModal';
 import bg from './bg.png';
 
 class App extends Component {
@@ -159,16 +160,7 @@ class App extends Component {
     return (
       <div>        
         {this.state.modalSelection && 
-        <div style={this.state.showModal}>
-          <div className='modal'>
-            <img src='' alt='cover' />
-            <div className='modal-text'>
-              <h2>{this.state.modalSelection}</h2>
-              <p>{sData.series[this.state.modalSelection].synopsis}</p>
-            </div>
-          </div>
-          <div className='modalBG' onClick={this.closeModal}></div>
-        </div>
+          <SeriesModal handler={this.closeModal} selection={this.state.modalSelection} css={this.state.showModal} />
         }
         <nav>
           <div className='nav-container'>
