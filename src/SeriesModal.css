@@ -4,8 +4,7 @@
   top:0;
   left:0;
   right:0;
-  background-color:#000;
-  opacity:0.7;
+  background-color:rgba(0,0,0,0.8);
   z-index:1;
 }
 
@@ -16,11 +15,11 @@
   position:fixed;
   background-color:#fff;
   width:300px;
-  height:500px;
+  height:300px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index:4;
 }
   .modal img {
     display:inline-block;
@@ -32,6 +31,7 @@
     vertical-align: top;
     display:inline-block;
     width:300px;
+    height:inherit;
     position:relative;
   }
     .modal-text {
@@ -50,46 +50,30 @@
       left:0;
       right:0;
       border-top:1px solid #eee;
-      padding:1rem 0;
-      margin:0 2rem;
+      padding:1rem 0rem;
+      margin: 0 2rem;
       background-color:#fff;
     }
 
-@media screen and (min-width: 606px) {
+@media screen and (min-width: 668px) {
   .modal {
-    width:340px;
-    height:auto;
-  }
-    .modal img {
-      width:inherit;
-      height:460px;
-    }
-    .modal-right {
-      width:inherit;
-      height:400px;
-    }
-}
-
-@media screen and (min-width: 891px) {
-  .modal {
-    width:850px;
-    height:500px;
+    width:600px;
+    height:300px;
   }
     .modal-right {
-      width:520px;
+      width:400px;
       height:inherit;
     }
       .modal img {
+        width:200px;
         height:inherit;
-        width:330px;
       }
-      .modal-text {
-        width:inherit;
-        height:86%;
+     .modal-text {
+        height:90.1%;
       }
-
 }
-@media screen and (min-width: 1461px) {
+
+@media screen and (min-width: 1366px) {
   .modal {
     width:1100px;
     height:700px;
@@ -100,7 +84,5 @@
       .modal img {
         width:470px;
       }
-      .modal-text {
-        height:90.1%;
-      }
+ 
 }

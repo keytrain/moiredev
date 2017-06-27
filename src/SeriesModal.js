@@ -8,13 +8,12 @@ function SeriesModal(props) {
   return (
     <div style={{visibility: (props.show ? 'visible': 'hidden')}}>
       <div className='modal'>
-
       {selection.cover &&
         <img src={selection.cover[0]} alt='cover' />
       }
         <div className='modal-right'>
           <div className='modal-text'>
-              <h2>{props.selection}</h2>
+              <h3>{props.selection}</h3>
               <h5>By {selection.author}</h5>
               <p>{selection.synopsis}</p>
               <hr />
@@ -32,7 +31,8 @@ function SeriesModal(props) {
           </div>
         </div>
       </div>
-      <div className='modalBG' onClick={props.handler}></div>
+      <div className='modalBG' onClick={props.handler}>        
+      </div>
     </div>
   )
 }

@@ -1,6 +1,5 @@
 .wrapper, .nav-container {
   margin:0 auto;
-  max-width:300px;
 }
 nav {
   border-bottom:1px solid #eee;
@@ -30,23 +29,23 @@ nav {
   }
 
 .filter-container {
-  padding: 0 1rem;
+  padding: 1rem 1rem;
+  text-align: center;
 }
 
-@media screen and (min-width: 606px) {
+/* Tablet */
+@media screen and (min-width: 668px) {
   .wrapper, .nav-container {
-    max-width:587px;
-  }  
-}
-
-@media screen and (min-width: 891px) {
-  .wrapper, .nav-container {
-    max-width:872px;
+    max-width:770px;
   }
 }
 
-@media screen and (min-width: 1461px) {
+/* Desktop */
+@media screen and (min-width: 1366px) {
   .wrapper, .nav-container {
     max-width:1440px;
+  }
+  .filter-container {
+    text-align: left;
   }
 }

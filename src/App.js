@@ -18,6 +18,10 @@ class App extends Component {
         position: 'fixed',
         visibility: 'hidden',
       },
+      noscroll: {
+        height:'100%',
+        overflowY:'auto'
+      },
       modalSelection: '',
       bg : {
         background: `no-repeat url('${bg}')`,
@@ -137,13 +141,15 @@ class App extends Component {
     let title = e.currentTarget.attributes['data-title'].value;
     this.setState((prevState) => {
       prevState.modalSelection = title;
-      prevState.showModal = true
+      prevState.showModal = true;
+      document.body.style.overflow = 'hidden';
     })
   }
 
-  closeModal() {
+  closeModal(e) {
     this.setState((prevState) => {
-      prevState.showModal = false
+      prevState.showModal = false;
+      document.body.style.overflow = 'auto';
     })
   }
 
@@ -153,36 +159,36 @@ class App extends Component {
         {this.state.modalSelection && 
           <SeriesModal handler={this.closeModal} selection={this.state.modalSelection} show={this.state.showModal} />
         }
-        <nav>
-          <div className='nav-container'>
-            <div className='logo-container'>
-              <img src={logo} className='logo' alt='logo' />
-            </div>
-            <h4 className='tagline'>
-              Japanese comics for an English audience
-            </h4>
-          </div>
-        </nav>
-        <div className='wrapper'>
-          <div className='serieslist-container'>
-            <div className='serieslist'>
-              <div className='filter-container'>
-                <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Current</button> 
-                <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Complete</button> 
-                <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} value='Dropped' onClick={this.handleFilter}>Dropped</button> 
-                <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} value='All' onClick={this.handleFilter}>All</button>
+          <nav>
+            <div className='nav-container'>
+              <div className='logo-container'>
+                <img src={logo} className='logo' alt='logo' />
               </div>
-              <SeriesList title='Current Series'
-                handler={this.handleSeriesItem}
-                list={this.state.data.filter((e) => {
-                    return true;
-                })} />
+              <h4 className='tagline'>
+                Japanese comics for an English audience
+              </h4>
+            </div>
+          </nav>
+          <div className='wrapper'>
+            <div className='serieslist-container'>
+              <div className='serieslist'>
+                <div className='filter-container'>
+                  <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Current</button> 
+                  <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Complete</button> 
+                  <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} value='Dropped' onClick={this.handleFilter}>Dropped</button> 
+                  <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} value='All' onClick={this.handleFilter}>All</button>
+                </div>
+                <SeriesList title='Current Series'
+                  handler={this.handleSeriesItem}
+                  list={this.state.data.filter((e) => {
+                      return true;
+                  })} />
+              </div>
             </div>
           </div>
-        </div>
-        <footer>
-          Footer here!
-        </footer>
+          <footer>
+            Footer here!
+          </footer>
       </div>
     );
   }
