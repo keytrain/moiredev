@@ -79,25 +79,25 @@ button:active {
   padding:0.5rem 0.7rem;
   background-color:transparent;
   text-transform:capitalize;
-  border-radius: 15px;
+  color:#aaa;
+  margin: 0;
+  margin-right:1.5rem;
+  padding:0.5rem 0;
 }
 .filter:focus {
-  color:#fff;
+  color:#222;
 }
 .filter:hover {
   cursor:pointer;
   opacity:1;
 }
 .filter:active {
-  color:#111;
+  color:#222;
   opacity:0.5;
 }
 .filter-active {
-  color:#fff;
-  background-color:#111;
-}
-.filter-active {
-
+  color:#222;
+  border-bottom: 1px solid #111;
 }
 
 .button {
