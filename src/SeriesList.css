@@ -16,9 +16,9 @@
         .slist-cat-title {
           padding-left:0.3rem;
           padding-bottom:0.5rem;
-          font-weight:400;
+          font-weight:100;
           color:#aaa;
-          text-transform: uppercase;
+          /*text-transform: uppercase;*/
         }
         .sitem {
           display:inline-block;
@@ -44,7 +44,6 @@
           }
           .sitem-text {
             padding:0.3rem 0;
-            background-color:#fff;
             position:relative;
             /*background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));*/
           }
@@ -52,7 +51,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            line-height:1.1;
+            line-height:1.2;
           }
           .sitem-date {
             font-size:0.694rem;

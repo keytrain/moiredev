@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       mode: 'start',
       data: data.list,
+      filter: 'Current',
       showModal: {
         position: 'fixed',
         visibility: 'hidden',
@@ -26,6 +27,7 @@ class App extends Component {
     }
     this.openSList = this.openSList.bind(this);
     this.closeSList = this.closeSList.bind(this);
+    this.handleFilter = this.handleFilter.bind(this);
     this.handleKey = this.handleKey.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleSeriesItem = this.handleSeriesItem.bind(this);
@@ -121,13 +123,16 @@ class App extends Component {
 
   handleKey(e) {
     console.log(e);
-    if (this.state.mode === 'modal') {
-      if (e.key === 'Escape') {
-        this.closeModal();
-      }
+    if (e.key === 'Escape') {
+      this.closeModal();
     }
   }
 
+  handleFilter(e) {
+    e.preventDefault();
+    let value = e.currentTarget.attributes.value.value;
+    this.setState({filter: value});
+  }
   handleSeriesItem(e) {
     let title = e.currentTarget.attributes['data-title'].value;
     this.setState((prevState) => {
@@ -161,26 +166,17 @@ class App extends Component {
         <div className='wrapper'>
           <div className='serieslist-container'>
             <div className='serieslist'>
-              <SeriesList title='ONGOING'
+              <div className='filter-container'>
+                <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Current</button> 
+                <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Complete</button> 
+                <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} value='Dropped' onClick={this.handleFilter}>Dropped</button> 
+                <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} value='All' onClick={this.handleFilter}>All</button>
+              </div>
+              <SeriesList title='Current Series'
                 handler={this.handleSeriesItem}
                 list={this.state.data.filter((e) => {
-                  if (e.completed === undefined)
                     return true;
-                  else return false;
                 })} />
-                <hr />
-              <SeriesList title='COMPLETE'
-                handler={this.handleSeriesItem}
-                list={this.state.data.filter((e) => {
-                  return (e.completed !== undefined && e.completed);
-                })} />
-                <hr />
-              <SeriesList title='DROPPED'
-                handler={this.handleSeriesItem}
-                list={this.state.data.filter((e) => {
-                  return (e.completed !== undefined && !e.completed);
-                })} />
-
             </div>
           </div>
         </div>

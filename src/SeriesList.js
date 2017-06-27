@@ -10,7 +10,7 @@ function SeriesList(props) {
   // }
   return (
     <div className='slist-category'>
-      <h5 className='slist-cat-title'>{props.title}</h5>
+      {/*<h5 className='slist-cat-title'>{props.title}</h5>*/}
       {props.list.map((e, index) => (
       <div className='sitem' key={index} onClick={props.handler} data-title={e.title}>
         <img className='sitem-img' src={e.vol[0]} alt={e.title} />

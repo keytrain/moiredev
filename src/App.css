@@ -29,15 +29,19 @@ nav {
     font-weight:300;
   }
 
+.filter-container {
+  padding: 0 1rem;
+}
+
 @media screen and (min-width: 606px) {
   .wrapper, .nav-container {
-    max-width:586px;
+    max-width:587px;
   }  
 }
 
 @media screen and (min-width: 891px) {
   .wrapper, .nav-container {
-    max-width:871px;
+    max-width:872px;
   }
 }
 

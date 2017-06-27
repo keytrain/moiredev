@@ -2,6 +2,14 @@ export default {
      list: [
       {
         vol:[
+        'img/cover/kan.jpg'
+        ],
+        title:'Kannou Sensei',
+        updated: new Date('Jun 25 2017 07:47:00 GMT-0800'),
+        current: '17'
+      },
+      {
+        vol:[
         'img/cover/mah.jpg'
         ],
         title:'Mahoromi',
