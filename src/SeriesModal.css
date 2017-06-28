@@ -44,6 +44,11 @@
       .modal-text small {
         color:#aaa;
       }
+      .modal-bite {
+        display:inline-block;
+        padding-right:2rem;
+
+      }
     .modal-actions {
       position:absolute;
       bottom:0;

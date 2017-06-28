@@ -15,13 +15,14 @@ function SeriesModal(props) {
           <div className='modal-text'>
               <h3>{props.selection}</h3>
               <h5>By {selection.author}</h5>
+              <hr />
               <p>{selection.synopsis}</p>
               <hr />
-              <div className=''>
+              <div className='modal-bite'>
                 <small>STARTED</small>
                 <div></div>
               </div>
-              <div className=''>
+              <div className='modal-bite'>
                 <small>STATUS</small>
                 <div></div>
               </div>

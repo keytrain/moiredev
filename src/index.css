@@ -67,7 +67,6 @@ button {
   outline:none;  
   background-color:#ddd;
   text-transform: uppercase;
-  font-size:0.833rem;
 }
 button:focus {
   color:#aaa;  
@@ -82,7 +81,6 @@ button:active {
 
 .filter {
   transition:none;
-  padding:0.5rem 0.7rem;
   background-color:transparent;
   text-transform:capitalize;
   color:#aaa;

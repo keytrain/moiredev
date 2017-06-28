@@ -9,21 +9,17 @@ nav {
 }
 .nav-container {
   padding:4rem 1rem;
+  text-align: center;
 }
   .logo-container {
-    display:inline-block;
-    vertical-align: middle;
-    padding-right:2rem;
+    display:block;
   }
     .logo {
       vertical-align: top;
       width:8rem;
     }
   .tagline {
-    display:inline-block;
-    vertical-align: middle;
-    padding-left:2rem;
-    border-left: 1px solid #ddd;
+    margin-top:1rem;
     color: #aaa;
     font-weight:300;
   }
@@ -45,6 +41,22 @@ nav {
   .wrapper, .nav-container {
     max-width:1440px;
   }
+  .nav-container {
+    text-align: left;
+  }
+    .logo-container {
+      display:inline-block;
+      vertical-align: middle;
+      padding-right:2rem;
+      text-align: left;
+    }
+    .tagline {
+      display:inline-block;
+      vertical-align: middle;
+      padding-left:2rem;
+      border-left: 1px solid #ddd;
+    }
+
   .filter-container {
     text-align: left;
   }
