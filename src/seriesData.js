@@ -12,7 +12,7 @@ export default {
     },
     'Mahoutsukai no Yome' : {
       cover: ['./img/cover/yome/7.jpg'],
-      synopsis: ["Chise Hatori is only 16, but she has lost far more than most. With neither family nor hope, it seems all doors are closed to her. But a chance encounter begins to turn the rusted wheels of fate. In her darkest hour, a mysterious magus appears before Chise, offering a chance she couldn't turn down. This magus who seems closer to demon than human, will he bring her the light she desperately seeks, or drown her in ever deeper shadows?"],
+      synopsis: ["Chise Hatori is only 16, but she has lost far more than most. With neither family nor hope, it seems all doors are closed to her. In her darkest hour, a mysterious magus appears before Chise, offering a chance she could not turn down. Will the magus, who seems closer to demon than human, bring her the light she desperately seeks, or drown her in ever deeper shadows?"],
       author: 'Yamazaki Kore',
       releases: ['linktobatoto.com', 'linktobatoto.com']
     },

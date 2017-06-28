@@ -165,7 +165,7 @@ class App extends Component {
                 <img src={logo} className='logo' alt='logo' />
               </div>
               <h4 className='tagline'>
-                Japanese comics for an English audience
+                Manga we liked, so we translated.
               </h4>
             </div>
           </nav>
