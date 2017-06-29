@@ -57,17 +57,19 @@
             .sitem-status, .sitem-date {
               position:absolute;
               font-size:0.833rem;
-              background-color: rgba(0,0,0,0.5);
+              background-color: rgba(0,0,0,0.4);
               padding: 0.1rem 0.3rem;
-              border-radius: 3px;
+              /*border-radius: 3px;*/
             }
             .sitem-status {
-              bottom:0.5rem;
-              left: 0.5rem;
+              bottom:0rem;
+              left: 0rem;
+              border-radius: 0 3px 0 0;
             }
             .sitem-date {
               top:0.5rem;
-              right: 0.5rem;
+              right:0.5rem;
+              border-radius: 3px;
             }
 
 

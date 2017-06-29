@@ -195,9 +195,9 @@ class App extends Component {
               </div>
             </div>
           </div>
-          <footer>
+          {/*<footer>
             Footer here!
-          </footer>
+          </footer>*/}
         </div>
       </Router>
     );
