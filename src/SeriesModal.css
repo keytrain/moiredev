@@ -49,6 +49,43 @@
         padding-right:2rem;
 
       }
+      .modal-chapters-container {
+        margin: 0 -0.5rem;
+      }
+      .modal-chapters-container a {
+        color:#222;
+      }
+      .modal-chapters-container a:visited {
+        color: #888;
+      }
+      .modal-chapter {
+        /*border:1px solid #ccc;*/
+        /*box-shadow: 0 0 8px 0 #ccc;*/
+        padding:0.5rem;
+        margin:0.5rem;
+        width: calc(100%/3 - 1rem);
+        display:inline-block;
+        background-color:#f1f1f1;
+        border-radius:3px;
+        transition: opacity 125ms ease-in-out;
+      }
+      .modal-chapter:hover {
+        cursor:pointer;
+        opacity:0.5;
+      }
+        .modal-chapter-num, .modal-chapter-date {
+          /*display:inline-block;*/
+          text-align: center;
+        }
+        .modal-chapter-num {
+          /*width: 50%;*/
+        }
+        .modal-chapter-date {
+          /*width:50%;*/
+          font-size:0.833rem;
+          color:#aaa;
+          /*text-align: right;*/
+        }
     .modal-actions {
       position:absolute;
       bottom:0;
@@ -83,11 +120,10 @@
     width:1100px;
     height:700px;
   }
+    .modal img {
+      width:470px;
+    }
     .modal-right {
       width:600px;
     }
-      .modal img {
-        width:470px;
-      }
- 
 }

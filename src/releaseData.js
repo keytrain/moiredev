@@ -82,7 +82,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/ashita.png',
+        'img/cover/ashita.jpg',
         ],
         title:'Ashita Dorobou',
         updated: new Date('Dec 20 2012 GMT-0800'),
@@ -122,7 +122,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/deko.png',
+        'img/cover/deko.jpg',
         ],
         title:'Dekoboko Girlish',
         updated: new Date('Jan 09 2014 GMT-0800'),
@@ -354,7 +354,7 @@ export default {
       },
       {
         vol:[
-        'img/cover/katsu.png',
+        'img/cover/katsu.jpg',
         ],
         title:'Katsute Kami Datta Kemonotachi e',
         updated: new Date('Jul 10 2014 GMT-0800'),

@@ -1,6 +1,9 @@
 import React from 'react';
-import sData from './seriesData'
-import './SeriesModal.css'
+import { Link } from 'react-router-dom';
+import sData from './seriesData';
+import cData from './chapterData';
+import genLib from './generalLibrary';
+import './SeriesModal.css';
 
 function SeriesModal(props) {
   let selection = sData.series[props.selection];
@@ -26,15 +29,24 @@ function SeriesModal(props) {
               <div></div>
             </div>*/}
             <small>RELEASES</small>
-            <div className='modal-chapters'>
-              <div className='modal-chapter'>
-                Chapter 40 - 4d ago
-              </div>
+            <div className='modal-chapters-container'>
+              {cData.series[props.selection].map((e) => (
+              <Link to={`/r/${props.selection}/${e.chapter}`}>
+                <div className='modal-chapter'>
+                  <div className='modal-chapter-num'>
+                    Chapter <strong>{e.chapter}</strong>
+                  </div>
+                  <div className='modal-chapter-date'>
+                    {genLib.howLongAgo(e.date)} ago
+                  </div>
+                </div>
+              </Link>
+              ))}
             </div>
           </div>
 
           <div className='modal-actions'>
-            <button>Read</button> <button>Download</button>
+            <button>Download</button>
           </div>
         </div>
       </div>

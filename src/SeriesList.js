@@ -17,11 +17,8 @@ function SeriesList(props) {
         {/*<img className='sitem-img' src='http://img.bato.to/forums/uploads/d56e05bdcb26e058cd16d06b64fa3cae.jpg' alt={e.title} />*/}
         <div className='sitem-text'>
           {/*<div className='sitem-title'>{e.title}</div>*/}
-          {e.completed === undefined &&
-          <div className='sitem-date'>
-            Updated {genLib.howLongAgo(e.updated)} ago
-          </div>
-          }
+          <div className='sitem-status'>{e.completed === undefined ? 'Ongoing' : (e.completed ? 'Completed' : 'Dropped')}</div>
+          <div className='sitem-date'>{genLib.howLongAgo(e.updated)} ago</div>
         </div>
       </div>
       ))}

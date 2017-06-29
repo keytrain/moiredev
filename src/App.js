@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 // import { CSSTransitionGroup } from 'react-transition-group';
+import {
+    HashRouter as Router,
+    Route
+} from 'react-router-dom';
 import './App.css';
 import logo from './logoB.png';
 import data from './releaseData';
@@ -155,7 +159,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>        
+      <Router>
+        <div>
+          {/*<Route path='/r/:series/:chapter' component={Reader} />*/}
         {this.state.modalSelection && 
           <SeriesModal handler={this.closeModal} selection={this.state.modalSelection} show={this.state.showModal} />
         }
@@ -172,12 +178,15 @@ class App extends Component {
           <div className='wrapper'>
             <div className='serieslist-container'>
               <div className='serieslist'>
-                <div className='filter-container'>
+                {/*<div className='filter-container'>
                   <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Current</button> 
                   <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Complete</button> 
                   <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} value='Dropped' onClick={this.handleFilter}>Dropped</button> 
                   <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} value='All' onClick={this.handleFilter}>All</button>
-                </div>
+                  |
+                  <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Date</button> 
+                  <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Likes</button> 
+                </div>*/}
                 <SeriesList title='Current Series'
                   handler={this.handleSeriesItem}
                   list={this.state.data.filter((e) => {
@@ -189,7 +198,8 @@ class App extends Component {
           <footer>
             Footer here!
           </footer>
-      </div>
+        </div>
+      </Router>
     );
   }
 }
