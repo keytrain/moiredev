@@ -16,12 +16,12 @@ export default {
       },
       {
         chapter: 34,
-        src: 'http://img.bato.to/comics/2017/02/15/m/read58a3e3c309b4d',
+        src: 'http://img.bato.to/comics/2016/11/26/m/read5839d2733c87d',
         date: new Date('Nov 26 2016 GMT-0800')
       },
       {
         chapter: 33,
-        src: 'http://img.bato.to/comics/2017/01/25/m/read58885103c2aa7',
+        src: 'http://img.bato.to/comics/2016/10/22/m/read580ad106b0c34',
         date: new Date('Oct 21 2016 GMT-0800')
       }
     ],

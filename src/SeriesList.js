@@ -9,12 +9,13 @@ function SeriesList(props) {
   // let timeIcon = {
   //   marginBottom: '2px'
   // }
+
   return (
     <div className='slist-category'>
       {/*<h5 className='slist-cat-title'>{props.title}</h5>*/}
       {props.list.map((e, index) => (
       <Link to={`/r/${e.title}`} key={index}>
-        <div className='sitem' onClick={props.handler}>
+        <div className='sitem'>
           <img className='sitem-img' src={e.cover} alt={e.title} />
           {/*<img className='sitem-img' src='http://img.bato.to/forums/uploads/d56e05bdcb26e058cd16d06b64fa3cae.jpg' alt={e.title} />*/}
           <div className='sitem-text'>

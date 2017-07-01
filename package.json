@@ -9,10 +9,10 @@
     "react-icons": "^2.2.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "react-transition-group": "1.x"
+    "react-transition-group": "1.x",
+    "react-scripts": "1.0.10"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7"
   },
   "scripts": {
     "start": "react-scripts start",

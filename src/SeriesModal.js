@@ -6,15 +6,31 @@ import cData from './chapterData';
 import genLib from './generalLibrary';
 import './SeriesModal.css';
 
+
 function SeriesModal(props) {
+  const handleKey = function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  }
+  const closeModal = function() {
+    document.removeEventListener('keydown', handleKey);
+    document.body.style.overflow='auto';
+    props.history.push('/');
+  }
+
+  document.addEventListener('keydown', handleKey);
+
+  document.body.style.overflow = 'hidden';
+
   let selection = props.match.params.series;
   let selInfo = sData.series[selection];
   let selChaps = cData.series[selection];
 
   return (
     <div>
+      <Route path='/r/:series/:index/:chapter' component={Reader} />
       <div className='modal'>
-      <Route path='/r/:series/:chapter' component={Reader} />
       {selInfo.cover &&
         <img src={selInfo.cover[0]} alt='cover' />
       }
@@ -34,8 +50,8 @@ function SeriesModal(props) {
             </div>*/}
             <small>RELEASES</small>
             <div className='modal-chapters-container'>
-              {selChaps.map((e) => (
-              <Link to={`/r/${selection}/${e.chapter}`} key={e.chapter}>
+              {selChaps.map((e, index) => (
+              <Link to={`/r/${selection}/${index}/${e.chapter}`} key={e.chapter}>
                 <div className='modal-chapter'>
                   <div className='modal-chapter-num'>
                     Chapter <strong>{e.chapter}</strong>
@@ -54,8 +70,7 @@ function SeriesModal(props) {
           </div>
         </div>
       </div>
-      <div className='modalBG' onClick={props.handler}>        
-      </div>
+      <div className='modalBG' onClick={closeModal}></div>
     </div>
   )
 }

@@ -37,12 +37,10 @@ class App extends Component {
     this.closeSList = this.closeSList.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
     this.handleKey = this.handleKey.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.handleSeriesItem = this.handleSeriesItem.bind(this);
   }
 
   componentWillMount() {
-    document.addEventListener('keydown', this.handleKey);
+    // document.addEventListener('keydown', this.handleKey);
     this.setState((prevState) => {
       prevState.data = prevState.data.sort((a,b) => {
          if (a.updated.getTime() < b.updated.getTime())
@@ -55,7 +53,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKey);
+    // document.removeEventListener('keydown', this.handleKey);
   }
 
   openSList(e) {
@@ -131,30 +129,16 @@ class App extends Component {
 
   handleKey(e) {
     console.log(e);
-    if (e.key === 'Escape') {
-      this.closeModal();
-    }
+    // if (e.key === 'Escape') {
+    //   console.log(this.props.history)
+    //   // this.props.history.push('/');
+    // }
   }
 
   handleFilter(e) {
     e.preventDefault();
     let value = e.currentTarget.attributes.value.value;
     this.setState({filter: value});
-  }
-  handleSeriesItem(e) {
-    // let title = e.currentTarget.attributes['data-title'].value;
-    this.setState((prevState) => {
-      // prevState.modalSelection = title;
-      // prevState.showModal = true;
-      document.body.style.overflow = 'hidden';
-    })
-  }
-
-  closeModal(e) {
-    this.setState((prevState) => {
-      // prevState.showModal = false;
-      document.body.style.overflow = 'auto';
-    })
   }
 
   render() {
