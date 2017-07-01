@@ -142,17 +142,17 @@ class App extends Component {
     this.setState({filter: value});
   }
   handleSeriesItem(e) {
-    let title = e.currentTarget.attributes['data-title'].value;
+    // let title = e.currentTarget.attributes['data-title'].value;
     this.setState((prevState) => {
-      prevState.modalSelection = title;
-      prevState.showModal = true;
+      // prevState.modalSelection = title;
+      // prevState.showModal = true;
       document.body.style.overflow = 'hidden';
     })
   }
 
   closeModal(e) {
     this.setState((prevState) => {
-      prevState.showModal = false;
+      // prevState.showModal = false;
       document.body.style.overflow = 'auto';
     })
   }
@@ -162,9 +162,7 @@ class App extends Component {
       <Router>
         <div>
           {/*<Route path='/r/:series/:chapter' component={Reader} />*/}
-        {this.state.modalSelection && 
-          <SeriesModal handler={this.closeModal} selection={this.state.modalSelection} show={this.state.showModal} />
-        }
+        <Route path='/r/:series' component={SeriesModal} />
           <nav>
             <div className='nav-container'>
               <div className='logo-container'>

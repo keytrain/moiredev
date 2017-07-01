@@ -1,24 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
+import Reader from './Reader';
 import sData from './seriesData';
 import cData from './chapterData';
 import genLib from './generalLibrary';
 import './SeriesModal.css';
 
 function SeriesModal(props) {
-  let selection = sData.series[props.selection];
+  let selection = props.match.params.series;
+  let selInfo = sData.series[selection];
+  let selChaps = cData.series[selection];
 
   return (
-    <div style={{visibility: (props.show ? 'visible': 'hidden')}}>
+    <div>
       <div className='modal'>
-      {selection.cover &&
-        <img src={selection.cover[0]} alt='cover' />
+      <Route path='/r/:series/:chapter' component={Reader} />
+      {selInfo.cover &&
+        <img src={selInfo.cover[0]} alt='cover' />
       }
         <div className='modal-right'>
           <div className='modal-text'>
-            <h3>{props.selection}</h3>
-            <h5>By {selection.author}</h5>
-            <p>{selection.synopsis}</p>
+            <h3>{selection}</h3>
+            <h5>By {selInfo.author}</h5>
+            <p>{selInfo.synopsis}</p>
             <hr />
             {/*<div className='modal-bite'>
               <small>STARTED</small>
@@ -30,8 +34,8 @@ function SeriesModal(props) {
             </div>*/}
             <small>RELEASES</small>
             <div className='modal-chapters-container'>
-              {cData.series[props.selection].map((e) => (
-              <Link to={`/r/${props.selection}/${e.chapter}`}>
+              {selChaps.map((e) => (
+              <Link to={`/r/${selection}/${e.chapter}`} key={e.chapter}>
                 <div className='modal-chapter'>
                   <div className='modal-chapter-num'>
                     Chapter <strong>{e.chapter}</strong>
