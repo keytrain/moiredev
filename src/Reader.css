@@ -18,10 +18,30 @@
 }
 
 
+.singlePg {
+  width:100%;
+}
+
+.pgContainer {
+  width:50%;
+}
+.pgContainer img {
+  width: 100%;
+}
+
 @media screen and (min-width: 668px) {
 
 }
 
 @media screen and (min-width: 1366px) {
 
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
