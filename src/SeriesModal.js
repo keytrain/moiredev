@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
+import Image from './Image';
 import Reader from './Reader';
 import sData from './seriesData';
 import cData from './chapterData';
@@ -32,7 +33,7 @@ function SeriesModal(props) {
       <Route path='/r/:series/:index/:chapter' component={Reader} />
       <div className='modal'>
       {selInfo.cover &&
-        <img src={selInfo.cover[0]} alt='cover' />
+        <Image src={selInfo.cover[0]} alt='cover' />
       }
         <div className='modal-right'>
           <div className='modal-text'>

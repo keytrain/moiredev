@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import genLib from './generalLibrary';
+import Image from './Image';
 import './SeriesList.css'
 // import TiTime from 'react-icons/lib/ti/time';
 // import MdAccessTime from 'react-icons/lib/md/access-time';
@@ -16,7 +17,7 @@ function SeriesList(props) {
       {props.list.map((e, index) => (
       <Link to={`/r/${e.title}`} key={index}>
         <div className='sitem'>
-          <img className='sitem-img' src={e.cover} alt={e.title} />
+          <Image style={'sitem-img'} src={e.cover} alt={e.title} />
           {/*<img className='sitem-img' src='http://img.bato.to/forums/uploads/d56e05bdcb26e058cd16d06b64fa3cae.jpg' alt={e.title} />*/}
           <div className='sitem-text'>
             {/*<div className='sitem-title'>{e.title}</div>*/}

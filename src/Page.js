@@ -1,8 +1,9 @@
 import React from 'react';
+import Image from './Image';
 
 function Page(props) {
   return (
-    <div><img src={props.src} /></div>
+    <div><Image src={props.src} /></div>
   );
 }
 
