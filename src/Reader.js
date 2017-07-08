@@ -17,6 +17,7 @@ class Reader extends React.Component {
     this.handleRightError = this.handleRightError.bind(this);
     this.handleRightLoaded = this.handleRightLoaded.bind(this);    this.handleLeftError = this.handleLeftError.bind(this);
     this.handleLeftLoaded = this.handleLeftLoaded.bind(this);
+    this.handlePages = this.handlePages.bind(this);
   }
 
   componentWillMount() {
@@ -45,6 +46,21 @@ class Reader extends React.Component {
     this.setState({rightPgType: 'jpg'});
   }
 
+  handlePages(e) {
+    // currentTarget grabs pages div
+    // target grabs the respective Image component
+    let pgWidth = e.currentTarget.offsetWidth;
+    let midPoint = pgWidth / 2;
+    let clickLoc = e.pageX;
+
+    if (clickLoc < midPoint) {
+      console.log('clicked left page')
+    }
+    else if (clickLoc > midPoint) {
+      console.log('clicked right page')
+    }
+  }
+
   render() {
     let selection = this.props.match.params.series;
     let index = this.props.match.params.index;
@@ -54,15 +70,19 @@ class Reader extends React.Component {
       <div className='reader-container'>
         <div className='reader'>
 
-          <Image containerClass={'pgContainer'} imgClass={'leftPg'} 
-          src={`${chapter.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
-          loaded={this.handleLeftLoaded} 
-          error={this.handleLeftError} />
-          
-          <Image containerClass={'pgContainer'} imgClass={'rightPg'} 
-            src={`${chapter.src}/img${this.state.rightPgCount}.${this.state.rightPgType}`} 
-            loaded={this.handleRightLoaded} 
-            error={this.handleRightError} />
+          <div className='pages' onClick={this.handlePages}>
+
+            <Image containerClass={'pgContainer'} imgClass={'leftPg'} 
+            src={`${chapter.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
+            loaded={this.handleLeftLoaded} 
+            error={this.handleLeftError} />
+            
+            <Image containerClass={'pgContainer'} imgClass={'rightPg'} 
+              src={`${chapter.src}/img${this.state.rightPgCount}.${this.state.rightPgType}`} 
+              loaded={this.handleRightLoaded} 
+              error={this.handleRightError} />
+
+          </div>
 
         </div>
       </div>

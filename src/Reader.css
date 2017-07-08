@@ -17,6 +17,9 @@
   overflow-y:auto;
 }
 
+.pages {
+  width:100%;
+}
 
 .singlePg {
   width:100%;
