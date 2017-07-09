@@ -21,11 +21,14 @@
   transform: translate(-50%, -50%);
   z-index:2;
 }
-  .modal img {
+  .modal-img-container {
     display:inline-block;
-    vertical-align: top;
     background-color:#eee;
-    width:00px;
+    height:inherit;
+  }
+  .modal-img-container img {
+    width:0px;
+    vertical-align:top;
   }
   .modal-right {
     vertical-align: top;

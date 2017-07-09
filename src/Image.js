@@ -9,6 +9,7 @@ class Image extends React.Component {
       style : {
         opacity:0,
         transition: '325ms ease-in-out',
+        verticalAlign: 'top'
       },
       loader : true,
     }
@@ -23,6 +24,7 @@ class Image extends React.Component {
       prevState.style = {
         opacity: 1,
         transition: 'opacity 325ms ease-in-out',
+        verticalAlign: 'top'
       }
     })
     if (typeof this.props.loaded === 'function') {
@@ -38,7 +40,6 @@ class Image extends React.Component {
 
   render() {
     const container = {
-      display:'inline-block',
       position: 'relative'
     }
     return (

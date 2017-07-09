@@ -32,5 +32,13 @@ export default {
     }
 
     return 'Error';
+  },
+
+  padZero: function(input) {
+    let num = input;
+    while (num.length < 6) {
+      num = '0' + num;
+    }
+    return num;
   }
 }

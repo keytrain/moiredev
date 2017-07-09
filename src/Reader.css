@@ -7,30 +7,39 @@
   left:0;
   z-index:3;
 }
+  .reader {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    top:0;
+    overflow-y:auto;
+  }
 
-.reader {
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  top:0;
-  overflow-y:auto;
-}
+    .pages {
+      width:100%;
+      height:auto;
+    }
 
-.pages {
-  width:100%;
-}
+      .singlePg {
+        width:100%;
+      }
 
-.singlePg {
-  width:100%;
-}
+      .pgContainer {
+        width:50%;
+        vertical-align: middle;      
+        display:inline-block;
+      }
+      .pgContainer img {
+        width: 100%;
+      }
 
-.pgContainer {
-  width:50%;
-}
-.pgContainer img {
-  width: 100%;
-}
+      .chapterEnds {
+        display:inline-block;
+        width:50%;
+        vertical-align: middle;
+        text-align:center;
+      }
 
 @media screen and (min-width: 668px) {
 
@@ -38,13 +47,4 @@
 
 @media screen and (min-width: 1366px) {
 
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }

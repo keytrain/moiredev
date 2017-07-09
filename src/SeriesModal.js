@@ -26,14 +26,14 @@ function SeriesModal(props) {
 
   let selection = props.match.params.series;
   let selInfo = sData.series[selection];
-  let selChaps = cData.series[selection];
+  let selChaps = cData.series[selection].rel;
 
   return (
     <div>
-      <Route path='/r/:series/:index/:chapter' component={Reader} />
+      <Route path='/r/:series/:chapter/:page' component={Reader} />
       <div className='modal'>
       {selInfo.cover &&
-        <Image src={selInfo.cover[0]} alt='cover' />
+        <Image containerClass={'modal-img-container'} src={selInfo.cover[0]} alt='cover' />
       }
         <div className='modal-right'>
           <div className='modal-text'>
@@ -52,7 +52,7 @@ function SeriesModal(props) {
             <small>RELEASES</small>
             <div className='modal-chapters-container'>
               {selChaps.map((e, index) => (
-              <Link to={`/r/${selection}/${index}/${e.chapter}`} key={e.chapter}>
+              <Link to={`/r/${selection}/${e.chapter}/0`} key={e.chapter}>
                 <div className='modal-chapter'>
                   <div className='modal-chapter-num'>
                     Chapter <strong>{e.chapter}</strong>
