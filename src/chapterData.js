@@ -36,7 +36,7 @@ export default {
           src: 'http://img.bato.to/comics/2017/02/15/m/read58a3e3c309b4d',
           trans: 'AnonSpore',
           let: 'Nielle',
-          edit: 'Nami, kukupa'
+          red: 'Nami, kukupa'
         },
         '35' : {
           src: 'http://img.bato.to/comics/2017/01/25/m/read58885103c2aa7'
