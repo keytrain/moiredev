@@ -1,19 +1,12 @@
 import React from 'react';
 import MdToys from 'react-icons/lib/md/toys';
-import Transition from 'react-transition-group/Transition';
-import TransitionGroup from 'react-transition-group/TransitionGroup';
 
 class Image extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      style : {
-        opacity:0,
-        transition: '325ms ease-in-out',
-        verticalAlign: 'top'
-      },
+      show : {},
       loader : true,
-      show: false
     }
 
     this.handleImageError = this.handleImageError.bind(this);
@@ -23,12 +16,9 @@ class Image extends React.Component {
   handleImageLoaded() {
     this.setState((prevState) => {
       prevState.loader = false;
-      prevState.style = {
+      prevState.show = {
         opacity: 1,
-        transition: 'opacity 325ms ease-in-out',
-        verticalAlign: 'top'
       }
-      prevState.show = true;
     })
     if (typeof this.props.loaded === 'function') {
       this.props.loaded();
@@ -45,41 +35,21 @@ class Image extends React.Component {
     const container = {
       position: 'relative'
     }
-    const duration = 325;
     const defaultStyle = {
       opacity:0,
-      transition: `opacity ${duration}ms ease-in-out`,
+      transition: '325ms ease-in-out',
       verticalAlign: 'top'
     }
-    const transitionStyles = {
-      entering: {
-        opacity: 1
-      },
-      entered: {
-        opacity: 1
-      },
-      exiting: {
-        opacity: 0
-      },
-      exited: {
-        opacity: 0
-      }
-    }
-
     return (
       <div className={this.props.containerClass} style={container}>
-        <Transition in={this.props.show} timeout={duration} key={this.props.src}>
-          {(state) => (
-            <img className={this.props.imgClass} 
-            style={{
-              ...defaultStyle,
-              ...transitionStyles[state]
-            }} 
-            src={this.props.src} alt={this.props.alt} 
-            onLoad={this.handleImageLoaded} 
-            onError={this.handleImageError} />
-          )}
-        </Transition>
+        <img className={this.props.imgClass} 
+        style={{
+          ...defaultStyle,
+          ...this.state.show
+        }} 
+        src={this.props.src} alt={this.props.alt} 
+        onLoad={this.handleImageLoaded} 
+        onError={this.handleImageError} />
         {this.state.loader &&
         <MdToys size={24} style={{
           animation: 'spin 2s linear infinite',

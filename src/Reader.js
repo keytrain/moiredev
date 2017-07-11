@@ -1,8 +1,8 @@
 import React from 'react';
 import './Reader.css';
 import cData from './chapterData';
-// import Page from './Page';
-import Image from './Image';
+import Page from './Page';
+// import Image from './Image';
 import genLib from './generalLibrary';
 
 class Reader extends React.Component {
@@ -18,7 +18,8 @@ class Reader extends React.Component {
       rightShow: false
     }
     this.handleRightError = this.handleRightError.bind(this);
-    this.handleRightLoaded = this.handleRightLoaded.bind(this);    this.handleLeftError = this.handleLeftError.bind(this);
+    this.handleRightLoaded = this.handleRightLoaded.bind(this);
+    this.handleLeftError = this.handleLeftError.bind(this);
     this.handleLeftLoaded = this.handleLeftLoaded.bind(this);
     this.handlePages = this.handlePages.bind(this);
   }
@@ -98,14 +99,14 @@ class Reader extends React.Component {
 
           <div className='pages' onClick={this.handlePages}>
 
-            <Image containerClass={'pgContainer'} imgClass={'leftPg'} 
+            <Page containerClass={'pgContainer'} imgClass={'leftPg'} 
             src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
             loaded={this.handleLeftLoaded} 
             error={this.handleLeftError}
             show={this.state.leftShow} />
             
             {page > 0 ?
-            <Image containerClass={'pgContainer'} imgClass={'rightPg'} 
+            <Page containerClass={'pgContainer'} imgClass={'rightPg'} 
               src={`${chapterObj.src}/img${this.state.rightPgCount}.${this.state.rightPgType}`} 
               loaded={this.handleRightLoaded} 
               error={this.handleRightError}
