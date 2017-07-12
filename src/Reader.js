@@ -9,6 +9,8 @@ class Reader extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      selection : this.props.match.params.series,
+      chapter : this.props.match.params.chapter,
       pageMode: localStorage.getItem('pageMode'),
       leftPgCount: '000001',
       leftPgType: 'png',
@@ -22,14 +24,19 @@ class Reader extends React.Component {
     this.handleLeftError = this.handleLeftError.bind(this);
     this.handleLeftLoaded = this.handleLeftLoaded.bind(this);
     this.handlePages = this.handlePages.bind(this);
+    this.loadPages = this.loadPages.bind(this);
   }
 
   componentWillMount() {
-    // console.log(this.props.match)
+    // initial load
+    this.loadPages(this.props.match.params.page);
+    this.unlisten = this.props.history.listen((location, action) => {
+      this.loadPages(''+location.state.page);
+    });
   }
 
   componentWillUnmount() {
-
+    this.unlisten();
   }
 
   handleLeftLoaded() {
@@ -52,46 +59,55 @@ class Reader extends React.Component {
     this.setState({rightPgType: 'jpg'});
   }
 
+  loadPages(page) {
+    this.setState((prevState) => {
+      prevState.rightPgCount = genLib.padZero(page);
+      prevState.rightPgType = 'png';
+      prevState.rightShow = false;
+      prevState.leftPgCount = genLib.padZero('' + (parseInt(page)+1));
+      prevState.leftPgType = 'png';
+      prevState.leftShow = false;
+    })
+  }
+
   handlePages(e) {
-    let selection = this.props.match.params.series;
-    let chapter = this.props.match.params.chapter;
-    let page = this.props.match.params.page;
     // currentTarget grabs pages div
     // target grabs the respective Image component
     let pgWidth = e.currentTarget.offsetWidth;
     let midPoint = pgWidth / 2;
     let clickLoc = e.pageX;
 
+    let currPg = this.props.match.params.page;
+    console.log(currPg);
     let nextPg;
 
     if (clickLoc < midPoint) {
-      console.log('clicked left page')
-      nextPg = parseInt(page, 10) + 2;
+      nextPg = parseInt(currPg, 10) + 2;
     }
     else if (clickLoc > midPoint) {
-      console.log('clicked right page')
-      nextPg = parseInt(page, 10) - 2;
+      nextPg = parseInt(currPg, 10) - 2;
     }
     if (nextPg > -1) {
-      this.props.history.push(`/r/${selection}/${chapter}/${nextPg}`);
-      this.setState((prevState) => {
-        prevState.rightPgCount = genLib.padZero('' + nextPg);
-        prevState.rightPgType = 'png';
-        prevState.rightShow = false;
-        prevState.leftPgCount = genLib.padZero('' + (nextPg+1));
-        prevState.leftPgType = 'png';
-        prevState.leftShow = false;
-      })
+      this.props.history.push({
+        pathname: `/r/${this.state.selection}/${this.state.chapter}/${nextPg}`,
+        state : {
+          page: nextPg
+        }
+      });
+      // this.setState((prevState) => {
+      //   prevState.page = nextPg;
+      //   prevState.rightPgCount = genLib.padZero('' + nextPg);
+      //   prevState.rightPgType = 'png';
+      //   prevState.rightShow = false;
+      //   prevState.leftPgCount = genLib.padZero('' + (nextPg+1));
+      //   prevState.leftPgType = 'png';
+      //   prevState.leftShow = false;
+      // })
     }
   }
 
   render() {
-    let selection = this.props.match.params.series;
-    let chapter = this.props.match.params.chapter;
-    let page = this.props.match.params.page;
-    let chapterObj = cData.series[selection].ch[chapter];
-
-    // console.log(genLib.padZero('1125'));
+    let chapterObj = cData.series[this.state.selection].ch[this.state.chapter];
 
     return (
       <div className='reader-container'>
@@ -105,7 +121,7 @@ class Reader extends React.Component {
             error={this.handleLeftError}
             show={this.state.leftShow} />
             
-            {page > 0 ?
+            {this.props.match.params.page > 0 ?
             <Page containerClass={'pgContainer'} imgClass={'rightPg'} 
               src={`${chapterObj.src}/img${this.state.rightPgCount}.${this.state.rightPgType}`} 
               loaded={this.handleRightLoaded} 
@@ -114,8 +130,8 @@ class Reader extends React.Component {
             :
             <div className='chapterEnds'>
               <small>YOU ARE READING</small>
-              <h1>{selection}</h1>
-              <h3>CHAPTER {chapter}</h3>
+              <h1>{this.state.selection}</h1>
+              <h3>CHAPTER {this.state.chapter}</h3>
               <br />
               <br />
               <small>TRANSLATED BY</small>

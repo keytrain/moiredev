@@ -37,7 +37,7 @@ class Image extends React.Component {
     }
     const defaultStyle = {
       opacity:0,
-      transition: '325ms ease-in-out',
+      transition: '225ms ease-in-out',
       verticalAlign: 'top'
     }
     return (

@@ -40,7 +40,7 @@ class Page extends React.Component {
     const container = {
       position: 'relative'
     }
-    const duration = 525;
+    const duration = 425;
     const defaultStyle = {
       opacity:0,
       transition: `opacity ${duration}ms ease-in-out`,
@@ -75,7 +75,7 @@ class Page extends React.Component {
           )}
         </Transition>
         {!this.props.show &&
-        <MdToys size={24} style={{
+        <MdToys size={30} style={{
           animation: 'spin 2s linear infinite',
           position: 'absolute',
           left: '50%',

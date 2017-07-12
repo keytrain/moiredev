@@ -39,13 +39,19 @@ export default {
           red: 'Nami, kukupa'
         },
         '35' : {
-          src: 'http://img.bato.to/comics/2017/01/25/m/read58885103c2aa7'
+          src: 'http://img.bato.to/comics/2017/01/25/m/read58885103c2aa7',
+          trans: 'AnonSpore',
+          let: 'Nielle'
         },
         '34' : {
-          src: 'http://img.bato.to/comics/2016/11/26/m/read5839d2733c87d'
+          src: 'http://img.bato.to/comics/2016/11/26/m/read5839d2733c87d',
+          trans: 'AnonSpore',
+          let: 'Nielle'
         },
         '33' : {
-          src: 'http://img.bato.to/comics/2016/10/22/m/read580ad106b0c34'
+          src: 'http://img.bato.to/comics/2016/10/22/m/read580ad106b0c34',
+          trans: 'AnonSpore',
+          let: 'Nielle'
         }
       }
     },

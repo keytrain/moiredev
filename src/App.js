@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { CSSTransitionGroup } from 'react-transition-group';
 import {
     HashRouter as Router,
     Route
