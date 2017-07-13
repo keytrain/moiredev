@@ -15,7 +15,6 @@ class Page extends React.Component {
     this.handleImageLoaded = this.handleImageLoaded.bind(this);
   }
 
-
   handleImageLoaded() {
     this.setState((prevState) => {
       prevState.loader = false;
@@ -24,7 +23,11 @@ class Page extends React.Component {
       }
     })
     if (typeof this.props.loaded === 'function') {
-      this.props.loaded();
+      if (this.img.naturalWidth > 1300) {
+        this.props.loaded({spread:true});
+      } else {
+        this.props.loaded({spread:false});        
+      }
     }
   }
 
@@ -33,8 +36,6 @@ class Page extends React.Component {
       this.props.error();
     }
   }
-
-
 
   render() {
     const container = {
@@ -60,6 +61,7 @@ class Page extends React.Component {
         opacity: 0
       }
     }
+    
     return (
       <div className={this.props.containerClass} style={container}>
         <Transition in={this.props.show} timeout={duration} key={this.props.src}>
@@ -70,6 +72,7 @@ class Page extends React.Component {
               ...transitionStyles[state]
             }} 
             src={this.props.src} alt={this.props.alt} 
+            ref={(img) => this.img = img}
             onLoad={this.handleImageLoaded} 
             onError={this.handleImageError} />
           )}

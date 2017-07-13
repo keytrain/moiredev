@@ -34,7 +34,7 @@
         display:inline-block;
       }
       .spread {
-        width:100%;
+        width:inherit;
       }
       .pgContainer img {
         width: 100%;

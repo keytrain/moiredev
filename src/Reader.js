@@ -17,7 +17,9 @@ class Reader extends React.Component {
       leftShow: false,
       rightPgCount: '000000',
       rightPgType: 'png',
-      rightShow: false
+      rightShow: false,
+      rightPgLoaded: false,
+      spread: false
     }
     this.handleRightError = this.handleRightError.bind(this);
     this.handleRightLoaded = this.handleRightLoaded.bind(this);
@@ -31,7 +33,7 @@ class Reader extends React.Component {
     // initial load
     this.loadPages(this.props.match.params.page);
     this.unlisten = this.props.history.listen((location, action) => {
-      this.loadPages(''+location.state.page);
+      this.loadPages(location.pathname.split(/(.+)\//)[2]);
     });
   }
 
@@ -49,9 +51,10 @@ class Reader extends React.Component {
     this.setState({leftPgType: 'jpg'});
   }
 
-  handleRightLoaded() {
+  handleRightLoaded(imgObj) {
     console.log('loaded')
-    this.setState({rightShow: true});
+    console.log(imgObj.spread)
+    this.setState({rightShow: true, rightPgLoaded: true, spread: imgObj.spread});
   }
 
   handleRightError() {
@@ -64,9 +67,11 @@ class Reader extends React.Component {
       prevState.rightPgCount = genLib.padZero(page);
       prevState.rightPgType = 'png';
       prevState.rightShow = false;
-      prevState.leftPgCount = genLib.padZero('' + (parseInt(page)+1));
+      prevState.rightPgLoaded= false;
+      prevState.leftPgCount = genLib.padZero('' + (parseInt(page, 10)+1));
       prevState.leftPgType = 'png';
       prevState.leftShow = false;
+      prevState.spread = false;
     })
   }
 
@@ -78,36 +83,24 @@ class Reader extends React.Component {
     let clickLoc = e.pageX;
 
     let currPg = this.props.match.params.page;
-    console.log(currPg);
     let nextPg;
-
+    let interval = this.state.spread ? 1 : 2;
     if (clickLoc < midPoint) {
-      nextPg = parseInt(currPg, 10) + 2;
+      nextPg = parseInt(currPg, 10) + interval;
     }
     else if (clickLoc > midPoint) {
-      nextPg = parseInt(currPg, 10) - 2;
+      nextPg = parseInt(currPg, 10) - interval;
     }
     if (nextPg > -1) {
       this.props.history.push({
-        pathname: `/r/${this.state.selection}/${this.state.chapter}/${nextPg}`,
-        state : {
-          page: nextPg
-        }
+        pathname: `/r/${this.state.selection}/${this.state.chapter}/${nextPg}`
       });
-      // this.setState((prevState) => {
-      //   prevState.page = nextPg;
-      //   prevState.rightPgCount = genLib.padZero('' + nextPg);
-      //   prevState.rightPgType = 'png';
-      //   prevState.rightShow = false;
-      //   prevState.leftPgCount = genLib.padZero('' + (nextPg+1));
-      //   prevState.leftPgType = 'png';
-      //   prevState.leftShow = false;
-      // })
     }
   }
 
   render() {
     let chapterObj = cData.series[this.state.selection].ch[this.state.chapter];
+    let currPg = this.props.match.params.page;
 
     return (
       <div className='reader-container'>
@@ -115,14 +108,16 @@ class Reader extends React.Component {
 
           <div className='pages' onClick={this.handlePages}>
 
+            {((!this.state.spread && this.state.rightPgLoaded) || currPg === '0') &&
             <Page containerClass={'pgContainer'} imgClass={'leftPg'} 
             src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
             loaded={this.handleLeftLoaded} 
             error={this.handleLeftError}
             show={this.state.leftShow} />
-            
-            {this.props.match.params.page > 0 ?
-            <Page containerClass={'pgContainer'} imgClass={'rightPg'} 
+            }
+
+            {currPg > '0' ?
+            <Page containerClass={'pgContainer ' + (this.state.spread ?'spread':'')} imgClass={'rightPg'} 
               src={`${chapterObj.src}/img${this.state.rightPgCount}.${this.state.rightPgType}`} 
               loaded={this.handleRightLoaded} 
               error={this.handleRightError}
