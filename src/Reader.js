@@ -19,7 +19,8 @@ class Reader extends React.Component {
       rightPgType: 'png',
       rightShow: false,
       rightPgLoaded: false,
-      spread: false
+      spread: false,
+      goBack: false
     }
     this.handleRightError = this.handleRightError.bind(this);
     this.handleRightLoaded = this.handleRightLoaded.bind(this);
@@ -53,8 +54,18 @@ class Reader extends React.Component {
 
   handleRightLoaded(imgObj) {
     console.log('loaded')
-    console.log(imgObj.spread)
-    this.setState({rightShow: true, rightPgLoaded: true, spread: imgObj.spread});
+    let nextPg = parseInt(this.props.match.params.page,10)-1;
+    console.log(nextPg);
+    console.log(imgObj.spread);
+    console.log(this.state.goBack);
+    if (!imgObj.spread && this.state.goBack) {
+      this.props.history.push({
+        pathname: `/r/${this.state.selection}/${this.state.chapter}/${nextPg}`
+      });
+      this.setState({goBack:false});
+    } else {
+      this.setState({rightShow: true, rightPgLoaded: true, spread: imgObj.spread});
+    }
   }
 
   handleRightError() {
@@ -84,12 +95,13 @@ class Reader extends React.Component {
 
     let currPg = this.props.match.params.page;
     let nextPg;
-    let interval = this.state.spread ? 1 : 2;
     if (clickLoc < midPoint) {
-      nextPg = parseInt(currPg, 10) + interval;
+      nextPg = parseInt(currPg, 10) + (this.state.spread ? 1 : 2);
+      this.setState({goBack: false});
     }
     else if (clickLoc > midPoint) {
-      nextPg = parseInt(currPg, 10) - interval;
+      nextPg = parseInt(currPg, 10) - 1;
+      this.setState({goBack: true});
     }
     if (nextPg > -1) {
       this.props.history.push({
