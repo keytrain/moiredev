@@ -5,6 +5,12 @@ import Page from './Page';
 // import Image from './Image';
 import genLib from './generalLibrary';
 
+// TODO:
+// Buffering
+// Chapter end detection
+// Disqus
+// Settings
+
 class Reader extends React.Component {
   constructor(props) {
     super(props)
@@ -42,37 +48,6 @@ class Reader extends React.Component {
     this.unlisten();
   }
 
-  handleLeftLoaded() {
-    console.log('loaded')
-    this.setState({leftShow: true});
-  }
-
-  handleLeftError() {
-    console.log('error')
-    this.setState({leftPgType: 'jpg'});
-  }
-
-  handleRightLoaded(imgObj) {
-    console.log('loaded')
-    let nextPg = parseInt(this.props.match.params.page,10)-1;
-    console.log(nextPg);
-    console.log(imgObj.spread);
-    console.log(this.state.goBack);
-    if (!imgObj.spread && this.state.goBack) {
-      this.props.history.push({
-        pathname: `/r/${this.state.selection}/${this.state.chapter}/${nextPg}`
-      });
-      this.setState({goBack:false});
-    } else {
-      this.setState({rightShow: true, rightPgLoaded: true, spread: imgObj.spread});
-    }
-  }
-
-  handleRightError() {
-    console.log('error')
-    this.setState({rightPgType: 'jpg'});
-  }
-
   loadPages(page) {
     this.setState((prevState) => {
       prevState.rightPgCount = genLib.padZero(page);
@@ -84,6 +59,36 @@ class Reader extends React.Component {
       prevState.leftShow = false;
       prevState.spread = false;
     })
+  }
+
+  handleLeftLoaded() {
+    console.log('loaded')
+    this.setState({leftShow: true});
+  }
+
+  handleRightLoaded(imgObj) {
+    console.log('loaded')
+
+    let nextPg = parseInt(this.props.match.params.page,10)-1;
+    // if not a spread, go back another page
+    if (!imgObj.spread && this.state.goBack) {
+      this.props.history.push({
+        pathname: `/r/${this.state.selection}/${this.state.chapter}/${nextPg}`
+      });
+      this.setState({goBack:false});
+    } else {
+      this.setState({rightShow: true, rightPgLoaded: true, spread: imgObj.spread});
+    }
+  }
+
+  handleLeftError() {
+    console.log('error')
+    this.setState({leftPgType: 'jpg'});
+  }
+
+  handleRightError() {
+    console.log('error')
+    this.setState({rightPgType: 'jpg'});
   }
 
   handlePages(e) {

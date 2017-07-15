@@ -19,6 +19,7 @@
     .pages {
       width:100%;
       height:auto;
+      text-align:right;
     }
     .pages:hover {
       cursor: pointer;

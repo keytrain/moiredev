@@ -61,7 +61,6 @@ class Page extends React.Component {
         opacity: 0
       }
     }
-    
     return (
       <div className={this.props.containerClass} style={container}>
         <Transition in={this.props.show} timeout={duration} key={this.props.src}>
