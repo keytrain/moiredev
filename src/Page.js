@@ -41,7 +41,7 @@ class Page extends React.Component {
     const container = {
       position: 'relative'
     }
-    const duration = 425;
+    const duration = 225;
     const defaultStyle = {
       opacity:0,
       transition: `opacity ${duration}ms ease-in-out`,

@@ -1,13 +1,18 @@
 export default {
   series: {
     'Mahoromi' : {
-      synopsis: '',
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: ["Niwa, a college student of architecture, is moving into his deceased grandfather's house. He didn't know the man very well, but the house is conveniently close to school, and his grandfather was actually the architect who designed it. There's something unsettling about the house, though, and while he's wandering around, Niwa finds a mysterious old photograph of some girl who isn't his grandmother.", "Later, he goes along with his friend Akira to take drawings of another old house that's going to be demolished. As he meanders through this old house, he has a somewhat supernatural and startling experience. Are these feelings and occurrences a result of the souls of the buildings themselves, as Akira suggests? Or is there some even deeper mystery to Niwa's uncanny experiences?"],
+      author: 'Toume Kei'
     },
     'Spotted Flower' : {
-      synopsis: '',
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: ["It's about the married life between a newlywed working otaku and his pregnant wife."],
+      author: 'Shimoku Kio'
     },
     'Kannou Sensei' : {
       cover: ['./img/cover/kan/1.jpg'],
+      synopsis: [],
       author: 'Yoshida Motoi'
     },
     'Mahoutsukai no Yome' : {
@@ -16,213 +21,219 @@ export default {
       author: 'Yamazaki Kore',
     },
     'Seifuku no Vampiress Lord' : {
-      synopsis: ''
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: ["Normal high school girl Irie Yuunagi suddenly has her blood sucked by a strange man one night. Yuunagi wakes up as a vampire and learns that she has been added to the man who bit her, Rin's, family. She begins to learn about the rules of the vampire world from Rin."],
+      author: 'Matsumoto Tomoki'
     },
     'Prunus Girl' : {
-      synopsis: '',
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Boku wa Tomodachi ga Sukunai' : {
-        synopsis: '',
-
-
+    'Boku wa Tomodachi ga Sukunai' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Tasogare Otome x Amnesia' : {
-        synopsis: '',
-
-
+    'Tasogare Otome x Amnesia' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Natsu no Zenjitsu' : {
-        synopsis: '',
-
-
+    'Natsu no Zenjitsu' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Chimoguri Ringo to Kingyobachi Otoko' : {
-        synopsis: '',
-
-
+    'Chimoguri Ringo to Kingyobachi Otoko' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Ashita Dorobou' : {
-        synopsis: '',
-
-
+    'Ashita Dorobou' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Benten Rock Yuu.' : {
-        synopsis: '',
-
-
+    'Benten Rock Yuu.' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Boku ni Koisuru Mechanical' : {
-        synopsis: '',
-
-
+    'Boku ni Koisuru Mechanical' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Choku!' : {
-        synopsis: '',
-
-
+    'Choku!' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Dekoboko Girlish' : {
-        synopsis: '',
-
-
+    'Dekoboko Girlish' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Hajiotsu.' : {
-        synopsis: '',
-
-
+    'Hajiotsu.' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Gisèle Alain' : {
-        synopsis: '',
-
-
+    'Gisèle Alain' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Himawari' : {
-        synopsis: '',
-
-
+    'Himawari' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Kekkon Yubiwa Monogatari' : {
-        synopsis: '',
-
-
+    'Kekkon Yubiwa Monogatari' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Gonensei' : {
-        synopsis: '',
-
-
+    'Gonensei' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Hitogatana' : {
-        synopsis: '',
-
-
+    'Hitogatana' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Yume Midokoro (oneshot)' : {
-        synopsis: '',
-
-
+    'Yume Midokoro (oneshot)' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Ga-rei' : {
-        synopsis: '',
-
-
+    'Ga-rei' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Hakoiri Drops' : {
-        synopsis: '',
-
-
+    'Hakoiri Drops' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Straw' : {
-        synopsis: '',
-
-
+    'Straw' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Paradox Blue' : {
-        synopsis: '',
-
-
+    'Paradox Blue' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'O/A' : {
-        synopsis: '',
-
-
+    'O/A' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Nonscale' : {
-        synopsis: '',
-
-
+    'Nonscale' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Nejimakiboshi to Aoi Sora' : {
-        synopsis: '',
-
-
+    'Nejimakiboshi to Aoi Sora' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Tetsugaku Letra' : {
-        synopsis: '',
-
-
+    'Tetsugaku Letra' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Tokyo ESP' : {
-        synopsis: '',
-
-
+    'Tokyo ESP' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Taiyou no Ie' : {
-        synopsis: '',
-
-
+    'Taiyou no Ie' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Mardock Scramble' : {
-        synopsis: '',
-
-
+    'Mardock Scramble' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Yume Tsukai' : {
-        synopsis: '',
-
-
+    'Yume Tsukai' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Oh, my sweet alien!' : {
-        synopsis: '',
-
-
+    'Oh, my sweet alien!' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Amaama to Inazuma' : {
-        synopsis: '',
-
-
+    'Amaama to Inazuma' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Ashita wa Kyouso-sama (oneshot)' : {
-        synopsis: '',
-
-
+    'Ashita wa Kyouso-sama (oneshot)' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Flying Witch (oneshot)' : {
-        synopsis: '',
-
-
+    'Flying Witch (oneshot)' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Futari no Renai Shoka' : {
-        synopsis: '',
-
-
+    'Futari no Renai Shoka' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Gingitsune' : {
-        synopsis: '',
-
-
+    'Gingitsune' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Hero Mask' : {
-        synopsis: '',
-
-
+    'Hero Mask' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Kiniro Mosaic' : {
-        synopsis: '',
-
-
+    'Kiniro Mosaic' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-    'Jigokuren - LOVE in the HELL' : {
-        synopsis: '',
-
+  'Jigokuren - LOVE in the HELL' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],   
+      author: ''
     },
     '18 Rin': {
-        synopsis: '',
-      
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],  
+      author: ''
     },
-      'Katsute Kami Datta Kemonotachi e' : {
-        synopsis: '',
-
-
+    'Katsute Kami Datta Kemonotachi e' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Ookami Kodomo no Ame to Yuki' : {
-        synopsis: '',
-
-
+    'Ookami Kodomo no Ame to Yuki' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
-      'Sore ga Kanojo no Seigi nara' : {
-        synopsis: '',
-
-
+    'Sore ga Kanojo no Seigi nara' : {
+      cover: ['./img/cover/yome/7.jpg'],
+      synopsis: [],
+      author: ''
     },
   }
 }

@@ -24,7 +24,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color:#f9f9f9;
+  background-color:#f3f3f3;
 }
 
 h1, h2, h3, h4, h5 {
@@ -61,15 +61,19 @@ hr {
 }
 button {
   border:0;
-  transition:opacity ease-in-out 0.5s;
+  transition:ease-in-out 200ms;
   padding:0.5rem 0.7rem;
   font-family:inherit;
   outline:none;  
-  background-color:#ddd;
+  font-weight:500;
+  color:#888;
+  font-size:0.833rem;
   text-transform: uppercase;
+  opacity:1;
+  background-color:#eee;
+  border-radius: 4px;
 }
 button:focus {
-  color:#aaa;  
 }
 button:hover {
   cursor:pointer;

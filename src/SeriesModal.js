@@ -39,7 +39,9 @@ function SeriesModal(props) {
           <div className='modal-text'>
             <h3>{selection}</h3>
             <h5>By {selInfo.author}</h5>
-            <p>{selInfo.synopsis}</p>
+            {selInfo.synopsis.map((e, index) => 
+              <p key={index}>{e}</p>
+            )}
             <hr />
             {/*<div className='modal-bite'>
               <small>STARTED</small>
@@ -52,7 +54,7 @@ function SeriesModal(props) {
             <small>RELEASES</small>
             <div className='modal-chapters-container'>
               {selChaps.map((e, index) => (
-              <Link to={`/r/${selection}/${e.chapter}/0`} key={e.chapter}>
+              <Link to={`/r/${selection}/${e.chapter}/0`} key={index}>
                 <div className='modal-chapter'>
                   <div className='modal-chapter-num'>
                     Chapter <strong>{e.chapter}</strong>

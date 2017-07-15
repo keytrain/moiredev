@@ -1,19 +1,60 @@
 export default {
   series: {
     'Mahoromi' : {
-      rel: [],
-      ch: {}
+      rel: [
+        {
+          chapter: 18,
+          date: new Date('Jul 10 2017 GMT-0800')
+        }
+      ],
+      ch: {
+        '18': {
+          src: 'http://img.bato.to/comics/2017/07/10/m/read5963187462456',
+          trans: 'AnonSpore',
+          let: 'cranon'
+        }
+      }
     },
-    'Spotted Flower' :    {
-      rel: [],
-      ch: {}
+    'Spotted Flower' : {
+      rel: [
+        {
+          chapter: 20.5,
+          date: new Date('Jul 06 2017 GMT-0800')
+        }
+      ],
+      ch: {
+        '20.5' : {
+          src: 'http://img.bato.to/comics/2017/06/03/s/read593278754ca38',
+          trans: 'AnonSpore',
+          let: 'cranon'
+        }
+      }
     },
     'Kannou Sensei' : {
-      rel: [],
-      ch: {}
+      rel: [
+        {
+          chapter: 0,
+          date: new Date('Jul 10 2017 GMT-0800')
+        }
+      ],
+      ch: {
+        '0': {
+          src: 'http://img.bato.to/comics/2017/07/10/k/read5963221dbd4e5',
+          trans: 'Haremless',
+          let: 'cranon'
+        }
+      }
     },
     'Mahoutsukai no Yome' : {
       rel: [
+        {
+          chapter: 38,
+          date: new Date('Jun 17  2017 GMT-0800')
+        },
+        {
+          chapter: 37,
+          date: new Date('Mar 15 2017 GMT-0800')
+        },
         {
           chapter: 36,
           date: new Date('Feb 14 2017 GMT-0800')
@@ -32,6 +73,16 @@ export default {
         }
       ],
       ch: {
+        '38' : {
+          src: 'http://img.bato.to/comics/2017/06/16/m/read594360862e999',
+          trans: 'AnonSpore',
+          let: 'Nielle',
+        },
+        '37' : {
+          src: 'http://img.bato.to/comics/2017/03/15/m/read58c8f81006408',
+          trans: 'AnonSpore',
+          let: 'Nielle',
+        },
         '36' : {
           src: 'http://img.bato.to/comics/2017/02/15/m/read58a3e3c309b4d',
           trans: 'AnonSpore',
@@ -56,214 +107,393 @@ export default {
       }
     },
     'Seifuku no Vampiress Lord' :   {
-      rel: [],
-      ch: {}
+      rel: [
+        {
+          chapter: 6,
+          date: new Date('Jul 1 2017 GMT-0800')
+        }
+      ],
+      ch: {
+        '6': {
+          src: 'http://img.bato.to/comics/2017/06/29/s/read595478492595d',
+          trans: 'Vexed',
+          let: 'nijuu'
+        }
+      }
     },
     'Prunus Girl' :    {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Boku wa Tomodachi ga Sukunai' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Tasogare Otome x Amnesia' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Natsu no Zenjitsu' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Chimoguri Ringo to Kingyobachi Otoko' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Ashita Dorobou' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Benten Rock Yuu.' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Boku ni Koisuru Mechanical' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Choku!' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Dekoboko Girlish' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Hajiotsu.' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Gisèle Alain' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Himawari' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Kekkon Yubiwa Monogatari' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Gonensei' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Hitogatana' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Yume Midokoro (oneshot)' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Ga-rei' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Hakoiri Drops' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Straw' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Paradox Blue' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'O/A' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Nonscale' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Nejimakiboshi to Aoi Sora' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Tetsugaku Letra' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Tokyo ESP' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Taiyou no Ie' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Mardock Scramble' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Yume Tsukai' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Oh, my sweet alien!' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Amaama to Inazuma' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Ashita wa Kyouso-sama (oneshot)' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Flying Witch (oneshot)' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Futari no Renai Shoka' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Gingitsune' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Hero Mask' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Kiniro Mosaic' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
     'Jigokuren - LOVE in the HELL' :     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
     '18 Rin': {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },      
       'Katsute Kami Datta Kemonotachi e' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Ookami Kodomo no Ame to Yuki' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
       'Sore ga Kanojo no Seigi nara' : 
     {
-      rel: [],
+      rel: [
+        {
+          date: new Date('Jul 09 2017 GMT-0800')
+        }
+      ],
       ch: {}
     },
   }

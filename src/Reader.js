@@ -83,12 +83,24 @@ class Reader extends React.Component {
 
   handleLeftError() {
     console.log('error')
-    this.setState({leftPgType: 'jpg'});
+    this.setState((prevState => {
+      if (prevState.leftPgType === 'jpg') {
+        prevState.leftPgType = 'jpeg';
+      } else {
+        prevState.leftPgType = 'jpg';
+      }
+    }));
   }
 
   handleRightError() {
     console.log('error')
-    this.setState({rightPgType: 'jpg'});
+    this.setState((prevState => {
+      if (prevState.rightPgType === 'jpg') {
+        prevState.rightPgType = 'jpeg';
+      } else {
+        prevState.rightPgType = 'jpg';
+      }
+    }));
   }
 
   handlePages(e) {
@@ -143,7 +155,8 @@ class Reader extends React.Component {
             <div className='chapterEnds'>
               <small>YOU ARE READING</small>
               <h1>{this.state.selection}</h1>
-              <h3>CHAPTER {this.state.chapter}</h3>
+              <br />
+              <h3>Chapter {this.state.chapter}</h3>
               <br />
               <br />
               <small>TRANSLATED BY</small>

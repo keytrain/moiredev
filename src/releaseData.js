@@ -1,29 +1,31 @@
+import chData from './chapterData';
+
 export default {
      list: [
       {
         cover:'img/cover/kan.jpg',
         title:'Kannou Sensei',
-        updated: new Date('Jun 25 2017 07:47:00 GMT-0800'),
+        updated: chData.series['Kannou Sensei'].rel[0].date
       },
       {
         cover:'img/cover/mah.jpg',
         title:'Mahoromi',
-        updated: new Date('Jun 13 2017 07:47:00 GMT-0800'),
+        updated: chData.series['Mahoromi'].rel[0].date
       },
       {
         cover:'img/cover/spo.jpg',
         title:'Spotted Flower',
-        updated: new Date('Jun 06 2017 GMT-0800'),
+        updated: chData.series['Spotted Flower'].rel[0].date
       }, 
       {
         cover:'img/cover/yome.jpg',
         title:'Mahoutsukai no Yome',
-        updated: new Date('Jun 16 2017 01:15:00 GMT-0800'),
+        updated: chData.series['Mahoutsukai no Yome'].rel[0].date
       },
       {
         cover:'img/cover/vamp.jpg',
         title:'Seifuku no Vampiress Lord',
-        updated: new Date('Jun 13 2017 23:31:00 GMT-0800'),
+        updated: chData.series['Seifuku no Vampiress Lord'].rel[0].date
       }, 
       {
         cover:'img/cover/prunus.jpg',

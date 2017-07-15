@@ -20,6 +20,8 @@
       width:100%;
       height:auto;
       text-align:right;
+      background-color:#fff;
+      padding:0.5rem 0;
     }
     .pages:hover {
       cursor: pointer;
