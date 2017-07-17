@@ -35,10 +35,20 @@ class Image extends React.Component {
     const container = {
       position: 'relative'
     }
+    const duration = 225;
     const defaultStyle = {
       opacity:0,
-      transition: '225ms ease-in-out',
+      transition: `${duration}ms ease-in-out`,
       verticalAlign: 'top'
+    }
+    const defaultLoaderStyle ={
+      animation: 'spin 500ms linear infinite',
+      position: 'absolute',
+      left: '50%',
+      top: '50%',
+      transform: 'translate(-50%, -50%)',
+      color: '#333',
+      transition: `opacity ${duration}ms ease-in-out`,
     }
     return (
       <div className={this.props.containerClass} style={container}>
@@ -52,12 +62,7 @@ class Image extends React.Component {
         onError={this.handleImageError} />
         {this.state.loader &&
         <MdToys size={24} style={{
-          animation: 'spin 2s linear infinite',
-          position: 'absolute',
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          color: '#333'
+          ...defaultLoaderStyle
         }} />}
       </div>
     );

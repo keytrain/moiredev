@@ -38,7 +38,7 @@ function SeriesModal(props) {
         <div className='modal-right'>
           <div className='modal-text'>
             <h3>{selection}</h3>
-            <h5>By {selInfo.author}</h5>
+            <p>By {selInfo.author}</p>
             {selInfo.synopsis.map((e, index) => 
               <p key={index}>{e}</p>
             )}

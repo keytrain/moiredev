@@ -12,7 +12,7 @@ export default {
     },
     'Kannou Sensei' : {
       cover: ['./img/cover/kan/1.jpg'],
-      synopsis: [],
+      synopsis: ["Narumi Rokurou is still adrift in life in his forties, unmarried, and working as an editor at a publishing company while writing hardly lucrative literary fiction. His days enjoying life at his own pace are brought to an end one summer night, when a strange twist of fate brings Rokurou together with a mysterious beauty, beginning the story of their crazed love.", "As once was spoken by Zarathustra: \"Everything in a woman is a riddle.\""],
       author: 'Yoshida Motoi'
     },
     'Mahoutsukai no Yome' : {

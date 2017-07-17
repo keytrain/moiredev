@@ -61,6 +61,16 @@ class Page extends React.Component {
         opacity: 0
       }
     }
+    const defaultLoaderStyle ={
+      animation: 'spin 500ms linear infinite',
+      position: 'absolute',
+      left: '50%',
+      top: '50%',
+      transform: 'translate(-50%, -50%)',
+      color: '#333',
+      transition: `opacity ${duration}ms ease-in-out`,
+      opacity: 0
+    }
     return (
       <div className={this.props.containerClass} style={container}>
         <Transition in={this.props.show} timeout={duration} key={this.props.src}>
@@ -76,15 +86,14 @@ class Page extends React.Component {
             onError={this.handleImageError} />
           )}
         </Transition>
-        {!this.props.show &&
-        <MdToys size={30} style={{
-          animation: 'spin 2s linear infinite',
-          position: 'absolute',
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          color: '#333'
-        }} />}
+        <Transition in={!this.props.show} timeout={duration}>
+          {(state) => (
+            <MdToys size={30} style={{
+              ...defaultLoaderStyle,
+              ...transitionStyles[state]
+            }} />
+          )}
+        </Transition>
       </div>
     );
   }

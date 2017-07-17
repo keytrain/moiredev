@@ -62,13 +62,10 @@ class Reader extends React.Component {
   }
 
   handleLeftLoaded() {
-    console.log('loaded')
     this.setState({leftShow: true});
   }
 
   handleRightLoaded(imgObj) {
-    console.log('loaded')
-
     let nextPg = parseInt(this.props.match.params.page,10)-1;
     // if not a spread, go back another page
     if (!imgObj.spread && this.state.goBack) {
@@ -86,7 +83,7 @@ class Reader extends React.Component {
     this.setState((prevState => {
       if (prevState.leftPgType === 'jpg') {
         prevState.leftPgType = 'jpeg';
-      } else {
+      } else if (prevState.leftPgType === 'png') {
         prevState.leftPgType = 'jpg';
       }
     }));
@@ -97,7 +94,7 @@ class Reader extends React.Component {
     this.setState((prevState => {
       if (prevState.rightPgType === 'jpg') {
         prevState.rightPgType = 'jpeg';
-      } else {
+      } else if (prevState.rightPgType === 'png') {
         prevState.rightPgType = 'jpg';
       }
     }));

@@ -33,11 +33,20 @@ export default {
     'Kannou Sensei' : {
       rel: [
         {
+          chapter: 1,
+          date: new Date('Jul 16 2017 GMT-0800')
+        },
+        {
           chapter: 0,
           date: new Date('Jul 10 2017 GMT-0800')
         }
       ],
       ch: {
+        '1': {
+          src: 'http://img.bato.to/comics/2017/07/17/k/read596c45a82e3c1',
+          trans: 'Haremless',
+          let: 'cranon'
+        },
         '0': {
           src: 'http://img.bato.to/comics/2017/07/10/k/read5963221dbd4e5',
           trans: 'Haremless',
