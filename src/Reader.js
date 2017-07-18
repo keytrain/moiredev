@@ -24,7 +24,6 @@ class Reader extends React.Component {
       rightPgCount: '000000',
       rightPgType: 'png',
       rightShow: false,
-      rightPgLoaded: false,
       spread: false,
       goBack: false
     }
@@ -42,6 +41,9 @@ class Reader extends React.Component {
     this.unlisten = this.props.history.listen((location, action) => {
       this.loadPages(location.pathname.split(/(.+)\//)[2]);
     });
+    // start the buffer function
+    // function is passed the url and how many pages to buffer
+    // function is a loop, programmatically creating and loading images
   }
 
   componentWillUnmount() {
@@ -53,7 +55,6 @@ class Reader extends React.Component {
       prevState.rightPgCount = genLib.padZero(page);
       prevState.rightPgType = 'png';
       prevState.rightShow = false;
-      prevState.rightPgLoaded= false;
       prevState.leftPgCount = genLib.padZero('' + (parseInt(page, 10)+1));
       prevState.leftPgType = 'png';
       prevState.leftShow = false;
@@ -74,7 +75,7 @@ class Reader extends React.Component {
       });
       this.setState({goBack:false});
     } else {
-      this.setState({rightShow: true, rightPgLoaded: true, spread: imgObj.spread});
+      this.setState({rightShow: true, spread: imgObj.spread});
     }
   }
 
@@ -134,7 +135,7 @@ class Reader extends React.Component {
 
           <div className='pages' onClick={this.handlePages}>
 
-            {((!this.state.spread && this.state.rightPgLoaded) || currPg === '0') &&
+            {((!this.state.spread && this.state.rightShow) || currPg === '0') &&
             <Page containerClass={'pgContainer'} imgClass={'leftPg'} 
             src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
             loaded={this.handleLeftLoaded} 
@@ -172,6 +173,9 @@ class Reader extends React.Component {
             }
           </div>
 
+        
+        <div className='controls'>
+        </div>
         </div>
       </div>
     );

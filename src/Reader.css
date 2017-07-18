@@ -14,6 +14,7 @@
     right:0;
     top:0;
     overflow-y:auto;
+    margin-bottom:3rem;
   }
 
     .pages {
@@ -49,6 +50,16 @@
         vertical-align: middle;
         text-align:center;
       }
+
+    .controls {
+      bottom:0;
+      height:3rem;
+      right:0;
+      left:0;
+      background-color:#eee;
+      position:fixed;
+      z-index:4;
+    }
 
 @media screen and (min-width: 668px) {
 
