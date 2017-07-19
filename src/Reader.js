@@ -6,7 +6,6 @@ import Page from './Page';
 import genLib from './generalLibrary';
 
 // TODO:
-// Buffering
 // Chapter end detection
 // Disqus
 // Settings
@@ -33,6 +32,7 @@ class Reader extends React.Component {
     this.handleLeftLoaded = this.handleLeftLoaded.bind(this);
     this.handlePages = this.handlePages.bind(this);
     this.loadPages = this.loadPages.bind(this);
+    this.buffer = this.buffer.bind(this);
   }
 
   componentWillMount() {
@@ -41,12 +41,10 @@ class Reader extends React.Component {
     this.unlisten = this.props.history.listen((location, action) => {
       this.loadPages(location.pathname.split(/(.+)\//)[2]);
     });
-    // start the buffer function
-    // function is passed the url and how many pages to buffer
-    // function is a loop, programmatically creating and loading images
   }
 
   componentWillUnmount() {
+    // removes the listener on browser routing
     this.unlisten();
   }
 
@@ -55,15 +53,31 @@ class Reader extends React.Component {
       prevState.rightPgCount = genLib.padZero(page);
       prevState.rightPgType = 'png';
       prevState.rightShow = false;
-      prevState.leftPgCount = genLib.padZero('' + (parseInt(page, 10)+1));
+      prevState.leftPgCount = genLib.padZero('' + (parseInt(page, 10) + 1));
       prevState.leftPgType = 'png';
       prevState.leftShow = false;
       prevState.spread = false;
     })
   }
 
+  buffer(size) {
+    let chapterObj = cData.series[this.state.selection].ch[this.state.chapter];
+    const buffer = new Image();
+    const buffer2 = new Image();
+    let originPg = this.state.leftPgCount;
+
+    buffer.onload = function() {
+      console.log('buffer image loaded')
+    }
+    let nextPg = genLib.padZero('' + (parseInt(originPg, 10) + 1));
+    buffer.src=`${chapterObj.src}/img${nextPg}.${this.state.leftPgType}`;
+    nextPg = genLib.padZero('' + (parseInt(originPg, 10) + 2));
+    buffer2.src=`${chapterObj.src}/img${nextPg}.${'png'}`;
+  }
+
   handleLeftLoaded() {
     this.setState({leftShow: true});
+    this.buffer(1);
   }
 
   handleRightLoaded(imgObj) {
@@ -135,7 +149,7 @@ class Reader extends React.Component {
 
           <div className='pages' onClick={this.handlePages}>
 
-            {((!this.state.spread && this.state.rightShow) || currPg === '0') &&
+            {((!this.state.spread) || currPg === '0') &&
             <Page containerClass={'pgContainer'} imgClass={'leftPg'} 
             src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
             loaded={this.handleLeftLoaded} 
