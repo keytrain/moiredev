@@ -8,7 +8,7 @@
 
 # production
 /build
-/public
+/public/img/cover/#reference
 
 # misc
 .DS_Store

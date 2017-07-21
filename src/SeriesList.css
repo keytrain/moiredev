@@ -28,11 +28,13 @@
           /*border: 1px solid #dadada;*/
           width: calc(100%/3 - 0.2rem);
           position:relative;
-          transition: 125ms ease-in-out;
+          transition: 65ms ease-in-out;
         }
         .sitem:hover {
           cursor:pointer;
-          opacity:0.5;
+          /* opacity:0.5; */
+          margin-top:-0.1px;
+          box-shadow: 0 5px 20px 0 #bbb;
         }
           .sitem-img {
             width:100%;

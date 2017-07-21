@@ -9,6 +9,9 @@ import genLib from './generalLibrary';
 // Chapter end detection
 // Disqus
 // Settings
+// two bugs
+// - backpage doesn't work when the image hasn't loaded yet, because it can't tell if it's a spread
+// - if you're loading two pages at once, spread detection can't tell until the spread is finished downloading.
 
 class Reader extends React.Component {
   constructor(props) {
