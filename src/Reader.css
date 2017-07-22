@@ -14,7 +14,6 @@
     right:0;
     top:0;
     overflow-y:auto;
-    margin-bottom:3rem;
   }
 
     .pages {
@@ -52,14 +51,19 @@
       }
 
     .controls {
-      bottom:0;
-      height:3rem;
-      right:0;
-      left:0;
-      background-color:#eee;
-      position:fixed;
-      z-index:4;
+      width:100%;
+      padding:0.5rem;
     }
+      .ctrl-left {
+        display:inline-block;
+        width:50%;
+        text-align:left;
+      }
+      .ctrl-right {
+        display:inline-block;
+        width:50%;
+        text-align:right;
+      }
 
 @media screen and (min-width: 668px) {
 

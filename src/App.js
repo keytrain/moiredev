@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import {
-    HashRouter as Router,
-    Route
-} from 'react-router-dom';
 import './App.css';
 import logo from './logoB.png';
+import { Route } from 'react-router-dom';
 import data from './releaseData';
 import SeriesList from './SeriesList';
 import SeriesModal from './SeriesModal';
@@ -142,45 +139,42 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div>
-          {/*<Route path='/r/:series/:chapter' component={Reader} />*/}
+      <div>
         <Route path='/r/:series' component={SeriesModal} />
-          <nav>
-            <div className='nav-container'>
-              <div className='logo-container'>
-                <img src={logo} className='logo' alt='logo' />
-              </div>
-              <h4 className='tagline'>
-                Manga we liked, so we translated.
-              </h4>
+        <nav>
+          <div className='nav-container'>
+            <div className='logo-container'>
+              <img src={logo} className='logo' alt='logo' />
             </div>
-          </nav>
-          <div className='wrapper'>
-            <div className='serieslist-container'>
-              <div className='serieslist'>
-                {/*<div className='filter-container'>
-                  <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Current</button> 
-                  <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Complete</button> 
-                  <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} value='Dropped' onClick={this.handleFilter}>Dropped</button> 
-                  <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} value='All' onClick={this.handleFilter}>All</button>
-                  |
-                  <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Date</button> 
-                  <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Likes</button> 
-                </div>*/}
-                <SeriesList title='Current Series'
-                  handler={this.handleSeriesItem}
-                  list={this.state.data.filter((e) => {
-                      return true;
-                  })} />
-              </div>
+            <h4 className='tagline'>
+              Manga we liked, so we translated.
+            </h4>
+          </div>
+        </nav>
+        <div className='wrapper'>
+          <div className='serieslist-container'>
+            <div className='serieslist'>
+              {/*<div className='filter-container'>
+                <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Current</button> 
+                <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Complete</button> 
+                <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} value='Dropped' onClick={this.handleFilter}>Dropped</button> 
+                <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} value='All' onClick={this.handleFilter}>All</button>
+                |
+                <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Date</button> 
+                <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Likes</button> 
+              </div>*/}
+              <SeriesList title='Current Series'
+                handler={this.handleSeriesItem}
+                list={this.state.data.filter((e) => {
+                    return true;
+                })} />
             </div>
           </div>
-          {/*<footer>
-            Footer here!
-          </footer>*/}
         </div>
-      </Router>
+        {/*<footer>
+          Footer here!
+        </footer>*/}
+      </div>
     );
   }
 }

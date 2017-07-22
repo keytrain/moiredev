@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Image from './Image';
-import Reader from './Reader';
 import sData from './seriesData';
 import cData from './chapterData';
 import genLib from './generalLibrary';
@@ -30,7 +29,6 @@ function SeriesModal(props) {
 
   return (
     <div>
-      <Route path='/r/:series/:chapter/:page' component={Reader} />
       <div className='modal'>
       {selInfo.cover &&
         <Image containerClass={'modal-img-container'} src={selInfo.cover[0]} alt='cover' />
