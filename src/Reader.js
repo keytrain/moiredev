@@ -3,7 +3,6 @@ import './Reader.css';
 import cData from './chapterData';
 import Page from './Page';
 // import Image from './Image';
-import { Link } from 'react-router-dom';
 import genLib from './generalLibrary';
 
 // TODO:
@@ -57,7 +56,7 @@ class Reader extends React.Component {
       prevState.rightPgCount = genLib.padZero(page);
       prevState.rightPgType = 'png';
       prevState.rightShow = false;
-      prevState.leftPgCount = genLib.padZero(String(Number(page) + 1));
+      prevState.leftPgCount = genLib.padZero('' + (parseInt(page, 10) + 1));
       prevState.leftPgType = 'png';
       prevState.leftShow = false;
       prevState.spread = false;
@@ -73,9 +72,9 @@ class Reader extends React.Component {
     buffer.onload = function() {
       console.log('buffer image loaded')
     }
-    let nextPg = genLib.padZero(String(Number(originPg) + 1));
+    let nextPg = genLib.padZero('' + (parseInt(originPg, 10) + 1));
     buffer.src=`${chapterObj.src}/img${nextPg}.${this.state.leftPgType}`;
-    nextPg = genLib.padZero(String(Number(originPg) + 2));
+    nextPg = genLib.padZero('' + (parseInt(originPg, 10) + 2));
     buffer2.src=`${chapterObj.src}/img${nextPg}.${'png'}`;
   }
 
@@ -85,7 +84,7 @@ class Reader extends React.Component {
   }
 
   handleRightLoaded(imgObj) {
-    let nextPg = Number(this.props.match.params.page)-1;
+    let nextPg = parseInt(this.props.match.params.page,10)-1;
     // if not a spread, go back another page
     if (!imgObj.spread && this.state.goBack) {
       this.props.history.push({
@@ -129,11 +128,11 @@ class Reader extends React.Component {
     let currPg = this.props.match.params.page;
     let nextPg;
     if (clickLoc < midPoint) {
-      nextPg = Number(currPg) + (this.state.spread ? 1 : 2);
+      nextPg = parseInt(currPg, 10) + (this.state.spread ? 1 : 2);
       this.setState({goBack: false});
     }
     else if (clickLoc > midPoint) {
-      nextPg = Number(currPg) - 1;
+      nextPg = parseInt(currPg, 10) - 1;
       this.setState({goBack: true});
     }
     if (nextPg > -1) {
@@ -149,18 +148,8 @@ class Reader extends React.Component {
 
     return (
       <div className='reader-container'>
-                
-
         <div className='reader'>
-          <div className='controls'>
-            <div className='ctrl-left'>
-              <button>settings</button>
-              <button>disqus</button>
-            </div>
-            <div className='ctrl-right'>
-              <Link to={`/r/${this.state.selection}`}><button>X</button></Link>
-            </div>
-          </div>
+
           <div className='pages' onClick={this.handlePages}>
 
             {((!this.state.spread) || currPg === '0') &&
@@ -199,8 +188,11 @@ class Reader extends React.Component {
               }
             </div>
             }
-
           </div>
+
+        
+        <div className='controls'>
+        </div>
         </div>
       </div>
     );

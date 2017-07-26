@@ -60,10 +60,10 @@ class Image extends React.Component {
         src={this.props.src} alt={this.props.alt} 
         onLoad={this.handleImageLoaded} 
         onError={this.handleImageError} />
-        {this.state.loader &&
+        {/* {this.state.loader &&
         <MdToys size={24} style={{
           ...defaultLoaderStyle
-        }} />}
+        }} />} */}
       </div>
     );
   }
