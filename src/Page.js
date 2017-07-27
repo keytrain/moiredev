@@ -7,10 +7,13 @@ class Page extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      firstTimeLoad: true
     }
 
     this.handleImageError = this.handleImageError.bind(this);
     this.handleImageLoaded = this.handleImageLoaded.bind(this);
+
+    this.checkSpread = this.checkSpread.bind(this);
   }
 
   handleImageLoaded() {
@@ -26,6 +29,25 @@ class Page extends React.Component {
   handleImageError() {
     if (typeof this.props.error === 'function') {
       this.props.error();
+    }
+  }
+
+  checkSpread() {
+    // if i've nabbed the width already, don't run this again
+    if (this.props.imgWidth === 0) {
+      let checkSpread = setInterval(() => {
+        if (this.img === null || this.img.complete) {
+          clearInterval(checkSpread);
+        } else if (this.img.naturalWidth !== 0) {
+          // naturalWidth is 0 when image metadata hasn't loaded yet
+          if (this.img.naturalWidth > 1300) {
+            this.props.loaded({spread:true, width: this.img.naturalWidth});
+          } else {
+            this.props.loaded({spread:false, width: this.img.naturalWidth});
+          }
+          clearInterval(checkSpread);
+        }
+      }, 200);
     }
   }
 
@@ -53,6 +75,9 @@ class Page extends React.Component {
         opacity: 0
       }
     }
+    
+    this.checkSpread();
+
     return (
       <div className={this.props.containerClass} style={container}>
         <Transition in={this.props.show} timeout={duration} key={this.props.src}>

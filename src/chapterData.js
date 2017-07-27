@@ -487,15 +487,6 @@ export default {
       ],
       ch: {}
     },
-      'Ookami Kodomo no Ame to Yuki' : 
-    {
-      rel: [
-        {
-          date: new Date('Jul 09 2017 GMT-0800')
-        }
-      ],
-      ch: {}
-    },
       'Sore ga Kanojo no Seigi nara' : 
     {
       rel: [

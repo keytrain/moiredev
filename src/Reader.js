@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Reader.css';
 import cData from './chapterData';
 import Page from './Page';
@@ -9,9 +10,6 @@ import genLib from './generalLibrary';
 // Chapter end detection
 // Disqus
 // Settings
-// two bugs
-// - backpage doesn't work when the image hasn't loaded yet, because it can't tell if it's a spread
-// - if you're loading two pages at once, spread detection can't tell until the spread is finished downloading.
 
 class Reader extends React.Component {
   constructor(props) {
@@ -23,8 +21,10 @@ class Reader extends React.Component {
       leftPgCount: '000001',
       leftPgType: 'png',
       leftShow: false,
+      leftWidth: 0,
       rightPgCount: '000000',
       rightPgType: 'png',
+      rightWidth: 0,
       rightShow: false,
       spread: false,
       goBack: false
@@ -55,12 +55,20 @@ class Reader extends React.Component {
     this.setState((prevState) => {
       prevState.rightPgCount = genLib.padZero(page);
       prevState.rightPgType = 'png';
+      prevState.leftWidth = 0;
       prevState.rightShow = false;
       prevState.leftPgCount = genLib.padZero('' + (parseInt(page, 10) + 1));
       prevState.leftPgType = 'png';
+      prevState.rightWidth = 0;
       prevState.leftShow = false;
       prevState.spread = false;
     })
+    setTimeout(()=> {
+      this.setState((prevState) => {
+        prevState.rightShow = true;
+        prevState.leftShow = true;
+      })
+    }, 300)
   }
 
   buffer(size) {
@@ -79,20 +87,21 @@ class Reader extends React.Component {
   }
 
   handleLeftLoaded() {
-    this.setState({leftShow: true});
+    console.log('left')
     this.buffer(1);
   }
 
   handleRightLoaded(imgObj) {
+    console.log('right')
     let nextPg = parseInt(this.props.match.params.page,10)-1;
     // if not a spread, go back another page
     if (!imgObj.spread && this.state.goBack) {
       this.props.history.push({
         pathname: `/r/${this.state.selection}/${this.state.chapter}/${nextPg}`
       });
-      this.setState({goBack:false});
+      this.setState({goBack:false, rightWidth: imgObj.width});
     } else {
-      this.setState({rightShow: true, spread: imgObj.spread});
+      this.setState({spread: imgObj.spread, rightWidth: imgObj.width});
     }
   }
 
@@ -150,6 +159,16 @@ class Reader extends React.Component {
       <div className='reader-container'>
         <div className='reader'>
 
+          <div className='controls'>
+           <div className='ctrl-left'>
+             <button>settings</button>
+             <button>disqus</button>
+           </div>
+           <div className='ctrl-right'>
+             <Link to={`/r/${this.state.selection}`}><button>X</button></Link>
+           </div>
+           </div>
+
           <div className='pages' onClick={this.handlePages}>
 
             {((!this.state.spread) || currPg === '0') &&
@@ -157,7 +176,8 @@ class Reader extends React.Component {
             src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
             loaded={this.handleLeftLoaded} 
             error={this.handleLeftError}
-            show={this.state.leftShow} />
+            show={this.state.leftShow}
+            imgWidth={this.state.leftWidth} />
             }
 
             {currPg > '0' ?
@@ -165,7 +185,8 @@ class Reader extends React.Component {
               src={`${chapterObj.src}/img${this.state.rightPgCount}.${this.state.rightPgType}`} 
               loaded={this.handleRightLoaded} 
               error={this.handleRightError}
-              show={this.state.rightShow} />
+              show={this.state.rightShow}
+              imgWidth={this.state.rightWidth} />
             :
             <div className='chapterEnds'>
               <small>YOU ARE READING</small>
@@ -189,10 +210,7 @@ class Reader extends React.Component {
             </div>
             }
           </div>
-
-        
-        <div className='controls'>
-        </div>
+          
         </div>
       </div>
     );

@@ -225,11 +225,6 @@ export default {
       synopsis: [],
       author: ''
     },
-    'Ookami Kodomo no Ame to Yuki' : {
-      cover: ['./img/cover/yome/7.jpg'],
-      synopsis: [],
-      author: ''
-    },
     'Sore ga Kanojo no Seigi nara' : {
       cover: ['./img/cover/yome/7.jpg'],
       synopsis: [],

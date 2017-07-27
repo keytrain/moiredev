@@ -163,10 +163,27 @@ class App extends Component {
                 <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Date</button> 
                 <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Likes</button> 
               </div>*/}
-              <SeriesList title='Current Series'
+              {/* <SeriesList title='Current Series'
                 handler={this.handleSeriesItem}
                 list={this.state.data.filter((e) => {
                     return true;
+                })} /> */}
+              <SeriesList title='Ongoing'
+                handler={this.handleSeriesItem}
+                list={this.state.data.filter((e) => {
+                  if (e.completed === undefined)
+                    return true;
+                  else return false;
+                })} />
+              <SeriesList title='Complete'
+                handler={this.handleSeriesItem}
+                list={this.state.data.filter((e) => {
+                  return (e.completed !== undefined && e.completed);
+                })} />
+              <SeriesList title='Dropped'
+                handler={this.handleSeriesItem}
+                list={this.state.data.filter((e) => {
+                  return (e.completed !== undefined && !e.completed);
                 })} />
             </div>
           </div>

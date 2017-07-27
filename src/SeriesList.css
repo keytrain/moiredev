@@ -12,29 +12,21 @@
     }
       .slist-category {
         margin:0 -0.1rem;
+        padding: 2rem 0;
       }
         .slist-cat-title {
           padding-left:0.5rem;
-          padding-bottom:0.5rem;
-          font-weight:100;
-          color:#aaa;
+          padding-bottom:1rem;
+          /* font-weight:100; */
           /*text-transform: uppercase;*/
         }
         .sitem {
           display:inline-block;
           vertical-align: top;
-          margin:0.1rem;
           /*box-shadow: 0px 0px 5px 0 #dadada;*/
           /*border: 1px solid #dadada;*/
           width: calc(100%/3 - 0.2rem);
           position:relative;
-          transition: 65ms ease-in-out;
-        }
-        .sitem:hover {
-          cursor:pointer;
-          /* opacity:0.5; */
-          margin-top:-0.1px;
-          box-shadow: 0 5px 20px 0 #bbb;
         }
           .sitem-img {
             width:100%;
@@ -44,23 +36,23 @@
             margin:0;
             background-color:#fafafa;
             vertical-align: top;
+            border-radius:3px;
           }
           .sitem-text {
-
-            text-align: center;
-            color:#fff;
+            padding:0.5rem 0.5rem;
           }
             .sitem-title {
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis;
+              color:#333;
               line-height:1.2;
             }
             .sitem-status, .sitem-date {
-              position:absolute;
-              font-size:0.833rem;
-              background-color: rgba(0,0,0,0.4);
-              padding: 0.1rem 0.3rem;
+              font-size:0.833rem;  
+              color:#bbb;
+              /* background-color: rgba(0,0,0,0.4); */
+              /* padding: 0.1rem 0.3rem; */
               /*border-radius: 3px;*/
             }
             .sitem-status {
@@ -82,6 +74,18 @@
   .sitem {
     margin:0.5rem;
     width: calc(100%/5 - 1rem);
+  }
+    .sitem-text {
+      padding:0.4rem 0;
+    }
+  .sitem-img-container {
+    transition: 65ms ease-in-out;    
+  }
+  .sitem-img-container:hover {
+    cursor:pointer;
+    margin-top:-5px;
+    margin-bottom:5px;
+    box-shadow: 0 5px 20px 0 #bbb;
   }
 }
 

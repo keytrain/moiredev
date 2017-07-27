@@ -17,7 +17,8 @@ nav {
   }
     .logo {
       vertical-align: top;
-      width:8rem;
+      height:auto;
+      width:6rem;
     }
   .tagline {
     margin-top:1rem;

@@ -268,12 +268,6 @@ export default {
         completed:false
       },
       {
-        cover:'img/cover/ookami.jpg',
-        title:'Ookami Kodomo no Ame to Yuki',
-        updated: new Date('Sep 28 2012 GMT-0800'),
-        completed:false
-      },
-      {
         cover:'img/cover/seigi.jpg',
         title:'Sore ga Kanojo no Seigi nara',
         updated: new Date('Jul 01 2011 GMT-0800'),
