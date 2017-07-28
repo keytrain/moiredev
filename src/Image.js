@@ -1,5 +1,5 @@
 import React from 'react';
-import MdToys from 'react-icons/lib/md/toys';
+// import MdToys from 'react-icons/lib/md/toys';
 
 class Image extends React.Component {
   constructor(props) {
@@ -35,21 +35,21 @@ class Image extends React.Component {
     const container = {
       position: 'relative'
     }
-    const duration = 225;
+    const duration = 625;
     const defaultStyle = {
       opacity:0,
-      transition: `${duration}ms ease-in-out`,
+      transition: `${duration}ms ease-out`,
       verticalAlign: 'top'
     }
-    const defaultLoaderStyle ={
-      animation: 'spin 500ms linear infinite',
-      position: 'absolute',
-      left: '50%',
-      top: '50%',
-      transform: 'translate(-50%, -50%)',
-      color: '#333',
-      transition: `opacity ${duration}ms ease-in-out`,
-    }
+    // const defaultLoaderStyle ={
+    //   animation: 'spin 500ms linear infinite',
+    //   position: 'absolute',
+    //   left: '50%',
+    //   top: '50%',
+    //   transform: 'translate(-50%, -50%)',
+    //   color: '#333',
+    //   transition: `opacity ${duration}ms ease-in-out`,
+    // }
     return (
       <div className={this.props.containerClass} style={container}>
         <img className={this.props.imgClass} 

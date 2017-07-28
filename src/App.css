@@ -18,10 +18,10 @@ nav {
     .logo {
       vertical-align: top;
       height:auto;
-      width:6rem;
+      width:8rem;
     }
   .tagline {
-    margin-top:1rem;
+     margin-top:1rem; 
     color: #aaa;
     font-weight:300;
   }
@@ -43,7 +43,7 @@ nav {
   .wrapper, .nav-container {
     max-width:1440px;
   }
-  .nav-container {
+  /* .nav-container {
     text-align: left;
   }
     .logo-container {
@@ -57,7 +57,8 @@ nav {
       vertical-align: middle;
       padding-left:2rem;
       border-left: 1px solid #ddd;
-    }
+     margin-top:0; 
+    } */
 
   .filter-container {
     text-align: left;

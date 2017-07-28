@@ -175,11 +175,13 @@ class App extends Component {
                     return true;
                   else return false;
                 })} />
+                <hr />
               <SeriesList title='Complete'
                 handler={this.handleSeriesItem}
                 list={this.state.data.filter((e) => {
                   return (e.completed !== undefined && e.completed);
                 })} />
+                <hr />
               <SeriesList title='Dropped'
                 handler={this.handleSeriesItem}
                 list={this.state.data.filter((e) => {

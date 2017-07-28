@@ -7,7 +7,10 @@ import Page from './Page';
 import genLib from './generalLibrary';
 
 // TODO:
+// optimize spread checking
+// make buffer function scalable
 // Chapter end detection
+// chapter end page
 // Disqus
 // Settings
 
@@ -52,6 +55,7 @@ class Reader extends React.Component {
   }
 
   loadPages(page) {
+    window.scrollTo(0,0);
     this.setState((prevState) => {
       prevState.rightPgCount = genLib.padZero(page);
       prevState.rightPgType = 'png';
