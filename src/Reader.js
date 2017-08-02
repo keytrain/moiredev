@@ -77,22 +77,29 @@ class Reader extends React.Component {
 
   buffer(size) {
     let chapterObj = cData.series[this.state.selection].ch[this.state.chapter];
-    const buffer = new Image();
-    const buffer2 = new Image();
     let originPg = this.state.leftPgCount;
 
-    buffer.onload = function() {
-      console.log('buffer image loaded')
+    for (let i=0; i < size; i++) {
+      const bufferImg = new Image();
+      console.log(i);
+      let nextPg = genLib.padZero('' + (parseInt(originPg, 10) + i + 1));
+      let bufferImgType = 'png'
+      bufferImg.error = function() {
+        if (bufferImgType === 'jpg') {
+          bufferImgType = 'jpeg';
+          bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
+        } else if (bufferImgType === 'png') {
+          bufferImgType = 'jpg';
+          bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
+        }
+      }
+      bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
     }
-    let nextPg = genLib.padZero('' + (parseInt(originPg, 10) + 1));
-    buffer.src=`${chapterObj.src}/img${nextPg}.${this.state.leftPgType}`;
-    nextPg = genLib.padZero('' + (parseInt(originPg, 10) + 2));
-    buffer2.src=`${chapterObj.src}/img${nextPg}.${'png'}`;
   }
 
   handleLeftLoaded() {
     console.log('left')
-    this.buffer(1);
+    this.buffer(4);
   }
 
   handleRightLoaded(imgObj) {
