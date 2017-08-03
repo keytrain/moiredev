@@ -22,7 +22,8 @@
       height:auto;
       text-align:right;
       background-color:#fff;
-      padding:0.5rem 0;
+      padding:0rem 0;
+       box-shadow: 0 0 20px 0 #e1e1e1; 
     }
     .pages:hover {
       cursor: pointer;

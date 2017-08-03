@@ -25,9 +25,9 @@ function SeriesList(props) {
             <div className='sitem-title'>{e.title}</div>
             {/*<div className='sitem-status'>{e.completed === undefined ? 'Ongoing' : (e.completed ? 'Completed' : 'Dropped')}</div>*/}
             {e.completed === undefined ?
-            <div className='sitem-date'>{genLib.howLongAgo(chData.series[e.title].rel[0].date)} ago</div>
+            <div className='sitem-date'>Updated {genLib.howLongAgo(chData.series[e.title].rel[0].date)} ago</div>
             :
-            <div className='sitem-date'>{genLib.howLongAgo(e.updated)} ago</div>              
+            <div className='sitem-date'>Updated {genLib.howLongAgo(e.updated)} ago</div>              
             }
           </div>
         </div>

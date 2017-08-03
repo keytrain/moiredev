@@ -75,6 +75,7 @@ button {
   opacity:1;
   background-color:#eee;
   border-radius: 4px;
+  margin: 0 0.5rem;
 }
 button:focus {
 }

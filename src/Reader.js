@@ -8,7 +8,9 @@ import genLib from './generalLibrary';
 
 // TODO:
 // optimize spread checking
+  // try using loadstart
 // make buffer function scalable
+  // needs error support
 // Chapter end detection
 // chapter end page
 // Disqus
@@ -39,6 +41,7 @@ class Reader extends React.Component {
     this.handlePages = this.handlePages.bind(this);
     this.loadPages = this.loadPages.bind(this);
     this.buffer = this.buffer.bind(this);
+    this.checkAndLoadAltImageTypes = this.checkAndLoadAltImageTypes.bind(this);
   }
 
   componentWillMount() {
@@ -81,9 +84,8 @@ class Reader extends React.Component {
 
     for (let i=0; i < size; i++) {
       const bufferImg = new Image();
-      console.log(i);
       let nextPg = genLib.padZero('' + (parseInt(originPg, 10) + i + 1));
-      let bufferImgType = 'png'
+      let bufferImgType = 'png';
       bufferImg.error = function() {
         if (bufferImgType === 'jpg') {
           bufferImgType = 'jpeg';
@@ -116,26 +118,26 @@ class Reader extends React.Component {
     }
   }
 
-  handleLeftError() {
-    console.log('error')
+  checkAndLoadAltImageTypes(pageType) {
     this.setState((prevState => {
-      if (prevState.leftPgType === 'jpg') {
-        prevState.leftPgType = 'jpeg';
-      } else if (prevState.leftPgType === 'png') {
-        prevState.leftPgType = 'jpg';
+      if (prevState[pageType] === 'jpg') {
+        prevState[pageType] = 'jpeg';
+      } else if (prevState[pageType] === 'png') {
+        prevState[pageType] = 'jpg';
+      } else {
+        // check if the next page is also 
       }
     }));
   }
 
+  handleLeftError() {
+    console.log('error')
+    this.checkAndLoadAltImageTypes('leftPgType');
+  }
+
   handleRightError() {
     console.log('error')
-    this.setState((prevState => {
-      if (prevState.rightPgType === 'jpg') {
-        prevState.rightPgType = 'jpeg';
-      } else if (prevState.rightPgType === 'png') {
-        prevState.rightPgType = 'jpg';
-      }
-    }));
+    this.checkAndLoadAltImageTypes('rightPgType');
   }
 
   handlePages(e) {

@@ -2,6 +2,7 @@ import React from 'react';
 // import Image from './Image';
 import Transition from 'react-transition-group/Transition';
 // import MdToys from 'react-icons/lib/md/toys';
+import './Page.css';
 
 class Page extends React.Component {
   constructor(props) {
@@ -47,19 +48,19 @@ class Page extends React.Component {
           }
           clearInterval(checkSpread);
         }
-      }, 200);
+      }, 100);
     }
   }
 
   render() {
     const container = {
-      position: 'relative'
+      position: 'relative',
     }
     const duration = 625;
     const defaultStyle = {
       opacity:0,
       transition: `opacity ${duration}ms ease-out`,
-      verticalAlign: 'top'
+      verticalAlign: 'top',
     }
     const transitionStyles = {
       entering: {
