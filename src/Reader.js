@@ -8,9 +8,7 @@ import genLib from './generalLibrary';
 
 // TODO:
 // optimize spread checking
-  // try using loadstart
-// make buffer function scalable
-  // needs error support
+// buffer function needs error support
 // Chapter end detection
 // chapter end page
 // Disqus
@@ -20,8 +18,6 @@ class Reader extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selection : this.props.match.params.series,
-      chapter : this.props.match.params.chapter,
       pageMode: localStorage.getItem('pageMode'),
       leftPgCount: '000001',
       leftPgType: 'png',
@@ -32,8 +28,13 @@ class Reader extends React.Component {
       rightWidth: 0,
       rightShow: false,
       spread: false,
-      goBack: false
+      goBack: false,
+      lastPg: false
     }
+
+    this.selection = this.props.match.params.series;
+    this.chapter = this.props.match.params.chapter;
+
     this.handleRightError = this.handleRightError.bind(this);
     this.handleRightLoaded = this.handleRightLoaded.bind(this);
     this.handleLeftError = this.handleLeftError.bind(this);
@@ -79,7 +80,7 @@ class Reader extends React.Component {
   }
 
   buffer(size) {
-    let chapterObj = cData.series[this.state.selection].ch[this.state.chapter];
+    let chapterObj = cData.series[this.selection].ch[this.chapter];
     let originPg = this.state.leftPgCount;
 
     for (let i=0; i < size; i++) {
@@ -110,7 +111,7 @@ class Reader extends React.Component {
     // if not a spread, go back another page
     if (!imgObj.spread && this.state.goBack) {
       this.props.history.push({
-        pathname: `/r/${this.state.selection}/${this.state.chapter}/${nextPg}`
+        pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`
       });
       this.setState({goBack:false, rightWidth: imgObj.width});
     } else {
@@ -125,7 +126,8 @@ class Reader extends React.Component {
       } else if (prevState[pageType] === 'png') {
         prevState[pageType] = 'jpg';
       } else {
-        // check if the next page is also 
+        // check if the next page is also dead
+        // if it is, set this.state.lastPg = true
       }
     }));
   }
@@ -159,13 +161,13 @@ class Reader extends React.Component {
     }
     if (nextPg > -1) {
       this.props.history.push({
-        pathname: `/r/${this.state.selection}/${this.state.chapter}/${nextPg}`
+        pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`
       });
     }
   }
 
   render() {
-    let chapterObj = cData.series[this.state.selection].ch[this.state.chapter];
+    let chapterObj = cData.series[this.selection].ch[this.chapter];
     let currPg = this.props.match.params.page;
 
     return (
@@ -178,7 +180,7 @@ class Reader extends React.Component {
              <button>disqus</button>
            </div>
            <div className='ctrl-right'>
-             <Link to={`/r/${this.state.selection}`}><button>X</button></Link>
+             <Link to={`/r/${this.selection}`}><button>X</button></Link>
            </div>
            </div>
 
@@ -203,9 +205,9 @@ class Reader extends React.Component {
             :
             <div className='chapterEnds'>
               <small>YOU ARE READING</small>
-              <h1>{this.state.selection}</h1>
+              <h1>{this.selection}</h1>
               <br />
-              <h3>Chapter {this.state.chapter}</h3>
+              <h3>Chapter {this.chapter}</h3>
               <br />
               <br />
               <small>TRANSLATED BY</small>
