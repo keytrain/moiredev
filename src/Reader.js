@@ -7,6 +7,7 @@ import Page from './Page';
 import genLib from './generalLibrary';
 
 // TODO:
+// remove the history part of going back 1 page
 // optimize spread checking
 // buffer function needs error support
 // Chapter end detection
@@ -186,7 +187,7 @@ class Reader extends React.Component {
 
           <div className='pages' onClick={this.handlePages}>
 
-            {((!this.state.spread) || currPg === '0') &&
+            {(!this.state.spread || currPg === '0' || !this.state.lastPg) &&
             <Page containerClass={'pgContainer'} imgClass={'leftPg'} 
             src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
             loaded={this.handleLeftLoaded} 

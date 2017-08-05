@@ -2,7 +2,6 @@ import React from 'react';
 // import Image from './Image';
 import Transition from 'react-transition-group/Transition';
 // import MdToys from 'react-icons/lib/md/toys';
-import './Page.css';
 
 class Page extends React.Component {
   constructor(props) {
