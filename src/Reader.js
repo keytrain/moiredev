@@ -11,6 +11,7 @@ import genLib from './generalLibrary';
 // optimize spread checking
 // buffer function needs error support
 // Chapter end detection
+  // move end detection to buffer
 // chapter end page
 // Disqus
 // Settings
@@ -66,7 +67,7 @@ class Reader extends React.Component {
       prevState.rightPgType = 'png';
       prevState.leftWidth = 0;
       prevState.rightShow = false;
-      prevState.leftPgCount = genLib.padZero('' + (parseInt(page, 10) + 1));
+      prevState.leftPgCount = genLib.padZero('' + (Number(page) + 1));
       prevState.leftPgType = 'png';
       prevState.rightWidth = 0;
       prevState.leftShow = false;
@@ -86,9 +87,9 @@ class Reader extends React.Component {
 
     for (let i=0; i < size; i++) {
       const bufferImg = new Image();
-      let nextPg = genLib.padZero('' + (parseInt(originPg, 10) + i + 1));
+      let nextPg = genLib.padZero('' + (Number(originPg) + i + 1));
       let bufferImgType = 'png';
-      bufferImg.error = function() {
+      bufferImg.onerror = function() {
         if (bufferImgType === 'jpg') {
           bufferImgType = 'jpeg';
           bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
@@ -127,8 +128,17 @@ class Reader extends React.Component {
       } else if (prevState[pageType] === 'png') {
         prevState[pageType] = 'jpg';
       } else {
-        // check if the next page is also dead
-        // if it is, set this.state.lastPg = true
+        if (pageType === 'leftPgType') {
+          const img = new Image();
+          let chapterObj = cData.series[this.selection].ch[this.chapter];
+          let nextPg = genLib.padZero('' + (Number(prevState.leftPgCount) + 1));
+
+          img.onerror = function() {
+            prevState.lastPg = Number(prevState.leftPgCount);
+          }
+
+          img.src = `${chapterObj.src}/img${nextPg}.png`;
+        }
       }
     }));
   }
@@ -170,7 +180,6 @@ class Reader extends React.Component {
   render() {
     let chapterObj = cData.series[this.selection].ch[this.chapter];
     let currPg = this.props.match.params.page;
-
     return (
       <div className='reader-container'>
         <div className='reader'>
@@ -187,13 +196,18 @@ class Reader extends React.Component {
 
           <div className='pages' onClick={this.handlePages}>
 
-            {(!this.state.spread || currPg === '0' || !this.state.lastPg) &&
+            {(!this.state.spread || currPg === '0' || (Number(currPg) + 1) == this.state.lastPg) &&
             <Page containerClass={'pgContainer'} imgClass={'leftPg'} 
             src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
             loaded={this.handleLeftLoaded} 
             error={this.handleLeftError}
             show={this.state.leftShow}
             imgWidth={this.state.leftWidth} />
+            }
+            {(Number(currPg) + 1) == this.state.lastPg &&
+            <div className='chapterEnds'>
+              <h1>Thanks for reading!</h1>
+            </div>
             }
 
             {currPg > '0' ?
