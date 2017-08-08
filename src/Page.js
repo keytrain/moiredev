@@ -7,7 +7,6 @@ class Page extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstTimeLoad: true
     }
 
     this.handleImageError = this.handleImageError.bind(this);
@@ -18,11 +17,7 @@ class Page extends React.Component {
 
   handleImageLoaded() {
     if (typeof this.props.loaded === 'function') {
-      if (this.img.naturalWidth > 1300) {
-        this.props.loaded({spread:true});
-      } else {
-        this.props.loaded({spread:false});
-      }
+      this.props.loaded();
     }
   }
 
@@ -34,21 +29,21 @@ class Page extends React.Component {
 
   checkSpread() {
     // if i've nabbed the width already, don't run this again
-    if (this.props.imgWidth === 0) {
-      let checkSpread = setInterval(() => {
-        if (this.img === null || this.img.complete) {
-          clearInterval(checkSpread);
-        } else if (this.img.naturalWidth !== 0) {
-          // naturalWidth is 0 when image metadata hasn't loaded yet
-          if (this.img.naturalWidth > 1300) {
-            this.props.loaded({spread:true, width: this.img.naturalWidth});
-          } else {
-            this.props.loaded({spread:false, width: this.img.naturalWidth});
+      if (this.props.imgWidth === 0) {
+        let checkSpread = setInterval(() => {
+          if (this.img === null) {
+            clearInterval(checkSpread);
+          } else if (this.img.naturalWidth !== 0  || this.img.complete) {
+            // naturalWidth is 0 when image metadata hasn't loaded yet
+            if (this.img.naturalWidth > 1300) {
+              this.props.spread({spread:true, width: this.img.naturalWidth});
+            } else {
+              this.props.spread({spread:false, width: this.img.naturalWidth});
+            }
+            clearInterval(checkSpread);
           }
-          clearInterval(checkSpread);
-        }
-      }, 100);
-    }
+        }, 100);
+      }
   }
 
   render() {
@@ -76,7 +71,9 @@ class Page extends React.Component {
       }
     }
     
-    this.checkSpread();
+    if (this.props.imgClass === 'rightPg') {
+      this.checkSpread();
+    }
 
     return (
       <div className={this.props.containerClass} style={container}>

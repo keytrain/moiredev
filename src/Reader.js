@@ -12,7 +12,7 @@ import genLib from './generalLibrary';
 // buffer function needs error support
 // Chapter end detection
   // move end detection to buffer
-// chapter end page
+  // chapter end page
 // Disqus
 // Settings
 
@@ -31,7 +31,7 @@ class Reader extends React.Component {
       rightShow: false,
       spread: false,
       goBack: false,
-      lastPg: false
+      lastPg: null
     }
 
     this.selection = this.props.match.params.series;
@@ -42,6 +42,7 @@ class Reader extends React.Component {
     this.handleLeftError = this.handleLeftError.bind(this);
     this.handleLeftLoaded = this.handleLeftLoaded.bind(this);
     this.handlePages = this.handlePages.bind(this);
+    this.handleSpread = this.handleSpread.bind(this);
     this.loadPages = this.loadPages.bind(this);
     this.buffer = this.buffer.bind(this);
     this.checkAndLoadAltImageTypes = this.checkAndLoadAltImageTypes.bind(this);
@@ -78,6 +79,7 @@ class Reader extends React.Component {
         prevState.rightShow = true;
         prevState.leftShow = true;
       })
+      this.buffer(4);
     }, 300)
   }
 
@@ -85,11 +87,12 @@ class Reader extends React.Component {
     let chapterObj = cData.series[this.selection].ch[this.chapter];
     let originPg = this.state.leftPgCount;
 
-    for (let i=0; i < size; i++) {
+    for (let i = 0; i < size; i++) {
       const bufferImg = new Image();
       let nextPg = genLib.padZero('' + (Number(originPg) + i + 1));
       let bufferImgType = 'png';
       bufferImg.onerror = function() {
+        // console.log(Number(originPg) + i + 1)
         if (bufferImgType === 'jpg') {
           bufferImgType = 'jpeg';
           bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
@@ -102,14 +105,8 @@ class Reader extends React.Component {
     }
   }
 
-  handleLeftLoaded() {
-    console.log('left')
-    this.buffer(4);
-  }
-
-  handleRightLoaded(imgObj) {
-    console.log('right')
-    let nextPg = parseInt(this.props.match.params.page,10)-1;
+  handleSpread(imgObj) {
+    let nextPg = Number(this.props.match.params.page)-1;
     // if not a spread, go back another page
     if (!imgObj.spread && this.state.goBack) {
       this.props.history.push({
@@ -119,6 +116,14 @@ class Reader extends React.Component {
     } else {
       this.setState({spread: imgObj.spread, rightWidth: imgObj.width});
     }
+  }
+
+  handleLeftLoaded() {
+    console.log('left')
+  }
+
+  handleRightLoaded() {
+    console.log('right')
   }
 
   checkAndLoadAltImageTypes(pageType) {
@@ -163,11 +168,11 @@ class Reader extends React.Component {
     let currPg = this.props.match.params.page;
     let nextPg;
     if (clickLoc < midPoint) {
-      nextPg = parseInt(currPg, 10) + (this.state.spread ? 1 : 2);
+      nextPg = Number(currPg) + (this.state.spread ? 1 : 2);
       this.setState({goBack: false});
     }
     else if (clickLoc > midPoint) {
-      nextPg = parseInt(currPg, 10) - 1;
+      nextPg = Number(currPg) - 1;
       this.setState({goBack: true});
     }
     if (nextPg > -1) {
@@ -196,17 +201,20 @@ class Reader extends React.Component {
 
           <div className='pages' onClick={this.handlePages}>
 
-            {(!this.state.spread || currPg === '0' || (Number(currPg) + 1) == this.state.lastPg) &&
+            {(!this.state.spread && (Number(currPg) + 1) !== this.state.lastPg) &&
             <Page containerClass={'pgContainer'} imgClass={'leftPg'} 
             src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
             loaded={this.handleLeftLoaded} 
             error={this.handleLeftError}
             show={this.state.leftShow}
-            imgWidth={this.state.leftWidth} />
+            imgWidth={this.state.leftWidth}
+            spread={this.handleSpread} />
             }
-            {(Number(currPg) + 1) == this.state.lastPg &&
+            {((Number(currPg) + 1) === this.state.lastPg) &&
             <div className='chapterEnds'>
               <h1>Thanks for reading!</h1>
+              <small>That was the last page.</small>
+              <p>Read the next chapter? or Read the comments?</p>
             </div>
             }
 
@@ -216,7 +224,8 @@ class Reader extends React.Component {
               loaded={this.handleRightLoaded} 
               error={this.handleRightError}
               show={this.state.rightShow}
-              imgWidth={this.state.rightWidth} />
+              imgWidth={this.state.rightWidth}
+              spread={this.handleSpread} />
             :
             <div className='chapterEnds'>
               <small>YOU ARE READING</small>
