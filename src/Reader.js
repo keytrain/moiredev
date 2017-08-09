@@ -5,14 +5,11 @@ import cData from './chapterData';
 import Page from './Page';
 // import Image from './Image';
 import genLib from './generalLibrary';
+import ReactDisqusComments from 'react-disqus-comments';
 
 // TODO:
 // remove the history part of going back 1 page
 // optimize spread checking
-// buffer function needs error support
-// Chapter end detection
-  // move end detection to buffer
-  // chapter end page
 // Disqus
 // Settings
 
@@ -31,7 +28,7 @@ class Reader extends React.Component {
       rightShow: false,
       spread: false,
       goBack: false,
-      lastPg: null
+      lastPg: 1000
     }
 
     this.selection = this.props.match.params.series;
@@ -62,7 +59,6 @@ class Reader extends React.Component {
   }
 
   loadPages(page) {
-    window.scrollTo(0,0);
     this.setState((prevState) => {
       prevState.rightPgCount = genLib.padZero(page);
       prevState.rightPgType = 'png';
@@ -88,11 +84,11 @@ class Reader extends React.Component {
     let originPg = this.state.leftPgCount;
 
     for (let i = 0; i < size; i++) {
+      let pageNum = Number(originPg) + i + 1;
       const bufferImg = new Image();
-      let nextPg = genLib.padZero('' + (Number(originPg) + i + 1));
+      let nextPg = genLib.padZero('' + pageNum);
       let bufferImgType = 'png';
       bufferImg.onerror = function() {
-        // console.log(Number(originPg) + i + 1)
         if (bufferImgType === 'jpg') {
           bufferImgType = 'jpeg';
           bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
@@ -118,14 +114,6 @@ class Reader extends React.Component {
     }
   }
 
-  handleLeftLoaded() {
-    console.log('left')
-  }
-
-  handleRightLoaded() {
-    console.log('right')
-  }
-
   checkAndLoadAltImageTypes(pageType) {
     this.setState((prevState => {
       if (prevState[pageType] === 'jpg') {
@@ -134,18 +122,18 @@ class Reader extends React.Component {
         prevState[pageType] = 'jpg';
       } else {
         if (pageType === 'leftPgType') {
-          const img = new Image();
-          let chapterObj = cData.series[this.selection].ch[this.chapter];
-          let nextPg = genLib.padZero('' + (Number(prevState.leftPgCount) + 1));
-
-          img.onerror = function() {
-            prevState.lastPg = Number(prevState.leftPgCount);
-          }
-
-          img.src = `${chapterObj.src}/img${nextPg}.png`;
+          prevState.lastPg = Number(prevState.leftPgCount);
         }
       }
     }));
+  }
+
+  handleLeftLoaded() {
+    console.log('left')
+  }
+
+  handleRightLoaded() {
+    console.log('right')
   }
 
   handleLeftError() {
@@ -164,9 +152,10 @@ class Reader extends React.Component {
     let pgWidth = e.currentTarget.offsetWidth;
     let midPoint = pgWidth / 2;
     let clickLoc = e.pageX;
+    window.scrollTo(0,0);
 
     let currPg = this.props.match.params.page;
-    let nextPg;
+    let nextPg = undefined;
     if (clickLoc < midPoint) {
       nextPg = Number(currPg) + (this.state.spread ? 1 : 2);
       this.setState({goBack: false});
@@ -175,7 +164,7 @@ class Reader extends React.Component {
       nextPg = Number(currPg) - 1;
       this.setState({goBack: true});
     }
-    if (nextPg > -1) {
+    if (nextPg > -1 && nextPg < this.state.lastPg) {
       this.props.history.push({
         pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`
       });
@@ -185,6 +174,7 @@ class Reader extends React.Component {
   render() {
     let chapterObj = cData.series[this.selection].ch[this.chapter];
     let currPg = this.props.match.params.page;
+    console.log(this.props.location)
     return (
       <div className='reader-container'>
         <div className='reader'>
@@ -211,6 +201,7 @@ class Reader extends React.Component {
             spread={this.handleSpread} />
             }
             {((Number(currPg) + 1) === this.state.lastPg) &&
+            
             <div className='chapterEnds'>
               <h1>Thanks for reading!</h1>
               <small>That was the last page.</small>
@@ -249,8 +240,12 @@ class Reader extends React.Component {
             </div>
             }
           </div>
-          
+          <ReactDisqusComments
+            shortname="maigo"
+            identifier="maigo.us"
+            url={"http://maigo.us/#" + this.props.location.pathname} />
         </div>
+
       </div>
     );
   }
