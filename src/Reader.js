@@ -187,7 +187,7 @@ class Reader extends React.Component {
            <div className='ctrl-right'>
              <Link to={`/r/${this.selection}`}><button>X</button></Link>
            </div>
-           </div>
+          </div>
 
           <div className='pages' onClick={this.handlePages}>
 
@@ -240,11 +240,17 @@ class Reader extends React.Component {
             </div>
             }
           </div>
-          <ReactDisqusComments
-            shortname="maigo"
-            identifier="maigo.us"
-            url={"http://maigo.us/#" + this.props.location.pathname} />
         </div>
+
+          <div className='disqus-container'>
+            <div className='disqus'>
+              <button>Close</button>
+            <ReactDisqusComments
+              shortname='maigo'
+              identifier={'maigo.us'}
+              url={'http://maigo.us/#' + this.props.location.pathname} />
+            </div>
+          </div>
 
       </div>
     );
