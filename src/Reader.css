@@ -1,40 +1,55 @@
 .reader-container {
   position:fixed;
   bottom:0;
-  background-color:#fff;
   top:0;
   right:0;
   left:0;
+  background-color:#f1f1f1;
+  overflow-y:auto;
   z-index:3;
+  -webkit-overflow-scrolling: touch;
 }
-  .reader {
-    position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    top:0;
-    overflow-y:auto;
-    padding-bottom:3rem;
-  }
 
+  .reader {
+    width:100%;
+    background-color:#e1e1e1;
+    text-align:center;
+    /* margin:0 auto; */
+  }
     .pages {
-      width:100%;
+      max-width:2400px; 
       height:auto;
-      text-align:right;
+      /* text-align:left; */
       background-color:#fff;
-      padding:0rem 0;
-       box-shadow: 0 0 20px 0 #e1e1e1; 
+      box-shadow: 0 0 20px 0 #e1e1e1;
+      margin-bottom:3rem;
+      width:100%;
     }
     .pages:hover {
       cursor: pointer;
     }
-
+      .rightPg {
+        opacity:1;
+        transition:100ms ease-in-out;
+      }
+      .rightPg:hover {
+        opacity:0.6;
+      }
+      .leftPg {
+        opacity:1;
+        transition:100ms ease-in-out;
+      }
+      leftPg:hover {
+        opacity:0.6;
+      }
       .singlePg {
         width:100%;
       }
-
+      /* .rightPg {
+        width:100%;
+      } */
       .pgContainer {
-        width:50%;
+        width:50%;   
         vertical-align: middle;      
         display:inline-block;
       }
@@ -42,7 +57,7 @@
         width:inherit;
       }
       .pgContainer img {
-        width: 100%;
+         width: 100%; 
       }
 
       .chapterEnds {
@@ -53,8 +68,8 @@
       }
 
     .controls {
-      width:100%;
-      padding:1rem 0.5rem;
+       width:100%;
+       padding:0.5rem 0rem;
     }
       .ctrl-left {
         display:inline-block;
@@ -68,13 +83,14 @@
       }
     .disqus-container {
       position:fixed;
-      left:0;
       width:30rem;
       background:#f1f1f1;
       z-index: 5;
       padding:1rem;
-      height:100vh;
-      overflow:auto;
+      top:0;
+      left:0;
+      bottom:0;
+      overflow-y:auto;
       -webkit-overflow-scrolling: touch;
     }
     .disqus {

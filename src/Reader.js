@@ -6,6 +6,7 @@ import Page from './Page';
 // import Image from './Image';
 import genLib from './generalLibrary';
 import ReactDisqusComments from 'react-disqus-comments';
+import Transition from 'react-transition-group/Transition';
 
 // TODO:
 // remove the history part of going back 1 page
@@ -28,7 +29,8 @@ class Reader extends React.Component {
       rightShow: false,
       spread: false,
       goBack: false,
-      lastPg: 1000
+      lastPg: 1000,
+      showDisqus: false,
     }
 
     this.selection = this.props.match.params.series;
@@ -42,6 +44,7 @@ class Reader extends React.Component {
     this.handleSpread = this.handleSpread.bind(this);
     this.loadPages = this.loadPages.bind(this);
     this.buffer = this.buffer.bind(this);
+    this.handleDisqus = this.handleDisqus.bind(this);
     this.checkAndLoadAltImageTypes = this.checkAndLoadAltImageTypes.bind(this);
   }
 
@@ -171,21 +174,44 @@ class Reader extends React.Component {
     }
   }
 
+  handleDisqus() {
+    this.setState((prevState) => {
+      prevState.showDisqus = (prevState.showDisqus === false ? true : false);
+    });
+  }
+
   render() {
     let chapterObj = cData.series[this.selection].ch[this.chapter];
     let currPg = this.props.match.params.page;
-    console.log(this.props.location)
+
+    const duration = 75;
+    const defaultStyle = {
+      transition: `${duration}ms ease-in`,
+    }
+    const transitionStyles = {
+      entering: {
+      },
+      entered: {
+      },
+      exiting: {
+        transform: 'translateX(-100%)',
+      },
+      exited: {
+        transform: 'translateX(-100%)',
+      }
+    }
+
     return (
       <div className='reader-container'>
         <div className='reader'>
 
           <div className='controls'>
            <div className='ctrl-left'>
+             <Link to={`/r/${this.selection}`}><button>close</button></Link>
              <button>settings</button>
-             <button>disqus</button>
+             <button onClick={this.handleDisqus}>disqus</button>
            </div>
            <div className='ctrl-right'>
-             <Link to={`/r/${this.selection}`}><button>X</button></Link>
            </div>
           </div>
 
@@ -241,17 +267,22 @@ class Reader extends React.Component {
             }
           </div>
         </div>
-
-          <div className='disqus-container'>
+        <Transition in={this.state.showDisqus} timeout={duration}>
+          {(state) => (
+          <div style={{
+              ...defaultStyle,
+              ...transitionStyles[state]
+            }} className='disqus-container'>
             <div className='disqus'>
-              <button>Close</button>
+              <button onClick={this.handleDisqus}>Close</button>
             <ReactDisqusComments
               shortname='maigo'
               identifier={'maigo.us'}
               url={'http://maigo.us/#' + this.props.location.pathname} />
             </div>
           </div>
-
+          )}
+        </Transition>
       </div>
     );
   }
