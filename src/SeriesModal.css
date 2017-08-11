@@ -72,13 +72,11 @@
         width: calc(100%/3 - 1rem);
         display:inline-block;
         /* background-color:#f1f1f1; */
-background-color: #8BC6EC;
-background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
-
+        background-color: #8BC6EC;
+        background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
         color:#fff;
-
         border-radius:4px;
-        transition: opacity 125ms ease-in-out;
+        transition: opacity 425ms ease-out;
       }
       .modal-chapter:hover {
         cursor:pointer;

@@ -218,7 +218,7 @@ class Reader extends React.Component {
           <div className='pages' onClick={this.handlePages}>
 
             {(!this.state.spread && (Number(currPg) + 1) !== this.state.lastPg) &&
-            <Page containerClass={'pgContainer'} imgClass={'leftPg'} 
+            <Page containerClass={'pgContainer leftPgCont'} imgClass={'leftPg'} 
             src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
             loaded={this.handleLeftLoaded} 
             error={this.handleLeftError}
@@ -236,7 +236,7 @@ class Reader extends React.Component {
             }
 
             {currPg > '0' ?
-            <Page containerClass={'pgContainer ' + (this.state.spread ?'spread':'')} imgClass={'rightPg'} 
+            <Page containerClass={'pgContainer rightPgCont ' + (this.state.spread ?'spread':'')} imgClass={'rightPg'} 
               src={`${chapterObj.src}/img${this.state.rightPgCount}.${this.state.rightPgType}`} 
               loaded={this.handleRightLoaded} 
               error={this.handleRightError}
