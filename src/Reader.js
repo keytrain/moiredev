@@ -45,6 +45,7 @@ class Reader extends React.Component {
     this.loadPages = this.loadPages.bind(this);
     this.buffer = this.buffer.bind(this);
     this.handleDisqus = this.handleDisqus.bind(this);
+    this.handlePagesKey = this.handlePagesKey.bind(this);
     this.checkAndLoadAltImageTypes = this.checkAndLoadAltImageTypes.bind(this);
   }
 
@@ -54,11 +55,25 @@ class Reader extends React.Component {
     this.unlisten = this.props.history.listen((location, action) => {
       this.loadPages(location.pathname.split(/(.+)\//)[2]);
     });
+    document.addEventListener('keydown', this.handlePagesKey);
   }
 
   componentWillUnmount() {
     // removes the listener on browser routing
     this.unlisten();
+  }
+
+  handlePagesKey(e) {
+    console.log(e.key);
+    switch (e.key) {
+      case 'ArrowLeft':
+        break;
+      case 'ArrowRight':
+        break;
+      default:
+        break;
+    }
+    
   }
 
   loadPages(page) {
@@ -155,7 +170,6 @@ class Reader extends React.Component {
     let pgWidth = e.currentTarget.offsetWidth;
     let midPoint = pgWidth / 2;
     let clickLoc = e.pageX;
-    window.scrollTo(0,0);
 
     let currPg = this.props.match.params.page;
     let nextPg = undefined;
@@ -181,6 +195,7 @@ class Reader extends React.Component {
   }
 
   render() {
+    window.scrollTo(0,0);
     let chapterObj = cData.series[this.selection].ch[this.chapter];
     let currPg = this.props.match.params.page;
 

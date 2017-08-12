@@ -154,21 +154,20 @@ class App extends Component {
         <div className='wrapper'>
           <div className='serieslist-container'>
             <div className='serieslist'>
-              {/*<div className='filter-container'>
+              <div className='filter-container'>
                 <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Current</button> 
                 <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Complete</button> 
                 <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} value='Dropped' onClick={this.handleFilter}>Dropped</button> 
                 <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} value='All' onClick={this.handleFilter}>All</button>
-                |
-                <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Date</button> 
-                <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Likes</button> 
-              </div>*/}
-              {/* <SeriesList title='Current Series'
+                <button className={'filter ' + (this.state.filter === 'Date' ? 'filter-active':'')} value='Date' onClick={this.handleFilter}>Date</button> 
+                <button className={'filter ' + (this.state.filter === 'Likes' ? 'filter-active':'')} value='Likes' onClick={this.handleFilter}>Likes</button> 
+              </div>
+               <SeriesList title=''
                 handler={this.handleSeriesItem}
                 list={this.state.data.filter((e) => {
                     return true;
-                })} /> */}
-              <SeriesList title='Ongoing'
+                })} /> 
+              {/* <SeriesList title='Ongoing'
                 handler={this.handleSeriesItem}
                 list={this.state.data.filter((e) => {
                   if (e.completed === undefined)
@@ -186,7 +185,7 @@ class App extends Component {
                 handler={this.handleSeriesItem}
                 list={this.state.data.filter((e) => {
                   return (e.completed !== undefined && !e.completed);
-                })} />
+                })} /> */}
             </div>
           </div>
         </div>

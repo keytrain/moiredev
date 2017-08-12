@@ -36,11 +36,12 @@ function SeriesModal(props) {
         <div className='modal-right'>
           <div className='modal-text'>
             <h3>{selection}</h3>
-            <p>By {selInfo.author}</p>
-            <small className='synopsis-title'>SYNOPSIS</small>
+            <h5>{selInfo.author}</h5>
+            <div className='modal-synopsis'>
             {selInfo.synopsis.map((e, index) => 
               <p key={index}>{e}</p>
             )}
+            </div>
             <hr />
             {/*<div className='modal-bite'>
               <small>STARTED</small>
@@ -50,13 +51,12 @@ function SeriesModal(props) {
               <small>STATUS</small>
               <div></div>
             </div>*/}
-            <small>RELEASES</small>
             <div className='modal-chapters-container'>
               {selChaps.map((e, index) => (
               <Link to={`/r/${selection}/${e.chapter}/0`} key={index}>
                 <div className='modal-chapter'>
                   <div className='modal-chapter-num'>
-                    Chapter <strong>{e.chapter}</strong>
+                    Chapter {e.chapter}
                   </div>
                   <div className='modal-chapter-date'>
                     {genLib.howLongAgo(e.date)} ago
@@ -68,7 +68,7 @@ function SeriesModal(props) {
           </div>
 
           <div className='modal-actions'>
-            <button>Download</button>
+            <button>Downloads</button>
           </div>
         </div>
       </div>

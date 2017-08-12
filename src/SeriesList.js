@@ -13,7 +13,7 @@ function SeriesList(props) {
   // }
   return (
     <div className='slist-category'>
-      <h4 className='slist-cat-title'>{props.title}</h4>
+      {/* <h4 className='slist-cat-title'>{props.title}</h4> */}
       {props.list.map((e, index) => (
       <Link to={`/r/${e.title}`} key={index}>
         <div className='sitem'>
