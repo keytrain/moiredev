@@ -5,6 +5,10 @@ import { Route } from 'react-router-dom';
 import data from './releaseData';
 import SeriesList from './SeriesList';
 import SeriesModal from './SeriesModal';
+// import MdFavoriteOutline from 'react-icons/lib/md/favorite-outline';
+// import MdFavorite from 'react-icons/lib/md/favorite';
+// import MdFilterList from 'react-icons/lib/md/filter-list';
+import MdSearch from 'react-icons/lib/md/search';
 import bg from './bg.png';
 
 class App extends Component {
@@ -149,19 +153,29 @@ class App extends Component {
             <h4 className='tagline'>
               Manga we liked, so we translated.
             </h4>
+              <div className='search'>
+                <MdSearch />
+                <input type='text' />
+              </div>
+              <div className='filter-container'>
+                <div className='filterBy'>
+                  <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Current</button> 
+                  <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Complete</button> 
+                  <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} value='Dropped' onClick={this.handleFilter}>Dropped</button> 
+                  <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} value='All' onClick={this.handleFilter}>All</button>
+                </div>
+                <div className='sortBy'>
+                  <button className={'filter ' + (this.state.filter === 'Date' ? 'filter-active':'')} value='Date' onClick={this.handleFilter}>Date</button> 
+                  <button className={'filter ' + (this.state.filter === 'Likes' ? 'filter-active':'')} value='Likes' onClick={this.handleFilter}>Likes</button>
+                </div>
+     
+              </div>
           </div>
         </nav>
         <div className='wrapper'>
           <div className='serieslist-container'>
             <div className='serieslist'>
-              <div className='filter-container'>
-                <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Current</button> 
-                <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Complete</button> 
-                <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} value='Dropped' onClick={this.handleFilter}>Dropped</button> 
-                <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} value='All' onClick={this.handleFilter}>All</button>
-                <button className={'filter ' + (this.state.filter === 'Date' ? 'filter-active':'')} value='Date' onClick={this.handleFilter}>Date</button> 
-                <button className={'filter ' + (this.state.filter === 'Likes' ? 'filter-active':'')} value='Likes' onClick={this.handleFilter}>Likes</button> 
-              </div>
+
                <SeriesList title=''
                 handler={this.handleSeriesItem}
                 list={this.state.data.filter((e) => {

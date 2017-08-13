@@ -91,6 +91,9 @@
         }
         .modal-chapter-num {
           width: 50%;
+          text-transform: uppercase;
+          font-size:0.800rem;
+          font-weight:500;
         }
         .modal-chapter-date {
           text-transform: uppercase;
