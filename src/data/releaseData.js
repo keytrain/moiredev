@@ -1,31 +1,39 @@
 import chData from './chapterData';
 
+function sortChaps(arr) {
+  return arr.sort((a,b) => {
+    if (Number(a) < Number(b)) { return -1; }
+    else if (Number(a) > Number(b)) { return 1; }
+    return 0;
+  }).reverse();
+}
+
 export default {
-     list: [
+    list: [
       {
         cover:'img/cover/kan.jpg',
         title:'Kannou Sensei',
-        updated: chData.series['Kannou Sensei'].rel[0].date
+        updated: chData.series['Kannou Sensei'][sortChaps(Object.keys(chData.series['Kannou Sensei']))[0]].date
       },
       {
         cover:'img/cover/mah.jpg',
         title:'Mahoromi',
-        updated: chData.series['Mahoromi'].rel[0].date
+        updated: chData.series['Mahoromi'][sortChaps(Object.keys(chData.series['Mahoromi']))[0]].date
       },
       {
         cover:'img/cover/spo.jpg',
         title:'Spotted Flower',
-        updated: chData.series['Spotted Flower'].rel[0].date
+        updated: chData.series['Spotted Flower'][sortChaps(Object.keys(chData.series['Spotted Flower']))[0]].date
       }, 
       {
         cover:'img/cover/yome.jpg',
         title:'Mahoutsukai no Yome',
-        updated: chData.series['Mahoutsukai no Yome'].rel[0].date
+        updated: chData.series['Mahoutsukai no Yome'][sortChaps(Object.keys(chData.series['Mahoutsukai no Yome']))[0]].date
       },
       {
         cover:'img/cover/vamp.jpg',
         title:'Seifuku no Vampiress Lord',
-        updated: chData.series['Seifuku no Vampiress Lord'].rel[0].date
+        updated: chData.series['Seifuku no Vampiress Lord'][sortChaps(Object.keys(chData.series['Seifuku no Vampiress Lord']))[0]].date
       }, 
       {
         cover:'img/cover/prunus.jpg',
@@ -161,7 +169,7 @@ export default {
       },
       {
         cover:'img/cover/oa.jpg',
-        title:'O/A',
+        title:'OA',
         updated: new Date('Oct 21 2014 GMT-0800'),
         completed:true
       },
@@ -246,7 +254,7 @@ export default {
       {
         cover:'img/cover/rev.jpg',
         title:'Reversible!',
-        updated: new Date('Feb 28 2012 GMT-0613'),
+        updated: new Date('Feb 28 2012 GMT-0800'),
         completed:false
       },      
       {

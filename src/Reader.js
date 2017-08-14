@@ -1,18 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Reader.css';
-import cData from './chapterData';
+import cData from './data/chapterData';
 import Page from './Page';
 // import Image from './Image';
-import genLib from './generalLibrary';
+import genLib from './lib/generalLibrary';
 import ReactDisqusComments from 'react-disqus-comments';
 import Transition from 'react-transition-group/Transition';
+import MdClose from 'react-icons/lib/md/close';
+import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
 
 // TODO:
 // remove the history part of going back 1 page
 // optimize spread checking
 // Disqus
 // Settings
+// padding on the right and left sides of the pages
+// 1 page option
+// prevent background from shifting when locking scroll with modal
+// irc link
+// supporting other types of page names, e.g. '00.png'
 
 class Reader extends React.Component {
   constructor(props) {
@@ -98,7 +105,7 @@ class Reader extends React.Component {
   }
 
   buffer(size) {
-    let chapterObj = cData.series[this.selection].ch[this.chapter];
+    let chapterObj = cData.series[this.selection][this.chapter];
     let originPg = this.state.leftPgCount;
 
     for (let i = 0; i < size; i++) {
@@ -196,7 +203,7 @@ class Reader extends React.Component {
 
   render() {
     window.scrollTo(0,0);
-    let chapterObj = cData.series[this.selection].ch[this.chapter];
+    let chapterObj = cData.series[this.selection][this.chapter];
     let currPg = this.props.match.params.page;
 
     const duration = 75;
@@ -222,11 +229,11 @@ class Reader extends React.Component {
 
           <div className='controls'>
            <div className='ctrl-left'>
-             <Link to={`/r/${this.selection}`}><button>close</button></Link>
-             <button>settings</button>
-             <button onClick={this.handleDisqus}>disqus</button>
+             {/* <button>settings</button> */}
+             <button onClick={this.handleDisqus}><MdChatBubbleOutline size={24} /></button>
            </div>
            <div className='ctrl-right'>
+             <Link to={`/r/${this.selection}`}><button><MdClose size={30} /></button></Link>
            </div>
           </div>
 
@@ -289,10 +296,10 @@ class Reader extends React.Component {
               ...transitionStyles[state]
             }} className='disqus-container'>
             <div className='disqus'>
-              <button onClick={this.handleDisqus}>Close</button>
+              <button onClick={this.handleDisqus}><MdClose size={30} /></button>
             <ReactDisqusComments
               shortname='maigo'
-              identifier={'maigo.us'}
+              identifier={this.props.location.pathname}
               url={'http://maigo.us/#' + this.props.location.pathname} />
             </div>
           </div>

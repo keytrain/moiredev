@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Image from './Image';
-import sData from './seriesData';
-import cData from './chapterData';
-import genLib from './generalLibrary';
+import sData from './data/seriesData';
+import chData from './data/chapterData';
+import genLib from './lib/generalLibrary';
+// import MdFavoriteOutline from 'react-icons/lib/md/favorite-outline';
+// import MdFavorite from 'react-icons/lib/md/favorite';
+import MdFileDownload from 'react-icons/lib/md/file-download';
 import './SeriesModal.css';
 
 
@@ -15,17 +18,18 @@ function SeriesModal(props) {
   }
   const closeModal = function() {
     document.removeEventListener('keydown', handleKey);
-    document.body.style.overflow='auto';
     props.history.push('/');
   }
 
   document.addEventListener('keydown', handleKey);
 
-  document.body.style.overflow = 'hidden';
-
   let selection = props.match.params.series;
   let selInfo = sData.series[selection];
-  let selChaps = cData.series[selection].rel;
+  let selChaps = Object.keys(chData.series[selection]).sort((a,b) => {
+    if (Number(a) < Number(b)) { return -1; }
+    else if (Number(a) > Number(b)) { return 1; }
+    return 0;
+  }).reverse();
 
   return (
     <div>
@@ -44,23 +48,15 @@ function SeriesModal(props) {
             )}
             </div>
             <hr />
-            {/*<div className='modal-bite'>
-              <small>STARTED</small>
-              <div></div>
-            </div>
-            <div className='modal-bite'>
-              <small>STATUS</small>
-              <div></div>
-            </div>*/}
             <div className='modal-chapters-container'>
               {selChaps.map((e, index) => (
-              <Link to={`/r/${selection}/${e.chapter}/0`} key={index}>
+              <Link to={`/r/${selection}/${e}/0`} key={index}>
                 <div className='modal-chapter'>
                   <div className='modal-chapter-num'>
-                    Chapter {e.chapter}
+                    Chapter {e}
                   </div>
                   <div className='modal-chapter-date'>
-                    {genLib.howLongAgo(e.date)} ago
+                    {genLib.howLongAgo(chData.series[selection][e].date)} ago
                   </div>
                 </div>
               </Link>
@@ -69,7 +65,8 @@ function SeriesModal(props) {
           </div>
 
           <div className='modal-actions'>
-            <button>Downloads</button>
+            
+            {selInfo.licensed ? 'Licensed' : <MdFileDownload size={24} />}
           </div>
         </div>
       </div>

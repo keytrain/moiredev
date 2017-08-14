@@ -58,13 +58,18 @@
        width:100%;
        text-align: center;
        padding:0.5rem 0rem;
+       background-color:#fff;
+       margin-bottom:1rem;
     }
-      .ctrl-left {
+      .ctrl-left, .ctrl-right {
         display:inline-block;
+        width:50%;
+        padding:0 0.7rem;
+      }
+      .ctrl-left {
         text-align:left;
       }
       .ctrl-right {
-        display:inline-block;
         text-align:right;
       }
     .disqus-container {

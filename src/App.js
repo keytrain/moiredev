@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import logo from './logoB.png';
 import { Route } from 'react-router-dom';
-import data from './releaseData';
+import data from './data/releaseData';
 import SeriesList from './SeriesList';
 import SeriesModal from './SeriesModal';
-// import MdFavoriteOutline from 'react-icons/lib/md/favorite-outline';
-// import MdFavorite from 'react-icons/lib/md/favorite';
-// import MdFilterList from 'react-icons/lib/md/filter-list';
+import MdFilterList from 'react-icons/lib/md/filter-list';
 import MdSearch from 'react-icons/lib/md/search';
-import bg from './bg.png';
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +14,9 @@ class App extends Component {
     this.state = {
       mode: 'start',
       data: data.list,
-      filter: 'Current',
+      dataSet: data.list,
+      filter: 'All',
+      sort: 'Date',
       showModal: {
         position: 'fixed',
         visibility: 'hidden',
@@ -27,15 +26,11 @@ class App extends Component {
         overflowY:'auto'
       },
       modalSelection: '',
-      bg : {
-        background: `no-repeat url('${bg}')`,
-        backgroundPosition: '100% 20%',
-        opacity: '1',
-      }
     }
     this.openSList = this.openSList.bind(this);
     this.closeSList = this.closeSList.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
     this.handleKey = this.handleKey.bind(this);
   }
 
@@ -138,7 +133,67 @@ class App extends Component {
   handleFilter(e) {
     e.preventDefault();
     let value = e.currentTarget.attributes.value.value;
-    this.setState({filter: value});
+    let name = e.currentTarget.attributes.name.value;
+
+    this.setState((prevState) => {
+      switch (name) {
+        case 'sort':
+          prevState.sort = value;
+          break;
+        case 'filter':
+          prevState.filter = value;
+          break;
+        default:
+      }
+  
+      let dataTemp = null;
+      switch (value) {
+        case 'All':
+          prevState.data = data.list;
+          prevState.dataSet = data.list;
+          break;
+        case 'Current':
+          dataTemp = data.list.filter(
+            (e) => {
+              if (e.completed === undefined)
+                return true;
+              else return false;
+            });
+          prevState.data = dataTemp;
+          prevState.dataSet = dataTemp;
+          break;
+        case 'Complete':
+          dataTemp = data.list.filter(
+            (e) => {
+              return (e.completed !== undefined && e.completed);
+            });
+          prevState.data = dataTemp;
+          prevState.dataSet = dataTemp;
+          break;
+        case 'Dropped':
+          dataTemp = data.list.filter(
+            (e) => {
+              return (e.completed !== undefined && !e.completed);
+            });
+          prevState.data = dataTemp;
+          prevState.dataSet = dataTemp;
+          break;
+        default:
+      }
+    });
+  }
+
+  handleSearch(e) {
+    let value = e.target.value.toLowerCase();
+    this.setState((prevState) => {
+      if (value.length === 0) {
+        prevState.data = prevState.dataSet;
+      } else {
+        prevState.data = prevState.dataSet.filter((e) => {
+          return e.title.toLowerCase().includes(value);
+        });
+      }
+    });
   }
 
   render() {
@@ -153,53 +208,33 @@ class App extends Component {
             <h4 className='tagline'>
               Manga we liked, so we translated.
             </h4>
-              <div className='search'>
-                <MdSearch />
-                <input type='text' />
-              </div>
+
               <div className='filter-container'>
                 <div className='filterBy'>
-                  <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} value='Current' onClick={this.handleFilter}>Current</button> 
-                  <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} value='Complete' onClick={this.handleFilter}>Complete</button> 
-                  <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} value='Dropped' onClick={this.handleFilter}>Dropped</button> 
-                  <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} value='All' onClick={this.handleFilter}>All</button>
+                  <MdFilterList />
+                  <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} name='filter' value='All' onClick={this.handleFilter}>All</button>
+                  <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} name='filter' value='Current' onClick={this.handleFilter}>Current</button> 
+                  <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} name='filter' value='Complete' onClick={this.handleFilter}>Complete</button> 
+                  <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} name='filter' value='Dropped' onClick={this.handleFilter}>Dropped</button> 
                 </div>
                 <div className='sortBy'>
-                  <button className={'filter ' + (this.state.filter === 'Date' ? 'filter-active':'')} value='Date' onClick={this.handleFilter}>Date</button> 
-                  <button className={'filter ' + (this.state.filter === 'Likes' ? 'filter-active':'')} value='Likes' onClick={this.handleFilter}>Likes</button>
+                  <MdFilterList />
+                  <button className={'filter ' + (this.state.sort === 'Date' ? 'filter-active':'')} name='sort' value='Date' onClick={this.handleFilter}>Date</button> 
+                  <button className={'filter ' + (this.state.sort === 'Likes' ? 'filter-active':'')} name='sort' value='Likes' onClick={this.handleFilter}>Likes</button>
                 </div>
-     
+                <div className='search'>
+                <MdSearch style={{marginRight:'0.3rem'}} /> 
+                <input type='search' onChange={this.handleSearch} />
+              </div>
               </div>
           </div>
         </nav>
         <div className='wrapper'>
           <div className='serieslist-container'>
             <div className='serieslist'>
-
                <SeriesList title=''
                 handler={this.handleSeriesItem}
-                list={this.state.data.filter((e) => {
-                    return true;
-                })} /> 
-              {/* <SeriesList title='Ongoing'
-                handler={this.handleSeriesItem}
-                list={this.state.data.filter((e) => {
-                  if (e.completed === undefined)
-                    return true;
-                  else return false;
-                })} />
-                <hr />
-              <SeriesList title='Complete'
-                handler={this.handleSeriesItem}
-                list={this.state.data.filter((e) => {
-                  return (e.completed !== undefined && e.completed);
-                })} />
-                <hr />
-              <SeriesList title='Dropped'
-                handler={this.handleSeriesItem}
-                list={this.state.data.filter((e) => {
-                  return (e.completed !== undefined && !e.completed);
-                })} /> */}
+                list={this.state.data} />
             </div>
           </div>
         </div>
