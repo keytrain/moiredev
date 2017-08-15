@@ -62,8 +62,8 @@ export default {
     },
     'Reversible!': {
       cover: ['./img/cover/rev/1.jpg'],
-      synopsis: [],
-      author: '',
+      synopsis: ['Shuu Kaidou is sent away to an all boys boarding school with a very strange rule: half the students must take turns to dress as girls!'],
+      author: 'Suemitsu Dicca',
       licensed: false,
     },
     'Ashita Dorobou' : {
@@ -183,7 +183,7 @@ export default {
     'Tetsugaku Letra' : {
       cover: ['./img/cover/let/1.jpg'],
       synopsis: ["In middle school, Ichinose Kimitaka taught his friends how to play basketball. Despite his experience with the sport, his friends quickly outmatched him in skill. After an incident brought on by his frustration and jealousy, he was crushed to overhear those same 'friends' discussing how they wished he'd just kill himself.","On his way to toss out his special basketball shoes, he met a girl who was just as frustrated, throwing her own dancing shoes away. She was so tall, and her hands and feet are so large, that she had been rejected from her chosen hobby of Spanish dancing. He urged her to give basketball a try, and the two exchanged their shoes instead of throwing them away.","As he enters high school, Kimitaka learns that meeting him changed that girl's life for the better, and she is now a happy, social basketball player. Will Kimitaka be able to find the courage to make new friends and pursue his own talents?"],
-      author: '',
+      author: 'Sahara Mizu',
       licensed: false,
     },
     'Tokyo ESP' : {

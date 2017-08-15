@@ -223,6 +223,8 @@ class Reader extends React.Component {
       }
     }
 
+    console.log(this.props.match);
+
     return (
       <div className='reader-container'>
         <div className='reader'>
@@ -299,8 +301,8 @@ class Reader extends React.Component {
               <button onClick={this.handleDisqus}><MdClose size={30} /></button>
             <ReactDisqusComments
               shortname='maigo'
-              identifier={this.props.location.pathname}
-              url={'http://maigo.us/#' + this.props.location.pathname} />
+              identifier={`${this.props.match.params.series}_${this.props.match.params.chapter}`}
+              url={`http://maigo.us/#/${this.props.match.params.series}/${this.props.match.params.chapter}`} />
             </div>
           </div>
           )}
