@@ -96,6 +96,9 @@
           /* color:#aaa; */
           /*text-align: right;*/
         }
+        .commentsbtn {
+          width:100%;
+        }
     .modal-actions {
       position:absolute;
       bottom:0;

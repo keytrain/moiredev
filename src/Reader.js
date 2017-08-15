@@ -13,13 +13,16 @@ import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
 // TODO:
 // remove the history part of going back 1 page
 // optimize spread checking
-// Disqus
 // Settings
-// padding on the right and left sides of the pages
 // 1 page option
 // prevent background from shifting when locking scroll with modal
 // irc link
 // supporting other types of page names, e.g. '00.png'
+// series comments in modal
+// switch chapter inside reader
+// give random series
+// announcements
+// arrow key support
 
 class Reader extends React.Component {
   constructor(props) {
@@ -38,8 +41,10 @@ class Reader extends React.Component {
       goBack: false,
       lastPg: 1000,
       showDisqus: false,
+      pageStyle: {
+        width:'100%'
+      }
     }
-
     this.selection = this.props.match.params.series;
     this.chapter = this.props.match.params.chapter;
 
@@ -56,7 +61,7 @@ class Reader extends React.Component {
     this.checkAndLoadAltImageTypes = this.checkAndLoadAltImageTypes.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // initial load
     this.loadPages(this.props.match.params.page);
     this.unlisten = this.props.history.listen((location, action) => {
@@ -80,7 +85,6 @@ class Reader extends React.Component {
       default:
         break;
     }
-    
   }
 
   loadPages(page) {
@@ -172,11 +176,14 @@ class Reader extends React.Component {
   }
 
   handlePages(e) {
+    e.persist();
     // currentTarget grabs pages div
     // target grabs the respective Image component
     let pgWidth = e.currentTarget.offsetWidth;
+    console.log(pgWidth/2);
     let midPoint = pgWidth / 2;
     let clickLoc = e.pageX;
+    console.log(e);
 
     let currPg = this.props.match.params.page;
     let nextPg = undefined;
@@ -198,6 +205,9 @@ class Reader extends React.Component {
   handleDisqus() {
     this.setState((prevState) => {
       prevState.showDisqus = (prevState.showDisqus === false ? true : false);
+      prevState.pageStyle = {
+        width:(prevState.pageStyle.width === '75%' ? '100%' : '75%')
+      }
     });
   }
 
@@ -212,18 +222,20 @@ class Reader extends React.Component {
     }
     const transitionStyles = {
       entering: {
+        transform: 'translateX(0%)',
       },
       entered: {
+        position: 'static',
+        transform: 'translateX(0%)',
       },
       exiting: {
-        transform: 'translateX(-100%)',
+        // transform: 'translateX(-100%)',
       },
       exited: {
-        transform: 'translateX(-100%)',
+        // position: 'absolute',
+        // transform: 'translateX(-100%)',
       }
     }
-
-    console.log(this.props.match);
 
     return (
       <div className='reader-container'>
@@ -238,8 +250,23 @@ class Reader extends React.Component {
              <Link to={`/r/${this.selection}`}><button><MdClose size={30} /></button></Link>
            </div>
           </div>
-
-          <div className='pages' onClick={this.handlePages}>
+          <Transition in={this.state.showDisqus} timeout={duration}>
+            {(state) => (
+            <div style={{
+                ...defaultStyle,
+                ...transitionStyles[state]
+              }} className='disqus-container'>
+              <div className='disqus'>
+                {/* <button onClick={this.handleDisqus}><MdClose size={30} /></button> */}
+              <ReactDisqusComments
+                shortname='maigo'
+                identifier={`${this.selection}_${this.chapter}`}
+                url={`http://maigo.us/#/${this.selection}/${this.chapter}`} />
+              </div>
+            </div>
+            )}
+          </Transition>
+          <div className='pages' style={this.state.pageStyle} onClick={this.handlePages}>
 
             {(!this.state.spread && (Number(currPg) + 1) !== this.state.lastPg) &&
             <Page containerClass={'pgContainer leftPgCont'} imgClass={'leftPg'} 
@@ -291,22 +318,6 @@ class Reader extends React.Component {
             }
           </div>
         </div>
-        <Transition in={this.state.showDisqus} timeout={duration}>
-          {(state) => (
-          <div style={{
-              ...defaultStyle,
-              ...transitionStyles[state]
-            }} className='disqus-container'>
-            <div className='disqus'>
-              <button onClick={this.handleDisqus}><MdClose size={30} /></button>
-            <ReactDisqusComments
-              shortname='maigo'
-              identifier={`${this.props.match.params.series}_${this.props.match.params.chapter}`}
-              url={`http://maigo.us/#/${this.props.match.params.series}/${this.props.match.params.chapter}`} />
-            </div>
-          </div>
-          )}
-        </Transition>
       </div>
     );
   }
