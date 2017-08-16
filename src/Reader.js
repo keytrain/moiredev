@@ -23,6 +23,7 @@ import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
 // give random series
 // announcements
 // arrow key support
+// make the comment icon filled in when disqus is active in reader
 
 class Reader extends React.Component {
   constructor(props) {
@@ -242,13 +243,16 @@ class Reader extends React.Component {
         <div className='reader'>
 
           <div className='controls'>
-           <div className='ctrl-left'>
-             {/* <button>settings</button> */}
-             <button onClick={this.handleDisqus}><MdChatBubbleOutline size={24} /></button>
-           </div>
-           <div className='ctrl-right'>
-             <Link to={`/r/${this.selection}`}><button><MdClose size={30} /></button></Link>
-           </div>
+            <div className='ctrl-left'>
+              {/* <button>settings</button> */}
+              <button onClick={this.handleDisqus}><MdChatBubbleOutline size={24} /></button>
+            </div>
+            <div className='ctrl-center'>
+              <div className='ctrl-title'>{this.selection} - Chapter {this.chapter}</div>
+            </div>
+            <div className='ctrl-right'>
+              <Link to={`/r/${this.selection}`}><button><MdClose size={30} /></button></Link>
+            </div>
           </div>
           <Transition in={this.state.showDisqus} timeout={duration}>
             {(state) => (
@@ -282,7 +286,6 @@ class Reader extends React.Component {
             <div className='chapterEnds'>
               <h1>Thanks for reading!</h1>
               <small>That was the last page.</small>
-              <p>Read the next chapter? or Read the comments?</p>
             </div>
             }
 
@@ -299,7 +302,10 @@ class Reader extends React.Component {
               <small>YOU ARE READING</small>
               <h1>{this.selection}</h1>
               <br />
-              <h3>Chapter {this.chapter}</h3>
+              <small>CHAPTER</small>
+              <h1>{this.chapter}</h1>
+              <br />
+              <br />
               <br />
               <br />
               <small>TRANSLATED BY</small>

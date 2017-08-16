@@ -251,6 +251,24 @@ export default {
     'Yume Tsukai' : {
     },
     'Oh, my sweet alien!' : {
+      '3': {
+        date: new Date('June 02 2016 GMT-800'),
+        src: 'http://img.bato.to/comics/2012/09/06/o/read50491d5702710',
+        trans: 'Yakkul',
+        let: 'Yakkul'
+      },
+      '2': {
+        date: new Date('June 02 2016 GMT-800'),
+        src: 'http://img.bato.to/comics/2012/09/03/o/read504539ce7ae8b',
+        trans: 'Yakkul',
+        let: 'Yakkul'
+      },
+      '1': {
+        date: new Date('May 07 2016 GMT-800'),
+        src: 'http://img.bato.to/comics/2012/09/03/o/read50453a2f0d29a',
+        trans: 'Yakkul',
+        let: 'Yakkul'
+      }      
     },
     'Amaama to Inazuma' : {
     },

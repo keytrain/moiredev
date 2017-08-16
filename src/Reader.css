@@ -12,6 +12,7 @@
 
   .reader {
     background-color:#f1f1f1;
+      min-height:900px;
     text-align:center;
   }
     .pages {
@@ -63,9 +64,9 @@
        background-color:#fff;
        margin-bottom:1rem;
     }
-      .ctrl-left, .ctrl-right {
+      .ctrl-left, .ctrl-center, .ctrl-right {
         display:inline-block;
-        width:50%;
+        width:calc(100%/3);
         padding:0 0.7rem;
       }
       .ctrl-left {
@@ -74,6 +75,10 @@
       .ctrl-right {
         text-align:right;
       }
+        .ctrl-title {
+          font-weight:300;
+          font-size:1.2rem;
+        }
     .disqus-container {
       position:absolute; 
       display:inline-block;

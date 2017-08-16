@@ -26,7 +26,7 @@ class SeriesModal extends Component {
     document.addEventListener('keydown', this.handleKey);
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKey);    
   }
 
