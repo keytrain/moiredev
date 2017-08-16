@@ -80,8 +80,13 @@ class Reader extends React.Component {
     console.log(e.key);
     switch (e.key) {
       case 'ArrowLeft':
+        // turn page left
         break;
       case 'ArrowRight':
+        // turn page right;
+        break;
+      case 'Escape':
+        this.props.history.push(`/r/${this.selection}`);
         break;
       default:
         break;
@@ -104,8 +109,10 @@ class Reader extends React.Component {
       this.setState((prevState) => {
         prevState.rightShow = true;
         prevState.leftShow = true;
+        if (!prevState.goBack) {
+          this.buffer(4);
+        }
       })
-      this.buffer(4);
     }, 300)
   }
 
@@ -248,7 +255,7 @@ class Reader extends React.Component {
               <button onClick={this.handleDisqus}><MdChatBubbleOutline size={24} /></button>
             </div>
             <div className='ctrl-center'>
-              <div className='ctrl-title'>{this.selection} - Chapter {this.chapter}</div>
+              <div className='ctrl-title'><strong>{this.selection}</strong> - Chapter {this.chapter}</div>
             </div>
             <div className='ctrl-right'>
               <Link to={`/r/${this.selection}`}><button><MdClose size={30} /></button></Link>

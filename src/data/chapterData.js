@@ -223,6 +223,12 @@ export default {
     'Gonensei' : {
     },
     'Hitogatana' : {
+      // '1': {
+      //   date: new Date('Jun 14 2011 GMT-800'),
+      //   src:'http://img.bato.to/comics/2011/06/14/h/read4df74fc47ec30/Credits.jpg', 
+      //   trans: 'umeboshi',
+      //   letter: 'RelM'
+      // }
     },
     'Yume Midokoro (oneshot)' : {
     },

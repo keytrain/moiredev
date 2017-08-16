@@ -52,7 +52,7 @@ class Page extends React.Component {
     }
     const duration = 625;
     const defaultStyle = {
-      opacity:0,
+      // opacity:0,
       transition: `opacity ${duration}ms ease-out`,
       verticalAlign: 'top',
     }

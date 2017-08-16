@@ -53,11 +53,17 @@ h4 {
 }
 h5 {
   font-size:1.2rem;  
-  line-height:1.2;
-  
+  line-height:1.2; 
 }
 small {
   font-size:0.833rem;
+}
+.link:hover {
+  cursor: pointer;
+  color:#aaa;
+}
+.header-lead {
+  font-weight:100;
 }
 hr {
   border:0;
@@ -69,30 +75,36 @@ hr {
 input {
    font-family: inherit; 
 }
-button {
-  border:0;
-  transition:ease-in-out 100ms;
-  padding:0.7rem 0.8rem;
-  font-family:inherit;
-  outline:none;  
-  font-weight:500;
-  color:#333;
-  font-size:0.833rem;
+button,.button {
+  border: 0;
+  transition: ease-in-out 100ms;
+  padding: 0.7rem 0.8rem;
+  font-family: inherit;
+  outline: none;  
+  font-weight: 500;
+  color: #333;
+  font-size: 0.833rem;
   text-transform: uppercase;
-  opacity:1;
-  background:none;
+  text-decoration: none;
+  margin-left:0.5rem;
+  opacity: 1;
+  background: none;
   border-radius: 4px;
   /* margin: 0 0.5rem; */
 }
-button:focus {
+button:first-child,.button:first-child {
+  margin-left: 0;
+}
+
+button:focus,.button:focus {
   background:none;
 }
-button:hover {
+button:hover,.button:hover {
   cursor:pointer;
   color:#fff;
   background:#222;
 }
-button:active {
+button:active,.button:active {
   background:none;
   color:#222;
 }
@@ -100,7 +112,7 @@ button:active {
 .filter {
   transition:none;
   text-transform:capitalize;
-   color:#999; 
+  color:#999; 
   margin: 0.5rem;
   border-radius: 0;
   font-size:0.9rem;
@@ -125,21 +137,6 @@ button:active {
   /* background-color:#222; */
   /* font-weight:900; */
    border-bottom: 1px solid #111; 
-}
-
-.button {
-  border:0;
-  transition:opacity ease-in-out 0.5s;
-  padding:0.5rem 0.7rem;
-  font-family:inherit;
-  background-color:#ddd;
-  outline:none;  
-}
-.button:focus {
-}
-.button:hover {
-  cursor:pointer;
-  opacity:0.6;
 }
 
 @media screen and (min-width: 668px) {
