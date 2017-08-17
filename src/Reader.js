@@ -15,14 +15,11 @@ import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
 // optimize spread checking
 // Settings
 // 1 page option
-// prevent background from shifting when locking scroll with modal
 // irc link
 // supporting other types of page names, e.g. '00.png'
-// series comments in modal
 // switch chapter inside reader
 // give random series
 // announcements
-// arrow key support
 // make the comment icon filled in when disqus is active in reader
 
 class Reader extends React.Component {
@@ -57,9 +54,11 @@ class Reader extends React.Component {
     this.handleSpread = this.handleSpread.bind(this);
     this.loadPages = this.loadPages.bind(this);
     this.buffer = this.buffer.bind(this);
+    this.nextPage = this.nextPage.bind(this);
+    this.prevPage = this.prevPage.bind(this);
     this.handleDisqus = this.handleDisqus.bind(this);
     this.handlePagesKey = this.handlePagesKey.bind(this);
-    this.checkAndLoadAltImageTypes = this.checkAndLoadAltImageTypes.bind(this);
+    this.checkAltImageTypes = this.checkAltImageTypes.bind(this);
   }
 
   componentDidMount() {
@@ -80,10 +79,10 @@ class Reader extends React.Component {
     console.log(e.key);
     switch (e.key) {
       case 'ArrowLeft':
-        // turn page left
+        this.nextPage();
         break;
       case 'ArrowRight':
-        // turn page right;
+        this.prevPage();
         break;
       case 'Escape':
         this.props.history.push(`/r/${this.selection}`);
@@ -151,7 +150,7 @@ class Reader extends React.Component {
     }
   }
 
-  checkAndLoadAltImageTypes(pageType) {
+  checkAltImageTypes(pageType) {
     this.setState((prevState => {
       if (prevState[pageType] === 'jpg') {
         prevState[pageType] = 'jpeg';
@@ -166,47 +165,87 @@ class Reader extends React.Component {
   }
 
   handleLeftLoaded() {
-    console.log('left')
+    // console.log('left')
   }
 
   handleRightLoaded() {
-    console.log('right')
+    // console.log('right')
+    document.addEventListener('keydown', this.handlePagesKey);
   }
 
   handleLeftError() {
-    console.log('error')
-    this.checkAndLoadAltImageTypes('leftPgType');
+    // console.log('error')
+    this.checkAltImageTypes('leftPgType');
   }
 
   handleRightError() {
-    console.log('error')
-    this.checkAndLoadAltImageTypes('rightPgType');
+    // console.log('error')
+    this.checkAltImageTypes('rightPgType');
+  }
+
+  nextPage() {
+    let currPg = this.props.match.params.page;
+    let nextPg = Number(currPg) + (this.state.spread ? 1 : 2);
+
+    if (nextPg > -1 && nextPg < this.state.lastPg) {  
+      document.removeEventListener('keydown', this.handlePagesKey);
+      this.setState({goBack: false});
+      this.props.history.push({
+        pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`
+      });
+    }
+  }
+  
+  prevPage() {
+    let currPg = this.props.match.params.page;
+    let nextPg = Number(currPg) - 1;
+
+    if (nextPg > -1 && nextPg < this.state.lastPg) {  
+      document.removeEventListener('keydown', this.handlePagesKey);
+      this.setState({goBack: true});
+      this.props.history.push({
+        pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`
+      });
+    }
   }
 
   handlePages(e) {
     e.persist();
     // currentTarget grabs pages div
     // target grabs the respective Image component
-    let pgWidth = e.currentTarget.offsetWidth;
-    console.log(pgWidth/2);
-    let midPoint = pgWidth / 2;
-    let clickLoc = e.pageX;
-    console.log(e);
+    // let pgWidth = e.currentTarget.offsetWidth;
+    // let midPoint = pgWidth / 2;
+    // let clickLoc = e.pageX;
 
-    let currPg = this.props.match.params.page;
-    let nextPg = undefined;
-    if (clickLoc < midPoint) {
-      nextPg = Number(currPg) + (this.state.spread ? 1 : 2);
-      this.setState({goBack: false});
-    }
-    else if (clickLoc > midPoint) {
-      nextPg = Number(currPg) - 1;
-      this.setState({goBack: true});
-    }
-    if (nextPg > -1 && nextPg < this.state.lastPg) {
-      this.props.history.push({
-        pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`
-      });
+    // console.log(e.target.attributes[0].value);
+    if (e.target.className) {
+      if (!this.state.spread) {
+        let pgClicked = e.target.className;
+        if (pgClicked === 'leftPg') {
+          this.nextPage();
+        } else if (pgClicked === 'rightPg') {
+          this.prevPage();
+        }
+      } else {
+        let midPoint = e.target.width/2;
+        let clickLoc = e.nativeEvent.offsetX;
+        let currPg = this.props.match.params.page;
+        let nextPg = undefined;
+
+        if (clickLoc < midPoint) {
+          nextPg = Number(currPg) + (this.state.spread ? 1 : 2);
+          this.setState({goBack: false});
+        }
+        else if (clickLoc > midPoint) {
+          nextPg = Number(currPg) - 1;
+          this.setState({goBack: true});
+        }
+        if (nextPg > -1 && nextPg < this.state.lastPg) {
+          this.props.history.push({
+            pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`
+          });
+        }
+      }
     }
   }
 
@@ -277,7 +316,8 @@ class Reader extends React.Component {
             </div>
             )}
           </Transition>
-          <div className='pages' style={this.state.pageStyle} onClick={this.handlePages}>
+
+          <div className='pages' style={this.state.pageStyle}>
 
             {(!this.state.spread && (Number(currPg) + 1) !== this.state.lastPg) &&
             <Page containerClass={'pgContainer leftPgCont'} imgClass={'leftPg'} 
@@ -286,7 +326,8 @@ class Reader extends React.Component {
             error={this.handleLeftError}
             show={this.state.leftShow}
             imgWidth={this.state.leftWidth}
-            spread={this.handleSpread} />
+            spread={this.handleSpread}
+            click={this.handlePages} />
             }
             {((Number(currPg) + 1) === this.state.lastPg) &&
             
@@ -303,7 +344,8 @@ class Reader extends React.Component {
               error={this.handleRightError}
               show={this.state.rightShow}
               imgWidth={this.state.rightWidth}
-              spread={this.handleSpread} />
+              spread={this.handleSpread}
+              click={this.handlePages} />
             :
             <div className='chapterEnds'>
               <small>YOU ARE READING</small>

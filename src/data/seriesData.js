@@ -206,7 +206,7 @@ export default {
     },
     'Yume Tsukai' : {
       cover: ['./img/cover/yum/1.jpg'],
-      synopsis: ["An ordinary, quiet town is shaken by a series of bizarre happenings brought about by the darkness in human hearts. There are no solutions in the real world: Only \"Dream Messengers\" can find the answers. Dream messengers connect the fabulous with the real and control the power of dreams. Their leader, Toko Mishima, works with 8 other messengers using the powers given by an old spell and a toy made by Toko's father. Toko, her younger sister Rinko, Hajime Tachibana, who loves young girls, and the six other Dream Messengers are given the names of days or stars - Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Raff, and Keito."],
+      synopsis: ["An ordinary, quiet town is shaken by a series of bizarre happenings brought about by the darkness in human hearts. There are no solutions in the real world: Only \"Dream Messengers\" can find the answers.","Dream messengers connect the fabulous with the real and control the power of dreams. Their leader, Toko Mishima, works with 8 other messengers using the powers given by an old spell and a toy made by Toko's father. Toko, her younger sister Rinko, Hajime Tachibana, who loves young girls, and the six other Dream Messengers are given the names of days or stars - Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Raff, and Keito."],
       author: 'Ueshiba Riichi',
       licensed: false,
     },
@@ -256,11 +256,11 @@ export default {
       cover: ['./img/cover/jigo/1.jpg'],
       synopsis: ["Rintaro Senkawa is a 27 year old guy who got a little drunk one night and died. But that is just the beginning of this story as Rintaro finds himself most unexpectedly in Hell where he meets his guide, the devil Koyori. Can Rintaro take his situation seriously enough to repent for the sins of his former life, or will he face the favored weapon of Hell- the spiked iron club?"],   
       author: 'Suzumaru Reiji',
-      licensed: false,
+      licensed: true,
     },
     '18 Rin': {
       cover: ['./img/cover/rin/1.jpg'],
-      synopsis: [],  
+      synopsis: ["Follows the story of Rinko Ikeuchi, the daughter of wealthy parents who's on the fast track to enter medical school, but when her family falls on hard times Rinko is forced to take a job, any job, to make ends meet. When the handsome Sawakura shows up offering Rinko gainful employment she can't really say no, even after she realizes that it involves working as a production assistant in the world of hardcore adult videos."],  
       author: '',
       licensed: false,
     },

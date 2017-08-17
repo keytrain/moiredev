@@ -25,11 +25,14 @@
       width:100%;
       transition: 75ms ease-in;
     }
-    .pages:hover {
-      cursor: pointer;
-    }
-      .singlePg {
-        width:100%;
+      .pgContainer {
+        width: 50%;
+        vertical-align: middle;      
+        display:inline-block;
+        cursor: pointer;
+      }
+      .pgContainer img {
+        max-width: 100%; 
       }
       .rightPgCont {
         text-align: left;
@@ -37,19 +40,9 @@
       .leftPgCont {
         text-align:right;
       }
-      .pgContainer {
-        width: 50%;
-        vertical-align: middle;      
-        display:inline-block;
-      }
-      .pgContainer img {
-         max-width: 100%; 
-      }
-
       .spread {
         width:inherit;
       }
-
       .chapterEnds {
         display:inline-block;
         width:50%;

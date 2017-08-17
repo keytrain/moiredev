@@ -30,8 +30,6 @@ class SeriesModal extends Component {
       expandChapters: (this.selChaps.length < 4 ? false : true)
     }
 
-    console.log(this.state.expandChapters)
-
     // Functions
     this.handleKey = this.handleKey.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -74,19 +72,25 @@ class SeriesModal extends Component {
               </div>
               <hr />
               <div className='modal-chapters-container'>
-                {this.selChaps.map((e, index) => {
-                  if (index < (this.state.expandChapters ? 3 : Infinity)) {
-                    return <Link to={`/r/${this.selection}/${e}/0`} key={index}>
-                      <div className='modal-chapter'>
-                        <div className='modal-chapter-num'>
-                          <strong>Chapter {e}</strong>
-                        </div>
-                        <div className='modal-chapter-date'>
-                          {genLib.howLongAgo(chData.series[this.selection][e].date)} ago
-                        </div>
-                      </div>
-                    </Link>
-                  }
+                {this.selChaps.length === 0 &&
+                  <small>NO CHAPTERS SUPPORTED</small>
+                }
+                {this.selChaps.length > 0 &&
+                  this.selChaps.map((e, index) => {
+                    if (index < (this.state.expandChapters ? 3 : Infinity)) {
+                      return (
+                        <Link to={`/r/${this.selection}/${e}/0`} key={index}>
+                          <div className='modal-chapter'>
+                            <div className='modal-chapter-num'>
+                              <strong>Chapter {e}</strong>
+                            </div>
+                            <div className='modal-chapter-date'>
+                              {genLib.howLongAgo(chData.series[this.selection][e].date)} ago
+                            </div>
+                          </div>
+                        </Link>
+                      )
+                    }
                   
                 })}
                 {this.state.expandChapters &&
