@@ -7,6 +7,9 @@ import SeriesList from './SeriesList';
 import SeriesModal from './SeriesModal';
 import MdFilterList from 'react-icons/lib/md/filter-list';
 import MdSearch from 'react-icons/lib/md/search';
+import MdSort from 'react-icons/lib/md/sort';
+import MdMoreVert from 'react-icons/lib/md/more-vert'
+import Dropdown from './Dropdown';
 
 class App extends Component {
   constructor(props) {
@@ -123,7 +126,7 @@ class App extends Component {
   }
 
   handleKey(e) {
-    console.log(e);
+    console.log('App handle key is firing');
     // if (e.key === 'Escape') {
     //   console.log(this.props.history)
     //   // this.props.history.push('/');
@@ -210,22 +213,29 @@ class App extends Component {
             </h4>
 
               <div className='filter-container'>
+                <div className='search'>
+                  <MdSearch size={24} style={{marginRight:'0.3rem'}} /> 
+                  <input type='search' onChange={this.handleSearch} />
+                </div>
                 <div className='filterBy'>
-                  <MdFilterList />
+                  <MdFilterList size={24}/>
                   <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} name='filter' value='All' onClick={this.handleFilter}>All</button>
                   <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} name='filter' value='Current' onClick={this.handleFilter}>Current</button> 
                   <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} name='filter' value='Complete' onClick={this.handleFilter}>Complete</button> 
                   <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} name='filter' value='Dropped' onClick={this.handleFilter}>Dropped</button> 
                 </div>
                 <div className='sortBy'>
-                  <MdFilterList />
+                  <MdSort size={24}/>
                   <button className={'filter ' + (this.state.sort === 'Date' ? 'filter-active':'')} name='sort' value='Date' onClick={this.handleFilter}>Date</button> 
                   <button className={'filter ' + (this.state.sort === 'Likes' ? 'filter-active':'')} name='sort' value='Likes' onClick={this.handleFilter}>Likes</button>
                 </div>
-                <div className='search'>
-                <MdSearch style={{marginRight:'0.3rem'}} /> 
-                <input type='search' onChange={this.handleSearch} />
-              </div>
+
+                <div className='more'>
+                  <Dropdown attach={<MdMoreVert size={24} />}>
+                    <div className='dropdown-item'>IRC</div>
+                    <div className='dropdown-item'>About</div>
+                  </Dropdown>
+                </div>
               </div>
           </div>
         </nav>

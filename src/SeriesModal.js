@@ -6,11 +6,8 @@ import chData from './data/chapterData';
 import genLib from './lib/generalLibrary';
 // import MdFavoriteOutline from 'react-icons/lib/md/favorite-outline';
 // import MdFavorite from 'react-icons/lib/md/favorite';
-import MdFileDownload from 'react-icons/lib/md/file-download';
 import ReactDisqusComments from 'react-disqus-comments';
 import './SeriesModal.css';
-import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
-import MdAttachMoney from 'react-icons/lib/md/attach-money';
 
 class SeriesModal extends Component {
   constructor(props) {
@@ -91,7 +88,7 @@ class SeriesModal extends Component {
                         </Link>
                       )
                     }
-                  
+                    return '';
                 })}
                 {this.state.expandChapters &&
                 <small className='link' onClick={()=>{
@@ -102,9 +99,9 @@ class SeriesModal extends Component {
               </div>
               <div className='modal-actions'>
                 {this.selInfo.licensed ? 
-                  <a href className='button' src='#'>Licensed</a> 
+                  <a href className='button' src='/#/Licensed'>Licensed</a> 
                   :
-                  <a href className='button' src='#'>Archive</a>
+                  <a href className='button' src='/#/Archive'>Archive</a>
                 }
 
                 <button onClick={()=>{this.setState({showDisqus:true})}}>

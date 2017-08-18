@@ -11,16 +11,22 @@ import MdClose from 'react-icons/lib/md/close';
 import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
 
 // TODO:
+// make the comment icon filled in when disqus is active in reader
+// disqus is broken on mobile
+// "read more at batoto" link
+// licensed series need a download
+// a visual indicator appears on mouseover on a left or right page
+// announcements
+// switch chapter inside reader
+// mobile support
+// give random series
+// like feature
+// svg the logo
 // remove the history part of going back 1 page
 // optimize spread checking
 // Settings
 // 1 page option
-// irc link
 // supporting other types of page names, e.g. '00.png'
-// switch chapter inside reader
-// give random series
-// announcements
-// make the comment icon filled in when disqus is active in reader
 
 class Reader extends React.Component {
   constructor(props) {
@@ -71,6 +77,7 @@ class Reader extends React.Component {
   }
 
   componentWillUnmount() {
+    document.removeEventListener('keydown', this.handlePagesKey);
     // removes the listener on browser routing
     this.unlisten();
   }
@@ -86,6 +93,9 @@ class Reader extends React.Component {
         break;
       case 'Escape':
         this.props.history.push(`/r/${this.selection}`);
+        break;
+      case 'c':
+        this.handleDisqus();        
         break;
       default:
         break;
@@ -210,14 +220,10 @@ class Reader extends React.Component {
   }
 
   handlePages(e) {
-    e.persist();
+    // e.persist();
     // currentTarget grabs pages div
     // target grabs the respective Image component
-    // let pgWidth = e.currentTarget.offsetWidth;
-    // let midPoint = pgWidth / 2;
-    // let clickLoc = e.pageX;
 
-    // console.log(e.target.attributes[0].value);
     if (e.target.className) {
       if (!this.state.spread) {
         let pgClicked = e.target.className;
@@ -285,7 +291,7 @@ class Reader extends React.Component {
     }
 
     return (
-      <div className='reader-container'>
+      <div className='reader-container' tabIndex='1'>
         <div className='reader'>
 
           <div className='controls'>
@@ -307,9 +313,7 @@ class Reader extends React.Component {
                 ...transitionStyles[state]
               }} className='disqus-container'>
               <div className='disqus'>
-                {/* <button onClick={this.handleDisqus}><MdClose size={30} /></button> */}
-              <ReactDisqusComments
-                shortname='maigo'
+              <ReactDisqusComments shortname='maigo'
                 identifier={`${this.selection}_${this.chapter}`}
                 url={`http://maigo.us/#/${this.selection}/${this.chapter}`} />
               </div>

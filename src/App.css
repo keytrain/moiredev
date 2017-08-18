@@ -49,13 +49,17 @@ nav {
     font-size:0.9rem; 
     font-weight: 400;
   }
-  .sortBy, .filterBy, .search {
+  .sortBy, .filterBy, .search, .more {
       display:inline-block;
     }
     .sortBy {
+      margin-right:3rem;    
     }
     .filterBy {
       margin-right:3rem;    
+    }
+    .search {
+      margin-right:3rem;
     }
 
 
