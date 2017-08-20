@@ -23,7 +23,7 @@ nav {
     .logo {
       vertical-align: top;
       height:auto;
-      width:4rem;
+      width:3.5rem;
     }
     .tagline {
       /* margin-top:1rem;  */
@@ -46,20 +46,20 @@ nav {
   text-align:right;
 }
   .filter {
-    font-size:0.9rem; 
+    font-size:0.9rem;
     font-weight: 400;
   }
   .sortBy, .filterBy, .search, .more {
       display:inline-block;
     }
     .sortBy {
-      margin-right:3rem;    
+      margin-right:1rem;    
     }
     .filterBy {
-      margin-right:3rem;    
+      margin-right:1rem;    
     }
     .search {
-      margin-right:3rem;
+      margin-right:1rem;
     }
 
 

@@ -79,7 +79,7 @@ export default {
       },      
       {
         cover:'img/cover/ben.jpg',
-        title:'Benten Rock Yuu.',
+        title:'Benten Rock Yuu',
         updated: new Date('May 11 2015 GMT-0800'),
         completed:false
       },
@@ -103,7 +103,7 @@ export default {
       },
       {
         cover:'img/cover/haj.jpg',
-        title:'Hajiotsu.',
+        title:'Hajiotsu',
         updated: new Date('Sep 11 2014 GMT-0800'),
         completed:false
       },

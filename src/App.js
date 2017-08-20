@@ -10,6 +10,8 @@ import MdSearch from 'react-icons/lib/md/search';
 import MdSort from 'react-icons/lib/md/sort';
 import MdMoreVert from 'react-icons/lib/md/more-vert'
 import Dropdown from './Dropdown';
+import DropdownItem from './DropdownItem';
+import firebase from './firebase';
 
 class App extends Component {
   constructor(props) {
@@ -20,6 +22,7 @@ class App extends Component {
       dataSet: data.list,
       filter: 'All',
       sort: 'Date',
+      likes: {},
       showModal: {
         position: 'fixed',
         visibility: 'hidden',
@@ -30,6 +33,7 @@ class App extends Component {
       },
       modalSelection: '',
     }
+
     this.openSList = this.openSList.bind(this);
     this.closeSList = this.closeSList.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
@@ -47,6 +51,9 @@ class App extends Component {
           return -1;
         else return 0;
       })
+    })
+    firebase.likes.get((data) => {
+      this.setState({likes: data})
     })
   }
 
@@ -126,7 +133,6 @@ class App extends Component {
   }
 
   handleKey(e) {
-    console.log('App handle key is firing');
     // if (e.key === 'Escape') {
     //   console.log(this.props.history)
     //   // this.props.history.push('/');
@@ -134,7 +140,6 @@ class App extends Component {
   }
 
   handleFilter(e) {
-    e.preventDefault();
     let value = e.currentTarget.attributes.value.value;
     let name = e.currentTarget.attributes.name.value;
 
@@ -181,7 +186,11 @@ class App extends Component {
           prevState.data = dataTemp;
           prevState.dataSet = dataTemp;
           break;
-        default:
+        case 'Date':
+          break;
+        case 'Likes':
+          break;
+          default:
       }
     });
   }
@@ -202,38 +211,42 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route path='/r/:series' component={SeriesModal} />
+        <Route path='/r/:series' render={(props) => <SeriesModal {...props} likes={this.state.likes} />} />
         <nav>
           <div className='nav-container'>
             <div className='logo-container'>
               <img src={logo} className='logo' alt='logo' />
             </div>
-            <h4 className='tagline'>
-              Manga we liked, so we translated.
-            </h4>
 
               <div className='filter-container'>
                 <div className='search'>
-                  <MdSearch size={24} style={{marginRight:'0.3rem'}} /> 
+                  <MdSearch size={24} style={{marginBottom:'2px',marginRight:'0.3rem'}} /> 
                   <input type='search' onChange={this.handleSearch} />
                 </div>
                 <div className='filterBy'>
-                  <MdFilterList size={24}/>
-                  <button className={'filter ' + (this.state.filter === 'All' ? 'filter-active':'')} name='filter' value='All' onClick={this.handleFilter}>All</button>
-                  <button className={'filter ' + (this.state.filter === 'Current' ? 'filter-active':'')} name='filter' value='Current' onClick={this.handleFilter}>Current</button> 
-                  <button className={'filter ' + (this.state.filter === 'Complete' ? 'filter-active':'')} name='filter' value='Complete' onClick={this.handleFilter}>Complete</button> 
-                  <button className={'filter ' + (this.state.filter === 'Dropped' ? 'filter-active':'')} name='filter' value='Dropped' onClick={this.handleFilter}>Dropped</button> 
+                  <Dropdown attach={<div><MdFilterList size={24} style={{marginBottom:'2px'}}/> <small>FILTER BY</small></div>}>
+                    {
+                      ['All','Current','Complete','Dropped'].map((e) => 
+                      <DropdownItem key={e} name={'filter'} icon={<MdFilterList size={16} />} selection={this.state.filter} text={e} handle={this.handleFilter} />
+                      )
+                    }
+                  </Dropdown>
                 </div>
                 <div className='sortBy'>
-                  <MdSort size={24}/>
-                  <button className={'filter ' + (this.state.sort === 'Date' ? 'filter-active':'')} name='sort' value='Date' onClick={this.handleFilter}>Date</button> 
-                  <button className={'filter ' + (this.state.sort === 'Likes' ? 'filter-active':'')} name='sort' value='Likes' onClick={this.handleFilter}>Likes</button>
+                  <Dropdown attach={
+                    <div><MdSort size={24} style={{marginBottom:'2px'}}/> <small>SORT BY</small></div>}>
+                    {
+                      ['Date','Likes'].map((e) => 
+                      <DropdownItem key={e} name={'sort'} icon={<MdSort size={16} />} selection={this.state.sort} text={e} handle={this.handleFilter} />
+                      )
+                    }
+                  </Dropdown>
                 </div>
 
                 <div className='more'>
-                  <Dropdown attach={<MdMoreVert size={24} />}>
-                    <div className='dropdown-item'>IRC</div>
-                    <div className='dropdown-item'>About</div>
+                  <Dropdown attach={<MdMoreVert size={24} style={{marginBottom:'2px'}} />}>
+                    <DropdownItem text={<a href='http://webchat.irchighway.net/#maigo'>IRC</a>} />
+                    <DropdownItem text={'About'} />
                   </Dropdown>
                 </div>
               </div>

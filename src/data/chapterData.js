@@ -145,8 +145,15 @@ export default {
       }
     },
     'Mahoutsukai no Yome' : {
+      '39' : {
+        date: new Date('Aug 19 2017 GMT-0800'),
+        src: 'http://img.bato.to/comics/2017/08/19/t/read5997d553ad135',
+        trans: 'AnonSpore',
+        let: 'Nielle',
+        red: 'myran, Nami'
+      },
       '38' : {
-        date: new Date('Jun 17  2017 GMT-0800'),
+        date: new Date('Jun 17 2017 GMT-0800'),
         src: 'http://img.bato.to/comics/2017/06/16/m/read594360862e999',
         trans: 'AnonSpore',
         let: 'Nielle',
@@ -204,7 +211,7 @@ export default {
     },
     'Ashita Dorobou' : {
     },
-    'Benten Rock Yuu.' : {
+    'Benten Rock Yuu' : {
     },
     'Boku ni Koisuru Mechanical' : {
     },
@@ -212,7 +219,7 @@ export default {
     },
     'Dekoboko Girlish' : {
     },
-    'Hajiotsu.' : {
+    'Hajiotsu' : {
     },
     'Gisèle Alain' : {
     },
@@ -243,6 +250,12 @@ export default {
     'OA' : {
     },
     'Nonscale' : {
+      // '6': {
+      //   date: new Date('Nov 01 2014 GMT-0800'),
+      //   src: 'http://img.bato.to/comics/2014/11/02/n/read5455af81abd24',
+      //   trans: 'Yakkul',
+      //   letter: '?',
+      // }
     },
     'Nejimakiboshi to Aoi Sora' : {
     },

@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.2",
+    "firebase": "^4.3.0",
     "normalize.css": "^7.0.0",
     "react": "^15.6.1",
     "react-disqus-comments": "^1.0.3",

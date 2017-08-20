@@ -15,12 +15,20 @@
   position:fixed;
   background-color:#fff;
   width:300px;
-  height:400px;
+  height:300px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index:3;
 }
+  .modal a {
+    text-decoration: none;
+    font-weight:700;
+  }
+  .link:hover {
+    cursor: pointer;
+    /* color:#aaa; */
+  }
   .modal-img-container {
     display:inline-block;
     background-color:#eee;
@@ -33,7 +41,7 @@
   .modal-right {
     vertical-align: top;
     display:inline-block;
-    /* width:70%; */
+    width:100%; 
     height:inherit;
     position:relative;
   }
@@ -45,6 +53,9 @@
     }
       .modal-header {
         font-weight:900;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
       }
       .modal-chapters-container {
         /* margin: 0 -0.5rem; */
@@ -104,37 +115,37 @@
       /* left:0; */
       /* right:0; */
       /* border-top:1px solid #eee; */
-      height:auto;
-      /* text-align: center; */
-      margin:2rem 0rem; 
+      text-align: center; 
+      margin:2rem 0rem;
       /* background-color:#fff; */
     }
 
-@media screen and (min-width: 668px) {
+/* Tablet  */
+@media screen and (min-width: 720px) {
    .modal {
-    width:600px;
-    height:300px;
+    width:700px;
+    height:500px;
   }
     .modal-right {
-      width:400px;
+      width:350px;
       height:inherit;
     }
       .modal img {
-        width:200px;
+        width:350px;
         height:inherit;
       }
 }
-@media screen and (min-width: 1366px) {
+@media screen and (min-width: 1025px) {
    .modal {
-    width:1100px;
-    height:700px;
+    width:980px;
+    height:650px;
   }
     .modal img {
-      width:470px;
+      width:457px;
       height:inherit;
     }
     .modal-right {
-      width:630px;
+      width:523px;
       height:inherit;
     }
   }

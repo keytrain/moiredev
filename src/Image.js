@@ -38,7 +38,7 @@ class Image extends React.Component {
     const duration = 625;
     const defaultStyle = {
       opacity:0,
-      transition: `${duration}ms ease-out`,
+      transition: `opacity ${duration}ms ease-out`,
       verticalAlign: 'top'
     }
     // const defaultLoaderStyle ={

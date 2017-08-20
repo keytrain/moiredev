@@ -15,18 +15,21 @@ class Dropdown extends Component {
     this.setState({open:false});
   }
   handleClicked() {
-    this.setState({open:true});
+    this.setState((prevState) => {
+      prevState.open = (prevState.open ? false : true);
+    });
   }
 
   render() {
     return (
       <div>
-        <div className='attachPoint' 
-          onClick={this.handleClicked} 
-          onBlur={this.handleBlur} 
+        <div className='container'
+          onBlur={this.handleBlur}
           tabIndex='0'>
           
-          {this.props.attach}
+          <div onClick={this.handleClicked} className='attachPoint'>
+            {this.props.attach}
+          </div>
 
           {this.state.open &&
           <div className='menu'>

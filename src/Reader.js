@@ -11,22 +11,29 @@ import MdClose from 'react-icons/lib/md/close';
 import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
 
 // TODO:
+// finish adding chapters/volume covers/reader links/purchase links
+// 1 page option
+// mobile support//reader (30% of readers are mobile)
+  // move disqus below the pages under a certain width
+  // make the control bar smaller
+  // automatically make it one page on mobile
 // make the comment icon filled in when disqus is active in reader
-// disqus is broken on mobile
-// "read more at batoto" link
-// licensed series need a download
-// a visual indicator appears on mouseover on a left or right page
+// add google analytics
+// like feature
+// check firefox, safari
+
 // announcements
 // switch chapter inside reader
-// mobile support
+// a visual indicator appears on mouseover on a left or right page
+// being able to look through all volume covers
 // give random series
-// like feature
 // svg the logo
+// convert modal to resize upon window change
 // remove the history part of going back 1 page
 // optimize spread checking
 // Settings
-// 1 page option
 // supporting other types of page names, e.g. '00.png'
+// load all pages at once/vertical scroll webcomic style/load as you scroll
 
 class Reader extends React.Component {
   constructor(props) {
@@ -45,6 +52,7 @@ class Reader extends React.Component {
       goBack: false,
       lastPg: 1000,
       showDisqus: false,
+      firstLoad: false,
       pageStyle: {
         width:'100%'
       }
@@ -257,6 +265,7 @@ class Reader extends React.Component {
 
   handleDisqus() {
     this.setState((prevState) => {
+      prevState.firstLoad = true;
       prevState.showDisqus = (prevState.showDisqus === false ? true : false);
       prevState.pageStyle = {
         width:(prevState.pageStyle.width === '75%' ? '100%' : '75%')
@@ -275,23 +284,26 @@ class Reader extends React.Component {
     }
     const transitionStyles = {
       entering: {
+        visibility:'visible',
         transform: 'translateX(0%)',
       },
       entered: {
+        visibility:'visible',
         position: 'static',
         transform: 'translateX(0%)',
       },
       exiting: {
-        // transform: 'translateX(-100%)',
+        position: 'absolute',        
+        transform: 'translateX(-100%)',
       },
       exited: {
-        // position: 'absolute',
-        // transform: 'translateX(-100%)',
+        position: 'absolute',
+        transform: 'translateX(-100%)',
       }
     }
 
     return (
-      <div className='reader-container' tabIndex='1'>
+      <div className='reader-container' tabIndex='0'>
         <div className='reader'>
 
           <div className='controls'>
@@ -306,6 +318,7 @@ class Reader extends React.Component {
               <Link to={`/r/${this.selection}`}><button><MdClose size={30} /></button></Link>
             </div>
           </div>
+            {this.state.firstLoad &&
           <Transition in={this.state.showDisqus} timeout={duration}>
             {(state) => (
             <div style={{
@@ -320,6 +333,7 @@ class Reader extends React.Component {
             </div>
             )}
           </Transition>
+            }
 
           <div className='pages' style={this.state.pageStyle}>
 
