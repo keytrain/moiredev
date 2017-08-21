@@ -112,15 +112,16 @@ class SeriesModal extends Component {
 
                 <hr />
                   {this.selInfo.licensed ? 
-                    <small>Licensed by {this.selInfo.licensed}</small>
+                    <small>Licensed by <strong>{this.selInfo.licensed}</strong></small>
                     :
                     <div>
                       <small>Read more at 
                       {this.selInfo.reader.map((e) =>
                         <a key={e.name} href={e.src}> {e.name} </a>
                       )}
-                      </small><br />
-                      <small>Download at our <a href src='https://www.dropbox.com/s/uwxkqshyxmct83z/Maigo%20Repository.txt?dl=0'>archives</a></small>
+                      </small>
+                      <br />
+                      <small>Download at our <a href='https://www.dropbox.com/s/uwxkqshyxmct83z/Maigo%20Repository.txt?dl=0'>archives</a></small>
                       <div>
                         <small>Purchase JP volumes at <a href=''>Amazon</a>, <a href=''>CDJapan</a>, <a href=''>HMV</a>, <a href=''>YesAsia</a> or your favorite vendor to support the series and increase the likelihood of further publications.
                         </small>

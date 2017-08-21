@@ -21,7 +21,8 @@
       /* background-color:#fff; */
       /* box-shadow: 0 0 20px 0 #e1e1e1;  */
       padding: 0 1rem;
-      margin-bottom:3rem;
+      margin-top:5.5rem;
+      margin-bottom:1rem;
       display:inline-block;
       width:100%;
       transition: 75ms ease-in;
@@ -52,21 +53,26 @@
       }
 
     .controls {
-       width:100%;
-       text-align: center;
-       padding:0.5rem 0rem;
-       background-color:#fff;
-       margin-bottom:1rem;
+      position:fixed;
+      width:100%;
+      text-align: center;
+      padding:1rem 0rem;
+      background-color:#fff;
+      z-index: 5;
     }
       .ctrl-left, .ctrl-center, .ctrl-right {
         display:inline-block;
-        width:calc(100%/3);
         padding:0 0.7rem;
       }
+      .ctrl-center {
+        width:70%;
+        text-align: left;
+      }
       .ctrl-left {
-        text-align:left;
+        display:none;
       }
       .ctrl-right {
+        width:30%;
         text-align:right;
       }
         .ctrl-title {
@@ -74,29 +80,63 @@
           font-size:1.2rem;
         }
     .disqus-container {
-      position:absolute; 
-      display:inline-block;
-      vertical-align: top;
-      width:25%;
-      background:#f1f1f1;
-      visibility: hidden;
-      /* z-index: 5; */
-      padding:1rem;
-      /* top:5rem; */
-       /* left:0;  */
-      /* bottom:0; */
-      /* transform: translateX(-100%); */
-      /* overflow-y:auto; */
-      /* -webkit-overflow-scrolling: touch; */
+      padding:1rem 5%;
+      display:block;
+      width:100%;
+      text-align: center;
+      background:#fafafa;
     }
     .disqus {
       z-index: 5;
     }
+    .info {
+      padding:1rem;
+    }
+    .credit {
+      display:inline-block;
+      margin: 0 1rem;
+    }
 
-@media screen and (min-width: 668px) {
-
+/* Tablet */
+@media screen and (min-width: 1025px) {
+  .pages {
+    margin-top:5rem;    
+  }
+  .ctrl-center {
+    width:60%;
+    text-align: center;
+  }
+  .ctrl-left {
+    display:inline-block;
+    width:20%;
+    text-align:left;
+  }
+  .ctrl-right {
+    width:20%;
+    text-align:right;
+  }
+  .disqus-container {
+    position:absolute;
+    text-align:left;
+    width:400px;
+    z-index: 5; 
+    padding:1rem;
+    top:4.1rem;
+    left:0;  
+    bottom:0; 
+    overflow-y:auto; 
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
-@media screen and (min-width: 1025px) {
-
+/* Desktop  */
+@media screen and (min-width: 1441px) {
+  .controls {
+    padding:1rem 0rem;
+  }
+  .disqus-container {
+    position:fixed;
+    top:5rem;
+    bottom:1rem;
+  }
 }

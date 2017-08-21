@@ -80,7 +80,7 @@
         /* border-radius:4px; */
         /* transition: opacity 425ms ease-out; */
       }
-      .modal-chapter:hover {
+      .modal-chapter-num:hover {
         cursor:pointer;
         opacity:0.5;
       }

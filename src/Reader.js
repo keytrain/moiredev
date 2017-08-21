@@ -9,23 +9,20 @@ import ReactDisqusComments from 'react-disqus-comments';
 import Transition from 'react-transition-group/Transition';
 import MdClose from 'react-icons/lib/md/close';
 import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
+import MdInfoOutline from 'react-icons/lib/md/info-outline';
 
 // TODO:
-// finish adding chapters/volume covers/reader links/purchase links
 // mobile support//reader (30% of readers are mobile)
-  // collapsible credits to support chapters where the first page is a volume cover(spread)
-  // move disqus below the pages under a certain width
-  // make the control bar smaller
-  // automatically make it one page on mobile
   // single page support
+  // automatically make it one page on mobile
+// irc link doesn't work
 // like feature
 // check firefox, safari
 // add google analytics
 // make the comment icon filled in when disqus is active in reader
-// if it's licensed, who licensed and how can buy?
-  // e.g. Crunchyroll Simulpub + volumes or Seven Seas etc.
-  // Licensed by Seven Seas
 
+// title of the page should change
+// finish adding chapters/volume covers/reader links/purchase links
 // announcements
 // convert modal to resize upon window change
 // switch chapter inside reader
@@ -56,13 +53,18 @@ class Reader extends React.Component {
       goBack: false,
       lastPg: 1000,
       showDisqus: false,
+      showInfo: false,
       firstLoad: false,
       pageStyle: {
-        width:'100%'
-      }
+        marginLeft:'0',
+        transition:'75ms ease-in'
+      },
+      windowWidth: document.documentElement.clientWidth
     }
     this.selection = this.props.match.params.series;
     this.chapter = this.props.match.params.chapter;
+    this.TABLET = 1024;
+    this.DESKTOP = 1440;
 
     this.handleRightError = this.handleRightError.bind(this);
     this.handleRightLoaded = this.handleRightLoaded.bind(this);
@@ -75,8 +77,10 @@ class Reader extends React.Component {
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
     this.handleDisqus = this.handleDisqus.bind(this);
+    this.handleInfo = this.handleInfo.bind(this);
     this.handlePagesKey = this.handlePagesKey.bind(this);
     this.checkAltImageTypes = this.checkAltImageTypes.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
 
   componentDidMount() {
@@ -86,12 +90,28 @@ class Reader extends React.Component {
       this.loadPages(location.pathname.split(/(.+)\//)[2]);
     });
     document.addEventListener('keydown', this.handlePagesKey);
+    window.addEventListener('resize', this.handleResize);
   }
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handlePagesKey);
+    window.removeEventListener('resize', this.handleResize);
     // removes the listener on browser routing
     this.unlisten();
+  }
+
+  handleResize() {
+    this.setState((prevState) => {
+      let currWidth = document.documentElement.clientWidth;
+      prevState.windowWidth = currWidth;
+      if (currWidth > this.DESKTOP && prevState.showDisqus) {
+        prevState.pageStyle.marginLeft = '400px';
+        prevState.pageStyle.transition = '75ms ease-in';
+      }
+      if (currWidth < this.DESKTOP) {
+        prevState.pageStyle.marginLeft = '0';
+      }
+    });
   }
 
   handlePagesKey(e) {
@@ -271,14 +291,25 @@ class Reader extends React.Component {
     this.setState((prevState) => {
       prevState.firstLoad = true;
       prevState.showDisqus = (prevState.showDisqus === false ? true : false);
-      prevState.pageStyle = {
-        width:(prevState.pageStyle.width === '75%' ? '100%' : '75%')
+      if (prevState.windowWidth <= this.DESKTOP)
+        prevState.pageStyle = {marginLeft: '0'};
+      else {
+        prevState.pageStyle = {
+          marginLeft: (prevState.pageStyle.marginLeft === '400px' ? '0' : '400px'),
+          transition: '75ms ease-in'
+        }
       }
     });
   }
 
+  handleInfo() {
+    this.setState((prevState) => {
+      prevState.showInfo = (prevState.showInfo === false ? true : false);
+    });
+  }
+
   render() {
-    window.scrollTo(0,0);
+    // window.scrollTo(0,0);
     let chapterObj = cData.series[this.selection][this.chapter];
     let currPg = this.props.match.params.page;
 
@@ -286,43 +317,62 @@ class Reader extends React.Component {
     const defaultStyle = {
       transition: `${duration}ms ease-in`,
     }
-    const transitionStyles = {
+    let transitionStyles = {
       entering: {
         visibility:'visible',
         transform: 'translateX(0%)',
       },
       entered: {
         visibility:'visible',
-        position: 'static',
         transform: 'translateX(0%)',
       },
       exiting: {
-        position: 'absolute',        
         transform: 'translateX(-100%)',
       },
       exited: {
-        position: 'absolute',
         transform: 'translateX(-100%)',
       }
     }
 
     return (
+      
       <div className='reader-container' tabIndex='0'>
         <div className='reader'>
 
           <div className='controls'>
             <div className='ctrl-left'>
-              {/* <button>settings</button> */}
-              <button onClick={this.handleDisqus}><MdChatBubbleOutline size={24} /></button>
+              {this.state.windowWidth > this.TABLET &&              
+              <MdChatBubbleOutline onClick={this.handleDisqus} size={24} />
+              }
             </div>
             <div className='ctrl-center'>
               <div className='ctrl-title'><strong>{this.selection}</strong> - Chapter {this.chapter}</div>
             </div>
             <div className='ctrl-right'>
-              <Link to={`/r/${this.selection}`}><button><MdClose size={30} /></button></Link>
+              <MdInfoOutline size={30} onClick={this.handleInfo} />
+              <Link to={`/r/${this.selection}`}><MdClose size={30} /></Link>
             </div>
+            {this.state.showInfo &&
+            <div className='info'>
+              <div className='credit'>
+              <small>TRANSLATED BY</small>
+              <h4>{chapterObj.trans}</h4>
+              </div>
+              <div className='credit'>
+              <small>LETTERED BY</small>
+              <h4>{chapterObj.let}</h4>
+              </div>
+              {chapterObj.red &&
+              <div className='credit'>
+              <small>REDRAWN BY</small>
+              <h4>{chapterObj.red}</h4>
+              </div>
+              }
+            </div>
+            }
           </div>
-            {this.state.firstLoad &&
+
+          {(this.state.firstLoad && this.state.windowWidth > this.TABLET) &&
           <Transition in={this.state.showDisqus} timeout={duration}>
             {(state) => (
             <div style={{
@@ -337,9 +387,10 @@ class Reader extends React.Component {
             </div>
             )}
           </Transition>
-            }
+          }
 
-          <div className='pages' style={this.state.pageStyle}>
+          <div className='pages-container' style={this.state.pageStyle}>
+          <div className='pages'>
 
             {(!this.state.spread && (Number(currPg) + 1) !== this.state.lastPg) &&
             <Page containerClass={'pgContainer leftPgCont'} imgClass={'leftPg'} 
@@ -370,31 +421,27 @@ class Reader extends React.Component {
               click={this.handlePages} />
             :
             <div className='chapterEnds'>
-              <small>YOU ARE READING</small>
-              <h1>{this.selection}</h1>
-              <br />
-              <small>CHAPTER</small>
-              <h1>{this.chapter}</h1>
-              <br />
-              <br />
-              <br />
-              <br />
-              <small>TRANSLATED BY</small>
-              <h4>{chapterObj.trans}</h4>
-              <br />
-              <small>LETTERED BY</small>
-              <h4>{chapterObj.let}</h4>
-              <br />
-              {chapterObj.red &&
-              <div>
-              <small>REDRAWN BY</small>
-              <h4>{chapterObj.red}</h4>
-              </div>
-              }
+            nothing
             </div>
             }
           </div>
+          </div>
         </div>
+
+        {this.state.windowWidth <= this.TABLET &&
+          <div className='disqus-container'>
+            {!this.state.showDisqus &&
+              <button onClick={this.handleDisqus}>Show Comments</button>
+            }
+            {this.state.showDisqus &&
+              <div className='disqus'>
+              <ReactDisqusComments shortname='maigo'
+                identifier={`${this.selection}_${this.chapter}`}
+                url={`http://maigo.us/#/${this.selection}/${this.chapter}`} />
+              </div>
+            }
+          </div>
+        }
       </div>
     );
   }
