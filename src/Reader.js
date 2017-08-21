@@ -9,7 +9,9 @@ import ReactDisqusComments from 'react-disqus-comments';
 import Transition from 'react-transition-group/Transition';
 import MdClose from 'react-icons/lib/md/close';
 import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
+import MdChatBubble from 'react-icons/lib/md/chat-bubble';
 import MdInfoOutline from 'react-icons/lib/md/info-outline';
+import MdInfo from 'react-icons/lib/md/info';
 
 // TODO:
 // mobile support//reader (30% of readers are mobile)
@@ -19,7 +21,6 @@ import MdInfoOutline from 'react-icons/lib/md/info-outline';
 // like feature
 // check firefox, safari
 // add google analytics
-// make the comment icon filled in when disqus is active in reader
 
 // title of the page should change
 // finish adding chapters/volume covers/reader links/purchase links
@@ -335,22 +336,31 @@ class Reader extends React.Component {
     }
 
     return (
-      
       <div className='reader-container' tabIndex='0'>
         <div className='reader'>
 
           <div className='controls'>
             <div className='ctrl-left'>
-              {this.state.windowWidth > this.TABLET &&              
-              <MdChatBubbleOutline onClick={this.handleDisqus} size={24} />
+              {this.state.windowWidth > this.TABLET &&
+              <div>
+                {this.state.showDisqus ?
+                <MdChatBubble className='action-icon' onClick={this.handleDisqus} size={24} />
+                :
+                <MdChatBubbleOutline className='action-icon' onClick={this.handleDisqus} size={24} />
+                }
+              </div>
               }
             </div>
             <div className='ctrl-center'>
               <div className='ctrl-title'><strong>{this.selection}</strong> - Chapter {this.chapter}</div>
             </div>
             <div className='ctrl-right'>
-              <MdInfoOutline size={30} onClick={this.handleInfo} />
-              <Link to={`/r/${this.selection}`}><MdClose size={30} /></Link>
+                {this.state.showInfo ?
+                <MdInfo className='action-icon' onClick={this.handleInfo} size={24} />
+                :
+                <MdInfoOutline className='action-icon' onClick={this.handleInfo} size={24} />
+                }
+              <Link to={`/r/${this.selection}`}><MdClose className='action-icon' size={30} /></Link>
             </div>
             {this.state.showInfo &&
             <div className='info'>

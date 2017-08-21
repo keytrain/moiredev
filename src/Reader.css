@@ -79,6 +79,12 @@
           font-weight:300;
           font-size:1.2rem;
         }
+      .action-icon {
+        margin: 0 0.5rem;
+      }
+      .action-icon:hover {
+        cursor: pointer;
+      }
     .disqus-container {
       padding:1rem 5%;
       display:block;
