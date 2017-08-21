@@ -7,9 +7,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Spotted Flower' : {
@@ -18,9 +15,6 @@ export default {
       author: 'Kio Shimoku',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -31,9 +25,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Mahoutsukai no Yome' : {
@@ -43,10 +34,7 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
-      licensed: true,
+      licensed: 'Seven Seas',
     },
     'Seifuku no Vampiress Lord' : {
       cover: ['./img/cover/vamp/2.jpg'],
@@ -54,9 +42,6 @@ export default {
       author: 'Matsumoto Tomoki',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -67,9 +52,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Boku wa Tomodachi ga Sukunai' : {
@@ -79,10 +61,7 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
-      licensed: true,
+      licensed: 'Seven Seas',
     },
     'Tasogare Otome x Amnesia' : {
       cover: ['./img/cover/taso/1.jpg'],
@@ -90,9 +69,6 @@ export default {
       author: 'Maybe',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -103,9 +79,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Chimoguri Ringo to Kingyobachi Otoko' : {
@@ -114,9 +87,6 @@ export default {
       author: 'Abe Youichi',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -127,9 +97,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Ashita Dorobou' : {
@@ -138,9 +105,6 @@ export default {
       author: 'Hokazono Masaya/Betten Court',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -151,9 +115,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Boku ni Koisuru Mechanical' : {
@@ -162,9 +123,6 @@ export default {
       author: 'Watarai Keiji',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -175,9 +133,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Dekoboko Girlish' : {
@@ -186,9 +141,6 @@ export default {
       author: 'Hara Ayumi',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -199,9 +151,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Gisèle Alain' : {
@@ -210,9 +159,6 @@ export default {
       author: 'Kasai Sui',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -223,9 +169,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Kekkon Yubiwa Monogatari' : {
@@ -235,10 +178,7 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
-      licensed: false,
+      licensed: 'Crunchyroll, Yen Press',
     },
     'Gonensei' : {
       cover: ['./img/cover/gon/1.jpg'],
@@ -246,9 +186,6 @@ export default {
       author: 'Kio Shimoku',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -259,9 +196,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Yume Midokoro (oneshot)' : {
@@ -270,9 +204,6 @@ export default {
       author: 'Eretto',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -283,10 +214,7 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
-      licensed: false,
+      licensed: 'Kadokawa BookWalker',
     },
     'Hakoiri Drops' : {
       cover: ['./img/cover/hak/1.jpg'],
@@ -294,9 +222,6 @@ export default {
       author: 'Tsurusaki Yuu',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -307,9 +232,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Paradox Blue' : {
@@ -318,9 +240,6 @@ export default {
       author: 'Nakanishi Tatsurou/Nini',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -331,9 +250,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Nonscale' : {
@@ -342,9 +258,6 @@ export default {
       author: 'Mebae',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -355,9 +268,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Tetsugaku Letra' : {
@@ -367,22 +277,16 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Tokyo ESP' : {
       cover: ['./img/cover/esp/1.jpg'],
-      synopsis: ["Urushiba Rinka was a fairly normal high school girl, though she was a bit poor and her only family was her father. Then one day, she saw a penguin and some glowing fish swimming through the sky. Rinka might have thought it was a hallucination if there hadn't been another witness with her, a boy from her school with a strangely scratched-up face.", "Contact with a fish caused her to pass out, and when she awoke, she had developed the power to move through inanimate objects... such as the floor of her apartment! Later, a call from her father showed her that she was not the only one the flying fish bestowed with hard-to-control superpowers! What exactly is going on here? And does Rinka's classmate know more about this situation than he's letting on?"],
+      synopsis: ["There’s a New Heroine in Town.","Rinka Urushiba’s world is turned upside down when she wakes up one day-after falling right through the floor.","Encouraged by another ESPer who believes that Rinka’s destiny is to become a hero of justice, she soon learns to use her powers for good. And not a moment too soon, as those with less-than-admirable ambitions descend on Tokyo with their own sets of superpowers. As the mysterious glowing fish flitting through the city skies gift powers seemingly at random, foes become friends and alliances are made and broken.","And what about that flying penguin?"],
       author: 'Segawa Hajime',
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
-      licensed: false,
+      licensed: 'Vertical',
     },
     'Taiyou no Ie' : {
       cover: ['./img/cover/tai/1.jpg'],
@@ -391,10 +295,7 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
-      licensed: false,
+      licensed: 'Kodansha',
     },
     'Mardock Scramble' : {
       cover: ['./img/cover/mar/1.jpg'],
@@ -403,10 +304,7 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
-      licensed: true,
+      licensed: 'Kodansha',
     },
     'Yume Tsukai' : {
       cover: ['./img/cover/yum/1.jpg'],
@@ -414,9 +312,6 @@ export default {
       author: 'Ueshiba Riichi',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -427,9 +322,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Amaama to Inazuma' : {
@@ -439,10 +331,7 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
-      licensed: true,
+      licensed: 'Kodansha Comics',
     },
     'Ashita wa Kyouso-sama (oneshot)' : {
       cover: ['./img/cover/kyou/1.jpg'],
@@ -450,9 +339,6 @@ export default {
       author: 'Kio Shimoku',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -463,9 +349,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Futari no Renai Shoka' : {
@@ -474,9 +357,6 @@ export default {
       author: 'Yamazaki Kore',
       reader: [
         {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
       ],
       licensed: false,
     },
@@ -487,9 +367,6 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
     'Hero Mask' : {
@@ -499,32 +376,23 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
       licensed: false,
     },
   'Jigokuren - LOVE in the HELL' : {
       cover: ['./img/cover/jigo/1.jpg'],
-      synopsis: ["Rintaro Senkawa is a 27 year old guy who got a little drunk one night and died. But that is just the beginning of this story as Rintaro finds himself most unexpectedly in Hell where he meets his guide, the devil Koyori. Can Rintaro take his situation seriously enough to repent for the sins of his former life, or will he face the favored weapon of Hell- the spiked iron club?"],   
+      synopsis: ["Senkawa Rintaro: a regualr guy in his mid-20's who got a bit tipsy one night and fell to his death. But that is just the beginning of Rintaro's story, as he finds himself unexpectedly in Hell where he meets his guide, the painfully sexy devil Koyori. Can Rintaro take his situation seriously enough to repent for the sins of his former life, or is he fated to eternally tempted, teased, and tortured by scantily-clad devils with iron spiked clubs?"],   
       author: 'Suzumaru Reiji',
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
-      licensed: true,
+      licensed: 'Seven Seas',
     },
     '18 Rin': {
       cover: ['./img/cover/rin/1.jpg'],
       synopsis: ["Follows the story of Rinko Ikeuchi, the daughter of wealthy parents who's on the fast track to enter medical school, but when her family falls on hard times Rinko is forced to take a job, any job, to make ends meet. When the handsome Sawakura shows up offering Rinko gainful employment she can't really say no, even after she realizes that it involves working as a production assistant in the world of hardcore adult videos."],  
       author: '',
       reader: [
-        {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
+        {name: 'Kissmanga', src:'http://kissmanga.com/Manga/18-Rin'}
       ],
       licensed: false,
     },
@@ -535,20 +403,14 @@ export default {
       reader: [
         {name: 'Batoto', src:''}
       ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
-      ],
-      licensed: true,
+      licensed: 'Vertical',
     },
     'Sore ga Kanojo no Seigi nara' : {
       cover: ['./img/cover/seigi/1.jpg'],
       synopsis: ["After his happy-go-lucky lovestruck parents suddenly decide to go on an amorous traveling adventure, Yuki is shuffled off to live with one of his dad's old friends. He knows very little about his new living circumstances, save that his dad's friend is an author with three children.","Something seems a little off about the girl who's sent to meet him, the fidgety and overly anxious Aya, but he doesn't fully understand what's going on until he arrives at the house. Yuki, who has had very little to do with women thus far in his life, is now set to live in a house with four of them. The head of the house is actually an author of erotic novels, and she habitually forces her three daughters into embarrassing sexual situations. How will Yuki cope with his new life?"],
       author: 'Sanada Rin',
       reader: [
-        {name: 'Batoto', src:''}
-      ],
-      purchase: [
-        {vendor: 'Amazon', src:''},
+        {name: 'Batoto', src:'https://bato.to/comic/_/comics/sore-ga-kanojo-no-seigi-nara-r575'}
       ],
       licensed: false,
     },

@@ -212,6 +212,12 @@ export default {
     'Ashita Dorobou' : {
     },
     'Benten Rock Yuu' : {
+      // '1': {
+      //   date: new Date('Dec 29 2014'),
+      //   src:'http://img.bato.to/comics/2014/12/29/b/read54a0fd526e61b',
+      //   trans: 'Yakkul',
+      //   let: 'RelM'
+      // }
     },
     'Boku ni Koisuru Mechanical' : {
     },
@@ -234,16 +240,28 @@ export default {
       //   date: new Date('Jun 14 2011 GMT-800'),
       //   src:'http://img.bato.to/comics/2011/06/14/h/read4df74fc47ec30/Credits.jpg', 
       //   trans: 'umeboshi',
-      //   letter: 'RelM'
+      //   let: 'RelM'
       // }
     },
     'Yume Midokoro (oneshot)' : {
+      '1': {
+        date: new Date('Feb 24 2012'),
+        src: 'http://img.bato.to/comics/2012/02/25/y/read4f4884654753a',
+        trans: 'aznn3ss',
+        let: 'aznn3ss'
+      }
     },
     'Ga-rei' : {
     },
     'Hakoiri Drops' : {
     },
     'Straw' : {
+      '1': {
+        date: new Date('Aug 17 2015'),
+        src: 'http://img.bato.to/comics/2015/08/17/s/read55d20d3f2c07a',
+        trans: 'Yakkul',
+        let: 'Yakkul'
+      }
     },
     'Paradox Blue' : {
     },
@@ -254,7 +272,7 @@ export default {
       //   date: new Date('Nov 01 2014 GMT-0800'),
       //   src: 'http://img.bato.to/comics/2014/11/02/n/read5455af81abd24',
       //   trans: 'Yakkul',
-      //   letter: '?',
+      //   let: '?',
       // }
     },
     'Nejimakiboshi to Aoi Sora' : {
@@ -300,9 +318,9 @@ export default {
       }
     },
     'Flying Witch (oneshot)' : {
-      '1': {
-        date: new Date('Jul 09 2017 GMT-0800')
-      }
+      // '1': {
+      //   date: new Date('Jul 09 2017 GMT-0800')
+      // }
     },
     'Reversible!' : {
     },

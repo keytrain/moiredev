@@ -12,28 +12,32 @@ import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
 
 // TODO:
 // finish adding chapters/volume covers/reader links/purchase links
-// 1 page option
 // mobile support//reader (30% of readers are mobile)
+  // collapsible credits to support chapters where the first page is a volume cover(spread)
   // move disqus below the pages under a certain width
   // make the control bar smaller
   // automatically make it one page on mobile
-// make the comment icon filled in when disqus is active in reader
-// add google analytics
+  // single page support
 // like feature
 // check firefox, safari
+// add google analytics
+// make the comment icon filled in when disqus is active in reader
+// if it's licensed, who licensed and how can buy?
+  // e.g. Crunchyroll Simulpub + volumes or Seven Seas etc.
+  // Licensed by Seven Seas
 
 // announcements
+// convert modal to resize upon window change
 // switch chapter inside reader
 // a visual indicator appears on mouseover on a left or right page
 // being able to look through all volume covers
 // give random series
-// svg the logo
-// convert modal to resize upon window change
 // remove the history part of going back 1 page
 // optimize spread checking
 // Settings
 // supporting other types of page names, e.g. '00.png'
 // load all pages at once/vertical scroll webcomic style/load as you scroll
+// svg the logo
 
 class Reader extends React.Component {
   constructor(props) {
