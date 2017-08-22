@@ -245,7 +245,7 @@ class App extends Component {
 
                 <div className='more'>
                   <Dropdown attach={<MdMoreVert size={24} style={{marginBottom:'2px'}} />}>
-                    <DropdownItem text={<a href='http://webchat.irchighway.net/#maigo'>IRC</a>} />
+                    <a href='http://webchat.irchighway.net/#maigo'><DropdownItem text={'IRC'} /></a>
                     <DropdownItem text={'About'} />
                   </Dropdown>
                 </div>

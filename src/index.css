@@ -5,7 +5,7 @@
 html, body {
   height:100%;
   width:100%;  
-  overflow:auto;
+  overflow:auto;  
   -webkit-overflow-scrolling: touch; 
 }
 
@@ -70,6 +70,13 @@ hr {
 }
 input {
    font-family: inherit; 
+}
+input[type=search] {
+  border: none;
+  background-color:#f2f2f2;
+  border-radius: 3px;
+  padding: 5px;
+  -webkit-appearance: none;
 }
 input:focus {
   outline:none;

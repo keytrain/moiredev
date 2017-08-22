@@ -9,12 +9,18 @@ class Dropdown extends Component {
     };
     this.handleClicked = this.handleClicked.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
   }
 
-  handleBlur() {
+  handleBlur(e) {
     this.setState({open:false});
   }
-  handleClicked() {
+  // mousedown fires before blur event, somehow causing blur to occur?
+  // there needs to be a resource for events and their orders...
+  handleMouseDown(e) {
+    e.preventDefault();
+  }
+  handleClicked(e) {
     this.setState((prevState) => {
       prevState.open = (prevState.open ? false : true);
     });
@@ -32,7 +38,7 @@ class Dropdown extends Component {
           </div>
 
           {this.state.open &&
-          <div className='menu'>
+          <div className='menu'  onMouseDown={this.handleMouseDown}>
             {this.props.children}
           </div>
           }

@@ -49,6 +49,7 @@ class Page extends React.Component {
   render() {
     const container = {
       position: 'relative',
+      width: this.props.singlePgMode ? '100%' : '50%'
     }
     const duration = 625;
     const defaultStyle = {
@@ -71,7 +72,7 @@ class Page extends React.Component {
       }
     }
     
-    if (this.props.imgClass === 'rightPg') {
+    if (this.props.imgClass === 'rightPg' && !this.props.singlePgMode) {
       this.checkSpread();
     }
 

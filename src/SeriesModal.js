@@ -39,6 +39,7 @@ class SeriesModal extends Component {
   }
 
   componentDidMount() {
+
     document.addEventListener('keydown', this.handleKey);
 
     firebase.likes.getBySeries(this.selection, (data) => {
@@ -63,7 +64,8 @@ class SeriesModal extends Component {
 
   render() {
 
-
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflow = 'auto';
     return (
       <div>
         <div className='modal'>
@@ -81,11 +83,11 @@ class SeriesModal extends Component {
                 <p key={index}>{e}</p>
               )}
               </div>
-              <hr />
+              {this.selChaps.length > 0 &&
+                <hr />
+              }
+
               <div className='modal-chapters-container'>
-                {this.selChaps.length === 0 &&
-                  <div><small>NO CHAPTERS SUPPORTED</small></div>
-                }
                 {this.selChaps.length > 0 &&
                   this.selChaps.map((e, index) => {
                     if (index < (this.state.expandChapters ? 3 : Infinity)) {
@@ -103,16 +105,13 @@ class SeriesModal extends Component {
                       )
                     }
                     return '';
-                })}
-                {this.state.expandChapters &&
-                <small className='link' onClick={()=>{
-                  this.setState({expandChapters:false})}}>
-                  SHOW MORE</small>
+                })
+                
                 }
 
                 <hr />
                   {this.selInfo.licensed ? 
-                    <small>Licensed by <strong>{this.selInfo.licensed}</strong></small>
+                    <small>Now licensed and distributed in English by <strong>{this.selInfo.licensed}</strong></small>
                     :
                     <div>
                       <small>Read more at 

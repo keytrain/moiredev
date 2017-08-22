@@ -14,19 +14,16 @@ import MdInfoOutline from 'react-icons/lib/md/info-outline';
 import MdInfo from 'react-icons/lib/md/info';
 
 // TODO:
-// mobile support//reader (30% of readers are mobile)
-  // single page support
-  // automatically make it one page on mobile
-// irc link doesn't work
+// changing page has to scroll the page up, use the overflow trick if you have to
 // like feature
-// check firefox, safari
 // add google analytics
+// switch chapter inside reader
+// check firefox, safari
 
 // title of the page should change
 // finish adding chapters/volume covers/reader links/purchase links
 // announcements
 // convert modal to resize upon window change
-// switch chapter inside reader
 // a visual indicator appears on mouseover on a left or right page
 // being able to look through all volume covers
 // give random series
@@ -40,6 +37,13 @@ import MdInfo from 'react-icons/lib/md/info';
 class Reader extends React.Component {
   constructor(props) {
     super(props)
+
+    this.selection = this.props.match.params.series;
+    this.chapter = this.props.match.params.chapter;
+    this.MOBILE = 425;
+    this.TABLET = 1024;
+    this.DESKTOP = 1440;
+
     this.state = {
       pageMode: localStorage.getItem('pageMode'),
       leftPgCount: '000001',
@@ -60,12 +64,9 @@ class Reader extends React.Component {
         marginLeft:'0',
         transition:'75ms ease-in'
       },
+      singlePgMode: (document.documentElement.clientWidth <= this.MOBILE) ? true : false,
       windowWidth: document.documentElement.clientWidth
     }
-    this.selection = this.props.match.params.series;
-    this.chapter = this.props.match.params.chapter;
-    this.TABLET = 1024;
-    this.DESKTOP = 1440;
 
     this.handleRightError = this.handleRightError.bind(this);
     this.handleRightLoaded = this.handleRightLoaded.bind(this);
@@ -86,7 +87,16 @@ class Reader extends React.Component {
 
   componentDidMount() {
     // initial load
-    this.loadPages(this.props.match.params.page);
+    // fixes the scroll on iOS... dumb
+    document.documentElement.style.overflow = 'visible';
+    document.body.style.overflow = 'visible';
+
+    if (this.state.singlePgMode && this.props.match.params.page === '0') {
+      this.props.history.push(`/r/${this.selection}/${this.chapter}/1`);
+      this.loadPages('1');
+    } else {
+      this.loadPages(this.props.match.params.page);
+    }
     this.unlisten = this.props.history.listen((location, action) => {
       this.loadPages(location.pathname.split(/(.+)\//)[2]);
     });
@@ -109,8 +119,13 @@ class Reader extends React.Component {
         prevState.pageStyle.marginLeft = '400px';
         prevState.pageStyle.transition = '75ms ease-in';
       }
-      if (currWidth < this.DESKTOP) {
+      if (currWidth <= this.DESKTOP) {
         prevState.pageStyle.marginLeft = '0';
+      }
+      prevState.singlePgMode = (currWidth <= this.MOBILE) ? true : false;
+      if (prevState.singlePgMode && this.props.match.params.page === '0') {
+        this.props.history.push(`/r/${this.selection}/${this.chapter}/1`);
+        this.loadPages('1');
       }
     });
   }
@@ -148,7 +163,11 @@ class Reader extends React.Component {
       prevState.spread = false;
     })
     setTimeout(()=> {
-      this.setState((prevState) => {
+    document.documentElement.style.overflow = 'scroll';
+    document.body.style.overflow = 'scroll';
+    document.documentElement.style.overflow = 'visible';
+    document.body.style.overflow = 'visible';
+    this.setState((prevState) => {
         prevState.rightShow = true;
         prevState.leftShow = true;
         if (!prevState.goBack) {
@@ -164,20 +183,22 @@ class Reader extends React.Component {
 
     for (let i = 0; i < size; i++) {
       let pageNum = Number(originPg) + i + 1;
-      const bufferImg = new Image();
-      let nextPg = genLib.padZero('' + pageNum);
-      let bufferImgType = 'png';
-      bufferImg.onerror = function() {
-        if (bufferImgType === 'jpg') {
-          bufferImgType = 'jpeg';
-          bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
-        } else if (bufferImgType === 'png') {
-          bufferImgType = 'jpg';
-          bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
+      // if (pageNum < this.state.lastPg) {
+        const bufferImg = new Image();
+        let nextPg = genLib.padZero('' + pageNum);
+        let bufferImgType = 'png';
+        bufferImg.onerror = function() {
+          if (bufferImgType === 'jpg') {
+            bufferImgType = 'jpeg';
+            bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
+          } else if (bufferImgType === 'png') {
+            bufferImgType = 'jpg';
+            bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
+          }
         }
-      }
-      bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
-    }
+        bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
+      }    
+    // }
   }
 
   handleSpread(imgObj) {
@@ -200,9 +221,9 @@ class Reader extends React.Component {
       } else if (prevState[pageType] === 'png') {
         prevState[pageType] = 'jpg';
       } else {
-        if (pageType === 'leftPgType') {
-          prevState.lastPg = Number(prevState.leftPgCount);
-        }
+        if (pageType === (this.state.singlePgMode ? 'rightPgType' : 'leftPgType')) {
+          prevState.lastPg = Number(prevState.leftPgCount) - (this.state.singlePgMode ? 1 : 0);
+        }        
       }
     }));
   }
@@ -228,8 +249,7 @@ class Reader extends React.Component {
 
   nextPage() {
     let currPg = this.props.match.params.page;
-    let nextPg = Number(currPg) + (this.state.spread ? 1 : 2);
-
+    let nextPg = Number(currPg) + (this.state.singlePgMode ? 1 : (this.state.spread ? 1 : 2));
     if (nextPg > -1 && nextPg < this.state.lastPg) {  
       document.removeEventListener('keydown', this.handlePagesKey);
       this.setState({goBack: false});
@@ -243,7 +263,7 @@ class Reader extends React.Component {
     let currPg = this.props.match.params.page;
     let nextPg = Number(currPg) - 1;
 
-    if (nextPg > -1 && nextPg < this.state.lastPg) {  
+    if (nextPg > (this.state.singlePgMode ? 0 : -1) && nextPg < this.state.lastPg) {  
       document.removeEventListener('keydown', this.handlePagesKey);
       this.setState({goBack: true});
       this.props.history.push({
@@ -252,13 +272,14 @@ class Reader extends React.Component {
     }
   }
 
+  // activated when clicking on a page
   handlePages(e) {
     // e.persist();
     // currentTarget grabs pages div
     // target grabs the respective Image component
 
     if (e.target.className) {
-      if (!this.state.spread) {
+      if (!this.state.spread && !this.state.singlePgMode) {
         let pgClicked = e.target.className;
         if (pgClicked === 'leftPg') {
           this.nextPage();
@@ -268,21 +289,12 @@ class Reader extends React.Component {
       } else {
         let midPoint = e.target.width/2;
         let clickLoc = e.nativeEvent.offsetX;
-        let currPg = this.props.match.params.page;
-        let nextPg = undefined;
 
         if (clickLoc < midPoint) {
-          nextPg = Number(currPg) + (this.state.spread ? 1 : 2);
-          this.setState({goBack: false});
+          this.nextPage();
         }
         else if (clickLoc > midPoint) {
-          nextPg = Number(currPg) - 1;
-          this.setState({goBack: true});
-        }
-        if (nextPg > -1 && nextPg < this.state.lastPg) {
-          this.props.history.push({
-            pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`
-          });
+          this.prevPage();
         }
       }
     }
@@ -352,7 +364,7 @@ class Reader extends React.Component {
               }
             </div>
             <div className='ctrl-center'>
-              <div className='ctrl-title'><strong>{this.selection}</strong> - Chapter {this.chapter}</div>
+              <div className='ctrl-title'><strong>{this.selection}</strong> - Ch. {this.chapter}</div>
             </div>
             <div className='ctrl-right'>
                 {this.state.showInfo ?
@@ -402,7 +414,7 @@ class Reader extends React.Component {
           <div className='pages-container' style={this.state.pageStyle}>
           <div className='pages'>
 
-            {(!this.state.spread && (Number(currPg) + 1) !== this.state.lastPg) &&
+            {(!this.state.spread && !this.state.singlePgMode && (Number(currPg) + 1) !== this.state.lastPg) &&
             <Page containerClass={'pgContainer leftPgCont'} imgClass={'leftPg'} 
             src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
             loaded={this.handleLeftLoaded} 
@@ -415,8 +427,8 @@ class Reader extends React.Component {
             {((Number(currPg) + 1) === this.state.lastPg) &&
             
             <div className='chapterEnds'>
-              <h1>Thanks for reading!</h1>
-              <small>That was the last page.</small>
+              {/* <h1>Thanks for reading!</h1> */}
+              {/* <small>That was the last page.</small> */}
             </div>
             }
 
@@ -428,10 +440,11 @@ class Reader extends React.Component {
               show={this.state.rightShow}
               imgWidth={this.state.rightWidth}
               spread={this.handleSpread}
-              click={this.handlePages} />
+              click={this.handlePages}
+              singlePgMode={this.state.singlePgMode} />
             :
             <div className='chapterEnds'>
-            nothing
+             {/* <h1>Enjoy!</h1> */}
             </div>
             }
           </div>
