@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Image from './Image';
 import sData from './data/seriesData';
-import chData from './data/chapterData';
+// import chData from './data/chapterData';
 import genLib from './lib/generalLibrary';
-import MdFavoriteOutline from 'react-icons/lib/md/favorite-outline';
-import MdFavorite from 'react-icons/lib/md/favorite';
+// import MdFavoriteOutline from 'react-icons/lib/md/favorite-outline';
+// import MdFavorite from 'react-icons/lib/md/favorite';
 import ReactDisqusComments from 'react-disqus-comments';
 import './SeriesModal.css';
-import firebase from './firebase';
+// import firebase from './firebase';
 
 class SeriesModal extends Component {
   constructor(props) {
     super(props);
 
+    this.chData = window.chapterData;
     this.selection = this.props.match.params.series;
     this.selInfo = sData.series[this.selection];
-    this.selChaps = Object.keys(chData.series[this.selection]).sort((a,b) => {
+    this.selChaps = Object.keys(this.chData.series[this.selection]).sort((a,b) => {
       if (Number(a) < Number(b)) { return -1; }
       else if (Number(a) > Number(b)) { return 1; }
 
@@ -26,25 +27,24 @@ class SeriesModal extends Component {
     this.state = {
       showDisqus: false,
       expandChapters: (this.selChaps.length < 4 ? false : true),
-      likes: this.props.likes[this.selection],
-      liked: false
+      // likes: this.props.likes[this.selection],
+      // liked: false
     }
-
+    // firebase.likes.getBySeries(this.selection, (data) => {
+    //   this.setState({likes: data});
+    // });
+    // firebase.likes.getLiked(this.selection, (data) => {
+    //   this.setState({liked: data});
+    // });
     // Functions
     this.handleKey = this.handleKey.bind(this);
+    // this.handleLike = this.handleLike.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
-  componentWillMount() {
-  }
-
   componentDidMount() {
-
     document.addEventListener('keydown', this.handleKey);
 
-    firebase.likes.getBySeries(this.selection, (data) => {
-      this.setState({likes: data})
-    })
   }
 
   componentWillUnmount() {
@@ -61,6 +61,28 @@ class SeriesModal extends Component {
       this.closeModal();
     }
   }
+
+  // handleLike() {
+  //   if (this.state.liked) {
+  //     firebase.likes.delete(this.selection, (succ)=> { 
+  //       if (succ) {
+  //         this.setState((prevState) => {
+  //           prevState.liked = false; 
+  //           prevState.likes = Number(prevState.likes) - 1;
+  //         });
+  //       }
+  //     });
+  //   } else {
+  //     firebase.likes.add(this.selection, (succ)=> { 
+  //       if (succ) {
+  //         this.setState((prevState) => {
+  //           prevState.liked = true;
+  //           prevState.likes = Number(prevState.likes) + 1;
+  //         });
+  //       }
+  //     });
+  //   }
+  // }
 
   render() {
 
@@ -99,7 +121,7 @@ class SeriesModal extends Component {
                             </div>
                           </Link>
                           <div className='modal-chapter-date'>
-                            {genLib.howLongAgo(chData.series[this.selection][e].date)} ago
+                            {genLib.howLongAgo(this.chData.series[this.selection][e].date)} ago
                           </div>
                         </div>
                       )
@@ -130,12 +152,12 @@ class SeriesModal extends Component {
 
                 <hr />
 
-                {this.state.liked ? 
-                  <MdFavorite size={24} style={{paddingBottom:'2px'}} />
+                {/* {this.state.liked ? 
+                  <MdFavorite size={24} className='like-button' style={{paddingBottom:'2px'}} onClick={this.handleLike} />
                   :
-                  <MdFavoriteOutline size={24} style={{paddingBottom:'2px'}} />
+                  <MdFavoriteOutline size={24} className='like-button' style={{paddingBottom:'2px'}} onClick={this.handleLike} />
                 }
-                <strong> {this.state.likes}</strong>
+                <strong> {this.state.likes}</strong> */}
                 
               </div>
               {!this.state.showDisqus ?

@@ -49,7 +49,7 @@ class Page extends React.Component {
   render() {
     const container = {
       position: 'relative',
-      width: this.props.singlePgMode ? '100%' : '50%'
+      width: this.props.singlePgMode ? '100%' : ''
     }
     const duration = 625;
     const defaultStyle = {

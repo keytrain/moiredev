@@ -1,4 +1,4 @@
-import chData from './chapterData';
+let chData = window.chapterData;
 
 function sortChaps(arr) {
   return arr.sort((a,b) => {

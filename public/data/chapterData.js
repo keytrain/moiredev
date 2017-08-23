@@ -1,4 +1,4 @@
-export default {
+window.chapterData = {
   series: {
     'Mahoromi' : {
       '18': {

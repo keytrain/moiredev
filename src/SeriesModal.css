@@ -106,6 +106,12 @@
           /* color:#aaa; */
           /*text-align: right;*/
         }
+        .like-button {
+            
+        }
+        .like-button:hover {
+          cursor:pointer;
+        }
         .commentsbtn {
           /* width:100%; */
         }

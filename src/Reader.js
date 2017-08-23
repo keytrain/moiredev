@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Reader.css';
-import cData from './data/chapterData';
 import Page from './Page';
 // import Image from './Image';
 import genLib from './lib/generalLibrary';
@@ -14,12 +13,12 @@ import MdInfoOutline from 'react-icons/lib/md/info-outline';
 import MdInfo from 'react-icons/lib/md/info';
 
 // TODO:
+// overflow is a pos and defaults to visible after leaving reader
 // changing page has to scroll the page up, use the overflow trick if you have to
-// like feature
-// add google analytics
-// switch chapter inside reader
 // check firefox, safari
 
+// being able to switch between the two viewing modes (single and double page)
+// switch chapter inside reader
 // title of the page should change
 // finish adding chapters/volume covers/reader links/purchase links
 // announcements
@@ -40,6 +39,7 @@ class Reader extends React.Component {
 
     this.selection = this.props.match.params.series;
     this.chapter = this.props.match.params.chapter;
+    this.cData = window.chapterData;
     this.MOBILE = 425;
     this.TABLET = 1024;
     this.DESKTOP = 1440;
@@ -83,6 +83,7 @@ class Reader extends React.Component {
     this.handlePagesKey = this.handlePagesKey.bind(this);
     this.checkAltImageTypes = this.checkAltImageTypes.bind(this);
     this.handleResize = this.handleResize.bind(this);
+    this.resetChapterToStart = this.resetChapterToStart.bind(this);
   }
 
   componentDidMount() {
@@ -92,8 +93,7 @@ class Reader extends React.Component {
     document.body.style.overflow = 'visible';
 
     if (this.state.singlePgMode && this.props.match.params.page === '0') {
-      this.props.history.push(`/r/${this.selection}/${this.chapter}/1`);
-      this.loadPages('1');
+      this.resetChapterToStart();
     } else {
       this.loadPages(this.props.match.params.page);
     }
@@ -111,6 +111,11 @@ class Reader extends React.Component {
     this.unlisten();
   }
 
+  resetChapterToStart() {
+    this.props.history.push(`/r/${this.selection}/${this.chapter}/1`);
+    this.loadPages('1');
+  }
+
   handleResize() {
     this.setState((prevState) => {
       let currWidth = document.documentElement.clientWidth;
@@ -124,14 +129,13 @@ class Reader extends React.Component {
       }
       prevState.singlePgMode = (currWidth <= this.MOBILE) ? true : false;
       if (prevState.singlePgMode && this.props.match.params.page === '0') {
-        this.props.history.push(`/r/${this.selection}/${this.chapter}/1`);
-        this.loadPages('1');
+        this.resetChapterToStart();
       }
     });
   }
 
   handlePagesKey(e) {
-    console.log(e.key);
+    // console.log(e.key);
     switch (e.key) {
       case 'ArrowLeft':
         this.nextPage();
@@ -178,7 +182,7 @@ class Reader extends React.Component {
   }
 
   buffer(size) {
-    let chapterObj = cData.series[this.selection][this.chapter];
+    let chapterObj = this.cData.series[this.selection][this.chapter];
     let originPg = this.state.leftPgCount;
 
     for (let i = 0; i < size; i++) {
@@ -323,7 +327,7 @@ class Reader extends React.Component {
 
   render() {
     // window.scrollTo(0,0);
-    let chapterObj = cData.series[this.selection][this.chapter];
+    let chapterObj = this.cData.series[this.selection][this.chapter];
     let currPg = this.props.match.params.page;
 
     const duration = 75;
@@ -452,16 +456,20 @@ class Reader extends React.Component {
         </div>
 
         {this.state.windowWidth <= this.TABLET &&
-          <div className='disqus-container'>
+          <div>
             {!this.state.showDisqus &&
-              <button onClick={this.handleDisqus}>Show Comments</button>
+            <div className='disqus-container' onClick={this.handleDisqus}>
+              <button>Show Comments</button>
+            </div>
             }
             {this.state.showDisqus &&
+            <div className='disqus-container'>
               <div className='disqus'>
               <ReactDisqusComments shortname='maigo'
                 identifier={`${this.selection}_${this.chapter}`}
                 url={`http://maigo.us/#/${this.selection}/${this.chapter}`} />
               </div>
+            </div>
             }
           </div>
         }

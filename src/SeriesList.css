@@ -89,12 +89,7 @@
     .sitem-img-container {
     transition: 65ms 25ms ease-in-out;    
   }
-  .sitem-img-container:hover {
-    cursor:pointer;
-    margin-top:-5px;
-    margin-bottom:5px;
-    box-shadow: 0 5px 20px 0 #bbb;
-  }
+
 }
 
 @media screen and (min-width: 1366px) {
@@ -103,5 +98,11 @@
   }
   .sitem-date, .sitem-status {
     font-size:calc(16px*0.833);
+  }
+    .sitem-img-container:hover {
+    cursor:pointer;
+    margin-top:-5px;
+    margin-bottom:5px;
+    box-shadow: 0 5px 20px 0 #bbb;
   }
 }
