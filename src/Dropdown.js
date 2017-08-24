@@ -28,22 +28,19 @@ class Dropdown extends Component {
 
   render() {
     return (
-      <div>
-        <div className='container'
-          onBlur={this.handleBlur}
-          tabIndex='0'>
-          
-          <div onClick={this.handleClicked} className='attachPoint'>
-            {this.props.attach}
-          </div>
-
-          {this.state.open &&
-          <div className='menu'  onMouseDown={this.handleMouseDown}>
-            {this.props.children}
-          </div>
-          }
-
+      <div className='container' onBlur={this.handleBlur} tabIndex='0'>
+        
+        <div onClick={this.handleClicked} className='attachPoint'>
+          {this.props.attach}
         </div>
+
+        {this.state.open &&
+        <div className='menu-container' onMouseDown={this.handleMouseDown}>
+          <div className='menu-contents'>
+          {this.props.children}
+          </div>
+        </div>
+        }
       </div>
     );
   }

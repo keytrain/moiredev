@@ -49,9 +49,9 @@ class Page extends React.Component {
   render() {
     const container = {
       position: 'relative',
-      width: this.props.singlePgMode ? '100%' : ''
+      width: this.props.singlePgMode ? '100%' : '',
     }
-    const duration = 625;
+    const duration = 200;
     const defaultStyle = {
       // opacity:0,
       transition: `opacity ${duration}ms ease-out`,

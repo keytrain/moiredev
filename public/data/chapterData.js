@@ -125,6 +125,12 @@ window.chapterData = {
       }
     },
     'Kannou Sensei' : {
+      '3': {
+        date: new Date('Aug 22 2017 GMT-0800'),
+        src: 'http://img.bato.to/comics/2017/08/23/k/read599d37d038398',
+        trans: 'Haremless',
+        let: 'cranon'
+      },
       '2': {
         date: new Date('Aug 07 2017 GMT-0800'),
         src: 'http://img.bato.to/comics/2017/08/06/k/read598786c29a485',

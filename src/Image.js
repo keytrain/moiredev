@@ -35,7 +35,7 @@ class Image extends React.Component {
     const container = {
       position: 'relative'
     }
-    const duration = 625;
+    const duration = 200;
     const defaultStyle = {
       opacity:0,
       transition: `opacity ${duration}ms ease-out`,

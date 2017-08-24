@@ -128,7 +128,11 @@ class SeriesModal extends Component {
                     }
                     return '';
                 })
-                
+                }
+                {this.state.expandChapters &&
+                <small className='link' onClick={()=>{
+                  this.setState({expandChapters:false})}}>
+                  SHOW MORE</small>
                 }
 
                 <hr />
@@ -168,9 +172,10 @@ class SeriesModal extends Component {
               </div>
               :
               <div className='disqus'>
-                <hr />
-                <ReactDisqusComments shortname='maigo' identifier={`${this.selection}`}
-                  url={`http://maigo.us/#/${this.selection}`} />
+                <ReactDisqusComments shortname='maigo4'
+                  identifier={`${this.selection}`}
+                  url={`http://maigo.us/#/r/${this.selection}`}
+                  title={`${this.selection}`} />
               </div>
               }
             </div>

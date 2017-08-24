@@ -8,15 +8,18 @@ import ReactDisqusComments from 'react-disqus-comments';
 import Transition from 'react-transition-group/Transition';
 import MdClose from 'react-icons/lib/md/close';
 import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
-import MdChatBubble from 'react-icons/lib/md/chat-bubble';
+import MdChat from 'react-icons/lib/md/chat';
 import MdInfoOutline from 'react-icons/lib/md/info-outline';
 import MdInfo from 'react-icons/lib/md/info';
+import MdSettings from 'react-icons/lib/md/settings';
+import Dropdown from './Dropdown';
+import DropdownItem from './DropdownItem';
 
 // TODO:
+// missing "updated" within the day
 // overflow is a pos and defaults to visible after leaving reader
 // changing page has to scroll the page up, use the overflow trick if you have to
 // check firefox, safari
-
 // being able to switch between the two viewing modes (single and double page)
 // switch chapter inside reader
 // title of the page should change
@@ -45,7 +48,7 @@ class Reader extends React.Component {
     this.DESKTOP = 1440;
 
     this.state = {
-      pageMode: localStorage.getItem('pageMode'),
+      pageMode: localStorage.getItem('pageMode') ? localStorage.getItem('pageMode') : 'Double Page',
       leftPgCount: '000001',
       leftPgType: 'png',
       leftShow: false,
@@ -62,9 +65,9 @@ class Reader extends React.Component {
       firstLoad: false,
       pageStyle: {
         marginLeft:'0',
-        transition:'75ms ease-in'
+        transition:'150ms cubic-bezier(0.4, 0.0, 0.6, 1)'
       },
-      singlePgMode: (document.documentElement.clientWidth <= this.MOBILE) ? true : false,
+      singlePgMode: (localStorage.getItem('pageMode') === 'Single Page' || document.documentElement.clientWidth <= this.MOBILE) ? true : false,
       windowWidth: document.documentElement.clientWidth
     }
 
@@ -81,6 +84,7 @@ class Reader extends React.Component {
     this.handleDisqus = this.handleDisqus.bind(this);
     this.handleInfo = this.handleInfo.bind(this);
     this.handlePagesKey = this.handlePagesKey.bind(this);
+    this.handlePageMode = this.handlePageMode.bind(this);
     this.checkAltImageTypes = this.checkAltImageTypes.bind(this);
     this.handleResize = this.handleResize.bind(this);
     this.resetChapterToStart = this.resetChapterToStart.bind(this);
@@ -122,7 +126,7 @@ class Reader extends React.Component {
       prevState.windowWidth = currWidth;
       if (currWidth > this.DESKTOP && prevState.showDisqus) {
         prevState.pageStyle.marginLeft = '400px';
-        prevState.pageStyle.transition = '75ms ease-in';
+        prevState.pageStyle.transition = '150ms cubic-bezier(0.4, 0.0, 0.6, 1)';
       }
       if (currWidth <= this.DESKTOP) {
         prevState.pageStyle.marginLeft = '0';
@@ -165,20 +169,20 @@ class Reader extends React.Component {
       prevState.rightWidth = 0;
       prevState.leftShow = false;
       prevState.spread = false;
-    })
+    });
     setTimeout(()=> {
-    document.documentElement.style.overflow = 'scroll';
-    document.body.style.overflow = 'scroll';
-    document.documentElement.style.overflow = 'visible';
-    document.body.style.overflow = 'visible';
-    this.setState((prevState) => {
+      // document.documentElement.style.overflow = 'scroll';
+      // document.body.style.overflow = 'scroll';
+      // document.documentElement.style.overflow = 'visible';
+      // document.body.style.overflow = 'visible';
+      this.setState((prevState) => {
         prevState.rightShow = true;
         prevState.leftShow = true;
         if (!prevState.goBack) {
           this.buffer(4);
         }
       })
-    }, 300)
+    }, 400);
   }
 
   buffer(size) {
@@ -313,7 +317,7 @@ class Reader extends React.Component {
       else {
         prevState.pageStyle = {
           marginLeft: (prevState.pageStyle.marginLeft === '400px' ? '0' : '400px'),
-          transition: '75ms ease-in'
+          transition: '150ms cubic-bezier(0.4, 0.0, 0.6, 1)'
         }
       }
     });
@@ -325,14 +329,31 @@ class Reader extends React.Component {
     });
   }
 
+  handlePageMode(e) {
+    let value = e.currentTarget.attributes.value.value;
+
+    this.setState((prevState) => {
+      localStorage.pageMode = value;
+      prevState.pageMode = value;
+      if (value === 'Single Page') {
+        prevState.singlePgMode = true;
+        if (this.props.match.params.page === '0') {
+          this.resetChapterToStart();
+        }
+      } else {
+        prevState.singlePgMode = false;
+      }
+    });
+  }
+
   render() {
     // window.scrollTo(0,0);
     let chapterObj = this.cData.series[this.selection][this.chapter];
     let currPg = this.props.match.params.page;
 
-    const duration = 75;
+    const duration = 150;
     const defaultStyle = {
-      transition: `${duration}ms ease-in`,
+      transition: `${duration}ms cubic-bezier(0.4, 0.0, 0.6, 1)`,
     }
     let transitionStyles = {
       entering: {
@@ -351,6 +372,8 @@ class Reader extends React.Component {
       }
     }
 
+    let actionIconSize = this.state.windowWidth > this.MOBILE ? 24 : 18;
+
     return (
       <div className='reader-container' tabIndex='0'>
         <div className='reader'>
@@ -360,9 +383,9 @@ class Reader extends React.Component {
               {this.state.windowWidth > this.TABLET &&
               <div>
                 {this.state.showDisqus ?
-                <MdChatBubble className='action-icon' onClick={this.handleDisqus} size={24} />
+                <MdChat className='action-icon' onClick={this.handleDisqus} size={actionIconSize} />
                 :
-                <MdChatBubbleOutline className='action-icon' onClick={this.handleDisqus} size={24} />
+                <MdChatBubbleOutline className='action-icon' onClick={this.handleDisqus} size={actionIconSize} />
                 }
               </div>
               }
@@ -371,12 +394,18 @@ class Reader extends React.Component {
               <div className='ctrl-title'><strong>{this.selection}</strong> - Ch. {this.chapter}</div>
             </div>
             <div className='ctrl-right'>
-                {this.state.showInfo ?
-                <MdInfo className='action-icon' onClick={this.handleInfo} size={24} />
-                :
-                <MdInfoOutline className='action-icon' onClick={this.handleInfo} size={24} />
-                }
-              <Link to={`/r/${this.selection}`}><MdClose className='action-icon' size={30} /></Link>
+              {this.state.showInfo ?
+              <MdInfo className='action-icon' onClick={this.handleInfo} size={actionIconSize} />
+              :
+              <MdInfoOutline className='action-icon' onClick={this.handleInfo} size={actionIconSize} />
+              }
+              
+              <Dropdown attach={<MdSettings className='action-icon' size={actionIconSize} />}>
+                <DropdownItem name={'pageMode'} icon={''} selection={this.state.pageMode} text={'Single Page'} handle={this.handlePageMode} />
+                <DropdownItem name={'pageMode'} icon={''} selection={this.state.pageMode} text={'Double Page'} handle={this.handlePageMode} />
+              </Dropdown>
+              
+              <Link to={`/r/${this.selection}`}><MdClose className='action-icon' size={actionIconSize} /></Link>
             </div>
             {this.state.showInfo &&
             <div className='info'>
@@ -406,9 +435,10 @@ class Reader extends React.Component {
                 ...transitionStyles[state]
               }} className='disqus-container'>
               <div className='disqus'>
-              <ReactDisqusComments shortname='maigo'
-                identifier={`${this.selection}_${this.chapter}`}
-                url={`http://maigo.us/#/${this.selection}/${this.chapter}`} />
+                <ReactDisqusComments shortname='maigo4'
+                  identifier={`${this.selection}_${this.chapter}`}
+                  url={`http://maigo.us/#/r/${this.selection}/${this.chapter}`}
+                  title={`${this.selection} - ${this.chapter}`} />
               </div>
             </div>
             )}
@@ -416,42 +446,42 @@ class Reader extends React.Component {
           }
 
           <div className='pages-container' style={this.state.pageStyle}>
-          <div className='pages'>
+            <div className='pages'>
 
-            {(!this.state.spread && !this.state.singlePgMode && (Number(currPg) + 1) !== this.state.lastPg) &&
-            <Page containerClass={'pgContainer leftPgCont'} imgClass={'leftPg'} 
-            src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
-            loaded={this.handleLeftLoaded} 
-            error={this.handleLeftError}
-            show={this.state.leftShow}
-            imgWidth={this.state.leftWidth}
-            spread={this.handleSpread}
-            click={this.handlePages} />
-            }
-            {((Number(currPg) + 1) === this.state.lastPg) &&
-            
-            <div className='chapterEnds'>
-              {/* <h1>Thanks for reading!</h1> */}
-              {/* <small>That was the last page.</small> */}
-            </div>
-            }
-
-            {currPg > '0' ?
-            <Page containerClass={'pgContainer rightPgCont ' + (this.state.spread ?'spread':'')} imgClass={'rightPg'} 
-              src={`${chapterObj.src}/img${this.state.rightPgCount}.${this.state.rightPgType}`} 
-              loaded={this.handleRightLoaded} 
-              error={this.handleRightError}
-              show={this.state.rightShow}
-              imgWidth={this.state.rightWidth}
+              {(!this.state.spread && !this.state.singlePgMode && (Number(currPg) + 1) !== this.state.lastPg) &&
+              <Page containerClass={'pgContainer leftPgCont'} imgClass={'leftPg'} 
+              src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
+              loaded={this.handleLeftLoaded} 
+              error={this.handleLeftError}
+              show={this.state.leftShow}
+              imgWidth={this.state.leftWidth}
               spread={this.handleSpread}
-              click={this.handlePages}
-              singlePgMode={this.state.singlePgMode} />
-            :
-            <div className='chapterEnds'>
-             {/* <h1>Enjoy!</h1> */}
+              click={this.handlePages} />
+              }
+              {((Number(currPg) + 1) === this.state.lastPg) &&
+              
+              <div className='chapterEnds'>
+                {/* <h1>Thanks for reading!</h1> */}
+                {/* <small>That was the last page.</small> */}
+              </div>
+              }
+
+              {currPg > '0' ?
+              <Page containerClass={'pgContainer ' + (this.state.singlePgMode ? '':'rightPgCont ') + (this.state.spread ?'spread':'')} imgClass={'rightPg'} 
+                src={`${chapterObj.src}/img${this.state.rightPgCount}.${this.state.rightPgType}`} 
+                loaded={this.handleRightLoaded} 
+                error={this.handleRightError}
+                show={this.state.rightShow}
+                imgWidth={this.state.rightWidth}
+                spread={this.handleSpread}
+                click={this.handlePages}
+                singlePgMode={this.state.singlePgMode} />
+              :
+              <div className='chapterEnds'>
+              {/* <h1>Enjoy!</h1> */}
+              </div>
+              }
             </div>
-            }
-          </div>
           </div>
         </div>
 
@@ -465,9 +495,10 @@ class Reader extends React.Component {
             {this.state.showDisqus &&
             <div className='disqus-container'>
               <div className='disqus'>
-              <ReactDisqusComments shortname='maigo'
+              <ReactDisqusComments shortname='maigo4'
                 identifier={`${this.selection}_${this.chapter}`}
-                url={`http://maigo.us/#/${this.selection}/${this.chapter}`} />
+                url={`http://maigo.us/#/r/${this.selection}/${this.chapter}`}
+                title={`${this.selection} - ${this.chapter}`} />
               </div>
             </div>
             }

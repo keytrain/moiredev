@@ -24,6 +24,7 @@
         vertical-align: middle;      
         display:inline-block;
         cursor: pointer;
+        text-align:center;
       }
       .pgContainer img {
         max-width: 100%; 
@@ -36,6 +37,7 @@
       }
       .spread {
         width:inherit;
+        text-align: center;
       }
       .chapterEnds {
         display:inline-block;
@@ -73,8 +75,9 @@
           font-size:1.2rem;
         }
       .action-icon {
-        margin: 0 0rem;
-        margin-bottom: 2px; 
+        margin:0 0.2rem; 
+        margin-bottom: 2px;
+        display:inline-block;
       }
       .action-icon:hover {
         cursor: pointer;
@@ -99,12 +102,12 @@
 
 /* Tablet */
 @media screen and (min-width: 1025px) {
-  .controls {
-    padding:1rem 0;
-  }
   .pages {
     margin-top:5rem;
     margin-bottom:1rem;
+  }
+  .controls {
+    padding:1rem 0rem;
   }
   .ctrl-center {
     width:60%;
@@ -138,9 +141,6 @@
 
 /* Desktop  */
 @media screen and (min-width: 1441px) {
-  .controls {
-    padding:1rem 0rem;
-  }
   .disqus-container {
     position:fixed;
     top:5rem;
