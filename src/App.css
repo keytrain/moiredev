@@ -1,10 +1,18 @@
 .wrapper, .nav-container {
   margin:0 auto;
 }
+.wrapper {
+  margin-top:3rem;
+}
 nav {
   /* border-bottom:1px solid #eee; */
   height:auto;
   background:#fff;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1;
   /*box-shadow: 1px 1px 2px 0 #efefef;*/
   /*box-shadow: 0 0 5px 0 #eee;*/
 }

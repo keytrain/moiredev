@@ -198,6 +198,12 @@ window.chapterData = {
       }
     },
     'Seifuku no Vampiress Lord' :   {
+      '7': {
+        date: new Date('Sep 4 2017 11:45:00 GMT-0700'),
+        src: 'http://img.bato.to/comics/2017/09/04/s/read59ada99f473d7',
+        trans: 'Vexed',
+        let: 'nijuu'
+      },
       '6': {
         date: new Date('Jul 1 2017 GMT-0800'),
         src: 'http://img.bato.to/comics/2017/06/29/s/read595478492595d',
