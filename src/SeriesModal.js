@@ -44,11 +44,14 @@ class SeriesModal extends Component {
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKey);
-
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'scroll';
   }
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKey);    
+    document.documentElement.style.overflow = 'initial';
+    document.body.style.overflow = 'initial';
   }
 
   closeModal() {
@@ -85,9 +88,6 @@ class SeriesModal extends Component {
   // }
 
   render() {
-
-    document.documentElement.style.overflow = 'auto';
-    document.body.style.overflow = 'auto';
     return (
       <div>
         <div className='modal'>

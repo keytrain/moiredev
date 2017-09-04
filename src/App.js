@@ -233,6 +233,7 @@ class App extends Component {
       <div>
         <Route path='/r/:series' render={(props) => <SeriesModal {...props} likes={this.state.likes} />} />
         <nav>
+        {/* <div className='nav-strip'></div> */}
           <div className='nav-container'>
             <div className='logo-container'>
               <img src={logo} className='logo' alt='logo' />
