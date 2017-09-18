@@ -142,11 +142,11 @@ class SeriesModal extends Component {
                     <div>
                       <small>Read more at 
                       {this.selInfo.reader.map((e) =>
-                        <a key={e.name} href={e.src}> {e.name} </a>
-                      )}
+                        <a key={e.name} href={e.src}> {e.name}</a>
+                      )}.
                       </small>
                       <br />
-                      <small>Download at our <a href='https://www.dropbox.com/s/uwxkqshyxmct83z/Maigo%20Repository.txt?dl=0'>archives</a></small>
+                      <small>Download at our <a href='https://www.dropbox.com/s/uwxkqshyxmct83z/Maigo%20Repository.txt?dl=0'>archives</a>.</small>
                       <div>
                         <small>Purchase JP volumes at <strong>Amazon</strong>, <strong>CDJapan</strong>, <strong>HMV</strong>, <strong>YesAsia</strong> or your favorite vendor to support the series and increase the likelihood of further publications.
                         </small>

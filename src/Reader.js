@@ -16,11 +16,8 @@ import Dropdown from './Dropdown';
 import DropdownItem from './DropdownItem';
 
 // TODO:
-// missing "updated" within the day
-// overflow is a pos and defaults to visible after leaving reader
 // changing page has to scroll the page up, use the overflow trick if you have to
 // check firefox, safari
-// being able to switch between the two viewing modes (single and double page)
 // switch chapter inside reader
 // title of the page should change
 // finish adding chapters/volume covers/reader links/purchase links
@@ -31,7 +28,6 @@ import DropdownItem from './DropdownItem';
 // give random series
 // remove the history part of going back 1 page
 // optimize spread checking
-// Settings
 // supporting other types of page names, e.g. '00.png'
 // load all pages at once/vertical scroll webcomic style/load as you scroll
 // svg the logo
