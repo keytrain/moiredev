@@ -99,7 +99,7 @@ class SeriesModal extends Component {
           <div className='modal-right'>
             <div className='modal-text'>
               <h1 className='modal-header'>{this.selection}</h1>
-              <h3 className='header-lead'>{this.selInfo.author}</h3>
+              <h4 className='header-lead'>By {this.selInfo.author}</h4>
               <hr />
               <div className='modal-synopsis'>{this.selInfo.synopsis.map((e, index) => 
                 <p key={index}>{e}</p>
@@ -136,24 +136,18 @@ class SeriesModal extends Component {
                 }
 
                 <hr />
+                <div className='modal-link-section'>
                   {this.selInfo.licensed ? 
                     <small>Now licensed and distributed in English by <strong>{this.selInfo.licensed}</strong></small>
                     :
                     <div>
-                      <small>Read more at 
-                      {this.selInfo.reader.map((e) =>
-                        <a key={e.name} href={e.src}> {e.name}</a>
-                      )}.
+                      <small>
+                      <a className='modal-links' href='https://www.dropbox.com/s/uwxkqshyxmct83z/Maigo%20Repository.txt?dl=0'>Download</a>
+                      <a className='modal-links' href='https://www.amazon.co.jp/'>Amazon</a> <a className='modal-links' href='http://www.cdjapan.co.jp/'>CDJapan</a> <a className='modal-links' href='http://www.hmv.co.jp/en/'>HMV</a> <a className='modal-links' href='http://www.yesasia.com/us/en/home.html'>YesAsia</a>
                       </small>
-                      <br />
-                      <small>Download at our <a href='https://www.dropbox.com/s/uwxkqshyxmct83z/Maigo%20Repository.txt?dl=0'>archives</a>.</small>
-                      <div>
-                        <small>Purchase JP volumes at <strong>Amazon</strong>, <strong>CDJapan</strong>, <strong>HMV</strong>, <strong>YesAsia</strong> or your favorite vendor to support the series and increase the likelihood of further publications.
-                        </small>
-                      </div>
                     </div>
                   }
-
+                </div>
                 <hr />
 
                 {/* {this.state.liked ? 

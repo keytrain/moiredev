@@ -80,6 +80,7 @@
         margin:0 0.2rem; 
         margin-bottom: 2px;
         display:inline-block;
+        color:#222;
       }
       .action-icon:hover {
         cursor: pointer;

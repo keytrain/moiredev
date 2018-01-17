@@ -16,11 +16,10 @@ import Dropdown from './Dropdown';
 import DropdownItem from './DropdownItem';
 
 // TODO:
-// changing page has to scroll the page up, use the overflow trick if you have to
 // check firefox, safari
 // switch chapter inside reader
 // title of the page should change
-// finish adding chapters/volume covers/reader links/purchase links
+// finish adding chapters/volume covers
 // announcements
 // convert modal to resize upon window change
 // a visual indicator appears on mouseover on a left or right page
@@ -45,11 +44,11 @@ class Reader extends React.Component {
 
     this.state = {
       pageMode: localStorage.getItem('pageMode') ? localStorage.getItem('pageMode') : 'Double Page',
-      leftPgCount: '000001',
+      leftPgCount: '001',
       leftPgType: 'png',
       leftShow: false,
       leftWidth: 0,
-      rightPgCount: '000000',
+      rightPgCount: '000',
       rightPgType: 'png',
       rightWidth: 0,
       rightShow: false,
@@ -194,13 +193,13 @@ class Reader extends React.Component {
         bufferImg.onerror = function() {
           if (bufferImgType === 'jpg') {
             bufferImgType = 'jpeg';
-            bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
+            bufferImg.src=`${chapterObj.src}/${nextPg}.${bufferImgType}`;
           } else if (bufferImgType === 'png') {
             bufferImgType = 'jpg';
-            bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
+            bufferImg.src=`${chapterObj.src}/${nextPg}.${bufferImgType}`;
           }
         }
-        bufferImg.src=`${chapterObj.src}/img${nextPg}.${bufferImgType}`;
+        bufferImg.src=`${chapterObj.src}/${nextPg}.${bufferImgType}`;
       }    
     // }
   }
@@ -387,7 +386,7 @@ class Reader extends React.Component {
               }
             </div>
             <div className='ctrl-center'>
-              <div className='ctrl-title'><strong>{this.selection}</strong> - Ch. {this.chapter}</div>
+              <div className='ctrl-title'><strong>{this.selection}</strong> - {this.chapter}</div>
             </div>
             <div className='ctrl-right'>
               {this.state.showInfo ?
@@ -446,7 +445,7 @@ class Reader extends React.Component {
 
               {(!this.state.spread && !this.state.singlePgMode && (Number(currPg) + 1) !== this.state.lastPg) &&
               <Page containerClass={'pgContainer leftPgCont'} imgClass={'leftPg'} 
-              src={`${chapterObj.src}/img${this.state.leftPgCount}.${this.state.leftPgType}`} 
+              src={`${chapterObj.src}/${this.state.leftPgCount}.${this.state.leftPgType}`} 
               loaded={this.handleLeftLoaded} 
               error={this.handleLeftError}
               show={this.state.leftShow}
@@ -464,7 +463,7 @@ class Reader extends React.Component {
 
               {currPg > '0' ?
               <Page containerClass={'pgContainer ' + (this.state.singlePgMode ? '':'rightPgCont ') + (this.state.spread ?'spread':'')} imgClass={'rightPg'} 
-                src={`${chapterObj.src}/img${this.state.rightPgCount}.${this.state.rightPgType}`} 
+                src={`${chapterObj.src}/${this.state.rightPgCount}.${this.state.rightPgType}`} 
                 loaded={this.handleRightLoaded} 
                 error={this.handleRightError}
                 show={this.state.rightShow}

@@ -6,7 +6,6 @@ import {
   HashRouter as Router,
   Route
 } from 'react-router-dom';
-import registerServiceWorker from './registerServiceWorker';
 import ReactGA from 'react-ga';
 import Analytics from './Analytics';
 
@@ -17,4 +16,3 @@ ReactDOM.render(
     <Route path="/" component={Analytics}/>
   </Router>),
 document.getElementById('root'));
-registerServiceWorker();

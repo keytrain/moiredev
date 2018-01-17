@@ -62,7 +62,7 @@ export default {
 
   padZero: function(input) {
     let num = input;
-    while (num.length < 6) {
+    while (num.length < 3) {
       num = '0' + num;
     }
     return num;
