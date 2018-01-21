@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import logo from './logoB.png';
+import logo from './img/logoB.png';
+import discordIcon from './img/discord-icon.svg'
 import { Route } from 'react-router-dom';
 import data from './data/releaseData';
 import SeriesList from './SeriesList';
@@ -266,8 +267,11 @@ class App extends Component {
 
               <div className='more'>
                 <Dropdown attach={<MdMoreVert size={24} style={{marginBottom:'2px'}} />}>
-                  <a href='http://webchat.irchighway.net/#maigo'><DropdownItem text={'IRC'} /></a>
+                  <div>
+                  <a href='http://webchat.irchighway.net/#maigo'><DropdownItem icon={'#'} text={'IRC'} /></a>
+                  <a href='https://discord.gg/CnZBudA'><DropdownItem icon={<img style={{height:'1.4rem',verticalAlign:'middle'}} src={discordIcon} alt='discord logo' />} text={'Discord'}></DropdownItem></a>
                   {/* <DropdownItem text={'About'} /> */}
+                  </div>
                 </Dropdown>
               </div>
             </div>

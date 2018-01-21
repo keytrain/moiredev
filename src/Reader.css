@@ -105,6 +105,9 @@
 
 /* Tablet */
 @media screen and (min-width: 1025px) {
+  .reader-container {
+    height:100vh;  
+  }
   .pages {
     margin-top:5rem;
     margin-bottom:1rem;
@@ -134,7 +137,7 @@
     width:400px;
     z-index: 5; 
     padding:1rem;
-    top:3.9rem;
+    top:4rem;
     left:0;  
     bottom:0; 
     overflow-y:auto; 

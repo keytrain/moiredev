@@ -126,7 +126,9 @@ class Reader extends React.Component {
       if (currWidth <= this.DESKTOP) {
         prevState.pageStyle.marginLeft = '0';
       }
-      prevState.singlePgMode = (currWidth <= this.MOBILE) ? true : false;
+      if (currWidth <= this.MOBILE) {
+        prevState.singlePgMode = true;
+      }
       if (prevState.singlePgMode && this.props.match.params.page === '0') {
         this.resetChapterToStart();
       }
@@ -431,8 +433,8 @@ class Reader extends React.Component {
               }} className='disqus-container'>
               <div className='disqus'>
                 <ReactDisqusComments shortname='maigo4'
-                  identifier={`${this.selection}_${this.chapter}`}
-                  url={`http://maigo.us/#/r/${this.selection}/${this.chapter}`}
+                  identifier={encodeURI(`https://maigo.us/#/r/${this.selection}/${this.chapter}`)}
+                  url={encodeURI(`https://maigo.us/#/r/${this.selection}/${this.chapter}`)}
                   title={`${this.selection} - ${this.chapter}`} />
               </div>
             </div>
@@ -491,8 +493,8 @@ class Reader extends React.Component {
             <div className='disqus-container'>
               <div className='disqus'>
               <ReactDisqusComments shortname='maigo4'
-                identifier={`${this.selection}_${this.chapter}`}
-                url={`http://maigo.us/#/r/${this.selection}/${this.chapter}`}
+                identifier={encodeURI(`https://maigo.us/#/r/${this.selection}/${this.chapter}`)}
+                url={encodeURI(`https://maigo.us/#/r/${this.selection}/${this.chapter}`)}
                 title={`${this.selection} - ${this.chapter}`} />
               </div>
             </div>

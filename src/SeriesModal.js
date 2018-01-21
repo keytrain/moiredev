@@ -158,20 +158,14 @@ class SeriesModal extends Component {
                 <strong> {this.state.likes}</strong> */}
                 
               </div>
-              {!this.state.showDisqus ?
-              <div className='modal-actions'>
-                <small className='link' onClick={()=>{this.setState({showDisqus:true})}}>
-                  Show Comments
-                </small>
-              </div>
-              :
+
               <div className='disqus'>
                 <ReactDisqusComments shortname='maigo4'
-                  identifier={`${this.selection}`}
-                  url={`http://maigo.us/#/r/${this.selection}`}
+                  identifier={encodeURI(`https://maigo.us/#/r/${this.selection}`)}
+                  url={encodeURI(`https://maigo.us/#/r/${this.selection}`)}
                   title={`${this.selection}`} />
               </div>
-              }
+              
             </div>
           </div>
         </div>
