@@ -268,7 +268,7 @@ class App extends Component {
               <div className='more'>
                 <Dropdown attach={<MdMoreVert size={24} style={{marginBottom:'2px'}} />}>
                   <div>
-                  <a href='http://webchat.irchighway.net/#maigo'><DropdownItem icon={'#'} text={'IRC'} /></a>
+                  <a href='https://kiwiirc.com/client/irc.irchighway.net/maigo'><DropdownItem icon={'#'} text={'IRC'} /></a>
                   <a href='https://discord.gg/CnZBudA'><DropdownItem icon={<img style={{height:'1.4rem',verticalAlign:'middle'}} src={discordIcon} alt='discord logo' />} text={'Discord'}></DropdownItem></a>
                   {/* <DropdownItem text={'About'} /> */}
                   </div>

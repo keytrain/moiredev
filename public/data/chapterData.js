@@ -1,6 +1,46 @@
 window.chapterData = {
   series: {
+    'Mahoutsukai no Yome' : {
+      '46' : {
+        date: new Date('May 20 2018 13:30:00 GMT-0700'),
+        src: '/img/releases/mahoyo/46',
+        trans: 'AnonSpore',
+        let: 'Nielle',
+        red: 'myran'
+      }, 
+      '45' : {
+        date: new Date('May 2 2018 23:25:00 GMT-0700'),
+        src: '/img/releases/mahoyo/45',
+        trans: 'AnonSpore',
+        let: 'Nielle',
+        red: 'myran'
+      },      
+      '44' : {
+        date: new Date('Mar 13 2018 19:45:00 GMT-0800'),
+        src: '/img/releases/mahoyo/44',
+        trans: 'AnonSpore',
+        let: 'Nielle'
+      },
+      '43' : {
+        date: new Date('Feb 12 2018 19:26:00 GMT-0800'),
+        src: '/img/releases/mahoyo/43',
+        trans: 'AnonSpore',
+        let: 'Nielle'
+      },
+      '42' : {
+        date: new Date('Dec 19 2017 00:00:00 GMT-0700'),
+        src: '/img/releases/mahoyo/42',
+        trans: 'AnonSpore',
+        let: 'Nielle'
+      }
+    },
     'Mahoromi' : {
+      '22': {
+        date: new Date('Jan 30 2018 22:20:00 GMT-0800'),
+        src: '/img/releases/mahoromi/22',
+        trans: 'AnonSpore',
+        let: 'Nielle'
+      },
       '21': {
         date: new Date('Nov 17 2017 21:05:00 GMT-0700'),
         src: '/img/releases/mahoromi/21',
@@ -129,12 +169,24 @@ window.chapterData = {
       // }
     },
     'Spotted Flower' : {
+      '23' : {
+        date: new Date('Mar 24 2018 12:40 GMT-0700'),
+        src: '/img/releases/spoflo/23',
+        trans: 'AnonSpore',
+        let: 'Cranon',
+      },
+      '22' : {
+        date: new Date('Mar 17 2018 20:06 GMT-0700'),
+        src: '/img/releases/spoflo/22',
+        trans: 'AnonSpore',
+        let: 'Kiiragi',
+      },
       '21.5' : {
         date: new Date('Oct 10 2017 20:00 GMT-0700'),
         src: '/img/releases/spoflo/21_5',
         trans: 'AnonSpore',
         let: 'Nielle',
-        red: 'Nami'
+        red: 'Nami',
       },
       // '21' : {
       //   date: new Date('Aug 12 2017 GMT-0800'),
@@ -150,6 +202,30 @@ window.chapterData = {
       // }
     },
     'Kannou Sensei' : {
+      '10.5': {
+        date: new Date('May 19 2018 18:30:00 GMT-0700'),
+        src: '/img/releases/kannou/10_5',
+        trans: 'Haremless',
+        let: 'cranon'
+      },
+      '10': {
+        date: new Date('May 19 2018 18:30:00 GMT-0700'),
+        src: '/img/releases/kannou/10',
+        trans: 'Haremless',
+        let: 'cranon'
+      },
+      '9': {
+        date: new Date('Mar 10 2018 17:25:00 GMT-0800'),
+        src: '/img/releases/kannou/09',
+        trans: 'Haremless',
+        let: 'cranon'
+      },
+      '8': {
+        date: new Date('Jan 29 2018 21:45:00 GMT-0800'),
+        src: '/img/releases/kannou/08',
+        trans: 'Haremless',
+        let: 'cranon'
+      },
       '7': {
         date: new Date('Dec 8 2017 18:30:00 GMT-0800'),
         src: '/img/releases/kannou/07',
@@ -205,15 +281,13 @@ window.chapterData = {
         let: 'cranon'
       }
     },
-    'Mahoutsukai no Yome' : {
-      '42' : {
-        date: new Date('Dec 19 2017 00:00:00 GMT-0700'),
-        src: '/img/releases/mahoyo/42',
-        trans: 'AnonSpore',
-        let: 'Nielle'
-      }
-    },
     'Seifuku no Vampiress Lord' :   {
+      '11': {
+        date: new Date('Mar 15 2018 19:30:00 GMT-0700'),
+        src: '/img/releases/vampiress/11',
+        trans: 'Vexed',
+        let: 'Nielle, Kiiragi'
+      },
       '10': {
         date: new Date('Nov 30 2017 22:09:00 GMT-0800'),
         src: '/img/releases/vampiress/10',

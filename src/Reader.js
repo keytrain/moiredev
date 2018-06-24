@@ -407,18 +407,18 @@ class Reader extends React.Component {
             {this.state.showInfo &&
             <div className='info'>
               <div className='credit'>
-              <small>TRANSLATED BY</small>
-              <h4>{chapterObj.trans}</h4>
+                <small className='credit-title'>TRANSLATED BY</small>
+                <span className='credit-name'>{chapterObj.trans}</span>
               </div>
               <div className='credit'>
-              <small>LETTERED BY</small>
-              <h4>{chapterObj.let}</h4>
+                <small className='credit-title'>LETTERED BY</small>
+                <span className='credit-name'>{chapterObj.let}</span>
               </div>
               {chapterObj.red &&
-              <div className='credit'>
-              <small>REDRAWN BY</small>
-              <h4>{chapterObj.red}</h4>
-              </div>
+                <div className='credit'>
+                  <small className='credit-title'>REDRAWN BY</small>
+                  <span className='credit-name'>{chapterObj.red}</span>
+                </div>
               }
             </div>
             }
