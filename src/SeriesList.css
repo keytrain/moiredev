@@ -74,11 +74,15 @@
   .sitem-img-container {
     cursor:pointer;
     box-shadow: 0 3px 5px 0 #ddd;
+    border-radius: 6px;
   }
   .sitem {
     margin:0.5rem;
     width: calc(100%/5 - 1rem);
   }
+    .sitem-img {
+      border-radius: 6px;
+    }
     .slist-cat-title {
       padding-bottom:0.2rem;
     }

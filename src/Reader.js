@@ -406,14 +406,18 @@ class Reader extends React.Component {
             </div>
             {this.state.showInfo &&
             <div className='info'>
+              {chapterObj.trans &&
               <div className='credit'>
                 <small className='credit-title'>TRANSLATED BY</small>
                 <span className='credit-name'>{chapterObj.trans}</span>
               </div>
+              }
+              {chapterObj.let &&
               <div className='credit'>
                 <small className='credit-title'>LETTERED BY</small>
                 <span className='credit-name'>{chapterObj.let}</span>
               </div>
+              }
               {chapterObj.red &&
                 <div className='credit'>
                   <small className='credit-title'>REDRAWN BY</small>

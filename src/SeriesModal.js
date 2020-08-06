@@ -6,7 +6,7 @@ import sData from './data/seriesData';
 import genLib from './lib/generalLibrary';
 // import MdFavoriteOutline from 'react-icons/lib/md/favorite-outline';
 // import MdFavorite from 'react-icons/lib/md/favorite';
-import ReactDisqusComments from 'react-disqus-comments';
+// import ReactDisqusComments from 'react-disqus-comments';
 import './SeriesModal.css';
 // import firebase from './firebase';
 
@@ -159,12 +159,12 @@ class SeriesModal extends Component {
                 
               </div>
 
-              <div className='disqus'>
+              {/* <div className='disqus'>
                 <ReactDisqusComments shortname='maigo4'
                   identifier={encodeURI(`https://maigo.us/#/r/${this.selection}`)}
                   url={encodeURI(`https://maigo.us/#/r/${this.selection}`)}
                   title={`${this.selection}`} />
-              </div>
+              </div> */}
               
             </div>
           </div>
