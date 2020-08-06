@@ -344,7 +344,6 @@ class Reader extends React.Component {
   }
 
   render() {
-    // window.scrollTo(0,0);
     let chapterObj = this.cData.series[this.selection][this.chapter];
     let currPg = this.props.match.params.page;
 
@@ -370,6 +369,9 @@ class Reader extends React.Component {
     }
 
     let actionIconSize = this.state.windowWidth > this.MOBILE ? 24 : 18;
+
+    // Scroll back to the top of the page before anything is rendered
+    window.scrollTo({top: 0, behavior: 'smooth'});
 
     return (
       <div className='reader-container' tabIndex='0'>
