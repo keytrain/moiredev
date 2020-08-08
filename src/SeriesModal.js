@@ -46,12 +46,14 @@ class SeriesModal extends Component {
     document.addEventListener('keydown', this.handleKey);
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'scroll';
+    document.title = `${this.selection} - Maigo`;
   }
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKey);    
     document.documentElement.style.overflow = 'initial';
     document.body.style.overflow = 'initial';
+    document.title = 'Maigo';
   }
 
   closeModal() {
