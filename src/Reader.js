@@ -18,7 +18,6 @@ import DropdownItem from './DropdownItem';
 // TODO:
 // check firefox, safari
 // switch chapter inside reader
-// title of the page should change
 // finish adding chapters/volume covers
 // announcements
 // convert modal to resize upon window change
@@ -101,13 +100,20 @@ class Reader extends React.Component {
     });
     document.addEventListener('keydown', this.handlePagesKey);
     window.addEventListener('resize', this.handleResize);
+
+    document.title = `${this.selection} - Ch. ${this.chapter} - Maigo`;
   }
 
   componentWillUnmount() {
+    clearTimeout(this.timeout);
+
     document.removeEventListener('keydown', this.handlePagesKey);
     window.removeEventListener('resize', this.handleResize);
+
     // removes the listener on browser routing
     this.unlisten();
+
+    document.title = `${this.selection} - Maigo`;
   }
 
   resetChapterToStart() {
@@ -167,7 +173,7 @@ class Reader extends React.Component {
       prevState.leftShow = false;
       prevState.spread = false;
     });
-    setTimeout(()=> {
+    this.timeout = this.timeout = setTimeout(()=> {
       // document.documentElement.style.overflow = 'scroll';
       // document.body.style.overflow = 'scroll';
       // document.documentElement.style.overflow = 'visible';
