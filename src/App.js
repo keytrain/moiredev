@@ -201,9 +201,6 @@ class App extends Component {
                   }
                 >
                   <div>
-                    <a href="https://kiwiirc.com/client/irc.irchighway.net/maigo">
-                      <DropdownItem icon={"#"} text={"IRC"} />
-                    </a>
                     <a href="https://discord.gg/CnZBudA">
                       <DropdownItem
                         icon={
