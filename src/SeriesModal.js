@@ -101,7 +101,7 @@ class SeriesModal extends Component {
           <div className='modal-right'>
             <div className='modal-text'>
               <h1 className='modal-header'>{this.selection}</h1>
-              <h4 className='header-lead'>By {this.selInfo.author}</h4>
+              <h4 className='header-lead'>{this.selInfo.author}</h4>
               <hr />
               <div className='modal-synopsis'>{this.selInfo.synopsis.map((e, index) => 
                 <p key={index}>{e}</p>
@@ -140,7 +140,7 @@ class SeriesModal extends Component {
                 <hr />
                 <div className='modal-link-section'>
                   {this.selInfo.licensed ? 
-                    <small>Now licensed and distributed in English by <strong>{this.selInfo.licensed}</strong></small>
+                    <small>Licensed and distributed in English by <strong>{this.selInfo.licensed}</strong></small>
                     :
                     <div>
                       <small>
