@@ -29,21 +29,21 @@ class Page extends React.Component {
 
   checkSpread() {
     // if i've nabbed the width already, don't run this again
-      if (this.props.imgWidth === 0) {
-        let checkSpread = setInterval(() => {
-          if (this.img === null) {
-            clearInterval(checkSpread);
-          } else if (this.img.naturalWidth !== 0  || this.img.complete) {
-            // naturalWidth is 0 when image metadata hasn't loaded yet
-            if (this.img.naturalWidth > 1300) {
-              this.props.spread({spread:true, width: this.img.naturalWidth});
-            } else {
-              this.props.spread({spread:false, width: this.img.naturalWidth});
-            }
-            clearInterval(checkSpread);
+    if (this.props.imgWidth === 0) {
+      let checkSpread = setInterval(() => {
+        if (this.img === null) {
+          clearInterval(checkSpread);
+        } else if (this.img.naturalWidth !== 0  || this.img.complete) {
+          // naturalWidth is 0 when image metadata hasn't loaded yet
+          if (this.img.naturalWidth > 1300) {
+            this.props.spread({spread:true, width: this.img.naturalWidth});
+          } else {
+            this.props.spread({spread:false, width: this.img.naturalWidth});
           }
-        }, 100);
-      }
+          clearInterval(checkSpread);
+        }
+      }, 100);
+    }
   }
 
   render() {
@@ -51,7 +51,7 @@ class Page extends React.Component {
       position: 'relative',
       width: this.props.singlePgMode ? '100%' : '',
     }
-    const duration = 200;
+    const duration = 180;
     const defaultStyle = {
       // opacity:0,
       transition: `opacity ${duration}ms ease-out`,

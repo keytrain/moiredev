@@ -4,11 +4,11 @@ import './Reader.css';
 import Page from './Page';
 // import Image from './Image';
 import genLib from './lib/generalLibrary';
-import ReactDisqusComments from 'react-disqus-comments';
-import Transition from 'react-transition-group/Transition';
+// import ReactDisqusComments from 'react-disqus-comments';
+// import Transition from 'react-transition-group/Transition';
 import MdClose from 'react-icons/lib/md/close';
-import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
-import MdChat from 'react-icons/lib/md/chat';
+// import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
+// import MdChat from 'react-icons/lib/md/chat';
 import MdInfoOutline from 'react-icons/lib/md/info-outline';
 import MdInfo from 'react-icons/lib/md/info';
 import MdSettings from 'react-icons/lib/md/settings';
@@ -347,26 +347,26 @@ class Reader extends React.Component {
     let chapterObj = this.cData.series[this.selection][this.chapter];
     let currPg = this.props.match.params.page;
 
-    const duration = 150;
-    const defaultStyle = {
-      transition: `${duration}ms cubic-bezier(0.4, 0.0, 0.6, 1)`,
-    }
-    let transitionStyles = {
-      entering: {
-        visibility:'visible',
-        transform: 'translateX(0%)',
-      },
-      entered: {
-        visibility:'visible',
-        transform: 'translateX(0%)',
-      },
-      exiting: {
-        transform: 'translateX(-100%)',
-      },
-      exited: {
-        transform: 'translateX(-100%)',
-      }
-    }
+    // const duration = 150;
+    // const defaultStyle = {
+    //   transition: `${duration}ms cubic-bezier(0.4, 0.0, 0.6, 1)`,
+    // }
+    // let transitionStyles = {
+    //   entering: {
+    //     visibility:'visible',
+    //     transform: 'translateX(0%)',
+    //   },
+    //   entered: {
+    //     visibility:'visible',
+    //     transform: 'translateX(0%)',
+    //   },
+    //   exiting: {
+    //     transform: 'translateX(-100%)',
+    //   },
+    //   exited: {
+    //     transform: 'translateX(-100%)',
+    //   }
+    // }
 
     let actionIconSize = this.state.windowWidth > this.MOBILE ? 24 : 18;
 
@@ -379,7 +379,7 @@ class Reader extends React.Component {
 
           <div className='controls'>
             <div className='ctrl-left'>
-              {this.state.windowWidth > this.TABLET &&
+              {/* {this.state.windowWidth > this.TABLET &&
               <div>
                 {this.state.showDisqus ?
                 <MdChat className='action-icon' onClick={this.handleDisqus} size={actionIconSize} />
@@ -387,7 +387,7 @@ class Reader extends React.Component {
                 <MdChatBubbleOutline className='action-icon' onClick={this.handleDisqus} size={actionIconSize} />
                 }
               </div>
-              }
+              } */}
             </div>
             <div className='ctrl-center'>
               <div className='ctrl-title'><strong>{this.selection}</strong> - {this.chapter}</div>
@@ -430,7 +430,7 @@ class Reader extends React.Component {
             }
           </div>
 
-          {(this.state.firstLoad && this.state.windowWidth > this.TABLET) &&
+          {/* {(this.state.firstLoad && this.state.windowWidth > this.TABLET) &&
           <Transition in={this.state.showDisqus} timeout={duration}>
             {(state) => (
             <div style={{
@@ -446,7 +446,7 @@ class Reader extends React.Component {
             </div>
             )}
           </Transition>
-          }
+          } */}
 
           <div className='pages-container' style={this.state.pageStyle}>
             <div className='pages'>
@@ -488,7 +488,7 @@ class Reader extends React.Component {
           </div>
         </div>
 
-        {this.state.windowWidth <= this.TABLET &&
+        {/* {this.state.windowWidth <= this.TABLET &&
           <div>
             {!this.state.showDisqus &&
             <div className='disqus-container' onClick={this.handleDisqus}>
@@ -506,7 +506,7 @@ class Reader extends React.Component {
             </div>
             }
           </div>
-        }
+        } */}
       </div>
     );
   }
