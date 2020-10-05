@@ -1,45 +1,49 @@
-import React from 'react';
+import React from "react"
 // import MdToys from 'react-icons/lib/md/toys';
 
 class Image extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      show : {},
-      loader : true,
+      show: {},
+      loader: true,
     }
 
-    this.handleImageError = this.handleImageError.bind(this);
-    this.handleImageLoaded = this.handleImageLoaded.bind(this);
+    this.handleImageError = this.handleImageError.bind(this)
+    this.handleImageLoaded = this.handleImageLoaded.bind(this)
   }
 
   handleImageLoaded() {
-    this.setState((prevState) => {
-      prevState.loader = false;
-      prevState.show = {
-        opacity: 1,
-      }
+    this.setState({
+      loader: false,
+      show: Object.assign(
+        {},
+        {
+          opacity: 1,
+        }
+      ),
     })
-    if (typeof this.props.loaded === 'function') {
-      this.props.loaded();
+
+    if (typeof this.props.loaded === "function") {
+      this.props.loaded()
     }
   }
 
   handleImageError() {
-    if (typeof this.props.error === 'function') {
-      this.props.error();
+    if (typeof this.props.error === "function") {
+      this.props.error()
     }
   }
 
   render() {
     const container = {
-      position: 'relative'
+      position: "relative",
     }
-    const duration = 200;
+    const duration = 200
     const defaultStyle = {
-      opacity:0,
+      opacity: 0,
       transition: `opacity ${duration}ms ease-out`,
-      verticalAlign: 'top'
+      verticalAlign: "top",
     }
     // const defaultLoaderStyle ={
     //   animation: 'spin 500ms linear infinite',
@@ -52,21 +56,24 @@ class Image extends React.Component {
     // }
     return (
       <div className={this.props.containerClass} style={container}>
-        <img className={this.props.imgClass} 
-        style={{
-          ...defaultStyle,
-          ...this.state.show
-        }} 
-        src={this.props.src} alt={this.props.alt} 
-        onLoad={this.handleImageLoaded} 
-        onError={this.handleImageError} />
+        <img
+          className={this.props.imgClass}
+          style={{
+            ...defaultStyle,
+            ...this.state.show,
+          }}
+          src={this.props.src}
+          alt={this.props.alt}
+          onLoad={this.handleImageLoaded}
+          onError={this.handleImageError}
+        />
         {/* {this.state.loader &&
         <MdToys size={24} style={{
           ...defaultLoaderStyle
         }} />} */}
       </div>
-    );
+    )
   }
 }
 
-export default Image;
+export default Image

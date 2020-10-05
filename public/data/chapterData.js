@@ -1,186 +1,188 @@
 window.chapterData = {
   series: {
-    "Sennetsu": {
-      "1": {
+    Sennetsu: {
+      3: {
+        date: new Date("October 04 2020 19:11:00 GMT-0800"),
+        src: "/img/releases/sennetsu/3",
+        trans: "Sei",
+        let: "nielle",
+        red: "myran",
+      },
+      2: {
+        date: new Date("August 19 2020 12:25:00 GMT-0800"),
+        src: "/img/releases/sennetsu/2",
+        trans: "Sei",
+        let: "nielle",
+        red: "myran",
+      },
+      1: {
         date: new Date("August 04 2020 18:00:00 GMT-0800"),
         src: "/img/releases/sennetsu/1",
         trans: "Sei",
-        let: "Kiiragi, Nielle",
+        let: "Kiiragi, nielle",
       },
     },
     "Mahoutsukai no Yome": {
-      "66": {
+      66: {
         date: new Date("July 04 2020 11:45:00 GMT-0800"),
         src: "/img/releases/mahoyo/66",
         let: "Nielle",
         red: "kukupa, cranon",
       },
-      "65": {
-        date: new Date("April 12 2020 16:45:00 GMT-0800"),
-        src: "/img/releases/mahoyo/65",
-        let: "Nielle",
-        red: "kukupa, myran, cranon",
-      },
-      "64": {
-        date: new Date("March 10 2020 13:03:00 GMT-0800"),
-        src: "/img/releases/mahoyo/64",
-        let: "Nielle",
-        red: "kukupa, myran",
-      },
     },
     "Kannou Sensei": {
-      "21": {
+      21: {
         date: new Date("October 6 2019 13:15:00 GMT-0800"),
         src: "/img/releases/kannou/21",
         trans: "Haremless",
         let: "cranon",
       },
-      "20": {
+      20: {
         date: new Date("August 27 2019 19:00:00 GMT-0800"),
         src: "/img/releases/kannou/20",
         trans: "Haremless",
         let: "cranon",
       },
-      "19": {
+      19: {
         date: new Date("July 3 2019 17:10:00 GMT-0800"),
         src: "/img/releases/kannou/19",
         trans: "Haremless",
         let: "cranon",
       },
-      "18.1": {
+      18.1: {
         date: new Date("April 1 2019 12:26:00 GMT-0800"),
         src: "/img/releases/kannou/18_1",
         trans: "Haremless",
         let: "cranon",
       },
-      "18": {
+      18: {
         date: new Date("March 17 2019 10:49:00 GMT-0700"),
         src: "/img/releases/kannou/18",
         trans: "Haremless",
         let: "cranon",
       },
-      "17": {
+      17: {
         date: new Date("February 05 2019 23:00:00 GMT-0800"),
         src: "/img/releases/kannou/17",
         trans: "Haremless",
         let: "cranon",
       },
-      "16": {
+      16: {
         date: new Date("December 27 2018 18:41:00 GMT-0800"),
         src: "/img/releases/kannou/16",
         trans: "Haremless",
         let: "cranon",
       },
-      "15": {
+      15: {
         date: new Date("December 27 2018 18:41:00 GMT-0800"),
         src: "/img/releases/kannou/15",
         trans: "Haremless",
         let: "cranon",
       },
-      "14": {
+      14: {
         date: new Date("October 26 2018 22:30:00 GMT-0700"),
         src: "/img/releases/kannou/14",
         trans: "Haremless",
         let: "cranon",
       },
-      "13.1": {
+      13.1: {
         date: new Date("August 15 2018 23:06:00 GMT-0700"),
         src: "/img/releases/kannou/13_1",
         trans: "Haremless",
         let: "cranon",
         red: "Crosshairs",
       },
-      "13": {
+      13: {
         date: new Date("August 2 2018 19:00:00 GMT-0700"),
         src: "/img/releases/kannou/13",
         trans: "Haremless",
         let: "cranon",
       },
-      "12": {
+      12: {
         date: new Date("July 12 2018 21:47:00 GMT-0700"),
         src: "/img/releases/kannou/12",
         trans: "Haremless",
         let: "cranon",
       },
-      "11": {
+      11: {
         date: new Date("July 03 2018 22:00:00 GMT-0800"),
         src: "/img/releases/kannou/11",
         trans: "Haremless",
         let: "cranon",
       },
-      "10.5": {
+      10.5: {
         date: new Date("May 19 2018 18:30:00 GMT-0700"),
         src: "/img/releases/kannou/10_5",
         trans: "Haremless",
         let: "cranon",
       },
-      "10": {
+      10: {
         date: new Date("May 19 2018 18:30:00 GMT-0700"),
         src: "/img/releases/kannou/10",
         trans: "Haremless",
         let: "cranon",
       },
-      "9": {
+      9: {
         date: new Date("Mar 10 2018 17:25:00 GMT-0800"),
         src: "/img/releases/kannou/09",
         trans: "Haremless",
         let: "cranon",
       },
-      "8": {
+      8: {
         date: new Date("Jan 29 2018 21:45:00 GMT-0800"),
         src: "/img/releases/kannou/08",
         trans: "Haremless",
         let: "cranon",
       },
-      "7": {
+      7: {
         date: new Date("Dec 8 2017 18:30:00 GMT-0800"),
         src: "/img/releases/kannou/07",
         trans: "Haremless",
         let: "cranon",
       },
-      "6": {
+      6: {
         date: new Date("Nov 26 2017 19:50:00 GMT-0800"),
         src: "/img/releases/kannou/06",
         trans: "Haremless",
         let: "cranon",
       },
-      "5": {
+      5: {
         date: new Date("Oct 26 2017 22:21:00 GMT-0700"),
         src: "/img/releases/kannou/05",
         trans: "Haremless",
         let: "cranon",
       },
-      "4.5": {
+      4.5: {
         date: new Date("Oct 09 2017 19:10:00 GMT-0700"),
         src: "/img/releases/kannou/04_5",
         trans: "Haremless",
         let: "cranon",
       },
-      "4": {
+      4: {
         date: new Date("Sep 30 2017 11:50:00 GMT-0700"),
         src: "/img/releases/kannou/04",
         trans: "Haremless",
         let: "cranon",
       },
-      "3": {
+      3: {
         date: new Date("Aug 22 2017 GMT-0700"),
         src: "/img/releases/kannou/03",
         trans: "Haremless",
         let: "cranon",
       },
-      "2": {
+      2: {
         date: new Date("Aug 07 2017 GMT-0700"),
         src: "/img/releases/kannou/02",
         trans: "Haremless",
         let: "cranon",
       },
-      "1": {
+      1: {
         date: new Date("Jul 16 2017 GMT-0700"),
         src: "/img/releases/kannou/01",
         trans: "Haremless",
         let: "cranon",
       },
-      "0": {
+      0: {
         date: new Date("Jul 10 2017 GMT-0700"),
         src: "/img/releases/kannou/00",
         trans: "Haremless",
