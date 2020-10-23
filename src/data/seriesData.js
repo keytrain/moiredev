@@ -1,6 +1,15 @@
 export default {
   series: {
-    "Mahoromi": {
+    "The End of the Journey": {
+      cover: ["./img/cover/teotj/1.jpg"],
+      synopsis: [
+        "Mika is so desperate to see her dead friend again that she tries to kill herself. Before anything can happen, she is saved by two mysterious travelers...",
+        "Together with her two companions, she embarks on a journey into an illusory world where hope and despair are intertwined!",
+      ],
+      author: "Yuhki Kamatani",
+      licensed: false,
+    },
+    Mahoromi: {
       cover: ["./img/cover/mah/3.jpg"],
       synopsis: [
         "Niwa, a college student of architecture, is moving into his deceased grandfather's house. He didn't know the man very well, but the house is conveniently close to school, and his grandfather was actually the architect who designed it. There's something unsettling about the house, though, and while he's wandering around, Niwa finds a mysterious old photograph of some girl who isn't his grandmother.",
@@ -9,7 +18,7 @@ export default {
       author: "Toume Kei",
       licensed: false,
     },
-    "Sennetsu": {
+    Sennetsu: {
       cover: ["./img/cover/sen/1.jpg"],
       synopsis: [
         "Ruri, a college student working part time at a convenience store, finds herself drawn to Nosegawa, a middle-aged customer who comes in every day to buy two packs of cigarettes. When she works up the nerve to ask him for a ride home one rainy day, their interaction in the car kindles something in Ruri's heart - a strange and unknown new heat...",

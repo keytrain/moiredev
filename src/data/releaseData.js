@@ -16,6 +16,14 @@ function sortChaps(arr) {
 export default {
   list: [
     {
+      cover: "img/cover/teotj.jpg",
+      title: "The End of the Journey",
+      updated:
+        chData.series["The End of the Journey"][
+          sortChaps(Object.keys(chData.series["The End of the Journey"]))[0]
+        ].date,
+    },
+    {
       cover: "img/cover/kan.jpg",
       title: "Kannou Sensei",
       updated:
