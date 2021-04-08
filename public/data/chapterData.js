@@ -1,6 +1,34 @@
 window.chapterData = {
   series: {
     "The End of the Journey": {
+      5: {
+        date: new Date("March 23 2021 21:43:00 GMT-0800"),
+        src: "/img/releases/teotj/5",
+        trans: "nex",
+        let: "myran",
+        red: "key",
+      },
+      4: {
+        date: new Date("February 21 2021 18:30:00 GMT-0800"),
+        src: "/img/releases/teotj/4",
+        trans: "nex",
+        let: "myran",
+        red: "key",
+      },
+      3: {
+        date: new Date("January 10 2021 12:46:00 GMT-0800"),
+        src: "/img/releases/teotj/3",
+        trans: "nex",
+        let: "myran",
+        red: "key",
+      },
+      2: {
+        date: new Date("November 28 2020 16:10:00 GMT-0800"),
+        src: "/img/releases/teotj/2",
+        trans: "nex",
+        let: "myran",
+        red: "key",
+      },
       1: {
         date: new Date("October 22 2020 21:10:00 GMT-0800"),
         src: "/img/releases/teotj/1",
@@ -10,6 +38,27 @@ window.chapterData = {
       },
     },
     Sennetsu: {
+      6: {
+        date: new Date("December 30 2020 22:00:00 GMT-0800"),
+        src: "/img/releases/sennetsu/6",
+        trans: "Sei",
+        let: "nielle",
+        red: "myran",
+      },
+      5: {
+        date: new Date("November 21 2020 22:00:00 GMT-0800"),
+        src: "/img/releases/sennetsu/5",
+        trans: "Sei",
+        let: "nielle",
+        red: "myran",
+      },
+      4: {
+        date: new Date("November 04 2020 22:00:00 GMT-0800"),
+        src: "/img/releases/sennetsu/4",
+        trans: "Sei",
+        let: "nielle",
+        red: "myran",
+      },
       3: {
         date: new Date("October 04 2020 19:11:00 GMT-0800"),
         src: "/img/releases/sennetsu/3",
@@ -31,14 +80,7 @@ window.chapterData = {
         let: "Kiiragi, nielle",
       },
     },
-    "Mahoutsukai no Yome": {
-      66: {
-        date: new Date("July 04 2020 11:45:00 GMT-0800"),
-        src: "/img/releases/mahoyo/66",
-        let: "Nielle",
-        red: "kukupa, cranon",
-      },
-    },
+    "Mahoutsukai no Yome": {},
     "Kannou Sensei": {
       21: {
         date: new Date("October 6 2019 13:15:00 GMT-0800"),

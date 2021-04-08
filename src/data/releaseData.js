@@ -54,10 +54,12 @@ export default {
     {
       cover: "img/cover/yome.jpg",
       title: "Mahoutsukai no Yome",
-      updated:
-        chData.series["Mahoutsukai no Yome"][
-          sortChaps(Object.keys(chData.series["Mahoutsukai no Yome"]))[0]
-        ].date,
+      // updated:
+      //   chData.series["Mahoutsukai no Yome"][
+      //     sortChaps(Object.keys(chData.series["Mahoutsukai no Yome"]))[0]
+      //   ].date,
+      updated: new Date("July 04 2020 11:45:00 GMT-0800"),
+      completed: false,
     },
     {
       cover: "img/cover/vamp.jpg",
