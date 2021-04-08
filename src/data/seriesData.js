@@ -4,7 +4,7 @@ export default {
       cover: ["./img/cover/cm/2.jpg"],
       synopsis: [
         "The light is gone. Unable to escape the darkness, Pieta repeats the same day. Every day she walks to school down the same road, through the same rain, then talks with her friend Danae. Eventually, she finds happiness in the repetition.",
-        "The days carry on as normal, until one day, her routine chat with Danae takes a different turn: \"What?! You can remember the today that happened yesterday too?\" Despite their bleak situation, the girls reach towards tomorrow!",
+        'The days carry on as normal, until one day, her routine chat with Danae takes a different turn: "What?! You can remember the today that happened yesterday too?" Despite their bleak situation, the girls reach towards tomorrow!',
       ],
       author: "Bota Mochito",
       licensed: false,
@@ -28,7 +28,7 @@ export default {
       licensed: false,
     },
     Sennetsu: {
-      cover: ["./img/cover/sen/1.jpg"],
+      cover: ["./img/cover/sen/2.jpg"],
       synopsis: [
         "Ruri, a college student working part time at a convenience store, finds herself drawn to Nosegawa, a middle-aged customer who comes in every day to buy two packs of cigarettes. When she works up the nerve to ask him for a ride home one rainy day, their interaction in the car kindles something in Ruri's heart - a strange and unknown new heat...",
       ],

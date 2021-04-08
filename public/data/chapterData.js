@@ -2,8 +2,9 @@ window.chapterData = {
   series: {
     "Coffee Moon": {
       13: {
-        date: new Date("April 7 2021 22:10:00 GMT-0800"),
+        date: new Date("April 7 2021 19:10:00 GMT-0800"),
         src: "/img/releases/cm/13",
+        group: "Octopals",
         trans: "nex",
         let: "myran",
         red: "myran",
@@ -47,6 +48,13 @@ window.chapterData = {
       },
     },
     Sennetsu: {
+      7: {
+        date: new Date("April 7 2021 19:40:00 GMT-0800"),
+        src: "/img/releases/sennetsu/7",
+        trans: "Sei",
+        let: "nielle",
+        red: "myran",
+      },
       6: {
         date: new Date("December 30 2020 22:00:00 GMT-0800"),
         src: "/img/releases/sennetsu/6",

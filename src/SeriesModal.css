@@ -1,164 +1,166 @@
 .modalBG {
-  position:fixed;
-  bottom:0;
-  top:0;
-  left:0;
-  right:0;
-  background-color:rgba(0,0,0,0.8);
-  z-index:2;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #000000cc;
+  z-index: 2;
 }
 
 .modal hr {
   margin: 1rem 0;
 }
 .modal {
-  position:fixed;
-  background-color:hsl(204, 6%, 98%);
-  width:300px;
-  height:300px;
+  position: fixed;
+  background-color: hsl(204, 6%, 98%);
+  width: 300px;
+  height: 300px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index:3;
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 3;
 }
-  .modal a {
-    text-decoration: none;
-    font-weight:700;
-  }
-  .link:hover {
-    cursor: pointer;
-    /* color:#aaa; */
-  }
-  .modal-img-container {
-    display:inline-block;
-    background-color:#eee;
-    height:inherit;
-  }
-  .modal-img-container img {
-    width:0px;
-    vertical-align:top;
-  }
-  .modal-right {
-    vertical-align: top;
-    display:inline-block;
-    width:100%; 
-    height:inherit;
-    position:relative;
-  }
-    .modal-text {
-      height:inherit;
-      padding:2rem; 
-      overflow-y:auto;
-      -webkit-overflow-scrolling: touch;
-    }
-      .modal-header {
-        font-weight:900;
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        hyphens: auto;
-      }
-      .modal-chapters-container {
-        /* margin: 0 -0.5rem; */
-      }
-      .modal-chapters-container a {
-        color:#222;
-      }
-      .modal-chapters-container a:visited {
-         /* color: #888;  */
-      }
-      .modal-chapter {
-        /*border:1px solid #ccc;*/
-        /*box-shadow: 0 0 8px 0 #ccc;*/
-        /* padding:0.5rem; */
-        /* margin:0.5rem; */
-        /* width: calc(100%/3 - 1rem); */
-        /* display:inline-block; */
-        /* background-color:#f1f1f1; */
-        /* background-color: #8BC6EC; */
-        /* background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%); */
-        /* color:#fff; */
-        /* border-radius:4px; */
-        /* transition: opacity 425ms ease-out; */
-      }
-      .modal-chapter-num:hover {
-        cursor:pointer;
-        opacity:0.5;
-      }
-        .modal-synopsis {
-        }
-          .modal-synopsis p {
-          }
-        .modal-chapter-num, .modal-chapter-date {
-          display:inline-block;
-          /* text-align: center; */
-        }
-        .modal-chapter-num {
-          width: 100px; 
-          text-transform: uppercase;
-          font-size:0.800rem;
-          /* margin-right:0.8rem; */
-          /* font-weight:500; */
-        }
-        .modal-chapter-date {
-          text-transform: uppercase;
-           /* width:50%;  */
-          font-size:0.700rem;
-          /* color:#aaa; */
-          /*text-align: right;*/
-        }
-        .like-button {
-            
-        }
-        .like-button:hover {
-          cursor:pointer;
-        }
-        .modal-link-section {
-          text-align:center;
-        }
-        .modal-links {
-          font-weight:400!important;
-          padding-right:1rem;
-        }
-        .commentsbtn {
-          /* width:100%; */
-        }
-    .modal-actions {
-      /* position:absolute; */
-      /* bottom:0; */
-      /* left:0; */
-      /* right:0; */
-      /* border-top:1px solid #eee; */
-      text-align: center; 
-      margin:2rem 0rem;
-      /* background-color:#fff; */
-    }
+.modal a {
+  text-decoration: none;
+  font-weight: 700;
+}
+.link:hover {
+  cursor: pointer;
+  /* color:#aaa; */
+}
+.modal-img-container {
+  display: inline-block;
+  background-color: #eee;
+  height: inherit;
+}
+.modal-img-container img {
+  width: 0px;
+  vertical-align: top;
+}
+.modal-right {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  height: inherit;
+  position: relative;
+}
+.modal-text {
+  height: inherit;
+  padding: 2rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.modal-header {
+  font-weight: 900;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+.modal-chapters-container {
+  /* margin: 0 -0.5rem; */
+}
+.modal-chapters-container a {
+  color: #222;
+}
+.modal-chapters-container a:visited {
+  /* color: #888;  */
+}
+.modal-chapter {
+  /*border:1px solid #ccc;*/
+  /*box-shadow: 0 0 8px 0 #ccc;*/
+  /* padding:0.5rem; */
+  /* margin:0.5rem; */
+  /* width: calc(100%/3 - 1rem); */
+  /* display:inline-block; */
+  /* background-color:#f1f1f1; */
+  /* background-color: #8BC6EC; */
+  /* background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%); */
+  /* color:#fff; */
+  /* border-radius:4px; */
+  /* transition: opacity 425ms ease-out; */
+}
+.modal-chapter-num:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.modal-synopsis {
+}
+.modal-synopsis p {
+}
+.modal-chapter-num,
+.modal-chapter-date {
+  display: inline-block;
+  /* text-align: center; */
+}
+.modal-chapter-num {
+  width: 100px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  /* margin-right:0.8rem; */
+  /* font-weight:500; */
+}
+.modal-chapter-date {
+  text-transform: uppercase;
+  /* width:50%;  */
+  font-size: 0.7rem;
+  /* color:#aaa; */
+  /*text-align: right;*/
+}
+.like-button {
+}
+.like-button:hover {
+  cursor: pointer;
+}
+.modal-link-section {
+  text-align: center;
+}
+.modal-links {
+  font-weight: 400 !important;
+  padding-right: 1rem;
+}
+.commentsbtn {
+  /* width:100%; */
+}
+.modal-actions {
+  /* position:absolute; */
+  /* bottom:0; */
+  /* left:0; */
+  /* right:0; */
+  /* border-top:1px solid #eee; */
+  text-align: center;
+  margin: 2rem 0rem;
+  /* background-color:#fff; */
+}
 
 /* Tablet  */
 @media screen and (min-width: 720px) {
-   .modal {
-    width:700px;
-    height:500px;
+  .modal {
+    width: 700px;
+    height: 500px;
   }
-    .modal-right {
-      width:350px;
-      height:inherit;
-    }
-      .modal img {
-        width:350px;
-        height:inherit;
-      }
+  .modal-right {
+    width: 350px;
+    height: inherit;
+  }
+  .modal img {
+    width: 350px;
+    height: inherit;
+  }
 }
 @media screen and (min-width: 1025px) {
-   .modal {
-    width:980px;
-    height:650px;
+  .modal {
+    width: 980px;
+    height: 650px;
   }
-    .modal img {
-      width:457px;
-      height:inherit;
-    }
-    .modal-right {
-      width:523px;
-      height:inherit;
-    }
+  .modal img {
+    width: 457px;
+    height: inherit;
   }
+  .modal-right {
+    width: 523px;
+    height: inherit;
+  }
+}

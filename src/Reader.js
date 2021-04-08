@@ -1,19 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Reader.css';
-import Page from './Page';
+import React from "react"
+import { Link } from "react-router-dom"
+import "./Reader.css"
+import Page from "./Page"
 // import Image from './Image';
-import genLib from './lib/generalLibrary';
+import genLib from "./lib/generalLibrary"
 // import ReactDisqusComments from 'react-disqus-comments';
 // import Transition from 'react-transition-group/Transition';
-import MdClose from 'react-icons/lib/md/close';
+import MdClose from "react-icons/lib/md/close"
 // import MdChatBubbleOutline from 'react-icons/lib/md/chat-bubble-outline';
 // import MdChat from 'react-icons/lib/md/chat';
-import MdInfoOutline from 'react-icons/lib/md/info-outline';
-import MdInfo from 'react-icons/lib/md/info';
-import MdSettings from 'react-icons/lib/md/settings';
-import Dropdown from './Dropdown';
-import DropdownItem from './DropdownItem';
+import MdInfoOutline from "react-icons/lib/md/info-outline"
+import MdInfo from "react-icons/lib/md/info"
+import MdSettings from "react-icons/lib/md/settings"
+import Dropdown from "./Dropdown"
+import DropdownItem from "./DropdownItem"
 
 // TODO:
 // check firefox, safari
@@ -34,21 +34,23 @@ class Reader extends React.Component {
   constructor(props) {
     super(props)
 
-    this.selection = this.props.match.params.series;
-    this.chapter = this.props.match.params.chapter;
-    this.cData = window.chapterData;
-    this.MOBILE = 425;
-    this.TABLET = 1024;
-    this.DESKTOP = 1440;
+    this.selection = this.props.match.params.series
+    this.chapter = this.props.match.params.chapter
+    this.cData = window.chapterData
+    this.MOBILE = 425
+    this.TABLET = 1024
+    this.DESKTOP = 1440
 
     this.state = {
-      pageMode: localStorage.getItem('pageMode') ? localStorage.getItem('pageMode') : 'Double Page',
-      leftPgCount: '001',
-      leftPgType: 'png',
+      pageMode: localStorage.getItem("pageMode")
+        ? localStorage.getItem("pageMode")
+        : "Double Page",
+      leftPgCount: "001",
+      leftPgType: "png",
       leftShow: false,
       leftWidth: 0,
-      rightPgCount: '000',
-      rightPgType: 'png',
+      rightPgCount: "000",
+      rightPgType: "png",
       rightWidth: 0,
       rightShow: false,
       spread: false,
@@ -58,49 +60,53 @@ class Reader extends React.Component {
       showInfo: false,
       firstLoad: false,
       pageStyle: {
-        marginLeft:'0',
-        transition:'150ms cubic-bezier(0.4, 0.0, 0.6, 1)'
+        marginLeft: "0",
+        transition: "150ms cubic-bezier(0.4, 0.0, 0.6, 1)",
       },
-      singlePgMode: (localStorage.getItem('pageMode') === 'Single Page' || document.documentElement.clientWidth <= this.MOBILE) ? true : false,
-      windowWidth: document.documentElement.clientWidth
+      singlePgMode:
+        localStorage.getItem("pageMode") === "Single Page" ||
+        document.documentElement.clientWidth <= this.MOBILE
+          ? true
+          : false,
+      windowWidth: document.documentElement.clientWidth,
     }
   }
 
   componentDidMount() {
     // initial load
     // fixes the scroll on iOS... dumb
-    document.documentElement.style.overflow = 'visible';
-    document.body.style.overflow = 'visible';
+    document.documentElement.style.overflow = "visible"
+    document.body.style.overflow = "visible"
 
-    if (this.state.singlePgMode && this.props.match.params.page === '0') {
-      this.resetChapterToStart();
+    if (this.state.singlePgMode && this.props.match.params.page === "0") {
+      this.resetChapterToStart()
     } else {
-      this.loadPages(this.props.match.params.page);
+      this.loadPages(this.props.match.params.page)
     }
     this.unlisten = this.props.history.listen((location, action) => {
-      this.loadPages(location.pathname.split(/(.+)\//)[2]);
-    });
-    document.addEventListener('keydown', this.handlePagesKey);
-    window.addEventListener('resize', this.handleResize);
+      this.loadPages(location.pathname.split(/(.+)\//)[2])
+    })
+    document.addEventListener("keydown", this.handlePagesKey)
+    window.addEventListener("resize", this.handleResize)
 
-    document.title = `${this.selection} - ${this.chapter} - Maigo`;
+    document.title = `${this.selection} - ${this.chapter} - Maigo`
   }
 
   componentWillUnmount() {
-    clearTimeout(this.loadPagesTimeout);
+    clearTimeout(this.loadPagesTimeout)
 
-    document.removeEventListener('keydown', this.handlePagesKey);
-    window.removeEventListener('resize', this.handleResize);
+    document.removeEventListener("keydown", this.handlePagesKey)
+    window.removeEventListener("resize", this.handleResize)
 
     // removes the listener on browser routing
-    this.unlisten();
+    this.unlisten()
 
-    document.title = `${this.selection} - Maigo`;
+    document.title = `${this.selection} - Maigo`
   }
 
   render() {
-    let chapterObj = this.cData.series[this.selection][this.chapter];
-    let currPg = this.props.match.params.page;
+    let chapterObj = this.cData.series[this.selection][this.chapter]
+    let currPg = this.props.match.params.page
 
     // const duration = 150;
     // const defaultStyle = {
@@ -123,17 +129,16 @@ class Reader extends React.Component {
     //   }
     // }
 
-    let actionIconSize = this.state.windowWidth > this.MOBILE ? 24 : 18;
+    let actionIconSize = this.state.windowWidth > this.MOBILE ? 24 : 18
 
     // Scroll back to the top of the page before anything is rendered
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, behavior: "smooth" })
 
     return (
-      <div className='reader-container' tabIndex='0'>
-        <div className='reader'>
-
-          <div className='controls'>
-            <div className='ctrl-left'>
+      <div className="reader-container" tabIndex="0">
+        <div className="reader">
+          <div className="controls">
+            <div className="ctrl-left">
               {/* {this.state.windowWidth > this.TABLET &&
               <div>
                 {this.state.showDisqus ?
@@ -144,45 +149,79 @@ class Reader extends React.Component {
               </div>
               } */}
             </div>
-            <div className='ctrl-center'>
-              <div className='ctrl-title'><strong>{this.selection}</strong> - {this.chapter}</div>
+            <div className="ctrl-center">
+              <div className="ctrl-title">
+                <strong>{this.selection}</strong> - {this.chapter}
+              </div>
             </div>
-            <div className='ctrl-right'>
-              {this.state.showInfo ?
-              <MdInfo className='action-icon' onClick={this.handleInfo} size={actionIconSize} />
-              :
-              <MdInfoOutline className='action-icon' onClick={this.handleInfo} size={actionIconSize} />
-              }
-              
-              <Dropdown attach={<MdSettings className='action-icon' size={actionIconSize} />}>
-                <DropdownItem name={'pageMode'} icon={''} selection={this.state.pageMode} text={'Single Page'} handle={this.handlePageMode} />
-                <DropdownItem name={'pageMode'} icon={''} selection={this.state.pageMode} text={'Double Page'} handle={this.handlePageMode} />
+            <div className="ctrl-right">
+              {this.state.showInfo ? (
+                <MdInfo
+                  className="action-icon"
+                  onClick={this.handleInfo}
+                  size={actionIconSize}
+                />
+              ) : (
+                <MdInfoOutline
+                  className="action-icon"
+                  onClick={this.handleInfo}
+                  size={actionIconSize}
+                />
+              )}
+
+              <Dropdown
+                attach={
+                  <MdSettings className="action-icon" size={actionIconSize} />
+                }
+              >
+                <DropdownItem
+                  name={"pageMode"}
+                  icon={""}
+                  selection={this.state.pageMode}
+                  text={"Single Page"}
+                  handle={this.handlePageMode}
+                />
+                <DropdownItem
+                  name={"pageMode"}
+                  icon={""}
+                  selection={this.state.pageMode}
+                  text={"Double Page"}
+                  handle={this.handlePageMode}
+                />
               </Dropdown>
-              
-              <Link to={`/r/${this.selection}`}><MdClose className='action-icon' size={actionIconSize} /></Link>
+
+              <Link to={`/r/${this.selection}`}>
+                <MdClose className="action-icon" size={actionIconSize} />
+              </Link>
             </div>
-            {this.state.showInfo &&
-            <div className='info'>
-              {chapterObj.trans &&
-              <div className='credit'>
-                <small className='credit-title'>TRANSLATED BY</small>
-                <span className='credit-name'>{chapterObj.trans}</span>
-              </div>
-              }
-              {chapterObj.let &&
-              <div className='credit'>
-                <small className='credit-title'>LETTERED BY</small>
-                <span className='credit-name'>{chapterObj.let}</span>
-              </div>
-              }
-              {chapterObj.red &&
-                <div className='credit'>
-                  <small className='credit-title'>REDRAWN BY</small>
-                  <span className='credit-name'>{chapterObj.red}</span>
+            {this.state.showInfo && (
+              <div className="info">
+                <div className="credit">
+                  <small className="credit-title">GROUP</small>
+                  <span className="credit-name">
+                    {chapterObj.group || "maigo"}
+                  </span>
                 </div>
-              }
-            </div>
-            }
+                {chapterObj.trans && (
+                  <div className="credit">
+                    <small className="credit-title">TRANSLATION</small>
+                    <span className="credit-name">{chapterObj.trans}</span>
+                  </div>
+                )}
+                {chapterObj.let && (
+                  <div className="credit">
+                    <small className="credit-title">LETTERING</small>
+                    <span className="credit-name">{chapterObj.let}</span>
+                  </div>
+                )}
+                {chapterObj.red && (
+                  <div className="credit">
+                    <small className="credit-title">REDRAWS</small>
+                    <span className="credit-name">{chapterObj.red}</span>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* {(this.state.firstLoad && this.state.windowWidth > this.TABLET) &&
@@ -203,42 +242,50 @@ class Reader extends React.Component {
           </Transition>
           } */}
 
-          <div className='pages-container' style={this.state.pageStyle}>
-            <div className='pages'>
+          <div className="pages-container" style={this.state.pageStyle}>
+            <div className="pages">
+              {!this.state.spread &&
+                !this.state.singlePgMode &&
+                Number(currPg) + 1 !== this.state.lastPg && (
+                  <Page
+                    containerClass={"pgContainer leftPgCont"}
+                    imgClass={"leftPg"}
+                    src={`${chapterObj.src}/${this.state.leftPgCount}.${this.state.leftPgType}`}
+                    loaded={this.handleLeftLoaded}
+                    error={this.handleLeftError}
+                    show={this.state.leftShow}
+                    imgWidth={this.state.leftWidth}
+                    spread={this.handleSpread}
+                    click={this.handlePages}
+                  />
+                )}
+              {Number(currPg) + 1 === this.state.lastPg && (
+                <div className="chapterEnds">
+                  {/* <h1>Thanks for reading!</h1> */}
+                  {/* <small>That was the last page.</small> */}
+                </div>
+              )}
 
-              {(!this.state.spread && !this.state.singlePgMode && (Number(currPg) + 1) !== this.state.lastPg) &&
-              <Page containerClass={'pgContainer leftPgCont'} imgClass={'leftPg'} 
-              src={`${chapterObj.src}/${this.state.leftPgCount}.${this.state.leftPgType}`} 
-              loaded={this.handleLeftLoaded} 
-              error={this.handleLeftError}
-              show={this.state.leftShow}
-              imgWidth={this.state.leftWidth}
-              spread={this.handleSpread}
-              click={this.handlePages} />
-              }
-              {((Number(currPg) + 1) === this.state.lastPg) &&
-              
-              <div className='chapterEnds'>
-                {/* <h1>Thanks for reading!</h1> */}
-                {/* <small>That was the last page.</small> */}
-              </div>
-              }
-
-              {currPg > '0' ?
-              <Page containerClass={'pgContainer ' + (this.state.singlePgMode ? '':'rightPgCont ') + (this.state.spread ?'spread':'')} imgClass={'rightPg'} 
-                src={`${chapterObj.src}/${this.state.rightPgCount}.${this.state.rightPgType}`} 
-                loaded={this.handleRightLoaded} 
-                error={this.handleRightError}
-                show={this.state.rightShow}
-                imgWidth={this.state.rightWidth}
-                spread={this.handleSpread}
-                click={this.handlePages}
-                singlePgMode={this.state.singlePgMode} />
-              :
-              <div className='chapterEnds'>
-              {/* <h1>Enjoy!</h1> */}
-              </div>
-              }
+              {currPg > "0" ? (
+                <Page
+                  containerClass={
+                    "pgContainer " +
+                    (this.state.singlePgMode ? "" : "rightPgCont ") +
+                    (this.state.spread ? "spread" : "")
+                  }
+                  imgClass={"rightPg"}
+                  src={`${chapterObj.src}/${this.state.rightPgCount}.${this.state.rightPgType}`}
+                  loaded={this.handleRightLoaded}
+                  error={this.handleRightError}
+                  show={this.state.rightShow}
+                  imgWidth={this.state.rightWidth}
+                  spread={this.handleSpread}
+                  click={this.handlePages}
+                  singlePgMode={this.state.singlePgMode}
+                />
+              ) : (
+                <div className="chapterEnds">{/* <h1>Enjoy!</h1> */}</div>
+              )}
             </div>
           </div>
         </div>
@@ -263,130 +310,133 @@ class Reader extends React.Component {
           </div>
         } */}
       </div>
-    );
+    )
   }
 
   resetChapterToStart = () => {
-    this.props.history.push(`/r/${this.selection}/${this.chapter}/1`);
-    this.loadPages('1');
+    this.props.history.push(`/r/${this.selection}/${this.chapter}/1`)
+    this.loadPages("1")
   }
 
   handleResize = () => {
     this.setState((prevState) => {
-      let currWidth = document.documentElement.clientWidth;
-      prevState.windowWidth = currWidth;
+      let currWidth = document.documentElement.clientWidth
+      prevState.windowWidth = currWidth
       if (currWidth > this.DESKTOP && prevState.showDisqus) {
-        prevState.pageStyle.marginLeft = '400px';
-        prevState.pageStyle.transition = '150ms cubic-bezier(0.4, 0.0, 0.6, 1)';
+        prevState.pageStyle.marginLeft = "400px"
+        prevState.pageStyle.transition = "150ms cubic-bezier(0.4, 0.0, 0.6, 1)"
       }
       if (currWidth <= this.DESKTOP) {
-        prevState.pageStyle.marginLeft = '0';
+        prevState.pageStyle.marginLeft = "0"
       }
       if (currWidth <= this.MOBILE) {
-        prevState.singlePgMode = true;
+        prevState.singlePgMode = true
       }
-      if (prevState.singlePgMode && this.props.match.params.page === '0') {
-        this.resetChapterToStart();
+      if (prevState.singlePgMode && this.props.match.params.page === "0") {
+        this.resetChapterToStart()
       }
-    });
+    })
   }
 
   handlePagesKey = (e) => {
     // console.log(e.key);
     switch (e.key) {
-      case 'ArrowLeft':
-        this.nextPage();
-        break;
-      case 'ArrowRight':
-        this.prevPage();
-        break;
-      case 'Escape':
-        this.props.history.push(`/r/${this.selection}`);
-        break;
+      case "ArrowLeft":
+        this.nextPage()
+        break
+      case "ArrowRight":
+        this.prevPage()
+        break
+      case "Escape":
+        this.props.history.push(`/r/${this.selection}`)
+        break
       // case 'c':
-      //   this.handleDisqus();        
+      //   this.handleDisqus();
       //   break;
       default:
-        break;
+        break
     }
   }
 
   loadPages = (page) => {
     this.setState((prevState) => {
-      prevState.rightPgCount = genLib.padZero(page);
-      prevState.rightPgType = 'png';
-      prevState.leftWidth = 0;
-      prevState.rightShow = false;
-      prevState.leftPgCount = genLib.padZero('' + (Number(page) + 1));
-      prevState.leftPgType = 'png';
-      prevState.rightWidth = 0;
-      prevState.leftShow = false;
-      prevState.spread = false;
-    });
-    this.loadPagesTimeout = setTimeout(()=> {
+      prevState.rightPgCount = genLib.padZero(page)
+      prevState.rightPgType = "png"
+      prevState.leftWidth = 0
+      prevState.rightShow = false
+      prevState.leftPgCount = genLib.padZero("" + (Number(page) + 1))
+      prevState.leftPgType = "png"
+      prevState.rightWidth = 0
+      prevState.leftShow = false
+      prevState.spread = false
+    })
+    this.loadPagesTimeout = setTimeout(() => {
       // document.documentElement.style.overflow = 'scroll';
       // document.body.style.overflow = 'scroll';
       // document.documentElement.style.overflow = 'visible';
       // document.body.style.overflow = 'visible';
       this.setState((prevState) => {
-        prevState.rightShow = true;
-        prevState.leftShow = true;
+        prevState.rightShow = true
+        prevState.leftShow = true
         if (!prevState.goBack) {
-          this.buffer(4);
+          this.buffer(4)
         }
       })
-    }, 400);
+    }, 400)
   }
 
   buffer = (size) => {
-    let chapterObj = this.cData.series[this.selection][this.chapter];
-    let originPg = this.state.leftPgCount;
+    let chapterObj = this.cData.series[this.selection][this.chapter]
+    let originPg = this.state.leftPgCount
 
     for (let i = 0; i < size; i++) {
-      let pageNum = Number(originPg) + i + 1;
+      let pageNum = Number(originPg) + i + 1
       // if (pageNum < this.state.lastPg) {
-        const bufferImg = new Image();
-        let nextPg = genLib.padZero('' + pageNum);
-        let bufferImgType = 'png';
-        bufferImg.onerror = function() {
-          if (bufferImgType === 'jpg') {
-            bufferImgType = 'jpeg';
-            bufferImg.src=`${chapterObj.src}/${nextPg}.${bufferImgType}`;
-          } else if (bufferImgType === 'png') {
-            bufferImgType = 'jpg';
-            bufferImg.src=`${chapterObj.src}/${nextPg}.${bufferImgType}`;
-          }
+      const bufferImg = new Image()
+      let nextPg = genLib.padZero("" + pageNum)
+      let bufferImgType = "png"
+      bufferImg.onerror = function () {
+        if (bufferImgType === "jpg") {
+          bufferImgType = "jpeg"
+          bufferImg.src = `${chapterObj.src}/${nextPg}.${bufferImgType}`
+        } else if (bufferImgType === "png") {
+          bufferImgType = "jpg"
+          bufferImg.src = `${chapterObj.src}/${nextPg}.${bufferImgType}`
         }
-        bufferImg.src=`${chapterObj.src}/${nextPg}.${bufferImgType}`;
-      }    
+      }
+      bufferImg.src = `${chapterObj.src}/${nextPg}.${bufferImgType}`
+    }
     // }
   }
 
   handleSpread = (imgObj) => {
-    let nextPg = Number(this.props.match.params.page)-1;
+    let nextPg = Number(this.props.match.params.page) - 1
     // if not a spread, go back another page
     if (!imgObj.spread && this.state.goBack) {
       this.props.history.push({
-        pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`
-      });
-      this.setState({goBack:false, rightWidth: imgObj.width});
+        pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`,
+      })
+      this.setState({ goBack: false, rightWidth: imgObj.width })
     } else {
-      this.setState({spread: imgObj.spread, rightWidth: imgObj.width});
+      this.setState({ spread: imgObj.spread, rightWidth: imgObj.width })
     }
   }
 
   checkAltImageTypes = (pageType) => {
-    this.setState((prevState => {
-      if (prevState[pageType] === 'jpg') {
-        prevState[pageType] = 'jpeg';
-      } else if (prevState[pageType] === 'png') {
-        prevState[pageType] = 'jpg';
+    this.setState((prevState) => {
+      if (prevState[pageType] === "jpg") {
+        prevState[pageType] = "jpeg"
+      } else if (prevState[pageType] === "png") {
+        prevState[pageType] = "jpg"
       } else {
-        if (pageType === (this.state.singlePgMode ? 'rightPgType' : 'leftPgType')) {
-          prevState.lastPg = Number(prevState.leftPgCount) - (this.state.singlePgMode ? 1 : 0);
-        }        
+        if (
+          pageType === (this.state.singlePgMode ? "rightPgType" : "leftPgType")
+        ) {
+          prevState.lastPg =
+            Number(prevState.leftPgCount) - (this.state.singlePgMode ? 1 : 0)
+        }
       }
-    }));
+    })
   }
 
   handleLeftLoaded = () => {
@@ -395,41 +445,45 @@ class Reader extends React.Component {
 
   handleRightLoaded = () => {
     // console.log('right')
-    document.addEventListener('keydown', this.handlePagesKey);
+    document.addEventListener("keydown", this.handlePagesKey)
   }
 
   handleLeftError = () => {
     // console.log('error')
-    this.checkAltImageTypes('leftPgType');
+    this.checkAltImageTypes("leftPgType")
   }
 
   handleRightError = () => {
     // console.log('error')
-    this.checkAltImageTypes('rightPgType');
+    this.checkAltImageTypes("rightPgType")
   }
 
   nextPage = () => {
-    let currPg = this.props.match.params.page;
-    let nextPg = Number(currPg) + (this.state.singlePgMode ? 1 : (this.state.spread ? 1 : 2));
-    if (nextPg > -1 && nextPg < this.state.lastPg) {  
-      document.removeEventListener('keydown', this.handlePagesKey);
-      this.setState({goBack: false});
+    let currPg = this.props.match.params.page
+    let nextPg =
+      Number(currPg) + (this.state.singlePgMode ? 1 : this.state.spread ? 1 : 2)
+    if (nextPg > -1 && nextPg < this.state.lastPg) {
+      document.removeEventListener("keydown", this.handlePagesKey)
+      this.setState({ goBack: false })
       this.props.history.push({
-        pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`
-      });
+        pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`,
+      })
     }
   }
-  
-  prevPage = () => {
-    let currPg = this.props.match.params.page;
-    let nextPg = Number(currPg) - 1;
 
-    if (nextPg > (this.state.singlePgMode ? 0 : -1) && nextPg < this.state.lastPg) {  
-      document.removeEventListener('keydown', this.handlePagesKey);
-      this.setState({goBack: true});
+  prevPage = () => {
+    let currPg = this.props.match.params.page
+    let nextPg = Number(currPg) - 1
+
+    if (
+      nextPg > (this.state.singlePgMode ? 0 : -1) &&
+      nextPg < this.state.lastPg
+    ) {
+      document.removeEventListener("keydown", this.handlePagesKey)
+      this.setState({ goBack: true })
       this.props.history.push({
-        pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`
-      });
+        pathname: `/r/${this.selection}/${this.chapter}/${nextPg}`,
+      })
     }
   }
 
@@ -441,21 +495,20 @@ class Reader extends React.Component {
 
     if (e.target.className) {
       if (!this.state.spread && !this.state.singlePgMode) {
-        let pgClicked = e.target.className;
-        if (pgClicked === 'leftPg') {
-          this.nextPage();
-        } else if (pgClicked === 'rightPg') {
-          this.prevPage();
+        let pgClicked = e.target.className
+        if (pgClicked === "leftPg") {
+          this.nextPage()
+        } else if (pgClicked === "rightPg") {
+          this.prevPage()
         }
       } else {
-        let midPoint = e.target.width/2;
-        let clickLoc = e.nativeEvent.offsetX;
+        let midPoint = e.target.width / 2
+        let clickLoc = e.nativeEvent.offsetX
 
         if (clickLoc < midPoint) {
-          this.nextPage();
-        }
-        else if (clickLoc > midPoint) {
-          this.prevPage();
+          this.nextPage()
+        } else if (clickLoc > midPoint) {
+          this.prevPage()
         }
       }
     }
@@ -478,26 +531,26 @@ class Reader extends React.Component {
 
   handleInfo = () => {
     this.setState((prevState) => {
-      prevState.showInfo = (prevState.showInfo === false ? true : false);
-    });
+      prevState.showInfo = prevState.showInfo === false ? true : false
+    })
   }
 
   handlePageMode = (e) => {
-    let value = e.currentTarget.attributes.value.value;
+    let value = e.currentTarget.attributes.value.value
 
     this.setState((prevState) => {
-      localStorage.pageMode = value;
-      prevState.pageMode = value;
-      if (value === 'Single Page') {
-        prevState.singlePgMode = true;
-        if (this.props.match.params.page === '0') {
-          this.resetChapterToStart();
+      localStorage.pageMode = value
+      prevState.pageMode = value
+      if (value === "Single Page") {
+        prevState.singlePgMode = true
+        if (this.props.match.params.page === "0") {
+          this.resetChapterToStart()
         }
       } else {
-        prevState.singlePgMode = false;
+        prevState.singlePgMode = false
       }
-    });
+    })
   }
 }
 
-export default Reader;
+export default Reader
