@@ -16,6 +16,14 @@ function sortChaps(arr) {
 export default {
   list: [
     {
+      cover: "img/cover/cm.jpg",
+      title: "Coffee Moon",
+      updated:
+        chData.series["Coffee Moon"][
+          sortChaps(Object.keys(chData.series["Coffee Moon"]))[0]
+        ].date,
+    },
+    {
       cover: "img/cover/teotj.jpg",
       title: "The End of the Journey",
       updated:

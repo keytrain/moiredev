@@ -1,5 +1,14 @@
 export default {
   series: {
+    "Coffee Moon": {
+      cover: ["./img/cover/cm/2.jpg"],
+      synopsis: [
+        "The light is gone. Unable to escape the darkness, Pieta repeats the same day. Every day she walks to school down the same road, through the same rain, then talks with her friend Danae. Eventually, she finds happiness in the repetition.",
+        "The days carry on as normal, until one day, her routine chat with Danae takes a different turn: \"What?! You can remember the today that happened yesterday too?\" Despite their bleak situation, the girls reach towards tomorrow!",
+      ],
+      author: "Bota Mochito",
+      licensed: false,
+    },
     "The End of the Journey": {
       cover: ["./img/cover/teotj/1.jpg"],
       synopsis: [
