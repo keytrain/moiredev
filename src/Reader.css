@@ -12,9 +12,9 @@
   height: auto;
   /* background-color:#fff; */
   /* box-shadow: 0 0 20px 0 #e1e1e1;  */
-  padding: 0 1rem;
-  margin-top: 8.5rem;
-  margin-bottom: 5rem;
+  padding: 0 0rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
   display: inline-block;
   width: 100%;
   transition: 75ms ease-in;
@@ -157,6 +157,9 @@
 
 /* Desktop  */
 @media screen and (min-width: 1441px) {
+  .pages {
+    padding: 0 1rem;
+  }
   .disqus-container {
     position: fixed;
     top: 5rem;

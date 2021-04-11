@@ -2,7 +2,7 @@ window.chapterData = {
   series: {
     "Coffee Moon": {
       14: {
-        date: new Date("April 10 2021 22:53:00 GMT-0800"),
+        date: new Date("April 10 2021 22:40:00 GMT-0800"),
         src: "/img/releases/cm/14",
         trans: "nex",
         let: "key",
@@ -15,6 +15,76 @@ window.chapterData = {
         trans: "nex",
         let: "myran",
         red: "myran",
+      },
+      12: {
+        date: new Date("February 6 2020 GMT-0800"),
+        src: "/img/releases/cm/12",
+        group: "Octopals",
+      },
+      11: {
+        date: new Date("December 30 2020 GMT-0800"),
+        src: "/img/releases/cm/11",
+        group: "Octopals",
+      },
+      10: {
+        date: new Date("December 18 2020 GMT-0800"),
+        src: "/img/releases/cm/10",
+        group: "Octopals",
+      },
+      9.1: {
+        date: new Date("November 1 2020 GMT-0800"),
+        src: "/img/releases/cm/9.1",
+        group: "Octopals",
+      },
+      9: {
+        date: new Date("October 20 2020 GMT-0800"),
+        src: "/img/releases/cm/9",
+        group: "Octopals",
+      },
+      8: {
+        date: new Date("October 15 2020 GMT-0800"),
+        src: "/img/releases/cm/8",
+        group: "Octopals",
+      },
+      7: {
+        date: new Date("October 8 2020 GMT-0800"),
+        src: "/img/releases/cm/7",
+        group: "Octopals",
+      },
+      6: {
+        date: new Date("October 4 2020 GMT-0800"),
+        src: "/img/releases/cm/6",
+        group: "Octopals",
+      },
+      5: {
+        date: new Date("September 29 2020 GMT-0800"),
+        src: "/img/releases/cm/5",
+        group: "Octopals",
+      },
+      4.5: {
+        date: new Date("September 25 2020 GMT-0800"),
+        src: "/img/releases/cm/4.5",
+        group: "Octopals",
+      },
+      4: {
+        date: new Date("September 21 2020 GMT-0800"),
+        src: "/img/releases/cm/4",
+        group: "Octopals",
+      },
+      3: {
+        date: new Date("September 17 2020 GMT-0800"),
+        src: "/img/releases/cm/3",
+        group: "Octopals",
+      },
+      2: {
+        date: new Date("September 12 2020 GMT-0800"),
+        src: "/img/releases/cm/2",
+        group: "Octopals",
+      },
+      1: {
+        date: new Date("March 7 2020 GMT-0800"),
+        src: "/img/releases/cm/1",
+        group: "no group",
       },
     },
     "The End of the Journey": {

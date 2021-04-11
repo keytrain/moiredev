@@ -105,7 +105,7 @@ class SeriesModal extends Component {
                       this.setState({ expandChapters: false });
                     }}
                   >
-                    <small className="link">SHOW MORE</small>
+                    SHOW MORE
                   </div>
                 )}
 
