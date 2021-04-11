@@ -1,22 +1,13 @@
-import React, { Component } from 'react';
+import React from "react";
 
-class DropdownItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render() {
-    return (
-      <div className='dropdown-row' name={this.props.name} value={this.props.text} onClick={this.props.handle}>
-        <div className='dropdown-icon'>{this.props.icon}</div>
-        <div className={'dropdown-text ' + (this.props.selection === this.props.text ? 'dropdown-text-active':'')} 
-         >{this.props.text}</div>
-        <div className='dropdown-right'>{this.props.right}</div>
+export default function DropdownItem({ name, handle, icon, selection, right, text }) {
+  return (
+    <div className="dropdown-row" name={name} value={text} onClick={handle}>
+      <div className="dropdown-icon">{icon}</div>
+      <div className={"dropdown-text " + (selection === text ? "dropdown-text-active" : "")}>
+        {text}
       </div>
-    );
-  }
+      <div className="dropdown-right">{right}</div>
+    </div>
+  );
 }
-
-export default DropdownItem;

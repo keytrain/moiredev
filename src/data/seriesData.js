@@ -4,7 +4,7 @@ export default {
       cover: ["./img/cover/cm/2.jpg"],
       synopsis: [
         "The light is gone. Unable to escape the darkness, Pieta repeats the same day. Every day she walks to school down the same road, through the same rain, then talks with her friend Danae. Eventually, she finds happiness in the repetition.",
-        'The days carry on as normal, until one day, her routine chat with Danae takes a different turn: "What?! You can remember the today that happened yesterday too?" Despite their bleak situation, the girls reach towards tomorrow!',
+        "The days carry on as normal, until one day, her routine chat with Danae takes a different turn: “What?! You can remember the today that happened yesterday too?” Despite their bleak situation, the girls reach towards tomorrow!",
       ],
       author: "Bota Mochito",
       licensed: false,
@@ -310,9 +310,9 @@ export default {
     "Mardock Scramble": {
       cover: ["./img/cover/mar/1.jpg"],
       synopsis: [
-        "Why me? It was to be the last thought a young prostitute, Rune Balot, would ever have…as a human anyway. Taken in by a devious gambler named Shell, she became a slave to his cruel desires and would have been killed by his hand if not for a private investigator and his self-aware Universal Tool, Œufcoque. Now a cyborg, Balot has not only physical powers, but the ability to disrupt social environments. She chases after Shell, his partner-in-crime Boiled, and faces down a variety of insane villains in this pulse-pounding cyberpunk noir adventure.",
+        "Why me? It was to be the last thought a young prostitute, Rune Balot, would ever have... as a human anyway. Taken in by a devious gambler named Shell, she became a slave to his cruel desires and would have been killed by his hand if not for a private investigator and his self-aware Universal Tool, Œufcoque. Now a cyborg, Balot has not only physical powers, but the ability to disrupt social environments. She chases after Shell, his partner-in-crime Boiled, and faces down a variety of insane villains in this pulse-pounding cyberpunk noir adventure.",
       ],
-      author: "Ubukuta Tow/Ooima Yoshitoki",
+      author: "Ubukuta Tow/Oima Yoshitoki",
       licensed: "Kodansha",
     },
     "Yume Tsukai": {
@@ -340,9 +340,7 @@ export default {
     },
     "Ashita wa Kyouso-sama (oneshot)": {
       cover: ["./img/cover/kyou/1.jpg"],
-      synopsis: [
-        "The hijinks of the Society for the Discovery of the Truth of Occult Phenomena.",
-      ],
+      synopsis: ["The hijinks of the Society for the Discovery of the Truth of Occult Phenomena."],
       author: "Kio Shimoku",
       licensed: false,
     },
@@ -393,7 +391,6 @@ export default {
         "Follows the story of Rinko Ikeuchi, the daughter of wealthy parents who's on the fast track to enter medical school, but when her family falls on hard times Rinko is forced to take a job, any job, to make ends meet. When the handsome Sawakura shows up offering Rinko gainful employment she can't really say no, even after she realizes that it involves working as a production assistant in the world of hardcore adult videos.",
       ],
       author: "",
-      reader: [{ name: "Kissmanga", src: "http://kissmanga.com/Manga/18-Rin" }],
       licensed: false,
     },
     "Katsute Kami Datta Kemonotachi e": {
@@ -412,14 +409,7 @@ export default {
         "Something seems a little off about the girl who's sent to meet him, the fidgety and overly anxious Aya, but he doesn't fully understand what's going on until he arrives at the house. Yuki, who has had very little to do with women thus far in his life, is now set to live in a house with four of them. The head of the house is actually an author of erotic novels, and she habitually forces her three daughters into embarrassing sexual situations. How will Yuki cope with his new life?",
       ],
       author: "Sanada Rin",
-      reader: [
-        {
-          name: "Batoto",
-          src:
-            "https://bato.to/comic/_/comics/sore-ga-kanojo-no-seigi-nara-r575",
-        },
-      ],
       licensed: false,
     },
   },
-}
+};

@@ -46,6 +46,7 @@
   width: 100%;
   height: inherit;
   position: relative;
+  box-shadow: inset 8px 0 8px -8px #eee;
 }
 .modal-text {
   height: inherit;
@@ -66,29 +67,36 @@
   color: #222;
 }
 .modal-chapters-container a:visited {
-  /* color: #888;  */
+  color: #888;
 }
 .modal-chapter {
-  /*border:1px solid #ccc;*/
-  /*box-shadow: 0 0 8px 0 #ccc;*/
-  /* padding:0.5rem; */
-  /* margin:0.5rem; */
-  /* width: calc(100%/3 - 1rem); */
-  /* display:inline-block; */
-  /* background-color:#f1f1f1; */
-  /* background-color: #8BC6EC; */
-  /* background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%); */
-  /* color:#fff; */
-  /* border-radius:4px; */
-  /* transition: opacity 425ms ease-out; */
+  box-shadow: 1px 1px 3px 1px #eee;
+  padding: 0.6rem 1.5rem;
+  margin: 0.3rem;
+  width: calc(100% / 2 - 0.6rem);
+  display: inline-block;
+  /* background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%); */
+  background: #fff;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.show-more {
+  margin: 0.3rem;
+  background: #fff;
+  box-shadow: 1px 1px 3px 1px #eee;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 0.1rem 0;
+  cursor: pointer;
 }
 .modal-chapter-num:hover {
-  cursor: pointer;
-  opacity: 0.5;
 }
 .modal-synopsis {
 }
 .modal-synopsis p {
+  line-height: 1.5;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 .modal-chapter-num,
 .modal-chapter-date {
@@ -104,15 +112,10 @@
 }
 .modal-chapter-date {
   text-transform: uppercase;
-  /* width:50%;  */
+  font-weight: 400;
   font-size: 0.7rem;
-  /* color:#aaa; */
+  color: #aaa;
   /*text-align: right;*/
-}
-.like-button {
-}
-.like-button:hover {
-  cursor: pointer;
 }
 .modal-link-section {
   text-align: center;
@@ -120,9 +123,6 @@
 .modal-links {
   font-weight: 400 !important;
   padding-right: 1rem;
-}
-.commentsbtn {
-  /* width:100%; */
 }
 .modal-actions {
   /* position:absolute; */

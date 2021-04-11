@@ -1,21 +1,21 @@
-import React, { Component } from "react"
-import "./App.css"
-import logo from "./img/logoB.png"
-import discordIcon from "./img/discord-icon.svg"
-import { Route } from "react-router-dom"
-import data from "./data/releaseData"
-import SeriesList from "./SeriesList"
-import SeriesModal from "./SeriesModal"
-import MdFilterList from "react-icons/lib/md/filter-list"
-import MdSearch from "react-icons/lib/md/search"
-import MdSort from "react-icons/lib/md/sort"
-import MdMoreVert from "react-icons/lib/md/more-vert"
-import Dropdown from "./Dropdown"
-import DropdownItem from "./DropdownItem"
+import React, { Component } from "react";
+import "./App.css";
+import logo from "./img/logoB.png";
+import discordIcon from "./img/discord-icon.svg";
+import { Route } from "react-router-dom";
+import data from "./data/releaseData";
+import SeriesList from "./SeriesList";
+import SeriesModal from "./SeriesModal";
+import MdFilterList from "react-icons/lib/md/filter-list";
+import MdSearch from "react-icons/lib/md/search";
+import MdSort from "react-icons/lib/md/sort";
+import MdMoreVert from "react-icons/lib/md/more-vert";
+import Dropdown from "./Dropdown";
+import DropdownItem from "./DropdownItem";
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       mode: "start",
       data: data.list,
@@ -31,112 +31,109 @@ class App extends Component {
         overflowY: "auto",
       },
       modalSelection: "",
-    }
+    };
 
-    this.handleFilter = this.handleFilter.bind(this)
-    this.handleSearch = this.handleSearch.bind(this)
+    this.handleFilter = this.handleFilter.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentWillMount() {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       prevState.data = prevState.data.sort((a, b) => {
-        if (a.updated.getTime() < b.updated.getTime()) return 1
-        else if (a.updated.getTime() > b.updated.getTime()) return -1
-        else return 0
-      })
-    })
+        if (a.updated.getTime() < b.updated.getTime()) return 1;
+        else if (a.updated.getTime() > b.updated.getTime()) return -1;
+        else return 0;
+      });
+    });
   }
 
   handleFilter(e) {
-    let value = e.currentTarget.attributes.value.value
-    let name = e.currentTarget.attributes.name.value
+    let value = e.currentTarget.attributes.value.value;
+    let name = e.currentTarget.attributes.name.value;
 
-    this.setState(prevState => {
+    this.setState((prevState) => {
       switch (name) {
         case "sort":
-          prevState.sort = value
-          break
+          prevState.sort = value;
+          break;
         case "filter":
-          prevState.filter = value
-          break
+          prevState.filter = value;
+          break;
         default:
       }
 
-      let dataTemp = null
+      let dataTemp = null;
       switch (value) {
         case "All":
-          prevState.data = data.list
-          prevState.dataSet = data.list
-          break
+          prevState.data = data.list;
+          prevState.dataSet = data.list;
+          break;
         case "Current":
-          dataTemp = data.list.filter(e => {
-            if (e.completed === undefined) return true
-            else return false
-          })
-          prevState.data = dataTemp
-          prevState.dataSet = dataTemp
-          break
+          dataTemp = data.list.filter((e) => {
+            if (e.completed === undefined) return true;
+            else return false;
+          });
+          prevState.data = dataTemp;
+          prevState.dataSet = dataTemp;
+          break;
         case "Complete":
-          dataTemp = data.list.filter(e => {
-            return e.completed !== undefined && e.completed
-          })
-          prevState.data = dataTemp
-          prevState.dataSet = dataTemp
-          break
+          dataTemp = data.list.filter((e) => {
+            return e.completed !== undefined && e.completed;
+          });
+          prevState.data = dataTemp;
+          prevState.dataSet = dataTemp;
+          break;
         case "Dropped":
-          dataTemp = data.list.filter(e => {
-            return e.completed !== undefined && !e.completed
-          })
-          prevState.data = dataTemp
-          prevState.dataSet = dataTemp
-          break
+          dataTemp = data.list.filter((e) => {
+            return e.completed !== undefined && !e.completed;
+          });
+          prevState.data = dataTemp;
+          prevState.dataSet = dataTemp;
+          break;
         case "Date":
           dataTemp = prevState.data.sort((a, b) => {
-            if (a.updated.getTime() < b.updated.getTime()) return 1
-            else if (a.updated.getTime() > b.updated.getTime()) return -1
-            else return 0
-          })
-          prevState.data = dataTemp
-          prevState.dataSet = dataTemp
-          break
+            if (a.updated.getTime() < b.updated.getTime()) return 1;
+            else if (a.updated.getTime() > b.updated.getTime()) return -1;
+            else return 0;
+          });
+          prevState.data = dataTemp;
+          prevState.dataSet = dataTemp;
+          break;
         case "Alphabetical":
           dataTemp = prevState.data.sort((a, b) => {
             if (a.title < b.title) {
-              return -1
+              return -1;
             }
             if (a.title > b.title) {
-              return 1
+              return 1;
             }
-            return 0
-          })
-          prevState.data = dataTemp
-          prevState.dataSet = dataTemp
-          break
+            return 0;
+          });
+          prevState.data = dataTemp;
+          prevState.dataSet = dataTemp;
+          break;
         default:
       }
-    })
+    });
   }
 
   handleSearch(e) {
-    let value = e.target.value.toLowerCase()
-    this.setState(prevState => {
+    let value = e.target.value.toLowerCase();
+    this.setState((prevState) => {
       if (value.length === 0) {
-        prevState.data = prevState.dataSet
+        prevState.data = prevState.dataSet;
       } else {
-        prevState.data = prevState.dataSet.filter(e => {
-          return e.title.toLowerCase().includes(value)
-        })
+        prevState.data = prevState.dataSet.filter((e) => {
+          return e.title.toLowerCase().includes(value);
+        });
       }
-    })
+    });
   }
 
   render() {
     return (
       <div>
-        <Route
-          path="/r/:series"
-          render={props => <SeriesModal {...props} likes={this.state.likes} />}
-        />
+        <Route path="/r/:series" render={(props) => <SeriesModal {...props} />} />
         <nav>
           <div className="nav-container">
             <div className="logo-container">
@@ -145,10 +142,7 @@ class App extends Component {
 
             <div className="filter-container">
               <div className="search">
-                <MdSearch
-                  size={24}
-                  style={{ marginBottom: "2px", marginRight: "0.3rem" }}
-                />
+                <MdSearch size={24} style={{ marginBottom: "2px", marginRight: "0.3rem" }} />
                 <input type="search" onChange={this.handleSearch} />
               </div>
               <div className="filterBy">
@@ -160,7 +154,7 @@ class App extends Component {
                     </div>
                   }
                 >
-                  {["All", "Current", "Complete", "Dropped"].map(e => (
+                  {["All", "Current", "Complete", "Dropped"].map((e) => (
                     <DropdownItem
                       key={e}
                       name={"filter"}
@@ -176,12 +170,11 @@ class App extends Component {
                 <Dropdown
                   attach={
                     <div>
-                      <MdSort size={24} style={{ marginBottom: "2px" }} />{" "}
-                      <small>SORT BY</small>
+                      <MdSort size={24} style={{ marginBottom: "2px" }} /> <small>SORT BY</small>
                     </div>
                   }
                 >
-                  {["Date", "Alphabetical"].map(e => (
+                  {["Date", "Alphabetical"].map((e) => (
                     <DropdownItem
                       key={e}
                       name={"sort"}
@@ -195,11 +188,7 @@ class App extends Component {
               </div>
 
               <div className="more">
-                <Dropdown
-                  attach={
-                    <MdMoreVert size={24} style={{ marginBottom: "2px" }} />
-                  }
-                >
+                <Dropdown attach={<MdMoreVert size={24} style={{ marginBottom: "2px" }} />}>
                   <div>
                     <a href="https://discord.gg/CnZBudA">
                       <DropdownItem
@@ -225,17 +214,13 @@ class App extends Component {
         <div className="wrapper">
           <div className="serieslist-container">
             <div className="serieslist">
-              <SeriesList
-                title=""
-                handler={this.handleSeriesItem}
-                list={this.state.data}
-              />
+              <SeriesList title="" handler={this.handleSeriesItem} list={this.state.data} />
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

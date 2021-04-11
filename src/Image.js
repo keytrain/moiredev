@@ -1,16 +1,15 @@
-import React from "react"
-// import MdToys from 'react-icons/lib/md/toys';
+import React from "react";
 
 class Image extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       show: {},
       loader: true,
-    }
+    };
 
-    this.handleImageError = this.handleImageError.bind(this)
-    this.handleImageLoaded = this.handleImageLoaded.bind(this)
+    this.handleImageError = this.handleImageError.bind(this);
+    this.handleImageLoaded = this.handleImageLoaded.bind(this);
   }
 
   handleImageLoaded() {
@@ -22,29 +21,29 @@ class Image extends React.Component {
           opacity: 1,
         }
       ),
-    })
+    });
 
     if (typeof this.props.loaded === "function") {
-      this.props.loaded()
+      this.props.loaded();
     }
   }
 
   handleImageError() {
     if (typeof this.props.error === "function") {
-      this.props.error()
+      this.props.error();
     }
   }
 
   render() {
     const container = {
       position: "relative",
-    }
-    const duration = 200
+    };
+    const duration = 200;
     const defaultStyle = {
       opacity: 0,
       transition: `opacity ${duration}ms ease-out`,
       verticalAlign: "top",
-    }
+    };
     // const defaultLoaderStyle ={
     //   animation: 'spin 500ms linear infinite',
     //   position: 'absolute',
@@ -72,8 +71,8 @@ class Image extends React.Component {
           ...defaultLoaderStyle
         }} />} */}
       </div>
-    )
+    );
   }
 }
 
-export default Image
+export default Image;

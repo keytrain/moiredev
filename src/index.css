@@ -1,8 +1,11 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   /* height:100%; */
   /* width:100%;   */
   /* overflow:auto; */
@@ -10,139 +13,146 @@ html, body {
 }
 
 html {
-  font-size:12px;
-  font-weight:400;
+  font-size: 12px;
+  font-weight: 400;
   line-height: 1.618;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
-  color:#222;
-  font-family: -apple-system, BlinkMacSystemFont, 
-    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", 
-    "Fira Sans", "Droid Sans", "Helvetica Neue", 
-    sans-serif,  "Apple Color Emoji", "Segoe UI Emoji", 
-    "Segoe UI Symbol";
+  color: #222;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color:hsl(204, 6%, 98%);
+  background-color: hsl(204, 6%, 98%);
 }
 
-h1, h2, h3, h4, h5 {
-  margin:0;
-  padding-bottom:0.5rem;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding-bottom: 0.5rem;
   /* padding:0.3rem 0; */
-  font-weight:700;
-  line-height:1.1;
+  font-weight: 700;
+  line-height: 1.1;
 }
 p {
   font-size: 1rem;
 }
 h1 {
-  font-size:2.488rem;
+  font-size: 2.488rem;
 }
 h2 {
-  font-size:2.074rem;
+  font-size: 2.074rem;
 }
 h3 {
-  font-size:1.728rem;
+  font-size: 1.728rem;
 }
 h4 {
-  font-size:1.44rem;
+  font-size: 1.44rem;
 }
 h5 {
-  font-size:1.2rem;  
-  line-height:1.2; 
+  font-size: 1.2rem;
+  line-height: 1.2;
 }
 small {
-  font-size:0.833rem;
+  font-size: 0.833rem;
 }
 .header-lead {
-  font-weight:100;
+  font-weight: 100;
 }
 hr {
-  border:0;
-  margin:0rem 0.5rem;
-  border-bottom:1px solid #e6e6e6;
+  border: 0;
+  margin: 0rem 0.5rem;
+  border-bottom: 1px solid #e6e6e6;
   /* padding:inherit; */
-  display:block;
+  display: block;
 }
 input {
-   font-family: inherit; 
+  font-family: inherit;
 }
-input[type=search] {
+input[type="search"] {
   border: none;
-  background-color:#f2f2f2;
+  background-color: #f2f2f2;
   border-radius: 3px;
-  padding: 5px;
+  padding: 5px 8px;
   -webkit-appearance: none;
 }
 input:focus {
-  outline:none;
+  outline: none;
 }
-button,.button {
+button,
+.button {
   border: 0;
   transition: ease-in-out 100ms;
   padding: 0.7rem 0.8rem;
   font-family: inherit;
-  outline: none;  
+  outline: none;
   font-weight: 700;
   color: #333;
   font-size: 0.833rem;
   text-transform: uppercase;
   text-decoration: none;
-  margin-left:0.5rem;
+  margin-left: 0.5rem;
   opacity: 1;
   background: none;
   border-radius: 4px;
   /* margin: 0 0.5rem; */
 }
-button:first-child,.button:first-child {
+button:first-child,
+.button:first-child {
   margin-left: 0;
 }
 
-button:focus,.button:focus {
-  background:none;
+button:focus,
+.button:focus {
+  background: none;
 }
-button:hover,.button:hover {
-  cursor:pointer;
-  color:#fff;
-  background:#222;
+button:hover,
+.button:hover {
+  cursor: pointer;
+  color: #fff;
+  background: #222;
 }
-button:active,.button:active {
-  background:none;
-  color:#222;
+button:active,
+.button:active {
+  background: none;
+  color: #222;
 }
 
 .filter {
-  transition:none;
-  text-transform:capitalize;
-  color:#999; 
+  transition: none;
+  text-transform: capitalize;
+  color: #999;
   margin: 0.5rem;
   border-radius: 0;
-  font-size:0.9rem;
-  padding:0.5rem 0;
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
   /* padding:0.5rem 0.5rem; */
 }
 .filter:focus {
-  color:#222;
+  color: #222;
 }
 .filter:hover {
-  cursor:pointer;
-  color:#222;
-  opacity:1;
-  background:none;
+  cursor: pointer;
+  color: #222;
+  opacity: 1;
+  background: none;
 }
 .filter:active {
-  color:#222;
+  color: #222;
 }
 .filter-active {
-  color:#222;
+  color: #222;
   /* color:#fff; */
   /* background-color:#222; */
   /* font-weight:900; */
-   border-bottom: 1px solid #111; 
+  border-bottom: 1px solid #111;
 }
 
 @media screen and (min-width: 668px) {

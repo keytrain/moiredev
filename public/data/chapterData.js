@@ -1,6 +1,13 @@
 window.chapterData = {
   series: {
     "Coffee Moon": {
+      14: {
+        date: new Date("April 10 2021 22:53:00 GMT-0800"),
+        src: "/img/releases/cm/14",
+        trans: "nex",
+        let: "key",
+        red: "myran",
+      },
       13: {
         date: new Date("April 7 2021 19:10:00 GMT-0800"),
         src: "/img/releases/cm/13",
@@ -97,7 +104,6 @@ window.chapterData = {
         let: "Kiiragi, nielle",
       },
     },
-    "Mahoutsukai no Yome": {},
     "Kannou Sensei": {
       21: {
         date: new Date("October 6 2019 13:15:00 GMT-0800"),
@@ -257,114 +263,5 @@ window.chapterData = {
         let: "cranon",
       },
     },
-    Mahoromi: {},
-    "Spotted Flower": {},
-    "Seifuku no Vampiress Lord": {},
-    "Prunus Girl": {},
-    "Boku wa Tomodachi ga Sukunai": {},
-    "Tasogare Otome x Amnesia": {},
-    "Natsu no Zenjitsu": {},
-    "Chimoguri Ringo to Kingyobachi Otoko": {},
-    "Ashita Dorobou": {},
-    "Benten Rock Yuu": {
-      // '1': {
-      //   date: new Date('Dec 29 2014'),
-      //   src:'http://img.bato.to/comics/2014/12/29/b/read54a0fd526e61b',
-      //   trans: 'Yakkul',
-      //   let: 'RelM'
-      // }
-    },
-    "Boku ni Koisuru Mechanical": {},
-    "Choku!": {},
-    "Dekoboko Girlish": {},
-    Hajiotsu: {},
-    "Gisèle Alain": {},
-    Himawari: {},
-    "Kekkon Yubiwa Monogatari": {},
-    Gonensei: {},
-    Hitogatana: {
-      // '1': {
-      //   date: new Date('Jun 14 2011 GMT-800'),
-      //   src:'http://img.bato.to/comics/2011/06/14/h/read4df74fc47ec30/Credits.jpg',
-      //   trans: 'umeboshi',
-      //   let: 'RelM'
-      // }
-    },
-    "Yume Midokoro (oneshot)": {
-      // '1': {
-      //   date: new Date('Feb 24 2012'),
-      //   src: 'http://img.bato.to/comics/2012/02/25/y/read4f4884654753a',
-      //   trans: 'aznn3ss',
-      //   let: 'aznn3ss'
-      // }
-    },
-    "Ga-rei": {},
-    "Hakoiri Drops": {},
-    Straw: {
-      // '1': {
-      //   date: new Date('Aug 17 2015'),
-      //   src: 'http://img.bato.to/comics/2015/08/17/s/read55d20d3f2c07a',
-      //   trans: 'Yakkul',
-      //   let: 'Yakkul'
-      // }
-    },
-    "Paradox Blue": {},
-    OA: {},
-    Nonscale: {
-      // '6': {
-      //   date: new Date('Nov 01 2014 GMT-0800'),
-      //   src: 'http://img.bato.to/comics/2014/11/02/n/read5455af81abd24',
-      //   trans: 'Yakkul',
-      //   let: '?',
-      // }
-    },
-    "Nejimakiboshi to Aoi Sora": {},
-    "Tetsugaku Letra": {},
-    "Tokyo ESP": {},
-    "Taiyou no Ie": {},
-    "Mardock Scramble": {},
-    "Yume Tsukai": {},
-    "Oh, my sweet alien!": {
-      // '3': {
-      //   date: new Date('June 02 2016 GMT-800'),
-      //   src: 'http://img.bato.to/comics/2012/09/06/o/read50491d5702710',
-      //   trans: 'Yakkul',
-      //   let: 'Yakkul'
-      // },
-      // '2': {
-      //   date: new Date('June 02 2016 GMT-800'),
-      //   src: 'http://img.bato.to/comics/2012/09/03/o/read504539ce7ae8b',
-      //   trans: 'Yakkul',
-      //   let: 'Yakkul'
-      // },
-      // '1': {
-      //   date: new Date('May 07 2016 GMT-800'),
-      //   src: 'http://img.bato.to/comics/2012/09/03/o/read50453a2f0d29a',
-      //   trans: 'Yakkul',
-      //   let: 'Yakkul'
-      // }
-    },
-    "Amaama to Inazuma": {},
-    "Ashita wa Kyouso-sama (oneshot)": {
-      // '1': {
-      //   date: new Date('Dec 07 2015 GMT-0800'),
-      //   src: 'http://img.bato.to/comics/2015/12/08/a/read566671fd9606e',
-      //   let: 'Nielle'
-      // }
-    },
-    "Flying Witch (oneshot)": {
-      // '1': {
-      //   date: new Date('Jul 09 2017 GMT-0800')
-      // }
-    },
-    "Reversible!": {},
-    "Futari no Renai Shoka": {},
-    Gingitsune: {},
-    "Hero Mask": {},
-    "Kiniro Mosaic": {},
-    "Jigokuren - LOVE in the HELL": {},
-    "18 Rin": {},
-    "Katsute Kami Datta Kemonotachi e": {},
-    "Sore ga Kanojo no Seigi nara": {},
   },
-}
+};
